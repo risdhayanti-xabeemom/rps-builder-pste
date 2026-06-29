@@ -63,10 +63,11 @@ Nama file Excel bebas. Aplikasi tidak memvalidasi nama file; yang dibaca adalah 
 - `Master_IK`: `kode_ik`, `deskripsi_ik`, `kode_cpl`
 - `Master_MK`: `kode_mk`, `nama_mk`, `nama_prodi`, `semester`, `sks_teori`, `sks_praktek`, `jenis_mk`
 - `Mapping_MK_CPL`: `kode_mk`, `kode_cpl`
-- `Master_CPMK`: `kode_mk`, `kode_cpmk`, `deskripsi_cpmk`, `kode_ik`
+- `Master_CPMK`: `kode_mk`, `kode_cpmk`, `deskripsi_cpmk` atau `rumusan_cpmk`, `kode_ik`, `kode_cpl`
 - `Short_Silabus`: `kode_mk`, `deskripsi_mk`, `bahan_kajian`
 - `RPS_Pertemuan`: `kode_mk`, `minggu`, `sub_cpmk`, `materi`, `modalitas`, `bentuk_pembelajaran`, `metode`, `pengalaman_belajar`, `teknik_asesmen`, `indikator_penilaian`, `bobot`, `referensi`, `kode_cpmk`
 - `Referensi`: `kode_mk`, `referensi`
+- Opsional untuk tabel evaluasi Word: `Evaluasi_RPS`, `Asesmen_Mingguan`
 
 Nama kolom akan dinormalisasi menjadi huruf kecil dan spasi/tanda hubung menjadi underscore.
 Jika sheet `RPS_Pertemuan` hanya berisi sebagian minggu, aplikasi akan melengkapi tampilan editor menjadi 17 pertemuan.
@@ -74,6 +75,8 @@ Jika sheet `RPS_Pertemuan` hanya berisi sebagian minggu, aplikasi akan melengkap
 Contoh otomatis mencakup mata kuliah PLC, Instrumentasi Industri, dan Proyek Akhir.
 
 Kode CPL dinormalisasi otomatis. Format seperti `CPL01`, `CPL02`, dan `CPL10` akan dibaca sebagai `CPL1`, `CPL2`, dan `CPL10`. Kolom `kode_mk` juga dibaca sebagai teks dan di-strip dari spasi tersembunyi. Jika mapping CPL atau IK mengacu ke kode yang tidak ada di master, aplikasi menampilkan warning pada preview dan laporan validasi.
+
+CPL yang dibebankan pada RPS diambil dari unique `kode_cpl` pada `Master_CPMK` untuk mata kuliah terpilih, lalu di-join ke `Master_CPL`.
 
 ## Placeholder Template Word Aman
 

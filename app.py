@@ -31,7 +31,7 @@ REQUIRED_SHEETS = [
     "RPS_Pertemuan",
 ]
 
-OPTIONAL_RPS_SHEETS = ["Short_Silabus", "Referensi"]
+OPTIONAL_RPS_SHEETS = ["Short_Silabus", "Referensi", "Evaluasi_RPS", "Asesmen_Mingguan"]
 ALLOWED_RPS_SHEETS = set(REQUIRED_SHEETS + OPTIONAL_RPS_SHEETS)
 
 
@@ -156,6 +156,12 @@ def apply_sheet_column_aliases(sheet_name: str, df: pd.DataFrame) -> pd.DataFram
         "sks": "total_sks",
         "sks_total": "total_sks",
         "total_sks": "total_sks",
+        "bentuk_evaluasi": "bentuk_tes",
+        "bentuk_penilaian": "bentuk_tes",
+        "jenis_evaluasi": "jenis_tes",
+        "jenis_penilaian": "jenis_tes",
+        "instrumen": "instrumen_penilaian",
+        "rubrik": "rubrik_penilaian",
     }
     return df.rename(columns={col: aliases.get(col, col) for col in df.columns}).copy()
 
@@ -241,6 +247,50 @@ def normalize_master_workbook(workbook: dict[str, pd.DataFrame]) -> dict[str, pd
     else:
         normalized["Referensi"] = ensure_columns(
             normalized["Referensi"], ["kode_mk", "referensi"]
+        )
+    if "Evaluasi_RPS" not in normalized:
+        normalized["Evaluasi_RPS"] = pd.DataFrame(
+            columns=[
+                "kode_mk",
+                "bentuk_tes",
+                "jenis_tes",
+                "instrumen_penilaian",
+                "rubrik_penilaian",
+            ]
+        )
+    else:
+        normalized["Evaluasi_RPS"] = ensure_columns(
+            normalized["Evaluasi_RPS"],
+            [
+                "kode_mk",
+                "bentuk_tes",
+                "jenis_tes",
+                "instrumen_penilaian",
+                "rubrik_penilaian",
+            ],
+        )
+    if "Asesmen_Mingguan" not in normalized:
+        normalized["Asesmen_Mingguan"] = pd.DataFrame(
+            columns=[
+                "kode_mk",
+                "minggu",
+                "bentuk_tes",
+                "jenis_tes",
+                "instrumen_penilaian",
+                "rubrik_penilaian",
+            ]
+        )
+    else:
+        normalized["Asesmen_Mingguan"] = ensure_columns(
+            normalized["Asesmen_Mingguan"],
+            [
+                "kode_mk",
+                "minggu",
+                "bentuk_tes",
+                "jenis_tes",
+                "instrumen_penilaian",
+                "rubrik_penilaian",
+            ],
         )
     if "Master_MK" in normalized:
         normalized["Master_MK"] = ensure_columns(
@@ -397,10 +447,6 @@ def normalize_weekly_df(
             row["bentuk_pembelajaran"] = default_bentuk(mk, week)
         if row["metode"] not in METODE_OPTIONS:
             row["metode"] = default_metode(mk, week)
-        if row["teknik_asesmen"] not in TEKNIK_ASESMEN_OPTIONS and str(
-            row["teknik_asesmen"]
-        ).strip():
-            row["teknik_asesmen"] = assessment
         rows.append(row)
     return pd.DataFrame(rows, columns=RPS_WEEKLY_COLUMNS)
 
@@ -496,18 +542,16 @@ def build_course_payload(workbook: dict[str, pd.DataFrame], kode_mk: str) -> dic
     mk_row = mk_df[mk_df["kode_mk"].map(normalize_kode_mk) == selected_code].iloc[0].to_dict()
     warnings: list[str] = []
 
-    mapping_df = filter_by_code(workbook["Mapping_MK_CPL"], selected_code)
-    cpl_codes = unique_values(mapping_df["kode_cpl"].map(normalize_cpl_code).tolist())
+    cpmk_df = filter_by_code(workbook["Master_CPMK"], selected_code)
+    cpmk_records = cpmk_df.to_dict("records")
+    cpl_codes = unique_values(cpmk_df["kode_cpl"].map(normalize_cpl_code).tolist())
     cpl_df = workbook["Master_CPL"]
     cpl_records = cpl_df[cpl_df["kode_cpl"].astype(str).isin(cpl_codes)].drop_duplicates(
         subset=["kode_cpl"], keep="first"
     ).to_dict("records")
-    missing_cpl_from_mapping = sorted(set(cpl_codes) - set(cpl_df["kode_cpl"].astype(str)))
-    for kode_cpl in missing_cpl_from_mapping:
-        warnings.append(f"Kode CPL `{kode_cpl}` dari Mapping_MK_CPL tidak ditemukan di Master_CPL.")
-
-    cpmk_df = filter_by_code(workbook["Master_CPMK"], selected_code)
-    cpmk_records = cpmk_df.to_dict("records")
+    missing_cpl_from_cpmk = sorted(set(cpl_codes) - set(cpl_df["kode_cpl"].astype(str)))
+    for kode_cpl in missing_cpl_from_cpmk:
+        warnings.append(f"Kode CPL `{kode_cpl}` dari Master_CPMK tidak ditemukan di Master_CPL.")
     cpmk_ik_df = explode_cpmk_ik(cpmk_df)
     cpmk_ik_codes = unique_values(
         cpmk_ik_df["kode_ik"].astype(str).tolist() if not cpmk_ik_df.empty else []
@@ -548,6 +592,8 @@ def build_course_payload(workbook: dict[str, pd.DataFrame], kode_mk: str) -> dic
     if not weekly_records:
         warnings.append("Data RPS pertemuan untuk mata kuliah ini belum tersedia.")
     reference_records = filter_by_code(workbook["Referensi"], selected_code).to_dict("records")
+    evaluation_records = filter_by_code(workbook["Evaluasi_RPS"], selected_code).to_dict("records")
+    weekly_assessment_records = filter_by_code(workbook["Asesmen_Mingguan"], selected_code).to_dict("records")
 
     sks_teori = as_int(mk_row.get("sks_teori"))
     sks_praktek = as_int(mk_row.get("sks_praktek"))
@@ -561,6 +607,8 @@ def build_course_payload(workbook: dict[str, pd.DataFrame], kode_mk: str) -> dic
         "cpmk": cpmk_records,
         "weekly": normalize_weekly_df(weekly_records, mk_row, cpmk_records).to_dict("records"),
         "references": reference_records,
+        "evaluations": evaluation_records,
+        "weekly_assessments": weekly_assessment_records,
         "total_sks": total_sks,
         "warnings": warnings,
     }
@@ -678,6 +726,8 @@ def make_context(
         or mk.get("nama_kakel_bidang_keahlian")
         or ""
     )
+    evaluation_records = payload.get("evaluations", [])
+    first_evaluation = evaluation_records[0] if evaluation_records else {}
     context = {
         "NAMA_PRODI": mk.get("nama_prodi", ""),
         "KODE_MK": mk.get("kode_mk", ""),
@@ -722,9 +772,11 @@ def make_context(
             "pustaka_utama": pustaka_utama,
             "pustaka_pendukung": pustaka_pendukung,
             "rumus_nilai_akhir": "Nilai Akhir = jumlah seluruh nilai komponen penilaian x bobot masing-masing.",
-            "instrumen_penilaian": context["ASESMEN_TEXT"],
-            "rubrik_penilaian": mk.get("rubrik_penilaian", ""),
-            "kisi_kisi_instrumen": context["ASESMEN_TEXT"],
+            "bentuk_tes": first_evaluation.get("bentuk_tes", ""),
+            "jenis_tes": first_evaluation.get("jenis_tes", ""),
+            "instrumen_penilaian": first_evaluation.get("instrumen_penilaian", ""),
+            "rubrik_penilaian": first_evaluation.get("rubrik_penilaian", ""),
+            "kisi_kisi_instrumen": first_evaluation.get("kisi_kisi_instrumen", ""),
         }
     )
     return context
@@ -792,7 +844,7 @@ def validate_rps(
                     {
                         "status": "Warning",
                         "aturan": "Kode CPL IK tidak termasuk CPL dibebankan",
-                        "detail": f"IK `{kode_ik}` terhubung ke `{kode_cpl}`, tetapi CPL tersebut tidak ada pada Mapping_MK_CPL untuk mata kuliah ini.",
+                        "detail": f"IK `{kode_ik}` terhubung ke `{kode_cpl}`, tetapi CPL tersebut tidak muncul pada Master_CPMK untuk mata kuliah ini.",
                     }
                 )
                 used_cpl.add(kode_cpl)
@@ -1195,6 +1247,29 @@ def assessment_component_contexts(weekly_df: pd.DataFrame) -> list[dict[str, Any
     ] or [{"aspek_penilaian": "", "persentase_penilaian": ""}]
 
 
+def evaluation_row_contexts(evaluation_records: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    contexts = []
+    for row in evaluation_records:
+        contexts.append(
+            {
+                "bentuk_tes": row.get("bentuk_tes", ""),
+                "jenis_tes": row.get("jenis_tes", ""),
+                "instrumen_penilaian": row.get("instrumen_penilaian", ""),
+                "rubrik_penilaian": row.get("rubrik_penilaian", ""),
+                "kisi_kisi_instrumen": row.get("kisi_kisi_instrumen", ""),
+            }
+        )
+    return contexts or [
+        {
+            "bentuk_tes": "",
+            "jenis_tes": "",
+            "instrumen_penilaian": "",
+            "rubrik_penilaian": "",
+            "kisi_kisi_instrumen": "",
+        }
+    ]
+
+
 def cpl_row_contexts(cpl_records: list[dict[str, Any]]) -> list[dict[str, Any]]:
     return [
         {
@@ -1227,6 +1302,11 @@ def fill_template_tables(document, payload: dict[str, Any], cpmk_df: pd.DataFram
         document,
         ["{{aspek_penilaian}}", "{{persentase_penilaian}}"],
         assessment_component_contexts(weekly_df),
+    )
+    fill_repeating_table(
+        document,
+        ["{{bentuk_tes}}", "{{jenis_tes}}", "{{rubrik_penilaian}}"],
+        evaluation_row_contexts(payload.get("evaluations", [])),
     )
     fill_repeating_table(
         document,
@@ -1803,6 +1883,13 @@ def main() -> None:
         cpmk_df["kode_mk"] = selected_code
 
     with main_tabs[2]:
+        assessment_options = unique_values(
+            [""] + TEKNIK_ASESMEN_OPTIONS + [
+                str(row.get("teknik_asesmen", "")).strip()
+                for row in payload["weekly"]
+                if str(row.get("teknik_asesmen", "")).strip()
+            ]
+        )
         weekly_df = st.data_editor(
             records_to_editor(payload["weekly"], RPS_WEEKLY_COLUMNS),
             use_container_width=True,
@@ -1846,7 +1933,7 @@ def main() -> None:
                     RPS_WEEKLY_LABELS["pengalaman_belajar"], width="large"
                 ),
                 "teknik_asesmen": st.column_config.SelectboxColumn(
-                    RPS_WEEKLY_LABELS["teknik_asesmen"], options=[""] + TEKNIK_ASESMEN_OPTIONS
+                    RPS_WEEKLY_LABELS["teknik_asesmen"], options=assessment_options
                 ),
                 "indikator_penilaian": st.column_config.TextColumn(
                     RPS_WEEKLY_LABELS["indikator_penilaian"], width="large"
