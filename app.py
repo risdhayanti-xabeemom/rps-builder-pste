@@ -23,14 +23,12 @@ DEFAULT_TEMPLATE_RELATIVE_PATH = "templates/template_rps_pste_placeholder.docx"
 DEFAULT_SAMPLE_PATH = SAMPLE_DIR / "master_rps_d3_pste.xlsx"
 
 REQUIRED_SHEETS = [
+    "Master_MK",
     "Master_CPL",
     "Master_IK",
-    "Master_MK",
-    "Mapping_MK_CPL",
     "Master_CPMK",
-    "Short_Silabus",
+    "Mapping_MK_CPL",
     "RPS_Pertemuan",
-    "Referensi",
 ]
 
 
@@ -42,26 +40,19 @@ class SheetSpec:
 
 SHEET_SPECS = {
     "Master_CPL": SheetSpec("Master_CPL", ["kode_cpl", "deskripsi_cpl"]),
-    "Master_IK": SheetSpec("Master_IK", ["kode_ik", "deskripsi_ik", "kode_cpl"]),
+    "Master_IK": SheetSpec("Master_IK", ["kode_ik", "kode_cpl"]),
     "Master_MK": SheetSpec(
         "Master_MK",
         [
             "kode_mk",
             "nama_mk",
-            "nama_prodi",
             "semester",
-            "sks_teori",
-            "sks_praktek",
-            "jenis_mk",
         ],
     ),
     "Mapping_MK_CPL": SheetSpec("Mapping_MK_CPL", ["kode_mk", "kode_cpl"]),
     "Master_CPMK": SheetSpec(
         "Master_CPMK",
         ["kode_mk", "kode_cpmk", "deskripsi_cpmk", "kode_ik"],
-    ),
-    "Short_Silabus": SheetSpec(
-        "Short_Silabus", ["kode_mk", "deskripsi_mk", "bahan_kajian"]
     ),
     "RPS_Pertemuan": SheetSpec(
         "RPS_Pertemuan",
@@ -72,7 +63,6 @@ SHEET_SPECS = {
             "materi",
         ],
     ),
-    "Referensi": SheetSpec("Referensi", ["kode_mk", "referensi"]),
 }
 
 RPS_WEEKLY_COLUMNS = [
@@ -93,7 +83,7 @@ RPS_WEEKLY_COLUMNS = [
 
 RPS_WEEKLY_LABELS = {
     "minggu": "Minggu Ke",
-    "sub_cpmk": "Sub-CPMK / Kemampuan Akhir yang Direncanakan",
+    "sub_cpmk": "Kemampuan akhir yang direncanakan",
     "materi": "Bahan Kajian / Materi Pembelajaran",
     "modalitas": "Modalitas Pembelajaran",
     "bentuk_pembelajaran": "Bentuk Pembelajaran",
@@ -149,6 +139,32 @@ def normalize_columns(df: pd.DataFrame) -> pd.DataFrame:
     return df.fillna("")
 
 
+def apply_sheet_column_aliases(sheet_name: str, df: pd.DataFrame) -> pd.DataFrame:
+    aliases = {
+        "mata_kuliah": "nama_mk",
+        "nama_mata_kuliah": "nama_mk",
+        "nama_mk": "nama_mk",
+        "rumusan_cpmk": "deskripsi_cpmk",
+        "deskripsi_cpmk": "deskripsi_cpmk",
+        "rumusan_cpl": "deskripsi_cpl",
+        "deskripsi_cpl": "deskripsi_cpl",
+        "indikator_kinerja": "deskripsi_ik",
+        "deskripsi_ik": "deskripsi_ik",
+        "sks": "total_sks",
+        "sks_total": "total_sks",
+        "total_sks": "total_sks",
+    }
+    return df.rename(columns={col: aliases.get(col, col) for col in df.columns}).copy()
+
+
+def ensure_columns(df: pd.DataFrame, columns: list[str]) -> pd.DataFrame:
+    df = df.copy()
+    for column in columns:
+        if column not in df.columns:
+            df[column] = ""
+    return df
+
+
 def normalize_cpl_code(value: Any) -> str:
     raw = str(value).strip().upper()
     if not raw or raw.lower() == "nan":
@@ -197,11 +213,11 @@ def drop_empty_rows(df: pd.DataFrame) -> pd.DataFrame:
 def normalize_master_workbook(workbook: dict[str, pd.DataFrame]) -> dict[str, pd.DataFrame]:
     normalized: dict[str, pd.DataFrame] = {}
     for sheet_name, df in workbook.items():
-        df = drop_empty_rows(df).copy()
+        df = apply_sheet_column_aliases(sheet_name, drop_empty_rows(df).copy())
         if "kode_mk" in df.columns:
             df["kode_mk"] = df["kode_mk"].map(normalize_kode_mk)
             df = df[df["kode_mk"] != ""].copy()
-        if sheet_name in ["Master_CPL", "Master_IK", "Mapping_MK_CPL"] and "kode_cpl" in df.columns:
+        if sheet_name in ["Master_CPL", "Master_IK", "Mapping_MK_CPL", "Bobot_CPL", "Master_CPMK"] and "kode_cpl" in df.columns:
             df["kode_cpl"] = df["kode_cpl"].map(normalize_cpl_code)
             df = df[df["kode_cpl"] != ""].copy()
         if "kode_ik" in df.columns:
@@ -209,6 +225,47 @@ def normalize_master_workbook(workbook: dict[str, pd.DataFrame]) -> dict[str, pd
                 lambda value: ", ".join(normalize_ik_code(code) for code in split_codes(value))
             )
         normalized[sheet_name] = df
+    if "Short_Silabus" not in normalized:
+        normalized["Short_Silabus"] = pd.DataFrame(
+            columns=["kode_mk", "deskripsi_mk", "bahan_kajian"]
+        )
+    else:
+        normalized["Short_Silabus"] = ensure_columns(
+            normalized["Short_Silabus"], ["kode_mk", "deskripsi_mk", "bahan_kajian"]
+        )
+    if "Referensi" not in normalized:
+        normalized["Referensi"] = pd.DataFrame(columns=["kode_mk", "referensi"])
+    else:
+        normalized["Referensi"] = ensure_columns(
+            normalized["Referensi"], ["kode_mk", "referensi"]
+        )
+    if "Master_MK" in normalized:
+        normalized["Master_MK"] = ensure_columns(
+            normalized["Master_MK"],
+            [
+                "kode_mk",
+                "nama_mk",
+                "nama_prodi",
+                "semester",
+                "sks_teori",
+                "sks_praktek",
+                "jenis_mk",
+                "total_sks",
+            ],
+        )
+    if "Master_CPMK" in normalized:
+        normalized["Master_CPMK"] = ensure_columns(
+            normalized["Master_CPMK"],
+            ["kode_mk", "kode_cpmk", "deskripsi_cpmk", "kode_ik", "kode_cpl"],
+        )
+    if "Master_CPL" in normalized:
+        normalized["Master_CPL"] = ensure_columns(
+            normalized["Master_CPL"], ["kode_cpl", "deskripsi_cpl"]
+        )
+    if "Master_IK" in normalized:
+        normalized["Master_IK"] = ensure_columns(
+            normalized["Master_IK"], ["kode_ik", "kode_cpl", "deskripsi_ik"]
+        )
     if "RPS_Pertemuan" in normalized:
         normalized["RPS_Pertemuan"] = normalize_rps_pertemuan_columns(
             normalized["RPS_Pertemuan"]
@@ -256,7 +313,7 @@ def is_practice_course(mk: dict[str, Any]) -> bool:
 
 
 def default_bentuk(mk: dict[str, Any], week: int) -> str:
-    if week == 16 and is_practice_course(mk):
+    if week == 17 and is_practice_course(mk):
         return "Proyek"
     if is_practice_course(mk):
         pattern = ["Praktikum", "Praktik Bengkel", "Proyek"]
@@ -266,9 +323,9 @@ def default_bentuk(mk: dict[str, Any], week: int) -> str:
 
 
 def default_metode(mk: dict[str, Any], week: int) -> str:
-    if week == 8:
+    if week == 9:
         return "Problem Based Learning"
-    if week == 16 and is_practice_course(mk):
+    if week == 17 and is_practice_course(mk):
         return "Project Based Learning"
     if is_practice_course(mk):
         pattern = [
@@ -283,9 +340,9 @@ def default_metode(mk: dict[str, Any], week: int) -> str:
 
 
 def default_weekly_assessment(mk: dict[str, Any], week: int) -> tuple[str, float]:
-    if week == 8:
+    if week == 9:
         return "UTS", 20.0
-    if week == 16:
+    if week == 17:
         return ("Rubrik Proyek", 40.0) if is_practice_course(mk) else ("UAS", 40.0)
     if week in [4, 12]:
         return "Tugas", 10.0
@@ -307,7 +364,7 @@ def normalize_weekly_df(
         if str(row.get("kode_cpmk", "")).strip()
     ]
     rows: list[dict[str, Any]] = []
-    for week in range(1, 17):
+    for week in range(1, 18):
         row = {column: "" for column in RPS_WEEKLY_COLUMNS}
         row["kode_mk"] = mk.get("kode_mk", "")
         row["minggu"] = week
@@ -319,11 +376,11 @@ def normalize_weekly_df(
         assessment, weight = default_weekly_assessment(mk, week)
         row["teknik_asesmen"] = assessment
         row["bobot"] = weight
-        if week == 8:
+        if week == 9:
             row["sub_cpmk"] = "Evaluasi tengah semester"
             row["materi"] = "UTS"
             row["indikator_penilaian"] = "Ketepatan penyelesaian soal UTS"
-        elif week == 16:
+        elif week == 17:
             row["sub_cpmk"] = "Evaluasi akhir atau proyek akhir semester"
             row["materi"] = "UAS / proyek akhir semester"
             row["indikator_penilaian"] = "Ketercapaian capaian pembelajaran akhir"
@@ -427,9 +484,15 @@ def build_course_payload(workbook: dict[str, pd.DataFrame], kode_mk: str) -> dic
     mk_row = mk_df[mk_df["kode_mk"].map(normalize_kode_mk) == selected_code].iloc[0].to_dict()
     warnings: list[str] = []
 
-    mapping_df = filter_by_code(workbook["Mapping_MK_CPL"], selected_code)
+    if "Bobot_CPL" in workbook and "kode_cpl" in workbook["Bobot_CPL"].columns:
+        mapping_df = filter_by_code(workbook["Bobot_CPL"], selected_code)
+    else:
+        mapping_df = filter_by_code(workbook["Mapping_MK_CPL"], selected_code)
     cpl_codes = unique_values(mapping_df["kode_cpl"].map(normalize_cpl_code).tolist())
     cpl_df = workbook["Master_CPL"]
+    if "Bobot_CPL" in workbook and "kode_cpl" in workbook["Bobot_CPL"].columns:
+        cpl_df = pd.concat([cpl_df, workbook["Bobot_CPL"]], ignore_index=True)
+        cpl_df = ensure_columns(cpl_df, ["kode_cpl", "deskripsi_cpl"])
     cpl_records = cpl_df[cpl_df["kode_cpl"].astype(str).isin(cpl_codes)].drop_duplicates(
         subset=["kode_cpl"], keep="first"
     ).to_dict("records")
@@ -447,6 +510,21 @@ def build_course_payload(workbook: dict[str, pd.DataFrame], kode_mk: str) -> dic
     ik_records = ik_df[ik_df["kode_ik"].astype(str).isin(cpmk_ik_codes)].drop_duplicates(
         subset=["kode_ik"], keep="first"
     ).to_dict("records")
+    found_ik = {str(row.get("kode_ik", "")) for row in ik_records}
+    if not cpmk_ik_df.empty:
+        fallback_ik_records = (
+            cpmk_ik_df[~cpmk_ik_df["kode_ik"].astype(str).isin(found_ik)]
+            .drop_duplicates(subset=["kode_ik"], keep="first")
+            .to_dict("records")
+        )
+        for row in fallback_ik_records:
+            ik_records.append(
+                {
+                    "kode_ik": row.get("kode_ik", ""),
+                    "kode_cpl": normalize_cpl_code(row.get("kode_cpl", "")),
+                    "deskripsi_ik": row.get("deskripsi_ik", ""),
+                }
+            )
     missing_ik = sorted(set(cpmk_ik_codes) - set(ik_df["kode_ik"].astype(str)))
     for kode_ik in missing_ik:
         warnings.append(f"Kode IK `{kode_ik}` dari Master_CPMK tidak ditemukan di Master_IK.")
@@ -461,10 +539,13 @@ def build_course_payload(workbook: dict[str, pd.DataFrame], kode_mk: str) -> dic
     weekly_records = filter_by_code(workbook["RPS_Pertemuan"], selected_code).sort_values(
         by="minggu", key=lambda s: pd.to_numeric(s, errors="coerce")
     ).to_dict("records")
+    if not weekly_records:
+        warnings.append("Data RPS pertemuan untuk mata kuliah ini belum tersedia.")
     reference_records = filter_by_code(workbook["Referensi"], selected_code).to_dict("records")
 
     sks_teori = as_int(mk_row.get("sks_teori"))
     sks_praktek = as_int(mk_row.get("sks_praktek"))
+    total_sks = as_int(mk_row.get("total_sks"), sks_teori + sks_praktek)
 
     return {
         "mk": mk_row,
@@ -474,7 +555,7 @@ def build_course_payload(workbook: dict[str, pd.DataFrame], kode_mk: str) -> dic
         "cpmk": cpmk_records,
         "weekly": normalize_weekly_df(weekly_records, mk_row, cpmk_records).to_dict("records"),
         "references": reference_records,
-        "total_sks": sks_teori + sks_praktek,
+        "total_sks": total_sks,
         "warnings": warnings,
     }
 
@@ -740,16 +821,35 @@ def validate_rps(
             rows.append(
                 {
                     "status": "Warning",
-                    "aturan": "Setiap pertemuan sebaiknya memiliki Sub-CPMK",
-                    "detail": f"Pertemuan minggu {week} belum memiliki Sub-CPMK.",
+                    "aturan": "Setiap pertemuan sebaiknya memiliki kemampuan akhir",
+                    "detail": f"Pertemuan minggu {week} belum memiliki kemampuan akhir yang direncanakan.",
                 }
             )
         if sub_cpmk and not assessment:
             rows.append(
                 {
                     "status": "Warning",
-                    "aturan": "Sub-CPMK perlu asesmen",
-                    "detail": f"Pertemuan minggu {week} memiliki Sub-CPMK tetapi belum ada teknik asesmen.",
+                    "aturan": "Kemampuan akhir perlu asesmen",
+                    "detail": f"Pertemuan minggu {week} memiliki kemampuan akhir tetapi belum ada teknik asesmen.",
+                }
+            )
+        week_num = as_int(week)
+        materi = str(row.get("materi", "")).upper()
+        teknik = str(row.get("teknik_asesmen", "")).upper()
+        if week_num == 9 and "UTS" not in f"{materi} {teknik}":
+            rows.append(
+                {
+                    "status": "Warning",
+                    "aturan": "Minggu 9 wajib UTS",
+                    "detail": "Pertemuan minggu 9 belum ditandai sebagai UTS.",
+                }
+            )
+        if week_num == 17 and "UAS" not in f"{materi} {teknik}":
+            rows.append(
+                {
+                    "status": "Warning",
+                    "aturan": "Minggu 17 wajib UAS",
+                    "detail": "Pertemuan minggu 17 belum ditandai sebagai UAS.",
                 }
             )
 
@@ -762,6 +862,156 @@ def validate_rps(
             }
         )
     return pd.DataFrame(rows)
+
+
+def validate_master_data(workbook: dict[str, pd.DataFrame]) -> pd.DataFrame:
+    rows: list[dict[str, str]] = []
+    master_mk = workbook.get("Master_MK", pd.DataFrame())
+    rps_df = workbook.get("RPS_Pertemuan", pd.DataFrame())
+    cpmk_df = workbook.get("Master_CPMK", pd.DataFrame())
+    ik_df = workbook.get("Master_IK", pd.DataFrame())
+
+    mk_codes = set(master_mk.get("kode_mk", pd.Series(dtype=str)).map(normalize_kode_mk))
+    if len(master_mk) != 44:
+        rows.append(
+            {
+                "status": "Warning",
+                "aturan": "Jumlah mata kuliah harus 44",
+                "detail": f"Jumlah mata kuliah saat ini {len(master_mk)}.",
+            }
+        )
+
+    if not rps_df.empty:
+        rps_mk_codes = set(rps_df.get("kode_mk", pd.Series(dtype=str)).map(normalize_kode_mk))
+        for kode_mk in sorted(rps_mk_codes - mk_codes):
+            rows.append(
+                {
+                    "status": "Warning",
+                    "aturan": "Kode MK RPS harus ada di Master_MK",
+                    "detail": f"Kode MK `{kode_mk}` ada di RPS_Pertemuan tetapi tidak ada di Master_MK.",
+                }
+            )
+
+        valid_cpmk_pairs = {
+            (normalize_kode_mk(row.get("kode_mk", "")), str(row.get("kode_cpmk", "")).strip())
+            for row in cpmk_df.fillna("").to_dict("records")
+        }
+        for row in rps_df.fillna("").to_dict("records"):
+            pair = (normalize_kode_mk(row.get("kode_mk", "")), str(row.get("kode_cpmk", "")).strip())
+            if pair[1] and pair not in valid_cpmk_pairs:
+                rows.append(
+                    {
+                        "status": "Warning",
+                        "aturan": "Kode CPMK RPS harus ada di Master_CPMK",
+                        "detail": f"`{pair[1]}` pada `{pair[0]}` tidak ditemukan di Master_CPMK.",
+                    }
+                )
+
+        for kode_mk, group in rps_df.groupby("kode_mk", dropna=False):
+            total_weight = group.get("bobot", pd.Series(dtype=float)).map(as_float).sum()
+            if round(total_weight, 2) != 100:
+                rows.append(
+                    {
+                        "status": "Warning",
+                        "aturan": "Total bobot RPS per MK harus 100%",
+                        "detail": f"`{kode_mk}` memiliki total bobot {total_weight:g}%.",
+                    }
+                )
+            week_map = {
+                as_int(row.get("minggu")): row for row in group.fillna("").to_dict("records")
+            }
+            for week, label in [(9, "UTS"), (17, "UAS")]:
+                row = week_map.get(week, {})
+                text = f"{row.get('materi', '')} {row.get('teknik_asesmen', '')}".upper()
+                if label not in text:
+                    rows.append(
+                        {
+                            "status": "Warning",
+                            "aturan": f"Minggu {week} wajib {label}",
+                            "detail": f"`{kode_mk}` belum menandai minggu {week} sebagai {label}.",
+                        }
+                    )
+            for row in group.fillna("").to_dict("records"):
+                week = as_int(row.get("minggu"))
+                if week in [9, 17]:
+                    continue
+                if not str(row.get("materi", "")).strip() or not str(row.get("sub_cpmk", "")).strip():
+                    rows.append(
+                        {
+                            "status": "Warning",
+                            "aturan": "Minggu reguler harus punya materi dan kemampuan akhir",
+                            "detail": f"`{kode_mk}` minggu {week} belum lengkap.",
+                        }
+                    )
+
+    for row in cpmk_df.fillna("").to_dict("records"):
+        kode_cpmk = str(row.get("kode_cpmk", "")).strip()
+        if not split_codes(row.get("kode_ik", "")):
+            rows.append(
+                {
+                    "status": "Warning",
+                    "aturan": "Setiap CPMK punya kode IK",
+                    "detail": f"`{kode_cpmk}` belum memiliki kode IK.",
+                }
+            )
+
+    for row in ik_df.fillna("").to_dict("records"):
+        kode_ik = str(row.get("kode_ik", "")).strip()
+        if kode_ik and not normalize_cpl_code(row.get("kode_cpl", "")):
+            rows.append(
+                {
+                    "status": "Warning",
+                    "aturan": "Setiap IK punya kode CPL",
+                    "detail": f"`{kode_ik}` belum memiliki kode CPL.",
+                }
+            )
+
+    if not rows:
+        rows.append(
+            {
+                "status": "OK",
+                "aturan": "Validasi data master",
+                "detail": "Tidak ada mismatch utama pada workbook.",
+            }
+        )
+    return pd.DataFrame(rows)
+
+
+def show_dashboard_cpl(workbook: dict[str, pd.DataFrame]) -> None:
+    if "Dashboard_CPL" not in workbook:
+        st.warning("Sheet Dashboard_CPL belum tersedia pada file master.")
+        return
+    dashboard_df = workbook["Dashboard_CPL"].copy()
+    st.dataframe(dashboard_df, use_container_width=True, hide_index=True)
+    if dashboard_df.empty:
+        st.warning("Sheet Dashboard_CPL tersedia tetapi belum berisi data.")
+        return
+    cpl_col = "kode_cpl" if "kode_cpl" in dashboard_df.columns else dashboard_df.columns[0]
+    status_col = next((col for col in dashboard_df.columns if "status" in col), "")
+    score_col = next((col for col in ["rata_nilai_cpmk", "rata_rata", "nilai_rata_rata"] if col in dashboard_df.columns), "")
+    pass_col = next((col for col in ["persen_mahasiswa_lulus", "persen_lulus"] if col in dashboard_df.columns), "")
+
+    col1, col2, col3, col4 = st.columns(4)
+    col1.metric("Jumlah CPL", dashboard_df[cpl_col].nunique())
+    if status_col:
+        status_text = dashboard_df[status_col].astype(str).str.lower()
+        col2.metric("CPL Tercapai", int(status_text.str.contains("tercapai").sum()))
+        col3.metric("CPL Belum Tercapai", int(status_text.str.contains("belum").sum()))
+    else:
+        col2.metric("CPL Tercapai", "-")
+        col3.metric("CPL Belum Tercapai", "-")
+    if score_col:
+        col4.metric("Rata-rata CPL", f"{dashboard_df[score_col].map(as_float).mean():.2f}")
+        st.bar_chart(dashboard_df.set_index(cpl_col)[score_col])
+    else:
+        col4.metric("Rata-rata CPL", "-")
+    if pass_col:
+        st.bar_chart(dashboard_df.set_index(cpl_col)[pass_col])
+    if "Matriks_Bobot_CPL" in workbook:
+        st.subheader("Matriks Bobot CPL per MK")
+        st.dataframe(workbook["Matriks_Bobot_CPL"], use_container_width=True, hide_index=True)
+    else:
+        st.warning("Sheet Matriks_Bobot_CPL belum tersedia pada file master.")
 
 
 def read_docx_document_xml(template_bytes: bytes) -> str:
@@ -1595,7 +1845,7 @@ def main() -> None:
             ],
             column_config={
                 "minggu": st.column_config.NumberColumn(
-                    RPS_WEEKLY_LABELS["minggu"], min_value=1, max_value=16, step=1
+                    RPS_WEEKLY_LABELS["minggu"], min_value=1, max_value=17, step=1
                 ),
                 "sub_cpmk": st.column_config.TextColumn(
                     RPS_WEEKLY_LABELS["sub_cpmk"], width="large"
@@ -1649,12 +1899,20 @@ def main() -> None:
     validation_df = validate_rps(payload, cpmk_df, weekly_df)
     has_error = (validation_df["status"] == "Error").any()
 
-    st.subheader("Validasi")
-    st.dataframe(validation_df, use_container_width=True, hide_index=True)
-    if has_error:
-        st.warning("Masih ada validasi berstatus Error. Export tetap bisa dibuat untuk draft.")
-    else:
-        st.success("Validasi utama terpenuhi.")
+    validation_tab, data_validation_tab, cpl_dashboard_tab = st.tabs(
+        ["Validasi RPS", "Validasi Data", "Dashboard CPL"]
+    )
+    with validation_tab:
+        st.dataframe(validation_df, use_container_width=True, hide_index=True)
+        if has_error:
+            st.warning("Masih ada validasi berstatus Error. Export tetap bisa dibuat untuk draft.")
+        else:
+            st.success("Validasi utama terpenuhi.")
+    with data_validation_tab:
+        master_validation_df = validate_master_data(workbook)
+        st.dataframe(master_validation_df, use_container_width=True, hide_index=True)
+    with cpl_dashboard_tab:
+        show_dashboard_cpl(workbook)
 
     context = make_context(
         payload,

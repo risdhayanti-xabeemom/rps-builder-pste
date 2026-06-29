@@ -57,6 +57,8 @@ streamlit run app.py
 
 Workbook harus memiliki sheet berikut:
 
+Nama file Excel bebas. Aplikasi tidak memvalidasi nama file; yang dibaca adalah nama sheet dan kolom di dalam workbook.
+
 - `Master_CPL`: `kode_cpl`, `deskripsi_cpl`
 - `Master_IK`: `kode_ik`, `deskripsi_ik`, `kode_cpl`
 - `Master_MK`: `kode_mk`, `nama_mk`, `nama_prodi`, `semester`, `sks_teori`, `sks_praktek`, `jenis_mk`
