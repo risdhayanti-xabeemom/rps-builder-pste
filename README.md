@@ -8,15 +8,15 @@ Aplikasi Streamlit untuk menyusun RPS berbasis OBE dari master kurikulum Excel d
 - Export Word memakai template default `templates/template_rps_pste_placeholder.docx`.
 - Pilih mata kuliah dari `Master_MK`.
 - Pratinjau data CPL, IK, short silabus, CPMK, rencana mingguan, dan referensi.
-- Editor untuk dosen: dosen pengampu, deskripsi MK, CPMK, referensi, dan tabel rencana mingguan 16 pertemuan.
+- Editor untuk dosen: dosen pengampu, deskripsi MK, CPMK, referensi, dan tabel rencana mingguan 17 pertemuan.
 - Tab `Rencana Mingguan` memakai `st.data_editor` dengan dropdown modalitas, bentuk pembelajaran, metode pembelajaran, dan teknik asesmen.
-- Pertemuan 8 otomatis menjadi UTS, sedangkan pertemuan 16 menjadi UAS atau evaluasi/proyek akhir semester.
+- Pertemuan 9 otomatis menjadi UTS, sedangkan pertemuan 17 menjadi UAS atau evaluasi/proyek akhir semester.
 - Validasi OBE:
   - setiap CPMK harus punya IK;
   - setiap IK harus punya CPL;
   - total bobot penilaian harus 100%;
-  - setiap pertemuan sebaiknya memiliki Sub-CPMK;
-  - Sub-CPMK yang terisi sebaiknya memiliki teknik asesmen;
+  - setiap pertemuan sebaiknya memiliki kemampuan akhir yang direncanakan;
+  - kemampuan akhir yang terisi sebaiknya memiliki teknik asesmen;
   - setiap CPL yang dibebankan muncul minimal pada satu CPMK.
 - Export:
   - RPS Word sesuai template prodi;
@@ -31,7 +31,7 @@ Aplikasi Streamlit untuk menyusun RPS berbasis OBE dari master kurikulum Excel d
 ├── requirements.txt
 ├── README.md
 ├── templates/
-│   └── template_rps_prodi.docx
+│   └── template_rps_pste_placeholder.docx
 ├── sample_data/
 │   └── master_rps_d3_pste.xlsx
 └── outputs/
@@ -69,7 +69,7 @@ Nama file Excel bebas. Aplikasi tidak memvalidasi nama file; yang dibaca adalah 
 - `Referensi`: `kode_mk`, `referensi`
 
 Nama kolom akan dinormalisasi menjadi huruf kecil dan spasi/tanda hubung menjadi underscore.
-Jika sheet `RPS_Pertemuan` hanya berisi sebagian minggu, aplikasi akan melengkapi tampilan editor menjadi 16 pertemuan.
+Jika sheet `RPS_Pertemuan` hanya berisi sebagian minggu, aplikasi akan melengkapi tampilan editor menjadi 17 pertemuan.
 
 Contoh otomatis mencakup mata kuliah PLC, Instrumentasi Industri, dan Proyek Akhir.
 

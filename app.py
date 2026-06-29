@@ -31,6 +31,9 @@ REQUIRED_SHEETS = [
     "RPS_Pertemuan",
 ]
 
+OPTIONAL_RPS_SHEETS = ["Short_Silabus", "Referensi"]
+ALLOWED_RPS_SHEETS = set(REQUIRED_SHEETS + OPTIONAL_RPS_SHEETS)
+
 
 @dataclass(frozen=True)
 class SheetSpec:
@@ -217,7 +220,7 @@ def normalize_master_workbook(workbook: dict[str, pd.DataFrame]) -> dict[str, pd
         if "kode_mk" in df.columns:
             df["kode_mk"] = df["kode_mk"].map(normalize_kode_mk)
             df = df[df["kode_mk"] != ""].copy()
-        if sheet_name in ["Master_CPL", "Master_IK", "Mapping_MK_CPL", "Bobot_CPL", "Master_CPMK"] and "kode_cpl" in df.columns:
+        if sheet_name in ["Master_CPL", "Master_IK", "Mapping_MK_CPL", "Master_CPMK"] and "kode_cpl" in df.columns:
             df["kode_cpl"] = df["kode_cpl"].map(normalize_cpl_code)
             df = df[df["kode_cpl"] != ""].copy()
         if "kode_ik" in df.columns:
@@ -404,8 +407,17 @@ def normalize_weekly_df(
 
 @st.cache_data(show_spinner=False)
 def load_master_excel(file_bytes: bytes) -> dict[str, pd.DataFrame]:
-    sheets = pd.read_excel(io.BytesIO(file_bytes), sheet_name=None, engine="openpyxl")
-    workbook = {name: normalize_columns(df) for name, df in sheets.items()}
+    excel = pd.ExcelFile(io.BytesIO(file_bytes), engine="openpyxl")
+    selected_sheets = [name for name in excel.sheet_names if name in ALLOWED_RPS_SHEETS]
+    sheets = {
+        name: pd.read_excel(excel, sheet_name=name)
+        for name in selected_sheets
+    }
+    workbook = {
+        name: normalize_columns(df)
+        for name, df in sheets.items()
+        if name in ALLOWED_RPS_SHEETS
+    }
     return normalize_master_workbook(workbook)
 
 
@@ -484,15 +496,9 @@ def build_course_payload(workbook: dict[str, pd.DataFrame], kode_mk: str) -> dic
     mk_row = mk_df[mk_df["kode_mk"].map(normalize_kode_mk) == selected_code].iloc[0].to_dict()
     warnings: list[str] = []
 
-    if "Bobot_CPL" in workbook and "kode_cpl" in workbook["Bobot_CPL"].columns:
-        mapping_df = filter_by_code(workbook["Bobot_CPL"], selected_code)
-    else:
-        mapping_df = filter_by_code(workbook["Mapping_MK_CPL"], selected_code)
+    mapping_df = filter_by_code(workbook["Mapping_MK_CPL"], selected_code)
     cpl_codes = unique_values(mapping_df["kode_cpl"].map(normalize_cpl_code).tolist())
     cpl_df = workbook["Master_CPL"]
-    if "Bobot_CPL" in workbook and "kode_cpl" in workbook["Bobot_CPL"].columns:
-        cpl_df = pd.concat([cpl_df, workbook["Bobot_CPL"]], ignore_index=True)
-        cpl_df = ensure_columns(cpl_df, ["kode_cpl", "deskripsi_cpl"])
     cpl_records = cpl_df[cpl_df["kode_cpl"].astype(str).isin(cpl_codes)].drop_duplicates(
         subset=["kode_cpl"], keep="first"
     ).to_dict("records")
@@ -975,43 +981,6 @@ def validate_master_data(workbook: dict[str, pd.DataFrame]) -> pd.DataFrame:
             }
         )
     return pd.DataFrame(rows)
-
-
-def show_dashboard_cpl(workbook: dict[str, pd.DataFrame]) -> None:
-    if "Dashboard_CPL" not in workbook:
-        st.warning("Sheet Dashboard_CPL belum tersedia pada file master.")
-        return
-    dashboard_df = workbook["Dashboard_CPL"].copy()
-    st.dataframe(dashboard_df, use_container_width=True, hide_index=True)
-    if dashboard_df.empty:
-        st.warning("Sheet Dashboard_CPL tersedia tetapi belum berisi data.")
-        return
-    cpl_col = "kode_cpl" if "kode_cpl" in dashboard_df.columns else dashboard_df.columns[0]
-    status_col = next((col for col in dashboard_df.columns if "status" in col), "")
-    score_col = next((col for col in ["rata_nilai_cpmk", "rata_rata", "nilai_rata_rata"] if col in dashboard_df.columns), "")
-    pass_col = next((col for col in ["persen_mahasiswa_lulus", "persen_lulus"] if col in dashboard_df.columns), "")
-
-    col1, col2, col3, col4 = st.columns(4)
-    col1.metric("Jumlah CPL", dashboard_df[cpl_col].nunique())
-    if status_col:
-        status_text = dashboard_df[status_col].astype(str).str.lower()
-        col2.metric("CPL Tercapai", int(status_text.str.contains("tercapai").sum()))
-        col3.metric("CPL Belum Tercapai", int(status_text.str.contains("belum").sum()))
-    else:
-        col2.metric("CPL Tercapai", "-")
-        col3.metric("CPL Belum Tercapai", "-")
-    if score_col:
-        col4.metric("Rata-rata CPL", f"{dashboard_df[score_col].map(as_float).mean():.2f}")
-        st.bar_chart(dashboard_df.set_index(cpl_col)[score_col])
-    else:
-        col4.metric("Rata-rata CPL", "-")
-    if pass_col:
-        st.bar_chart(dashboard_df.set_index(cpl_col)[pass_col])
-    if "Matriks_Bobot_CPL" in workbook:
-        st.subheader("Matriks Bobot CPL per MK")
-        st.dataframe(workbook["Matriks_Bobot_CPL"], use_container_width=True, hide_index=True)
-    else:
-        st.warning("Sheet Matriks_Bobot_CPL belum tersedia pada file master.")
 
 
 def read_docx_document_xml(template_bytes: bytes) -> str:
@@ -1737,11 +1706,6 @@ def show_preview(payload: dict[str, Any]) -> None:
     col2.metric("Semester", mk.get("semester", "-"))
     col3.metric("Total SKS", payload["total_sks"])
     col4.metric("Jenis MK", mk.get("jenis_mk", "-"))
-
-    with st.expander("CPL yang dibebankan", expanded=True):
-        st.dataframe(pd.DataFrame(payload["cpl"]), use_container_width=True, hide_index=True)
-    with st.expander("IK terkait", expanded=False):
-        st.dataframe(pd.DataFrame(payload["ik"]), use_container_width=True, hide_index=True)
     with st.expander("Short silabus", expanded=True):
         st.write(payload["silabus"].get("deskripsi_mk", "-"))
         st.caption(payload["silabus"].get("bahan_kajian", ""))
@@ -1794,23 +1758,39 @@ def main() -> None:
     selected_code = normalize_kode_mk(master_mk[master_mk["label"] == selected_label].iloc[0]["kode_mk"])
     payload = build_course_payload(workbook, selected_code)
 
-    st.subheader(payload["mk"].get("nama_mk", "Mata Kuliah"))
-    show_preview(payload)
-
-    st.divider()
-    st.subheader("Bagian yang dapat diedit dosen")
-    lecturer_name = st.text_input("Nama dosen pengampu", value="")
-    description = st.text_area(
-        "Deskripsi mata kuliah",
-        value=str(payload["silabus"].get("deskripsi_mk", "")),
-        height=120,
+    main_tabs = st.tabs(
+        [
+            "Identitas MK",
+            "CPL, IK, dan CPMK",
+            "RPS Pertemuan",
+            "Preview Export Word",
+            "Validasi Data RPS",
+        ]
     )
 
-    tab_cpmk, tab_weekly, tab_reference = st.tabs(
-        ["CPMK", "Rencana Mingguan", "Referensi"]
-    )
+    with main_tabs[0]:
+        st.subheader(payload["mk"].get("nama_mk", "Mata Kuliah"))
+        show_preview(payload)
+        lecturer_name = st.text_input("Nama dosen pengampu", value="")
+        description = st.text_area(
+            "Deskripsi mata kuliah",
+            value=str(payload["silabus"].get("deskripsi_mk", "")),
+            height=120,
+        )
+        reference_df = st.data_editor(
+            records_to_editor(payload["references"], ["kode_mk", "referensi"]),
+            use_container_width=True,
+            num_rows="dynamic",
+            key=f"reference_{selected_code}",
+        )
+        reference_df["kode_mk"] = selected_code
 
-    with tab_cpmk:
+    with main_tabs[1]:
+        st.subheader("CPL yang dibebankan pada MK")
+        st.dataframe(pd.DataFrame(payload["cpl"]), use_container_width=True, hide_index=True)
+        st.subheader("IK terkait")
+        st.dataframe(pd.DataFrame(payload["ik"]), use_container_width=True, hide_index=True)
+        st.subheader("CPMK")
         cpmk_df = st.data_editor(
             records_to_editor(
                 payload["cpmk"],
@@ -1822,7 +1802,7 @@ def main() -> None:
         )
         cpmk_df["kode_mk"] = selected_code
 
-    with tab_weekly:
+    with main_tabs[2]:
         weekly_df = st.data_editor(
             records_to_editor(payload["weekly"], RPS_WEEKLY_COLUMNS),
             use_container_width=True,
@@ -1887,32 +1867,9 @@ def main() -> None:
         if round(total_weight, 2) != 100:
             st.warning("Total bobot penilaian belum 100%.")
 
-    with tab_reference:
-        reference_df = st.data_editor(
-            records_to_editor(payload["references"], ["kode_mk", "referensi"]),
-            use_container_width=True,
-            num_rows="dynamic",
-            key=f"reference_{selected_code}",
-        )
-        reference_df["kode_mk"] = selected_code
-
     validation_df = validate_rps(payload, cpmk_df, weekly_df)
+    master_validation_df = validate_master_data(workbook)
     has_error = (validation_df["status"] == "Error").any()
-
-    validation_tab, data_validation_tab, cpl_dashboard_tab = st.tabs(
-        ["Validasi RPS", "Validasi Data", "Dashboard CPL"]
-    )
-    with validation_tab:
-        st.dataframe(validation_df, use_container_width=True, hide_index=True)
-        if has_error:
-            st.warning("Masih ada validasi berstatus Error. Export tetap bisa dibuat untuk draft.")
-        else:
-            st.success("Validasi utama terpenuhi.")
-    with data_validation_tab:
-        master_validation_df = validate_master_data(workbook)
-        st.dataframe(master_validation_df, use_container_width=True, hide_index=True)
-    with cpl_dashboard_tab:
-        show_dashboard_cpl(workbook)
 
     context = make_context(
         payload,
@@ -1922,7 +1879,6 @@ def main() -> None:
         weekly_df,
         reference_df,
     )
-
     docx_bytes = None
     docx_error = ""
     table_style_messages: list[str] = []
@@ -1940,33 +1896,47 @@ def main() -> None:
         validation_df,
     )
     validation_export = validation_df.to_csv(index=False).encode("utf-8")
-
     filename_base = f"RPS_{selected_code}_{str(payload['mk'].get('nama_mk', 'MK')).replace(' ', '_')}"
-    st.subheader("Export")
-    col1, col2, col3 = st.columns(3)
-    if docx_bytes:
-        for message in dict.fromkeys(table_style_messages):
-            st.warning(message)
-        col1.download_button(
-            "Download RPS Word",
-            data=docx_bytes,
-            file_name=f"{filename_base}.docx",
-            mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-        )
-    else:
-        col1.error(docx_error)
-    col2.download_button(
-        "Download RPS Excel",
-        data=excel_export,
-        file_name=f"{filename_base}.xlsx",
-        mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-    )
-    col3.download_button(
-        "Download laporan validasi",
-        data=validation_export,
-        file_name=f"validasi_{selected_code}.csv",
-        mime="text/csv",
-    )
+
+    with main_tabs[3]:
+        st.subheader("Preview Export Word")
+        st.write(f"Template: `{DEFAULT_TEMPLATE_RELATIVE_PATH}`")
+        st.write(f"Mata kuliah: `{payload['mk'].get('kode_mk', '')} - {payload['mk'].get('nama_mk', '')}`")
+        st.write("Tabel RPS pertemuan akan diisi pada posisi tabel yang sudah ada di template.")
+        if docx_bytes:
+            for message in dict.fromkeys(table_style_messages):
+                st.warning(message)
+            col1, col2, col3 = st.columns(3)
+            col1.download_button(
+                "Download RPS Word",
+                data=docx_bytes,
+                file_name=f"{filename_base}.docx",
+                mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+            )
+            col2.download_button(
+                "Download RPS Excel",
+                data=excel_export,
+                file_name=f"{filename_base}.xlsx",
+                mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+            )
+            col3.download_button(
+                "Download laporan validasi",
+                data=validation_export,
+                file_name=f"validasi_{selected_code}.csv",
+                mime="text/csv",
+            )
+        else:
+            st.error(docx_error)
+
+    with main_tabs[4]:
+        st.subheader("Validasi RPS terpilih")
+        st.dataframe(validation_df, use_container_width=True, hide_index=True)
+        if has_error:
+            st.warning("Masih ada validasi berstatus Error. Export tetap bisa dibuat untuk draft.")
+        else:
+            st.success("Validasi utama terpenuhi.")
+        st.subheader("Validasi data master RPS")
+        st.dataframe(master_validation_df, use_container_width=True, hide_index=True)
 
 
 if __name__ == "__main__":
