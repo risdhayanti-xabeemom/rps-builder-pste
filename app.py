@@ -13,6 +13,8 @@ from typing import Any
 import pandas as pd
 import streamlit as st
 
+from curriculum import CURRICULUM_OPTIONS, build_cohort_workbook, workbook_to_excel_bytes
+
 
 APP_DIR = Path(__file__).parent
 TEMPLATE_DIR = APP_DIR / "templates"
@@ -245,7 +247,10 @@ def normalize_master_workbook(workbook: dict[str, pd.DataFrame]) -> dict[str, pd
             df["id_penawaran"] = df["id_penawaran"].map(normalize_id_penawaran)
         if sheet_name in ["Master_CPL", "Master_IK", "Mapping_MK_CPL", "Master_CPMK"] and "kode_cpl" in df.columns:
             df["kode_cpl"] = df["kode_cpl"].map(normalize_cpl_code)
-            df = df[df["kode_cpl"] != ""].copy()
+            # Master_CPMK lama menghubungkan CPL melalui kode_ik dan memang tidak
+            # selalu memiliki kolom kode_cpl yang terisi.
+            if sheet_name != "Master_CPMK":
+                df = df[df["kode_cpl"] != ""].copy()
         if "kode_ik" in df.columns:
             df["kode_ik"] = df["kode_ik"].map(
                 lambda value: ", ".join(normalize_ik_code(code) for code in split_codes(value))
@@ -1871,12 +1876,23 @@ def load_or_create_sample_files() -> bytes:
     return generate_sample_files()
 
 
-def load_program_sample(program: str) -> tuple[bytes, str]:
+@st.cache_data(show_spinner=False)
+def load_program_workbook(program: str, cohort: str) -> dict[str, pd.DataFrame]:
     if program == "D4 Teknik Elektronika":
         if not DEFAULT_D4_SAMPLE_PATH.exists():
             raise FileNotFoundError("Master D4 belum tersedia di sample_data.")
-        return DEFAULT_D4_SAMPLE_PATH.read_bytes(), DEFAULT_D4_SAMPLE_PATH.name
-    return load_or_create_sample_files(), DEFAULT_D3_SAMPLE_PATH.name
+        base_bytes = DEFAULT_D4_SAMPLE_PATH.read_bytes()
+    else:
+        base_bytes = load_or_create_sample_files()
+    base = load_master_excel(base_bytes)
+    return normalize_master_workbook(build_cohort_workbook(base, program, cohort))
+
+
+@st.cache_data(show_spinner=False)
+def load_program_sample(program: str, cohort: str) -> tuple[bytes, str]:
+    workbook = load_program_workbook(program, cohort)
+    level = "d4" if program.startswith("D4") else "d3"
+    return workbook_to_excel_bytes(workbook), f"master_rps_{level}_pste_{cohort}.xlsx"
 
 
 def show_preview(payload: dict[str, Any]) -> None:
@@ -1912,8 +1928,14 @@ def main() -> None:
             ["D3 Teknik Elektro", "D4 Teknik Elektronika"],
             help="Master D3 dan D4 disimpan terpisah agar data tidak saling menggantikan.",
         )
+        cohort = st.selectbox(
+            "Angkatan",
+            CURRICULUM_OPTIONS[program],
+            index=len(CURRICULUM_OPTIONS[program]) - 1,
+            help="Kode dan struktur mata kuliah mengikuti dokumen pemetaan tiap angkatan.",
+        )
         try:
-            sample_excel, sample_filename = load_program_sample(program)
+            sample_excel, sample_filename = load_program_sample(program, cohort)
         except FileNotFoundError as exc:
             st.error(str(exc))
             st.stop()
@@ -1921,10 +1943,10 @@ def main() -> None:
             "Upload Excel master kurikulum",
             type=["xlsx"],
             help="Gunakan sheet sesuai format master kurikulum prodi.",
-            key=f"master_upload_{program}",
+            key=f"master_upload_{program}_{cohort}",
         )
         st.download_button(
-            f"Unduh master {program.split()[0]}",
+            f"Unduh master {program.split()[0]} angkatan {cohort}",
             data=sample_excel,
             file_name=sample_filename,
             mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",

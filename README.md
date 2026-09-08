@@ -4,7 +4,9 @@ Aplikasi Streamlit untuk menyusun RPS berbasis OBE dari master kurikulum Excel d
 
 ## Fitur
 
-- Master bawaan D3 dan D4 disimpan terpisah dan dapat dipilih dari sidebar.
+- Master bawaan dipilih berdasarkan jenjang dan angkatan: D4 2023–2026 serta D3 2024–2026.
+- Kode, struktur semester, SKS, dan jam per minggu mengikuti pemetaan tiap angkatan.
+- Materi D4 dibentuk dari `Short Silabus Kurikulum D4 PSTE.pdf`, bukan materi generik.
 - Upload Excel master kurikulum sendiri tetap tersedia.
 - Export Word memakai template default `templates/template_rps_pste_placeholder.docx`.
 - Pilih mata kuliah dari `Master_MK`.
@@ -29,6 +31,9 @@ Aplikasi Streamlit untuk menyusun RPS berbasis OBE dari master kurikulum Excel d
 ```text
 .
 ├── app.py
+├── curriculum.py
+├── data/
+│   └── curriculum_catalog.json
 ├── requirements.txt
 ├── README.md
 ├── templates/
@@ -39,7 +44,7 @@ Aplikasi Streamlit untuk menyusun RPS berbasis OBE dari master kurikulum Excel d
 └── outputs/
 ```
 
-Master D3 dan D4 tersedia sebagai file terpisah. File D3 akan dibuat otomatis jika belum ada, sedangkan master D4 harus tersedia di `sample_data/master_rps_d4_pste.xlsx`. Template Word default harus tersedia di `templates/template_rps_pste_placeholder.docx`.
+File pada `sample_data` menjadi basis CPL/IK/CPMK. `curriculum_catalog.json` menyimpan struktur dan kode resmi per angkatan serta short silabus D4 yang sudah diekstrak dari dokumen sumber. Master angkatan dibentuk ketika dipilih dan dapat langsung diunduh dari sidebar. Kode yang sama untuk dua penawaran tetap dipertahankan dan dipisahkan dengan `id_penawaran`.
 
 ## Instalasi
 
