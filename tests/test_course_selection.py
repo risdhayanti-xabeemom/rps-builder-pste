@@ -133,5 +133,53 @@ class MultiCurriculumTests(unittest.TestCase):
         self.assertEqual(len(payload["weekly"]), 16)
 
 
+class IntegrityValidationTests(unittest.TestCase):
+    def test_legacy_d3_cpmk4_is_remapped_and_marked(self):
+        workbook = app.load_master_excel(
+            (SAMPLE_DIR / "master_rps_d3_pste.xlsx").read_bytes()
+        )
+        marked = workbook["RPS_Pertemuan"]["catatan_integritas"] == "AUTO_REMAP_REVIEW_DOSEN"
+        self.assertEqual(int(marked.sum()), 156)
+        valid_pairs = {
+            (app.course_key_from_row(row), str(row["kode_cpmk"]))
+            for row in workbook["Master_CPMK"].to_dict("records")
+        }
+        for row in workbook["RPS_Pertemuan"].loc[marked].to_dict("records"):
+            self.assertIn((app.course_key_from_row(row), row["kode_cpmk"]), valid_pairs)
+
+    def test_all_generated_curricula_pass_blocking_integrity_checks(self):
+        for program, cohorts in app.CURRICULUM_OPTIONS.items():
+            for cohort in cohorts:
+                with self.subTest(program=program, cohort=cohort):
+                    workbook = app.load_program_workbook(program, cohort)
+                    self.assertEqual(app.validate_workbook_integrity(workbook), [])
+
+    def test_mapping_conflict_is_blocking(self):
+        workbook = app.load_program_workbook("D3 Teknik Elektro", "2026")
+        workbook["Mapping_MK_CPL"] = workbook["Mapping_MK_CPL"].copy()
+        workbook["Mapping_MK_CPL"].loc[0, "kode_cpl"] = "CPL10"
+        errors = app.validate_workbook_integrity(workbook)
+        self.assertTrue(any("Konflik CPL" in error for error in errors))
+
+    def test_direct_cpl_must_match_parent_ik(self):
+        workbook = app.load_program_workbook("D4 Teknik Elektronika", "2026")
+        workbook["Master_CPMK"] = workbook["Master_CPMK"].copy()
+        workbook["Master_CPMK"].loc[0, "kode_cpl"] = "CPL10"
+        errors = app.validate_workbook_integrity(workbook)
+        self.assertTrue(any("IK induknya" in error for error in errors))
+
+    def test_duplicate_course_requires_offering_id_in_every_related_sheet(self):
+        workbook = app.load_program_workbook("D4 Teknik Elektronika", "2026")
+        duplicate_row = workbook["RPS_Pertemuan"]["kode_mk"] == "RTE267006"
+        workbook["RPS_Pertemuan"] = workbook["RPS_Pertemuan"].copy()
+        workbook["RPS_Pertemuan"].loc[duplicate_row, "id_penawaran"] = ""
+        errors = app.validate_workbook_integrity(workbook)
+        self.assertTrue(any("id_penawaran` kosong" in error for error in errors))
+
+    def test_ik_normalization_removes_zero_padding(self):
+        self.assertEqual(app.normalize_ik_code("IK01.01"), "IK1.1")
+        self.assertEqual(app.normalize_ik_code("IK1.1"), "IK1.1")
+
+
 if __name__ == "__main__":
     unittest.main()

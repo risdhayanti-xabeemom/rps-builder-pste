@@ -21,6 +21,11 @@ Aplikasi Streamlit untuk menyusun RPS berbasis OBE dari master kurikulum Excel d
   - setiap pertemuan sebaiknya memiliki kemampuan akhir yang direncanakan;
   - kemampuan akhir yang terisi sebaiknya memiliki teknik asesmen;
   - setiap CPL yang dibebankan muncul minimal pada satu CPMK.
+  - konflik `Mapping_MK_CPL` dengan jalur `Master_CPMK → Master_IK` menghentikan proses;
+  - CPL langsung pada CPMK harus sama dengan CPL induk IK;
+  - kode MK duplikat wajib memakai `id_penawaran` lengkap pada seluruh sheet terkait.
+- Referensi `CPMK4` lama pada master D3 yang tidak valid dipetakan ke CPMK terakhir
+  yang tersedia dan diberi penanda `AUTO_REMAP_REVIEW_DOSEN` untuk pemeriksaan dosen.
 - Export:
   - RPS Word sesuai template prodi;
   - RPS Excel;
