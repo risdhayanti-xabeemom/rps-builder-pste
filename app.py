@@ -13,6 +13,8 @@ from typing import Any
 import pandas as pd
 import streamlit as st
 
+from curriculum import CURRICULUM_OPTIONS, build_cohort_workbook, workbook_to_excel_bytes
+
 
 APP_DIR = Path(__file__).parent
 TEMPLATE_DIR = APP_DIR / "templates"
@@ -85,6 +87,7 @@ RPS_WEEKLY_COLUMNS = [
     "bobot",
     "referensi",
     "kode_cpmk",
+    "catatan_integritas",
 ]
 
 RPS_WEEKLY_LABELS = {
@@ -200,7 +203,10 @@ def normalize_ik_code(value: Any) -> str:
     if not raw or raw.lower() == "nan":
         return ""
     compact = re.sub(r"\s+", "", raw)
-    compact = re.sub(r"^IK[-_]*0*(\d)", r"IK\1", compact)
+    match = re.fullmatch(r"IK[-_]*0*(\d+)[._-]0*(\d+)", compact)
+    if match:
+        return f"IK{int(match.group(1))}.{int(match.group(2))}"
+    compact = re.sub(r"^IK[-_]*0*(\d+)", lambda item: f"IK{int(item.group(1))}", compact)
     return compact
 
 
@@ -245,7 +251,10 @@ def normalize_master_workbook(workbook: dict[str, pd.DataFrame]) -> dict[str, pd
             df["id_penawaran"] = df["id_penawaran"].map(normalize_id_penawaran)
         if sheet_name in ["Master_CPL", "Master_IK", "Mapping_MK_CPL", "Master_CPMK"] and "kode_cpl" in df.columns:
             df["kode_cpl"] = df["kode_cpl"].map(normalize_cpl_code)
-            df = df[df["kode_cpl"] != ""].copy()
+            # Master_CPMK lama menghubungkan CPL melalui kode_ik dan memang tidak
+            # selalu memiliki kolom kode_cpl yang terisi.
+            if sheet_name != "Master_CPMK":
+                df = df[df["kode_cpl"] != ""].copy()
         if "kode_ik" in df.columns:
             df["kode_ik"] = df["kode_ik"].map(
                 lambda value: ", ".join(normalize_ik_code(code) for code in split_codes(value))
@@ -350,11 +359,15 @@ def normalize_master_workbook(workbook: dict[str, pd.DataFrame]) -> dict[str, pd
         )
     if "RPS_Pertemuan" in normalized and "Master_CPMK" in normalized:
         cpmk_lookup: dict[tuple[str, str], str] = {}
+        valid_cpmk_by_course: dict[str, list[str]] = {}
         for row in normalized["Master_CPMK"].fillna("").to_dict("records"):
             course_key = course_key_from_row(row)
             full_code = str(row.get("kode_cpmk", "")).strip()
             if not full_code:
                 continue
+            valid_cpmk_by_course.setdefault(course_key, [])
+            if full_code not in valid_cpmk_by_course[course_key]:
+                valid_cpmk_by_course[course_key].append(full_code)
             cpmk_lookup[(course_key, full_code)] = full_code
             cpmk_lookup[(course_key, full_code.rsplit("-", 1)[-1])] = full_code
 
@@ -364,6 +377,19 @@ def normalize_master_workbook(workbook: dict[str, pd.DataFrame]) -> dict[str, pd
 
         normalized["RPS_Pertemuan"]["kode_cpmk"] = normalized["RPS_Pertemuan"].apply(
             canonical_cpmk, axis=1
+        )
+
+        def repair_legacy_cpmk4(row: pd.Series) -> pd.Series:
+            course_key = course_key_from_row(row.to_dict())
+            code = str(row.get("kode_cpmk", "")).strip()
+            valid_codes = valid_cpmk_by_course.get(course_key, [])
+            if code and code not in valid_codes and code.rsplit("-", 1)[-1] == "CPMK4" and valid_codes:
+                row["kode_cpmk"] = valid_codes[-1]
+                row["catatan_integritas"] = "AUTO_REMAP_REVIEW_DOSEN"
+            return row
+
+        normalized["RPS_Pertemuan"] = normalized["RPS_Pertemuan"].apply(
+            repair_legacy_cpmk4, axis=1
         )
     if "Master_CPL" in normalized:
         normalized["Master_CPL"] = normalized["Master_CPL"].drop_duplicates(
@@ -529,6 +555,90 @@ def validate_workbook_schema(workbook: dict[str, pd.DataFrame]) -> list[str]:
         if missing:
             errors.append(
                 f"Sheet `{sheet_name}` kurang kolom: {', '.join(f'`{col}`' for col in missing)}."
+            )
+    return errors
+
+
+def validate_workbook_integrity(workbook: dict[str, pd.DataFrame]) -> list[str]:
+    """Return blocking cross-sheet integrity errors."""
+    errors: list[str] = []
+    master_mk = workbook.get("Master_MK", pd.DataFrame()).fillna("")
+    cpmk_df = workbook.get("Master_CPMK", pd.DataFrame()).fillna("")
+    ik_df = workbook.get("Master_IK", pd.DataFrame()).fillna("")
+    mapping_df = workbook.get("Mapping_MK_CPL", pd.DataFrame()).fillna("")
+
+    duplicate_codes = set(
+        master_mk.loc[
+            master_mk["kode_mk"].astype(str).duplicated(keep=False), "kode_mk"
+        ].astype(str)
+    )
+    related_sheets = [
+        "Master_MK", "Master_CPMK", "Mapping_MK_CPL", "RPS_Pertemuan",
+        "Short_Silabus", "Referensi", "Evaluasi_RPS", "Asesmen_Mingguan",
+    ]
+    for code in sorted(duplicate_codes):
+        master_rows = master_mk[master_mk["kode_mk"].astype(str) == code]
+        master_offers = {
+            normalize_id_penawaran(value) for value in master_rows["id_penawaran"]
+            if normalize_id_penawaran(value)
+        }
+        if len(master_offers) != len(master_rows):
+            errors.append(
+                f"Kode MK duplikat `{code}` wajib memiliki `id_penawaran` unik pada Master_MK."
+            )
+        for sheet_name in related_sheets[1:]:
+            df = workbook.get(sheet_name, pd.DataFrame())
+            if df.empty or "kode_mk" not in df.columns:
+                continue
+            rows_for_code = df[df["kode_mk"].astype(str) == code]
+            if rows_for_code.empty:
+                continue
+            if "id_penawaran" not in rows_for_code.columns:
+                errors.append(
+                    f"Sheet `{sheet_name}` wajib memiliki `id_penawaran` untuk kode duplikat `{code}`."
+                )
+                continue
+            offers = rows_for_code["id_penawaran"].map(normalize_id_penawaran)
+            if (offers == "").any():
+                errors.append(
+                    f"Sheet `{sheet_name}` memiliki `id_penawaran` kosong untuk kode duplikat `{code}`."
+                )
+            unknown = sorted(set(offers[offers != ""]) - master_offers)
+            if unknown:
+                errors.append(
+                    f"Sheet `{sheet_name}` memakai `id_penawaran` yang tidak ada di Master_MK untuk `{code}`: {', '.join(unknown)}."
+                )
+
+    ik_to_cpl = {
+        normalize_ik_code(row.get("kode_ik", "")): normalize_cpl_code(row.get("kode_cpl", ""))
+        for row in ik_df.to_dict("records")
+        if normalize_ik_code(row.get("kode_ik", ""))
+    }
+    derived_cpl: dict[str, set[str]] = {}
+    for row in cpmk_df.to_dict("records"):
+        course_key = course_key_from_row(row)
+        parent_cpl = {
+            ik_to_cpl.get(normalize_ik_code(code), "")
+            for code in split_codes(row.get("kode_ik", ""))
+        } - {""}
+        direct_cpl = normalize_cpl_code(row.get("kode_cpl", ""))
+        if direct_cpl and parent_cpl and parent_cpl != {direct_cpl}:
+            errors.append(
+                f"`{row.get('kode_cpmk', '')}` pada `{course_key}` menyatakan `{direct_cpl}`, "
+                f"tetapi IK induknya terhubung ke {', '.join(sorted(parent_cpl))}."
+            )
+        derived_cpl.setdefault(course_key, set()).update(parent_cpl)
+
+    mapped_cpl: dict[str, set[str]] = {}
+    for row in mapping_df.to_dict("records"):
+        code = normalize_cpl_code(row.get("kode_cpl", ""))
+        if code:
+            mapped_cpl.setdefault(course_key_from_row(row), set()).add(code)
+    for course_key in sorted(set(derived_cpl) & set(mapped_cpl)):
+        if derived_cpl[course_key] != mapped_cpl[course_key]:
+            errors.append(
+                f"Konflik CPL pada `{course_key}`: Mapping_MK_CPL={sorted(mapped_cpl[course_key])}, "
+                f"sedangkan Master_CPMK→Master_IK={sorted(derived_cpl[course_key])}."
             )
     return errors
 
@@ -1871,12 +1981,23 @@ def load_or_create_sample_files() -> bytes:
     return generate_sample_files()
 
 
-def load_program_sample(program: str) -> tuple[bytes, str]:
+@st.cache_data(show_spinner=False)
+def load_program_workbook(program: str, cohort: str) -> dict[str, pd.DataFrame]:
     if program == "D4 Teknik Elektronika":
         if not DEFAULT_D4_SAMPLE_PATH.exists():
             raise FileNotFoundError("Master D4 belum tersedia di sample_data.")
-        return DEFAULT_D4_SAMPLE_PATH.read_bytes(), DEFAULT_D4_SAMPLE_PATH.name
-    return load_or_create_sample_files(), DEFAULT_D3_SAMPLE_PATH.name
+        base_bytes = DEFAULT_D4_SAMPLE_PATH.read_bytes()
+    else:
+        base_bytes = load_or_create_sample_files()
+    base = load_master_excel(base_bytes)
+    return normalize_master_workbook(build_cohort_workbook(base, program, cohort))
+
+
+@st.cache_data(show_spinner=False)
+def load_program_sample(program: str, cohort: str) -> tuple[bytes, str]:
+    workbook = load_program_workbook(program, cohort)
+    level = "d4" if program.startswith("D4") else "d3"
+    return workbook_to_excel_bytes(workbook), f"master_rps_{level}_pste_{cohort}.xlsx"
 
 
 def show_preview(payload: dict[str, Any]) -> None:
@@ -1912,8 +2033,14 @@ def main() -> None:
             ["D3 Teknik Elektro", "D4 Teknik Elektronika"],
             help="Master D3 dan D4 disimpan terpisah agar data tidak saling menggantikan.",
         )
+        cohort = st.selectbox(
+            "Angkatan",
+            CURRICULUM_OPTIONS[program],
+            index=len(CURRICULUM_OPTIONS[program]) - 1,
+            help="Kode dan struktur mata kuliah mengikuti dokumen pemetaan tiap angkatan.",
+        )
         try:
-            sample_excel, sample_filename = load_program_sample(program)
+            sample_excel, sample_filename = load_program_sample(program, cohort)
         except FileNotFoundError as exc:
             st.error(str(exc))
             st.stop()
@@ -1921,10 +2048,10 @@ def main() -> None:
             "Upload Excel master kurikulum",
             type=["xlsx"],
             help="Gunakan sheet sesuai format master kurikulum prodi.",
-            key=f"master_upload_{program}",
+            key=f"master_upload_{program}_{cohort}",
         )
         st.download_button(
-            f"Unduh master {program.split()[0]}",
+            f"Unduh master {program.split()[0]} angkatan {cohort}",
             data=sample_excel,
             file_name=sample_filename,
             mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
@@ -1942,6 +2069,13 @@ def main() -> None:
     if schema_errors:
         st.error("Format Excel belum sesuai.")
         for error in schema_errors:
+            st.write(f"- {error}")
+        st.stop()
+
+    integrity_errors = validate_workbook_integrity(workbook)
+    if integrity_errors:
+        st.error("Integritas pemetaan master bermasalah. Proses dihentikan.")
+        for error in integrity_errors:
             st.write(f"- {error}")
         st.stop()
 
