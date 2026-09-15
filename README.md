@@ -4,7 +4,7 @@ Aplikasi Streamlit untuk menyusun RPS berbasis OBE dari master kurikulum Excel d
 
 ## Fitur
 
-- Master bawaan dipilih berdasarkan jenjang dan angkatan: D4 2023–2026 serta D3 2024–2026.
+- Master bawaan dipilih berdasarkan jenjang dan angkatan: D4 2023–2026 serta D3 2023–2026.
 - Kode, struktur semester, SKS, dan jam per minggu mengikuti pemetaan tiap angkatan.
 - Materi D4 dibentuk dari `Short Silabus Kurikulum D4 PSTE.pdf`, bukan materi generik.
 - Upload Excel master kurikulum sendiri tetap tersedia.

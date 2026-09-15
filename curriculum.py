@@ -13,7 +13,7 @@ import pandas as pd
 
 CATALOG_PATH = Path(__file__).parent / "data" / "curriculum_catalog.json"
 CURRICULUM_OPTIONS = {
-    "D3 Teknik Elektro": ["2024", "2025", "2026"],
+    "D3 Teknik Elektro": ["2023", "2024", "2025", "2026"],
     "D4 Teknik Elektronika": ["2023", "2024", "2025", "2026"],
 }
 
@@ -284,7 +284,7 @@ def build_cohort_workbook(
             weekly = _replace_identity(_course_rows(base["RPS_Pertemuan"], source_mk), target)
             if not official_d3.empty:
                 weekly = _weekly_rows(target, materials, cpmk, 17)
-            elif not weekly.empty:
+            elif not weekly.empty and key != "D3-2023":
                 codes = cpmk["kode_cpmk"].astype(str).tolist()
                 if codes:
                     weekly["kode_cpmk"] = [
