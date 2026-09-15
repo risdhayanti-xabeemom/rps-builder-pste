@@ -61,6 +61,7 @@ class CourseSelectionTests(unittest.TestCase):
 
 class MultiCurriculumTests(unittest.TestCase):
     EXPECTED_COUNTS = {
+        ("D3 Teknik Elektro", "2023"): 44,
         ("D3 Teknik Elektro", "2024"): 36,
         ("D3 Teknik Elektro", "2025"): 35,
         ("D3 Teknik Elektro", "2026"): 35,
@@ -99,8 +100,16 @@ class MultiCurriculumTests(unittest.TestCase):
             "RTE218002",
         )
 
+    def test_d3_2023_uses_rec23_master_codes(self):
+        workbook = app.load_program_workbook("D3 Teknik Elektro", "2023")
+        courses = workbook["Master_MK"]
+        self.assertEqual(len(courses), 44)
+        self.assertTrue(courses["kode_mk"].str.startswith("REC23").all())
+        self.assertEqual(courses.iloc[0]["kode_mk"], "REC231001")
+        self.assertEqual(courses.iloc[-1]["kode_mk"], "REC236002")
+
     def test_d3_agama_is_two_credit_theory(self):
-        for cohort in ("2024", "2025", "2026"):
+        for cohort in ("2023", "2024", "2025", "2026"):
             courses = app.load_program_workbook("D3 Teknik Elektro", cohort)["Master_MK"]
             agama = courses[courses["nama_mk"] == "Agama"].iloc[0]
             self.assertEqual(float(agama["sks_teori"]), 2)
@@ -146,6 +155,13 @@ class IntegrityValidationTests(unittest.TestCase):
         }
         for row in workbook["RPS_Pertemuan"].loc[marked].to_dict("records"):
             self.assertIn((app.course_key_from_row(row), row["kode_cpmk"]), valid_pairs)
+
+        cohort_workbook = app.load_program_workbook("D3 Teknik Elektro", "2023")
+        cohort_marked = (
+            cohort_workbook["RPS_Pertemuan"]["catatan_integritas"]
+            == "AUTO_REMAP_REVIEW_DOSEN"
+        )
+        self.assertEqual(int(cohort_marked.sum()), 156)
 
     def test_all_generated_curricula_pass_blocking_integrity_checks(self):
         for program, cohorts in app.CURRICULUM_OPTIONS.items():
