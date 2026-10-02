@@ -198,7 +198,51 @@ def _official_d3_cpmk(catalog: dict[str, Any], cohort: str) -> pd.DataFrame:
     return pd.DataFrame(rows)
 
 
-def _weekly_rows(target: dict[str, Any], materials: list[str], cpmk: pd.DataFrame, weeks: int) -> pd.DataFrame:
+def _master_week_plan(
+    base: dict[str, pd.DataFrame], source: dict[str, Any], cpmk: pd.DataFrame, weeks: int
+) -> dict[int, dict[str, Any]]:
+    """Ambil CPMK, bobot, dan teknik asesmen per minggu dari master bila lengkap.
+
+    Bobot CPMK pada master D4 diwujudkan lewat pembagian minggu, sehingga
+    pembagian ini harus dipertahankan saat materi diganti dari short silabus.
+    """
+    weekly = _course_rows(base.get("RPS_Pertemuan", pd.DataFrame()), source)
+    if weekly.empty or "minggu" not in weekly.columns:
+        return {}
+    valid_codes = set(cpmk.get("kode_cpmk", pd.Series(dtype=str)).astype(str))
+    assessments = _course_rows(base.get("Asesmen_Mingguan", pd.DataFrame()), source)
+    technique_by_week = {}
+    if not assessments.empty and "teknik_asesmen" in assessments.columns:
+        technique_by_week = {
+            int(row["minggu"]): str(row["teknik_asesmen"]).strip()
+            for row in assessments.to_dict("records")
+            if str(row.get("minggu", "")).strip()
+        }
+    plan = {}
+    for row in weekly.to_dict("records"):
+        if not str(row.get("minggu", "")).strip():
+            continue
+        week = int(row["minggu"])
+        code = str(row.get("kode_cpmk", "")).strip()
+        if code not in valid_codes:
+            return {}
+        plan[week] = {
+            "kode_cpmk": code,
+            "bobot": float(row.get("bobot") or 0),
+            "teknik_asesmen": technique_by_week.get(week, ""),
+        }
+    if sorted(plan) != list(range(1, weeks + 1)) or round(sum(item["bobot"] for item in plan.values()), 2) != 100:
+        return {}
+    return plan
+
+
+def _weekly_rows(
+    target: dict[str, Any],
+    materials: list[str],
+    cpmk: pd.DataFrame,
+    weeks: int,
+    plan: dict[int, dict[str, Any]] | None = None,
+) -> pd.DataFrame:
     topics = [item for item in materials if str(item).strip()] or [target["nama_mk"]]
     cpmk_codes = cpmk.get("kode_cpmk", pd.Series(dtype=str)).astype(str).tolist()
     rows = []
@@ -217,6 +261,10 @@ def _weekly_rows(target: dict[str, Any], materials: list[str], cpmk: pd.DataFram
             technique, weight = "Tugas", 10
         elif week in (2, 6, 10, 14):
             technique, weight = "Kuis", 5
+        code = cpmk_codes[(week - 1) % len(cpmk_codes)] if cpmk_codes else ""
+        if plan:
+            code, weight = plan[week]["kode_cpmk"], plan[week]["bobot"]
+            technique = plan[week]["teknik_asesmen"] or technique
         rows.append({
             "kode_mk": target["kode_mk"], "id_penawaran": target["id_penawaran"],
             "minggu": week, "sub_cpmk": sub, "materi": material, "modalitas": "Luring",
@@ -224,7 +272,7 @@ def _weekly_rows(target: dict[str, Any], materials: list[str], cpmk: pd.DataFram
             "metode": "Praktik Terbimbing" if target.get("sks_praktek", 0) else "Ceramah Interaktif",
             "pengalaman_belajar": f"Mahasiswa mempelajari dan menerapkan {material}.",
             "teknik_asesmen": technique, "indikator_penilaian": f"Ketepatan penguasaan {material}.",
-            "bobot": weight, "referensi": "", "kode_cpmk": cpmk_codes[(week - 1) % len(cpmk_codes)] if cpmk_codes else "",
+            "bobot": weight, "referensi": "", "kode_cpmk": code,
         })
     return pd.DataFrame(rows)
 
@@ -273,7 +321,8 @@ def build_cohort_workbook(
             materials = syllabus["bahan_kajian"]
             description = syllabus["deskripsi_mk"]
             references = syllabus["referensi"]
-            output["RPS_Pertemuan"].append(_weekly_rows(target, materials, cpmk, 16))
+            plan = _master_week_plan(base, source_mk, cpmk, 16)
+            output["RPS_Pertemuan"].append(_weekly_rows(target, materials, cpmk, 16, plan))
         else:
             source_syllabus = _course_rows(base["Short_Silabus"], source_mk)
             description = str(source_syllabus.iloc[0].get("deskripsi_mk", "")) if not source_syllabus.empty else ""

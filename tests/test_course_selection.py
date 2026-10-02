@@ -3,6 +3,8 @@ import types
 import unittest
 from pathlib import Path
 
+import pandas as pd
+
 
 if "streamlit" not in sys.modules:
     sys.modules["streamlit"] = types.SimpleNamespace(
@@ -48,10 +50,11 @@ class CourseSelectionTests(unittest.TestCase):
         self.assertTrue(semester_seven["jenis_mk"].str.contains("Pilihan").any())
         self.assertTrue(semester_seven["jenis_mk"].str.contains("Paket").any())
 
-    def test_duplicate_code_does_not_mix_industrial_project(self):
+    def test_industrial_project_has_own_code(self):
         process = app.build_course_payload(self.d4, "RTE267006-45")
-        project = app.build_course_payload(self.d4, "RTE267006-49")
+        project = app.build_course_payload(self.d4, "RTE267007-49")
         self.assertEqual(project["mk"]["nama_mk"], "Proyek Industri")
+        self.assertEqual(project["mk"]["kode_mk"], "RTE267007")
         self.assertNotEqual(
             {row["kode_cpmk"] for row in process["cpmk"]},
             {row["kode_cpmk"] for row in project["cpmk"]},
@@ -126,11 +129,41 @@ class MultiCurriculumTests(unittest.TestCase):
         self.assertEqual([row["kode_cpmk"] for row in payload["cpmk"]], ["CPMK02.02", "CPMK04.02"])
         self.assertEqual([row["kode_cpl"] for row in payload["cpl"]], ["CPL2", "CPL4"])
 
-    def test_duplicate_2026_code_uses_distinct_offering_ids(self):
+    def test_d4_2026_codes_follow_revised_master_mk(self):
         workbook = app.load_program_workbook("D4 Teknik Elektronika", "2026")
-        duplicate = workbook["Master_MK"][workbook["Master_MK"]["kode_mk"] == "RTE267006"]
-        self.assertEqual(duplicate["nama_mk"].tolist(), ["Sistem Kendali Proses", "Proyek Industri"])
-        self.assertEqual(duplicate["id_penawaran"].nunique(), 2)
+        courses = workbook["Master_MK"]
+        self.assertFalse(courses["kode_mk"].duplicated().any())
+        codes = dict(zip(courses["nama_mk"], courses["kode_mk"]))
+        self.assertEqual(codes["Sistem Kendali Proses"], "RTE267006")
+        self.assertEqual(codes["Proyek Industri"], "RTE267007")
+        self.assertEqual(codes["Machine Learning"], "RTE267108")
+        self.assertEqual(codes["Pengolahan Sinyal Multimedia"], "RTE267109")
+
+    def test_d4_2026_every_course_has_two_cpmk(self):
+        workbook = app.load_program_workbook("D4 Teknik Elektronika", "2026")
+        counts = workbook["Master_CPMK"].groupby("id_penawaran")["kode_cpmk"].nunique()
+        self.assertEqual(len(counts), 51)
+        self.assertGreaterEqual(int(counts.min()), 2)
+
+    def test_d4_every_cpl_has_two_ik(self):
+        workbook = app.load_program_workbook("D4 Teknik Elektronika", "2026")
+        counts = workbook["Master_IK"].groupby("kode_cpl")["kode_ik"].nunique()
+        self.assertEqual(len(counts), 10)
+        self.assertGreaterEqual(int(counts.min()), 2)
+
+    def test_d4_fisika_uses_practicum_cpmk_and_revised_week_split(self):
+        workbook = app.load_program_workbook("D4 Teknik Elektronika", "2026")
+        courses = workbook["Master_MK"]
+        key = courses.loc[courses["nama_mk"] == "Fisika", "id_penawaran"].iloc[0]
+        payload = app.build_course_payload(workbook, key)
+        self.assertEqual(
+            [row["kode_cpmk"] for row in payload["cpmk"]],
+            ["CPMK01.01", "CPMK04.02", "CPMK08.02"],
+        )
+        weekly = pd.DataFrame(payload["weekly"])
+        self.assertEqual(weekly["bobot"].astype(float).sum(), 100)
+        share = weekly.groupby("kode_cpmk")["bobot"].apply(lambda s: s.astype(float).sum())
+        self.assertEqual(share.to_dict(), {"CPMK01.01": 26.0, "CPMK04.02": 49.0, "CPMK08.02": 25.0})
 
     def test_d4_weekly_material_comes_from_corrected_syllabus(self):
         workbook = app.load_program_workbook("D4 Teknik Elektronika", "2026")
@@ -186,8 +219,11 @@ class IntegrityValidationTests(unittest.TestCase):
 
     def test_duplicate_course_requires_offering_id_in_every_related_sheet(self):
         workbook = app.load_program_workbook("D4 Teknik Elektronika", "2026")
+        for sheet_name in ("Master_MK", "RPS_Pertemuan"):
+            workbook[sheet_name] = workbook[sheet_name].copy()
+            frame = workbook[sheet_name]
+            frame.loc[frame["kode_mk"] == "RTE267007", "kode_mk"] = "RTE267006"
         duplicate_row = workbook["RPS_Pertemuan"]["kode_mk"] == "RTE267006"
-        workbook["RPS_Pertemuan"] = workbook["RPS_Pertemuan"].copy()
         workbook["RPS_Pertemuan"].loc[duplicate_row, "id_penawaran"] = ""
         errors = app.validate_workbook_integrity(workbook)
         self.assertTrue(any("id_penawaran` kosong" in error for error in errors))

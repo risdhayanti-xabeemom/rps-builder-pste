@@ -2020,6 +2020,40 @@ def show_preview(payload: dict[str, Any]) -> None:
         st.warning(warning)
 
 
+LOCKED_WEEKLY_COLUMNS = ["kode_mk", "id_penawaran", "minggu", "kode_cpmk", "bobot"]
+
+
+def locked_cpmk_frame(payload: dict[str, Any], kode_mk: str, id_penawaran: str) -> pd.DataFrame:
+    """CPMK MK terpilih persis seperti master; dosen tidak dapat menambah atau mengubahnya."""
+    frame = records_to_editor(payload["cpmk"], ["kode_mk", "kode_cpmk", "deskripsi_cpmk", "kode_ik"])
+    frame["kode_mk"] = kode_mk
+    frame["id_penawaran"] = id_penawaran
+    return frame
+
+
+def cpmk_weight_summary(weekly: list[dict[str, Any]]) -> pd.DataFrame:
+    frame = pd.DataFrame(weekly)
+    if frame.empty or "kode_cpmk" not in frame.columns:
+        return pd.DataFrame(columns=["Kode CPMK", "Bobot (%)"])
+    frame["bobot"] = frame.get("bobot", pd.Series(dtype=float)).map(as_float)
+    summary = frame.groupby("kode_cpmk", sort=False)["bobot"].sum().reset_index()
+    return summary.rename(columns={"kode_cpmk": "Kode CPMK", "bobot": "Bobot (%)"})
+
+
+def enforce_locked_weekly(
+    edited: pd.DataFrame, master_weekly: list[dict[str, Any]], kode_mk: str, id_penawaran: str
+) -> pd.DataFrame:
+    """Kembalikan kolom terkunci ke nilai master walaupun editor dimanipulasi."""
+    frame = edited.copy().reset_index(drop=True)
+    master = records_to_editor(master_weekly, RPS_WEEKLY_COLUMNS).reset_index(drop=True)
+    for column in ("minggu", "kode_cpmk", "bobot"):
+        if column in master.columns and len(master) == len(frame):
+            frame[column] = master[column]
+    frame["kode_mk"] = kode_mk
+    frame["id_penawaran"] = id_penawaran
+    return frame[RPS_WEEKLY_COLUMNS]
+
+
 def main() -> None:
     st.set_page_config(page_title="RPS Builder OBE", layout="wide")
     st.title("RPS Builder OBE")
@@ -2044,11 +2078,9 @@ def main() -> None:
         except FileNotFoundError as exc:
             st.error(str(exc))
             st.stop()
-        excel_file = st.file_uploader(
-            "Upload Excel master kurikulum",
-            type=["xlsx"],
-            help="Gunakan sheet sesuai format master kurikulum prodi.",
-            key=f"master_upload_{program}_{cohort}",
+        st.caption(
+            "Master kurikulum terkunci di aplikasi. Perubahan kode MK, CPMK/IK, dan bobot "
+            "hanya melalui koordinator kurikulum."
         )
         st.download_button(
             f"Unduh master {program.split()[0]} angkatan {cohort}",
@@ -2057,7 +2089,7 @@ def main() -> None:
             mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
         )
 
-    excel_bytes = excel_file.getvalue() if excel_file else sample_excel
+    excel_bytes = sample_excel
 
     try:
         workbook = load_master_excel(excel_bytes)
@@ -2115,11 +2147,9 @@ def main() -> None:
         st.subheader(payload["mk"].get("nama_mk", "Mata Kuliah"))
         show_preview(payload)
         lecturer_name = st.text_input("Nama dosen pengampu", value="")
-        description = st.text_area(
-            "Deskripsi mata kuliah",
-            value=str(payload["silabus"].get("deskripsi_mk", "")),
-            height=120,
-        )
+        description = str(payload["silabus"].get("deskripsi_mk", ""))
+        st.markdown("**Deskripsi mata kuliah** (dari short silabus, terkunci)")
+        st.write(description or "-")
         reference_df = st.data_editor(
             records_to_editor(payload["references"], ["kode_mk", "referensi"]),
             use_container_width=True,
@@ -2135,17 +2165,19 @@ def main() -> None:
         st.subheader("IK terkait")
         st.dataframe(pd.DataFrame(payload["ik"]), use_container_width=True, hide_index=True)
         st.subheader("CPMK")
-        cpmk_df = st.data_editor(
-            records_to_editor(
-                payload["cpmk"],
-                ["kode_mk", "kode_cpmk", "deskripsi_cpmk", "kode_ik"],
-            ),
+        cpmk_df = locked_cpmk_frame(payload, selected_code, selected_offer)
+        st.caption("CPMK, IK, dan bobot CPMK mengikuti master kurikulum dan tidak dapat diubah dosen.")
+        st.dataframe(
+            cpmk_df[["kode_cpmk", "deskripsi_cpmk", "kode_ik"]],
             use_container_width=True,
-            num_rows="dynamic",
-            key=f"cpmk_{editor_key}",
+            hide_index=True,
         )
-        cpmk_df["kode_mk"] = selected_code
-        cpmk_df["id_penawaran"] = selected_offer
+        st.subheader("Bobot per CPMK")
+        st.dataframe(
+            cpmk_weight_summary(payload["weekly"]),
+            use_container_width=True,
+            hide_index=True,
+        )
 
     with main_tabs[2]:
         assessment_options = unique_values(
@@ -2160,7 +2192,7 @@ def main() -> None:
             use_container_width=True,
             num_rows="fixed",
             height=620,
-            disabled=["kode_mk", "id_penawaran", "minggu"],
+            disabled=LOCKED_WEEKLY_COLUMNS,
             column_order=[
                 "minggu",
                 "sub_cpmk",
@@ -2212,9 +2244,8 @@ def main() -> None:
             },
             key=f"weekly_{editor_key}",
         )
-        weekly_df["kode_mk"] = selected_code
-        weekly_df["id_penawaran"] = selected_offer
-        weekly_df = weekly_df[RPS_WEEKLY_COLUMNS]
+        weekly_df = enforce_locked_weekly(weekly_df, payload["weekly"], selected_code, selected_offer)
+        st.caption("Kolom Minggu, Kode CPMK, dan Bobot terkunci sesuai master kurikulum.")
         total_weight = weekly_df.get("bobot", pd.Series(dtype=float)).map(as_float).sum()
         st.metric("Total Bobot Penilaian", f"{total_weight:g}%")
         if round(total_weight, 2) != 100:

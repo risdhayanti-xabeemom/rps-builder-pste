@@ -7,11 +7,12 @@ Aplikasi Streamlit untuk menyusun RPS berbasis OBE dari master kurikulum Excel d
 - Master bawaan dipilih berdasarkan jenjang dan angkatan: D4 2023–2026 serta D3 2023–2026.
 - Kode, struktur semester, SKS, dan jam per minggu mengikuti pemetaan tiap angkatan.
 - Materi D4 dibentuk dari `Short Silabus Kurikulum D4 PSTE.pdf`, bukan materi generik.
-- Upload Excel master kurikulum sendiri tetap tersedia.
+- Master kurikulum ditanam di aplikasi (`sample_data`). Dosen pengampu tidak dapat mengunggah master lain; revisi master dilakukan koordinator kurikulum lewat repo.
 - Export Word memakai template default `templates/template_rps_pste_placeholder.docx`.
 - Pilih mata kuliah dari `Master_MK`.
 - Pratinjau data CPL, IK, short silabus, CPMK, rencana mingguan, dan referensi.
-- Editor untuk dosen: dosen pengampu, deskripsi MK, CPMK, referensi, dan tabel rencana mingguan sesuai jumlah pertemuan pada master (D3 17, D4 16).
+- Editor untuk dosen: nama dosen pengampu, referensi, dan tabel rencana mingguan sesuai jumlah pertemuan pada master (D3 17, D4 16).
+- Terkunci dari dosen: kode MK, CPL, IK, CPMK, deskripsi MK (short silabus), serta kolom Minggu, Kode CPMK, dan Bobot pada rencana mingguan. Bobot per CPMK ditampilkan di tab CPL, IK, dan CPMK.
 - Tab `Rencana Mingguan` memakai `st.data_editor` dengan dropdown modalitas, bentuk pembelajaran, metode pembelajaran, dan teknik asesmen.
 - Pertemuan 9 digunakan untuk UTS, sedangkan pertemuan terakhir digunakan untuk UAS atau evaluasi/proyek akhir semester.
 - Validasi OBE:
