@@ -1576,6 +1576,42 @@ def scrub_legacy_text(document, context: dict[str, Any], weekly_df: pd.DataFrame
                             replace_text_in_paragraph(paragraph, replacements)
 
 
+TEMPLATE_PROGRAM_HEADER = "PROGRAM STUDI : D3 TEKNIK ELEKTRONIKA"
+
+
+def program_header_text(nama_prodi: Any) -> str:
+    """Baris program studi di kop RPS; jenjang mengikuti master (D3/D4)."""
+    match = re.match(r"\s*(D\s*-?\s*(?:III|IV|[34]))\b", str(nama_prodi or ""), re.IGNORECASE)
+    if not match:
+        return TEMPLATE_PROGRAM_HEADER
+    level = re.sub(r"[\s-]", "", match.group(1)).upper()
+    level = {"DIII": "D3", "DIV": "D4"}.get(level, level)
+    return TEMPLATE_PROGRAM_HEADER.replace("D3", level, 1)
+
+
+def iter_document_paragraphs(document):
+    yield from document.paragraphs
+    for table in document.tables:
+        for row in table.rows:
+            for cell in row.cells:
+                yield from cell.paragraphs
+    for section in document.sections:
+        for header_footer in [section.header, section.footer]:
+            yield from header_footer.paragraphs
+            for table in header_footer.tables:
+                for row in table.rows:
+                    for cell in row.cells:
+                        yield from cell.paragraphs
+
+
+def apply_program_header(document, nama_prodi: Any) -> None:
+    header = program_header_text(nama_prodi)
+    if header == TEMPLATE_PROGRAM_HEADER:
+        return
+    for paragraph in iter_document_paragraphs(document):
+        replace_text_in_paragraph(paragraph, {TEMPLATE_PROGRAM_HEADER: header})
+
+
 def normalize_word_labels(document) -> None:
     replacements = {
         "Sub-CPMK": "Kemampuan akhir yang direncanakan",
@@ -1656,6 +1692,7 @@ def render_docx(
         fill_template_tables(document, payload, cpmk_df, weekly_df)
         replace_placeholders_in_document(document, render_context)
         normalize_word_labels(document)
+        apply_program_header(document, payload["mk"].get("nama_prodi", ""))
         scrub_legacy_text(document, render_context, weekly_df, cpmk_df)
     except Exception as exc:
         raise ValueError(
@@ -2285,6 +2322,7 @@ def main() -> None:
     with main_tabs[3]:
         st.subheader("Preview Export Word")
         st.write(f"Template: `{DEFAULT_TEMPLATE_RELATIVE_PATH}`")
+        st.write(f"Kop: `{program_header_text(payload['mk'].get('nama_prodi', ''))}`")
         st.write(f"Mata kuliah: `{payload['mk'].get('kode_mk', '')} - {payload['mk'].get('nama_mk', '')}`")
         st.write("Tabel RPS pertemuan akan diisi pada posisi tabel yang sudah ada di template.")
         if docx_bytes:

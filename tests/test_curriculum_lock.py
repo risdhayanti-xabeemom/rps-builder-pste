@@ -49,5 +49,30 @@ class CurriculumLockTests(unittest.TestCase):
                          {"CPMK01.01": 26.0, "CPMK04.02": 49.0, "CPMK08.02": 25.0})
 
 
+class ProgramHeaderTests(unittest.TestCase):
+    def _header_lines(self, program, cohort):
+        import io
+        from docx import Document
+        workbook = app.load_program_workbook(program, cohort)
+        payload = app.build_course_payload(workbook, app.dataframe_course_keys(workbook["Master_MK"]).iloc[0])
+        cpmk = app.locked_cpmk_frame(payload, payload["mk"]["kode_mk"], payload["mk"].get("id_penawaran", ""))
+        weekly = app.records_to_editor(payload["weekly"], app.RPS_WEEKLY_COLUMNS)
+        refs = app.records_to_editor(payload["references"], ["kode_mk", "referensi"])
+        context = app.make_context(payload, "", "", cpmk, weekly, refs)
+        document = Document(io.BytesIO(app.render_docx(context, payload, cpmk, weekly)))
+        return sorted({p.text for p in app.iter_document_paragraphs(document) if "PROGRAM STUDI" in p.text})
+
+    def test_d4_word_header_says_d4(self):
+        self.assertEqual(self._header_lines("D4 Teknik Elektronika", "2026"), ["PROGRAM STUDI : D4 TEKNIK ELEKTRONIKA"])
+
+    def test_d3_word_header_unchanged(self):
+        self.assertEqual(self._header_lines("D3 Teknik Elektro", "2026"), ["PROGRAM STUDI : D3 TEKNIK ELEKTRONIKA"])
+
+    def test_program_header_text(self):
+        self.assertEqual(app.program_header_text("D4 Teknik Elektronika"), "PROGRAM STUDI : D4 TEKNIK ELEKTRONIKA")
+        self.assertEqual(app.program_header_text("D-IV Teknik Elektronika"), "PROGRAM STUDI : D4 TEKNIK ELEKTRONIKA")
+        self.assertEqual(app.program_header_text("D3 Teknik Elektro"), "PROGRAM STUDI : D3 TEKNIK ELEKTRONIKA")
+
+
 if __name__ == "__main__":
     unittest.main()
