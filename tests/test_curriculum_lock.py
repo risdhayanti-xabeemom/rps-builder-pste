@@ -1,0 +1,78 @@
+import sys
+import types
+import unittest
+from pathlib import Path
+
+import pandas as pd
+
+
+if "streamlit" not in sys.modules:
+    sys.modules["streamlit"] = types.SimpleNamespace(
+        cache_data=lambda *args, **kwargs: lambda function: function
+    )
+
+import app
+
+
+APP_SOURCE = (Path(__file__).resolve().parents[1] / "app.py").read_text(encoding="utf-8")
+
+
+class CurriculumLockTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        workbook = app.load_program_workbook("D4 Teknik Elektronika", "2026")
+        key = workbook["Master_MK"].loc[workbook["Master_MK"]["nama_mk"] == "Fisika", "id_penawaran"].iloc[0]
+        cls.payload = app.build_course_payload(workbook, key)
+
+    def test_no_master_upload_for_lecturers(self):
+        self.assertNotIn("file_uploader", APP_SOURCE)
+
+    def test_locked_weekly_columns_are_restored_from_master(self):
+        master = self.payload["weekly"]
+        edited = app.records_to_editor(master, app.RPS_WEEKLY_COLUMNS)
+        edited.loc[0, "kode_cpmk"] = "CPMK99.99"
+        edited.loc[1, "bobot"] = 50
+        edited.loc[2, "materi"] = "Materi versi dosen"
+        result = app.enforce_locked_weekly(edited, master, "RTE261002", "RTE261002-02")
+        expected = app.records_to_editor(master, app.RPS_WEEKLY_COLUMNS)
+        self.assertEqual(result["kode_cpmk"].tolist(), expected["kode_cpmk"].tolist())
+        self.assertEqual(result["bobot"].tolist(), expected["bobot"].tolist())
+        self.assertEqual(result.loc[2, "materi"], "Materi versi dosen")
+
+    def test_cpmk_frame_matches_master(self):
+        frame = app.locked_cpmk_frame(self.payload, "RTE261002", "RTE261002-02")
+        self.assertEqual(frame["kode_cpmk"].tolist(), ["CPMK01.01", "CPMK04.02", "CPMK08.02"])
+
+    def test_cpmk_weight_summary_totals_100(self):
+        summary = app.cpmk_weight_summary(self.payload["weekly"])
+        self.assertEqual(dict(zip(summary["Kode CPMK"], summary["Bobot (%)"])),
+                         {"CPMK01.01": 26.0, "CPMK04.02": 49.0, "CPMK08.02": 25.0})
+
+
+class ProgramHeaderTests(unittest.TestCase):
+    def _header_lines(self, program, cohort):
+        import io
+        from docx import Document
+        workbook = app.load_program_workbook(program, cohort)
+        payload = app.build_course_payload(workbook, app.dataframe_course_keys(workbook["Master_MK"]).iloc[0])
+        cpmk = app.locked_cpmk_frame(payload, payload["mk"]["kode_mk"], payload["mk"].get("id_penawaran", ""))
+        weekly = app.records_to_editor(payload["weekly"], app.RPS_WEEKLY_COLUMNS)
+        refs = app.records_to_editor(payload["references"], ["kode_mk", "referensi"])
+        context = app.make_context(payload, "", "", cpmk, weekly, refs)
+        document = Document(io.BytesIO(app.render_docx(context, payload, cpmk, weekly)))
+        return sorted({p.text for p in app.iter_document_paragraphs(document) if "PROGRAM STUDI" in p.text})
+
+    def test_d4_word_header_says_d4(self):
+        self.assertEqual(self._header_lines("D4 Teknik Elektronika", "2026"), ["PROGRAM STUDI : D4 TEKNIK ELEKTRONIKA"])
+
+    def test_d3_word_header_unchanged(self):
+        self.assertEqual(self._header_lines("D3 Teknik Elektro", "2026"), ["PROGRAM STUDI : D3 TEKNIK ELEKTRONIKA"])
+
+    def test_program_header_text(self):
+        self.assertEqual(app.program_header_text("D4 Teknik Elektronika"), "PROGRAM STUDI : D4 TEKNIK ELEKTRONIKA")
+        self.assertEqual(app.program_header_text("D-IV Teknik Elektronika"), "PROGRAM STUDI : D4 TEKNIK ELEKTRONIKA")
+        self.assertEqual(app.program_header_text("D3 Teknik Elektro"), "PROGRAM STUDI : D3 TEKNIK ELEKTRONIKA")
+
+
+if __name__ == "__main__":
+    unittest.main()
