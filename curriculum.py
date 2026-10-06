@@ -198,6 +198,61 @@ def _official_d3_cpmk(catalog: dict[str, Any], cohort: str) -> pd.DataFrame:
     return pd.DataFrame(rows)
 
 
+D3_WEIGHTED_COHORTS = {"D3-2024", "D3-2025", "D3-2026"}
+D3_ASSESSMENT_WEEKS = {2, 4, 6, 9, 10, 12, 14, 17}
+
+
+def _d3_cpmk_weights(catalog: dict[str, Any], cpmk: pd.DataFrame) -> dict[str, float]:
+    """Bobot CPMK (%) per MK D3 dari tabel BOBOT file nilai angkatan 2024/2025.
+
+    Bobot IK tiap CPMK dibagi jumlah bobot IK seluruh CPMK di MK yang sama,
+    sehingga total per MK 100. Kosong bila ada CPMK tanpa IK di tabel.
+    """
+    table = catalog.get("d3_ik_bobot", {})
+    raw: dict[str, float] = {}
+    for row in cpmk.to_dict("records"):
+        codes = re.findall(r"IK\s*0*(\d+)\.0*(\d+)", str(row.get("kode_ik", "")))
+        value = sum(table.get(f"IK{int(a)}.{int(b)}", 0.0) for a, b in codes)
+        if value <= 0:
+            return {}
+        code = str(row["kode_cpmk"])
+        raw[code] = raw.get(code, 0.0) + value
+    total = sum(raw.values())
+    if not total:
+        return {}
+    weights = {code: round(value / total * 100, 2) for code, value in raw.items()}
+    largest = max(weights, key=weights.get)
+    weights[largest] = round(weights[largest] + 100 - sum(weights.values()), 2)
+    return weights
+
+
+def _weighted_week_plan(weights: dict[str, float], weeks: int) -> dict[int, dict[str, Any]]:
+    """Bagi bobot CPMK ke minggu 2..akhir supaya jumlah per CPMK sama dengan bobotnya."""
+    codes = list(weights)
+    slots = weeks - 1
+    if not codes or len(codes) > slots:
+        return {}
+    spare = slots - len(codes)
+    quota = {code: weights[code] / 100 * spare for code in codes}
+    count = {code: 1 + int(quota[code]) for code in codes}
+    leftover = slots - sum(count.values())
+    for code in sorted(codes, key=lambda c: quota[c] - int(quota[c]), reverse=True)[:leftover]:
+        count[code] += 1
+    plan = {1: {"kode_cpmk": codes[0], "bobot": 0.0, "teknik_asesmen": ""}}
+    week = 2
+    for code in codes:
+        share = int(weights[code] / count[code] * 100) / 100
+        for index in range(count[code]):
+            last = index == count[code] - 1
+            weight = round(weights[code] - share * (count[code] - 1), 2) if last else share
+            technique = "" if week in D3_ASSESSMENT_WEEKS else "Tugas mingguan"
+            plan[week] = {"kode_cpmk": code, "bobot": weight, "teknik_asesmen": technique}
+            week += 1
+    if round(sum(item["bobot"] for item in plan.values()), 2) != 100:
+        return {}
+    return plan
+
+
 def _master_week_plan(
     base: dict[str, pd.DataFrame], source: dict[str, Any], cpmk: pd.DataFrame, weeks: int
 ) -> dict[int, dict[str, Any]]:
@@ -310,6 +365,10 @@ def build_cohort_workbook(
                 "kode_cpmk": "CPMK1", "deskripsi_cpmk": f"Mampu menerapkan kompetensi {target['nama_mk']}.",
                 "kode_ik": "", "kode_cpl": "",
             }])
+        d3_weights = _d3_cpmk_weights(catalog, cpmk) if key in D3_WEIGHTED_COHORTS else {}
+        if d3_weights:
+            cpmk = cpmk.copy()
+            cpmk["bobot_cpmk_mk_persen"] = cpmk["kode_cpmk"].astype(str).map(d3_weights)
         output["Master_CPMK"].append(cpmk)
         mapping = cpmk[["kode_mk", "id_penawaran", "kode_cpl"]].drop_duplicates()
         mapping = mapping[mapping["kode_cpl"].astype(str) != ""]
@@ -331,16 +390,21 @@ def build_cohort_workbook(
             source_refs = _course_rows(base["Referensi"], source_mk)
             references = source_refs.get("referensi", pd.Series(dtype=str)).astype(str).tolist()
             weekly = _replace_identity(_course_rows(base["RPS_Pertemuan"], source_mk), target)
+            d3_plan = _weighted_week_plan(d3_weights, 17) if d3_weights else {}
             if not official_d3.empty:
-                weekly = _weekly_rows(target, materials, cpmk, 17)
+                weekly = _weekly_rows(target, materials, cpmk, 17, d3_plan or None)
             elif not weekly.empty and key != "D3-2023":
                 codes = cpmk["kode_cpmk"].astype(str).tolist()
                 if codes:
                     weekly["kode_cpmk"] = [
                         codes[index % len(codes)] for index in range(len(weekly))
                     ]
+                if d3_plan and sorted(weekly["minggu"].astype(int)) == sorted(d3_plan):
+                    weeks = weekly["minggu"].astype(int)
+                    weekly["kode_cpmk"] = weeks.map(lambda week: d3_plan[week]["kode_cpmk"]).tolist()
+                    weekly["bobot"] = weeks.map(lambda week: d3_plan[week]["bobot"]).tolist()
             output["RPS_Pertemuan"].append(
-                weekly if not weekly.empty else _weekly_rows(target, materials, cpmk, 17)
+                weekly if not weekly.empty else _weekly_rows(target, materials, cpmk, 17, d3_plan or None)
             )
 
         output["Short_Silabus"].append(pd.DataFrame([{

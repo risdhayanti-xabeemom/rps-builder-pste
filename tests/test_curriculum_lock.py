@@ -74,5 +74,27 @@ class ProgramHeaderTests(unittest.TestCase):
         self.assertEqual(app.program_header_text("D3 Teknik Elektro"), "PROGRAM STUDI : D3 TEKNIK ELEKTRONIKA")
 
 
+class D3CpmkWeightTests(unittest.TestCase):
+    def test_d3_weights_follow_bobot_table(self):
+        for cohort in ("2024", "2025", "2026"):
+            workbook = app.load_program_workbook("D3 Teknik Elektro", cohort)
+            cpmk = workbook["Master_CPMK"]
+            weekly = workbook["RPS_Pertemuan"].copy()
+            weekly["bobot"] = weekly["bobot"].map(app.as_float)
+            sums = weekly.groupby(["kode_mk", "kode_cpmk"])["bobot"].sum()
+            for row in cpmk.to_dict("records"):
+                self.assertAlmostEqual(sums[(row["kode_mk"], row["kode_cpmk"])], row["bobot_cpmk_mk_persen"], places=2)
+            for total in weekly.groupby("kode_mk")["bobot"].sum():
+                self.assertAlmostEqual(total, 100, places=2)
+
+    def test_d3_2026_matches_2025(self):
+        def weights(cohort):
+            frame = app.load_program_workbook("D3 Teknik Elektro", cohort)["Master_CPMK"]
+            return [(row["kode_mk"][5:], row["kode_cpmk"], row["bobot_cpmk_mk_persen"]) for row in frame.to_dict("records")]
+        self.assertEqual(weights("2025"), weights("2026"))
+        fisika = [w for w in weights("2025") if w[0] == "1001"]
+        self.assertEqual(fisika, [("1001", "CPMK1.1", 52.17), ("1001", "CPMK1.2", 47.83)])
+
+
 if __name__ == "__main__":
     unittest.main()
