@@ -68,7 +68,7 @@ class MultiCurriculumTests(unittest.TestCase):
         ("D3 Teknik Elektro", "2024"): 36,
         ("D3 Teknik Elektro", "2025"): 35,
         ("D3 Teknik Elektro", "2026"): 35,
-        ("D4 Teknik Elektronika", "2023"): 57,
+        ("D4 Teknik Elektronika", "2023"): 56,
         ("D4 Teknik Elektronika", "2024"): 51,
         ("D4 Teknik Elektronika", "2025"): 51,
         ("D4 Teknik Elektronika", "2026"): 51,
@@ -87,21 +87,35 @@ class MultiCurriculumTests(unittest.TestCase):
                 self.assertEqual(workbook["Master_MK"]["kode_mk"].tolist(), expected_codes)
                 self.assertEqual(app.validate_workbook_schema(workbook), [])
 
-    def test_known_historical_code_exceptions_are_preserved(self):
+    def test_d4_2023_to_2025_codes_follow_data_detail_kd_mk(self):
         d4_2023 = app.load_program_workbook("D4 Teknik Elektronika", "2023")["Master_MK"]
         d4_2024 = app.load_program_workbook("D4 Teknik Elektronika", "2024")["Master_MK"]
+        d4_2025 = app.load_program_workbook("D4 Teknik Elektronika", "2025")["Master_MK"]
         self.assertEqual(
             d4_2023.loc[d4_2023["nama_mk"] == "Proyek Industri", "kode_mk"].iloc[0],
-            "RTE227011",
+            "RTE237009",
         )
         self.assertEqual(
             d4_2024.loc[d4_2024["nama_mk"] == "Proyek Akhir", "kode_mk"].iloc[0],
-            "RTE218001",
+            "RTE248001",
         )
         self.assertEqual(
-            d4_2024.loc[d4_2024["nama_mk"].str.lower() == "seminar hasil", "kode_mk"].iloc[0],
-            "RTE218002",
+            d4_2025.loc[d4_2025["nama_mk"] == "Proyek Kampus Merdeka", "kode_mk"].iloc[0],
+            "RTE2570010",
         )
+
+    def test_d4_cpmk_weights_follow_mk_count_per_cpmk(self):
+        catalog = load_catalog()
+        for cohort in ("2023", "2024", "2025", "2026"):
+            workbook = app.load_program_workbook("D4 Teknik Elektronika", cohort)
+            table = catalog["d4_cpmk_bobot"][f"D4-{cohort}"]
+            for course in workbook["Master_MK"].to_dict("records"):
+                with self.subTest(cohort=cohort, kode_mk=course["kode_mk"]):
+                    payload = app.build_course_payload(workbook, course["id_penawaran"])
+                    weekly = pd.DataFrame(payload["weekly"])
+                    self.assertAlmostEqual(weekly["bobot"].astype(float).sum(), 100, places=2)
+                    share = weekly.groupby("kode_cpmk")["bobot"].apply(lambda s: round(s.astype(float).sum(), 2))
+                    self.assertEqual(share.to_dict(), table[course["kode_mk"]]["bobot"])
 
     def test_d3_2023_uses_rec23_master_codes(self):
         workbook = app.load_program_workbook("D3 Teknik Elektro", "2023")
@@ -162,8 +176,8 @@ class MultiCurriculumTests(unittest.TestCase):
         )
         weekly = pd.DataFrame(payload["weekly"])
         self.assertEqual(weekly["bobot"].astype(float).sum(), 100)
-        share = weekly.groupby("kode_cpmk")["bobot"].apply(lambda s: s.astype(float).sum())
-        self.assertEqual(share.to_dict(), {"CPMK01.01": 26.0, "CPMK04.02": 49.0, "CPMK08.02": 25.0})
+        share = weekly.groupby("kode_cpmk")["bobot"].apply(lambda s: round(s.astype(float).sum(), 2))
+        self.assertEqual(share.to_dict(), {"CPMK01.01": 43.76, "CPMK04.02": 28.12, "CPMK08.02": 28.12})
 
     def test_d4_weekly_material_comes_from_corrected_syllabus(self):
         workbook = app.load_program_workbook("D4 Teknik Elektronika", "2026")
