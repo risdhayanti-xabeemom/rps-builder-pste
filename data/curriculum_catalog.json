@@ -6,7 +6,9 @@
     "D4_silabus": "Short Silabus Kurikulum D4 PSTE.pdf",
     "D4_CPL": "MK-CPL D4 TE (1).pdf",
     "D4_CPMK": "!CPL-CPMK-Matkul 2022.xlsx",
-    "D3_bobot": "Sheet BOBOT (kolom bobot IK) di 11_Nilai_Lengkap_Angkatan_2024_dan_Bobot.xlsx dan 12_Nilai_Lengkap_Angkatan_2025_dan_Bobot.xlsx; isinya sama. Dipakai untuk D3 angkatan 2024, 2025, dan 2026."
+    "D3_bobot": "Sheet BOBOT (kolom bobot IK) di 11_Nilai_Lengkap_Angkatan_2024_dan_Bobot.xlsx dan 12_Nilai_Lengkap_Angkatan_2025_dan_Bobot.xlsx; isinya sama. Dipakai untuk D3 angkatan 2024, 2025, dan 2026.",
+    "D4_bobot_cpmk": "Rencana Evaluasi D4 TE Angkatan 2023-2026 (Daftar MK): bobot CPMK per MK dari jumlah MK per CPMK tiap angkatan, cara sama dengan BOBOT D3 TE",
+    "D4_2023_2025_mk": "DATA DETAIL KD MK angkatan 2023, 2024, 2025"
   },
   "curricula": {
     "D3-2023": [
@@ -2122,323 +2124,323 @@
         "semester": 1,
         "kode_mk": "RTE231001",
         "nama_mk": "Fisika Dasar",
-        "course_name": "",
+        "course_name": "Basic Physics",
         "sks_teori": 2,
         "sks_praktek": 0,
         "total_sks": 2,
         "jam_teori_minggu": 2,
         "jam_praktik_minggu": 0,
         "total_jam_minggu": 2,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jenis_mk": "Teori",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2023"
       },
       {
         "semester": 1,
         "kode_mk": "RTE231002",
         "nama_mk": "Matematika 1",
-        "course_name": "",
+        "course_name": "Mathematics 1",
         "sks_teori": 2,
         "sks_praktek": 0,
         "total_sks": 2,
         "jam_teori_minggu": 2,
         "jam_praktik_minggu": 0,
         "total_jam_minggu": 2,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jenis_mk": "Teori",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2023"
       },
       {
         "semester": 1,
         "kode_mk": "RTE231003",
         "nama_mk": "Rangkaian Listrik 1",
-        "course_name": "",
+        "course_name": "Electrical Circuit 1",
         "sks_teori": 3,
         "sks_praktek": 0,
         "total_sks": 3,
         "jam_teori_minggu": 3,
         "jam_praktik_minggu": 0,
         "total_jam_minggu": 3,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jenis_mk": "Teori",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2023"
       },
       {
         "semester": 1,
         "kode_mk": "RTE231004",
         "nama_mk": "Praktikum Rangkaian Listrik 1",
-        "course_name": "",
+        "course_name": "Electrical Circuit Laboratory 1",
         "sks_teori": 0,
         "sks_praktek": 2,
         "total_sks": 2,
         "jam_teori_minggu": 0,
-        "jam_praktik_minggu": 6,
-        "total_jam_minggu": 6,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jam_praktik_minggu": 4,
+        "total_jam_minggu": 4,
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2023"
       },
       {
         "semester": 1,
         "kode_mk": "RTE231005",
         "nama_mk": "Praktek Bengkel Mekanik",
-        "course_name": "",
+        "course_name": "Mechanical Workshop Laboratory",
         "sks_teori": 0,
         "sks_praktek": 2,
         "total_sks": 2,
         "jam_teori_minggu": 0,
-        "jam_praktik_minggu": 6,
-        "total_jam_minggu": 6,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jam_praktik_minggu": 4,
+        "total_jam_minggu": 4,
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2023"
       },
       {
         "semester": 1,
         "kode_mk": "RTE231006",
         "nama_mk": "Algoritma dan Pemrograman",
-        "course_name": "",
+        "course_name": "Algorithm and Programming",
         "sks_teori": 0,
         "sks_praktek": 2,
         "total_sks": 2,
         "jam_teori_minggu": 0,
-        "jam_praktik_minggu": 6,
-        "total_jam_minggu": 6,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jam_praktik_minggu": 4,
+        "total_jam_minggu": 4,
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2023"
       },
       {
         "semester": 1,
         "kode_mk": "RTE231007",
         "nama_mk": "Komponen dan Pengukuran",
-        "course_name": "",
+        "course_name": "Components and Measurement",
         "sks_teori": 0,
         "sks_praktek": 2,
         "total_sks": 2,
         "jam_teori_minggu": 0,
-        "jam_praktik_minggu": 6,
-        "total_jam_minggu": 6,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jam_praktik_minggu": 4,
+        "total_jam_minggu": 4,
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2023"
       },
       {
         "semester": 1,
         "kode_mk": "RTE231008",
         "nama_mk": "Keselamatan dan Kesehatan Kerja (K3)",
-        "course_name": "",
+        "course_name": "Occupational Health and Safety and Labor Law",
         "sks_teori": 2,
         "sks_praktek": 0,
         "total_sks": 2,
         "jam_teori_minggu": 2,
         "jam_praktik_minggu": 0,
         "total_jam_minggu": 2,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jenis_mk": "Teori",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2023"
       },
       {
         "semester": 1,
         "kode_mk": "RTE231009",
         "nama_mk": "Gambar Teknik",
-        "course_name": "",
+        "course_name": "Electrical Engineering Drawing",
         "sks_teori": 2,
         "sks_praktek": 0,
         "total_sks": 2,
         "jam_teori_minggu": 2,
         "jam_praktik_minggu": 0,
         "total_jam_minggu": 2,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jenis_mk": "Teori",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2023"
       },
       {
         "semester": 1,
         "kode_mk": "RTE231010",
         "nama_mk": "Bahasa Indonesia",
-        "course_name": "",
+        "course_name": "Indonesian",
         "sks_teori": 2,
         "sks_praktek": 0,
         "total_sks": 2,
         "jam_teori_minggu": 2,
         "jam_praktik_minggu": 0,
         "total_jam_minggu": 2,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jenis_mk": "Teori",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2023"
       },
       {
         "semester": 1,
         "kode_mk": "RTE231011",
         "nama_mk": "Elektrokimia",
-        "course_name": "",
+        "course_name": "Electrochemistry",
         "sks_teori": 2,
         "sks_praktek": 0,
         "total_sks": 2,
         "jam_teori_minggu": 2,
         "jam_praktik_minggu": 0,
         "total_jam_minggu": 2,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jenis_mk": "Teori",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2023"
       },
       {
         "semester": 2,
         "kode_mk": "RTE232001",
         "nama_mk": "Matematika 2",
-        "course_name": "",
+        "course_name": "Mathematics 2",
         "sks_teori": 2,
         "sks_praktek": 0,
         "total_sks": 2,
         "jam_teori_minggu": 2,
         "jam_praktik_minggu": 0,
         "total_jam_minggu": 2,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jenis_mk": "Teori",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2023"
       },
       {
         "semester": 2,
         "kode_mk": "RTE232002",
         "nama_mk": "Rangkaian Listrik 2",
-        "course_name": "",
+        "course_name": "Electrical Circuit 2",
         "sks_teori": 2,
         "sks_praktek": 0,
         "total_sks": 2,
         "jam_teori_minggu": 2,
         "jam_praktik_minggu": 0,
         "total_jam_minggu": 2,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jenis_mk": "Teori",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2023"
       },
       {
         "semester": 2,
         "kode_mk": "RTE232003",
         "nama_mk": "Praktikum Rangkaian Listrik 2",
-        "course_name": "",
+        "course_name": "Electrics Circuit 2 Practicum",
         "sks_teori": 0,
         "sks_praktek": 2,
         "total_sks": 2,
         "jam_teori_minggu": 0,
-        "jam_praktik_minggu": 6,
-        "total_jam_minggu": 6,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jam_praktik_minggu": 4,
+        "total_jam_minggu": 4,
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2023"
       },
       {
         "semester": 2,
         "kode_mk": "RTE232004",
         "nama_mk": "Elektronika Analog 1",
-        "course_name": "",
+        "course_name": "Analog Electronics 1",
         "sks_teori": 3,
         "sks_praktek": 0,
         "total_sks": 3,
         "jam_teori_minggu": 3,
         "jam_praktik_minggu": 0,
         "total_jam_minggu": 3,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jenis_mk": "Teori",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2023"
       },
       {
         "semester": 2,
         "kode_mk": "RTE232005",
         "nama_mk": "Praktikum Elektronika Analog 1",
-        "course_name": "",
+        "course_name": "Analog Electronics 1 Practicum",
         "sks_teori": 0,
         "sks_praktek": 2,
         "total_sks": 2,
         "jam_teori_minggu": 0,
-        "jam_praktik_minggu": 6,
-        "total_jam_minggu": 6,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jam_praktik_minggu": 4,
+        "total_jam_minggu": 4,
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2023"
       },
       {
         "semester": 2,
         "kode_mk": "RTE232006",
         "nama_mk": "Praktek Bengkel Elektronika",
-        "course_name": "",
+        "course_name": "Electronic Workshop Practice",
         "sks_teori": 0,
         "sks_praktek": 2,
         "total_sks": 2,
         "jam_teori_minggu": 0,
-        "jam_praktik_minggu": 6,
-        "total_jam_minggu": 6,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jam_praktik_minggu": 4,
+        "total_jam_minggu": 4,
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2023"
       },
       {
         "semester": 2,
         "kode_mk": "RTE232007",
         "nama_mk": "Elektronika Digital 1",
-        "course_name": "",
+        "course_name": "Digital Electronics 1",
         "sks_teori": 2,
         "sks_praktek": 0,
         "total_sks": 2,
         "jam_teori_minggu": 2,
         "jam_praktik_minggu": 0,
         "total_jam_minggu": 2,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jenis_mk": "Teori",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2023"
       },
       {
         "semester": 2,
         "kode_mk": "RTE232008",
         "nama_mk": "Praktikum Elektronika Digital 1",
-        "course_name": "",
+        "course_name": "Digital Electronics 1 Practicum",
         "sks_teori": 0,
         "sks_praktek": 1,
         "total_sks": 1,
         "jam_teori_minggu": 0,
-        "jam_praktik_minggu": 3,
-        "total_jam_minggu": 3,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jam_praktik_minggu": 2,
+        "total_jam_minggu": 2,
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2023"
       },
       {
         "semester": 2,
         "kode_mk": "RTE232009",
         "nama_mk": "Sensor Aktuator",
-        "course_name": "",
+        "course_name": "Sensors Actuators",
         "sks_teori": 2,
         "sks_praktek": 0,
         "total_sks": 2,
         "jam_teori_minggu": 2,
         "jam_praktik_minggu": 0,
         "total_jam_minggu": 2,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jenis_mk": "Teori",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2023"
       },
       {
         "semester": 2,
         "kode_mk": "RTE232010",
         "nama_mk": "Praktikum Sensor Aktuator",
-        "course_name": "",
+        "course_name": "Sensors Actuators Practicum",
         "sks_teori": 0,
         "sks_praktek": 1,
         "total_sks": 1,
         "jam_teori_minggu": 0,
-        "jam_praktik_minggu": 3,
-        "total_jam_minggu": 3,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jam_praktik_minggu": 2,
+        "total_jam_minggu": 2,
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2023"
       },
       {
         "semester": 2,
         "kode_mk": "RTE232011",
         "nama_mk": "Pancasila",
-        "course_name": "",
+        "course_name": "Pancasila",
         "sks_teori": 2,
         "sks_praktek": 0,
         "total_sks": 2,
         "jam_teori_minggu": 2,
         "jam_praktik_minggu": 0,
         "total_jam_minggu": 2,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jenis_mk": "Teori",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2023"
       },
       {
         "semester": 2,
         "kode_mk": "RTE232012",
         "nama_mk": "Bahasa Inggris 1",
-        "course_name": "",
+        "course_name": "English 1",
         "sks_teori": 2,
         "sks_praktek": 0,
         "total_sks": 2,
         "jam_teori_minggu": 2,
         "jam_praktik_minggu": 0,
         "total_jam_minggu": 2,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jenis_mk": "Teori",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2023"
       },
       {
         "semester": 3,
@@ -2451,8 +2453,8 @@
         "jam_teori_minggu": 3,
         "jam_praktik_minggu": 0,
         "total_jam_minggu": 3,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jenis_mk": "Teori",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2023"
       },
       {
         "semester": 3,
@@ -2465,8 +2467,8 @@
         "jam_teori_minggu": 0,
         "jam_praktik_minggu": 4,
         "total_jam_minggu": 4,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2023"
       },
       {
         "semester": 3,
@@ -2479,8 +2481,8 @@
         "jam_teori_minggu": 2,
         "jam_praktik_minggu": 0,
         "total_jam_minggu": 2,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jenis_mk": "Teori",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2023"
       },
       {
         "semester": 3,
@@ -2493,22 +2495,22 @@
         "jam_teori_minggu": 3,
         "jam_praktik_minggu": 0,
         "total_jam_minggu": 3,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jenis_mk": "Teori",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2023"
       },
       {
         "semester": 3,
         "kode_mk": "RTE233005",
         "nama_mk": "Praktikum Elektronika Analog 2",
-        "course_name": "Analog Electronics Practicum 2",
+        "course_name": "Analog ElectronicsPracticum 2",
         "sks_teori": 0,
         "sks_praktek": 3,
         "total_sks": 3,
         "jam_teori_minggu": 0,
         "jam_praktik_minggu": 6,
         "total_jam_minggu": 6,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2023"
       },
       {
         "semester": 3,
@@ -2521,8 +2523,8 @@
         "jam_teori_minggu": 0,
         "jam_praktik_minggu": 6,
         "total_jam_minggu": 6,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2023"
       },
       {
         "semester": 3,
@@ -2535,8 +2537,8 @@
         "jam_teori_minggu": 2,
         "jam_praktik_minggu": 0,
         "total_jam_minggu": 2,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jenis_mk": "Teori",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2023"
       },
       {
         "semester": 3,
@@ -2549,8 +2551,8 @@
         "jam_teori_minggu": 0,
         "jam_praktik_minggu": 6,
         "total_jam_minggu": 6,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2023"
       },
       {
         "semester": 4,
@@ -2563,8 +2565,8 @@
         "jam_teori_minggu": 0,
         "jam_praktik_minggu": 4,
         "total_jam_minggu": 4,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2023"
       },
       {
         "semester": 4,
@@ -2577,8 +2579,8 @@
         "jam_teori_minggu": 0,
         "jam_praktik_minggu": 6,
         "total_jam_minggu": 6,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2023"
       },
       {
         "semester": 4,
@@ -2591,8 +2593,8 @@
         "jam_teori_minggu": 0,
         "jam_praktik_minggu": 6,
         "total_jam_minggu": 6,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2023"
       },
       {
         "semester": 4,
@@ -2605,8 +2607,8 @@
         "jam_teori_minggu": 0,
         "jam_praktik_minggu": 6,
         "total_jam_minggu": 6,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2023"
       },
       {
         "semester": 4,
@@ -2619,8 +2621,8 @@
         "jam_teori_minggu": 0,
         "jam_praktik_minggu": 6,
         "total_jam_minggu": 6,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2023"
       },
       {
         "semester": 4,
@@ -2633,8 +2635,8 @@
         "jam_teori_minggu": 0,
         "jam_praktik_minggu": 6,
         "total_jam_minggu": 6,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2023"
       },
       {
         "semester": 4,
@@ -2647,22 +2649,22 @@
         "jam_teori_minggu": 2,
         "jam_praktik_minggu": 0,
         "total_jam_minggu": 2,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jenis_mk": "Teori",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2023"
       },
       {
         "semester": 5,
         "kode_mk": "RTE235001",
         "nama_mk": "Agama",
-        "course_name": "",
+        "course_name": "Religion",
         "sks_teori": 2,
         "sks_praktek": 0,
         "total_sks": 2,
         "jam_teori_minggu": 2,
         "jam_praktik_minggu": 0,
         "total_jam_minggu": 2,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jenis_mk": "Teori",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2023"
       },
       {
         "semester": 5,
@@ -2675,8 +2677,8 @@
         "jam_teori_minggu": 0,
         "jam_praktik_minggu": 4,
         "total_jam_minggu": 4,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2023"
       },
       {
         "semester": 5,
@@ -2689,8 +2691,8 @@
         "jam_teori_minggu": 0,
         "jam_praktik_minggu": 8,
         "total_jam_minggu": 8,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2023"
       },
       {
         "semester": 5,
@@ -2703,8 +2705,8 @@
         "jam_teori_minggu": 0,
         "jam_praktik_minggu": 6,
         "total_jam_minggu": 6,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2023"
       },
       {
         "semester": 5,
@@ -2717,22 +2719,22 @@
         "jam_teori_minggu": 2,
         "jam_praktik_minggu": 0,
         "total_jam_minggu": 2,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jenis_mk": "Teori",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2023"
       },
       {
         "semester": 5,
         "kode_mk": "RTE235006",
         "nama_mk": "Sistem DCS dan SCADA",
-        "course_name": "DCSand SCADA Systems",
+        "course_name": "DCS and SCADA Systems",
         "sks_teori": 0,
         "sks_praktek": 3,
         "total_sks": 3,
         "jam_teori_minggu": 0,
         "jam_praktik_minggu": 6,
         "total_jam_minggu": 6,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2023"
       },
       {
         "semester": 5,
@@ -2745,8 +2747,8 @@
         "jam_teori_minggu": 0,
         "jam_praktik_minggu": 6,
         "total_jam_minggu": 6,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2023"
       },
       {
         "semester": 6,
@@ -2759,8 +2761,8 @@
         "jam_teori_minggu": 0,
         "jam_praktik_minggu": 40,
         "total_jam_minggu": 40,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2023"
       },
       {
         "semester": 7,
@@ -2773,8 +2775,8 @@
         "jam_teori_minggu": 2,
         "jam_praktik_minggu": 0,
         "total_jam_minggu": 2,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jenis_mk": "Teori",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2023"
       },
       {
         "semester": 7,
@@ -2787,8 +2789,8 @@
         "jam_teori_minggu": 0,
         "jam_praktik_minggu": 6,
         "total_jam_minggu": 6,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2023"
       },
       {
         "semester": 7,
@@ -2801,8 +2803,8 @@
         "jam_teori_minggu": 2,
         "jam_praktik_minggu": 0,
         "total_jam_minggu": 2,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jenis_mk": "Teori",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2023"
       },
       {
         "semester": 7,
@@ -2815,8 +2817,8 @@
         "jam_teori_minggu": 0,
         "jam_praktik_minggu": 6,
         "total_jam_minggu": 6,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2023"
       },
       {
         "semester": 7,
@@ -2829,12 +2831,12 @@
         "jam_teori_minggu": 0,
         "jam_praktik_minggu": 4,
         "total_jam_minggu": 4,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2023"
       },
       {
         "semester": 7,
-        "kode_mk": "RTE237106",
+        "kode_mk": "RTE237006",
         "nama_mk": "Robotika",
         "course_name": "Robotic",
         "sks_teori": 0,
@@ -2843,12 +2845,12 @@
         "jam_teori_minggu": 0,
         "jam_praktik_minggu": 6,
         "total_jam_minggu": 6,
-        "jenis_mk": "Pilihan",
-        "catatan": ""
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2023"
       },
       {
         "semester": 7,
-        "kode_mk": "RTE237107",
+        "kode_mk": "RTE237007",
         "nama_mk": "Machine Learning",
         "course_name": "Machine learning",
         "sks_teori": 0,
@@ -2857,12 +2859,12 @@
         "jam_teori_minggu": 0,
         "jam_praktik_minggu": 6,
         "total_jam_minggu": 6,
-        "jenis_mk": "Pilihan",
-        "catatan": ""
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2023"
       },
       {
         "semester": 7,
-        "kode_mk": "RTE237108",
+        "kode_mk": "RTE237008",
         "nama_mk": "Pengolahan Sinyal Multimedia",
         "course_name": "Multimedia Signal Processing",
         "sks_teori": 0,
@@ -2871,12 +2873,12 @@
         "jam_teori_minggu": 0,
         "jam_praktik_minggu": 6,
         "total_jam_minggu": 6,
-        "jenis_mk": "Pilihan",
-        "catatan": ""
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2023"
       },
       {
         "semester": 7,
-        "kode_mk": "RTE227011",
+        "kode_mk": "RTE237009",
         "nama_mk": "Proyek Industri",
         "course_name": "Industrial Project",
         "sks_teori": 0,
@@ -2885,36 +2887,22 @@
         "jam_teori_minggu": 0,
         "jam_praktik_minggu": 40,
         "total_jam_minggu": 40,
-        "jenis_mk": "Paket pilihan",
-        "catatan": ""
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2023"
       },
       {
         "semester": 8,
         "kode_mk": "RTE238001",
-        "nama_mk": "Proyek Akhir",
-        "course_name": "Final Project",
-        "sks_teori": 0,
-        "sks_praktek": 8,
-        "total_sks": 8,
-        "jam_teori_minggu": 0,
-        "jam_praktik_minggu": 16,
-        "total_jam_minggu": 16,
-        "jenis_mk": "Wajib",
-        "catatan": ""
-      },
-      {
-        "semester": 8,
-        "kode_mk": "RTE238002",
-        "nama_mk": "Seminar Hasil",
+        "nama_mk": "Skripsi",
         "course_name": "Final Report",
         "sks_teori": 0,
-        "sks_praktek": 2,
-        "total_sks": 2,
+        "sks_praktek": 10,
+        "total_sks": 10,
         "jam_teori_minggu": 0,
-        "jam_praktik_minggu": 4,
-        "total_jam_minggu": 4,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jam_praktik_minggu": 20,
+        "total_jam_minggu": 20,
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2023"
       }
     ],
     "D4-2024": [
@@ -2929,50 +2917,50 @@
         "jam_teori_minggu": 3,
         "jam_praktik_minggu": 0,
         "total_jam_minggu": 3,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jenis_mk": "Teori",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2024"
       },
       {
         "semester": 1,
         "kode_mk": "RTE241002",
-        "nama_mk": "Fisika elektronika 1",
-        "course_name": "Physics of electronics 1",
+        "nama_mk": "Fisika Elektronika 1",
+        "course_name": "Physics of Electronics 1",
         "sks_teori": 0,
         "sks_praktek": 3,
         "total_sks": 3,
         "jam_teori_minggu": 0,
         "jam_praktik_minggu": 6,
         "total_jam_minggu": 6,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2024"
       },
       {
         "semester": 1,
         "kode_mk": "RTE241003",
-        "nama_mk": "Metode Numerik dan pemrograman",
-        "course_name": "Numerical methods and programming",
+        "nama_mk": "Metode Numerik dan Pemrograman",
+        "course_name": "Numerical Methods and Programming",
         "sks_teori": 2,
         "sks_praktek": 0,
         "total_sks": 2,
         "jam_teori_minggu": 2,
         "jam_praktik_minggu": 0,
         "total_jam_minggu": 2,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jenis_mk": "Teori",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2024"
       },
       {
         "semester": 1,
         "kode_mk": "RTE241004",
-        "nama_mk": "Praktikum Metode Numerik dan pemrograman",
-        "course_name": "Numerical methods and programming Practicum",
+        "nama_mk": "Praktikum Metode Numerik dan Pemrograman",
+        "course_name": "Numerical Methods and Programming Practicum",
         "sks_teori": 0,
         "sks_praktek": 2,
         "total_sks": 2,
         "jam_teori_minggu": 0,
         "jam_praktik_minggu": 4,
         "total_jam_minggu": 4,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2024"
       },
       {
         "semester": 1,
@@ -2985,8 +2973,8 @@
         "jam_teori_minggu": 2,
         "jam_praktik_minggu": 0,
         "total_jam_minggu": 2,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jenis_mk": "Teori",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2024"
       },
       {
         "semester": 1,
@@ -2999,8 +2987,8 @@
         "jam_teori_minggu": 3,
         "jam_praktik_minggu": 0,
         "total_jam_minggu": 3,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jenis_mk": "Teori",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2024"
       },
       {
         "semester": 1,
@@ -3013,8 +3001,8 @@
         "jam_teori_minggu": 0,
         "jam_praktik_minggu": 4,
         "total_jam_minggu": 4,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2024"
       },
       {
         "semester": 1,
@@ -3027,8 +3015,8 @@
         "jam_teori_minggu": 0,
         "jam_praktik_minggu": 6,
         "total_jam_minggu": 6,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2024"
       },
       {
         "semester": 2,
@@ -3041,8 +3029,8 @@
         "jam_teori_minggu": 2,
         "jam_praktik_minggu": 0,
         "total_jam_minggu": 2,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jenis_mk": "Teori",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2024"
       },
       {
         "semester": 2,
@@ -3055,8 +3043,8 @@
         "jam_teori_minggu": 2,
         "jam_praktik_minggu": 0,
         "total_jam_minggu": 2,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jenis_mk": "Teori",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2024"
       },
       {
         "semester": 2,
@@ -3069,8 +3057,8 @@
         "jam_teori_minggu": 0,
         "jam_praktik_minggu": 8,
         "total_jam_minggu": 8,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2024"
       },
       {
         "semester": 2,
@@ -3083,8 +3071,8 @@
         "jam_teori_minggu": 0,
         "jam_praktik_minggu": 8,
         "total_jam_minggu": 8,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2024"
       },
       {
         "semester": 2,
@@ -3097,22 +3085,22 @@
         "jam_teori_minggu": 0,
         "jam_praktik_minggu": 6,
         "total_jam_minggu": 6,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2024"
       },
       {
         "semester": 2,
         "kode_mk": "RTE242006",
         "nama_mk": "Teknik Digital 1",
-        "course_name": "Digital Technique 1",
+        "course_name": "Digital Techniques 1",
         "sks_teori": 0,
         "sks_praktek": 3,
         "total_sks": 3,
         "jam_teori_minggu": 0,
         "jam_praktik_minggu": 6,
         "total_jam_minggu": 6,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2024"
       },
       {
         "semester": 2,
@@ -3125,8 +3113,8 @@
         "jam_teori_minggu": 2,
         "jam_praktik_minggu": 0,
         "total_jam_minggu": 2,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jenis_mk": "Teori",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2024"
       },
       {
         "semester": 3,
@@ -3139,8 +3127,8 @@
         "jam_teori_minggu": 3,
         "jam_praktik_minggu": 0,
         "total_jam_minggu": 3,
-        "jenis_mk": "Wajib",
-        "catatan": "Matematika Diskrit/Discrete Mathematics"
+        "jenis_mk": "Teori",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2024"
       },
       {
         "semester": 3,
@@ -3153,8 +3141,8 @@
         "jam_teori_minggu": 0,
         "jam_praktik_minggu": 8,
         "total_jam_minggu": 8,
-        "jenis_mk": "Wajib",
-        "catatan": "Elektronika Analog 2/Analog Electronics 2"
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2024"
       },
       {
         "semester": 3,
@@ -3167,8 +3155,8 @@
         "jam_teori_minggu": 0,
         "jam_praktik_minggu": 6,
         "total_jam_minggu": 6,
-        "jenis_mk": "Wajib",
-        "catatan": "Elektronika Digital/Digital Electronics"
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2024"
       },
       {
         "semester": 3,
@@ -3181,8 +3169,8 @@
         "jam_teori_minggu": 2,
         "jam_praktik_minggu": 0,
         "total_jam_minggu": 2,
-        "jenis_mk": "Wajib",
-        "catatan": "Bahasa Indonesia/Bahasa Indonesia"
+        "jenis_mk": "Teori",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2024"
       },
       {
         "semester": 3,
@@ -3195,8 +3183,8 @@
         "jam_teori_minggu": 0,
         "jam_praktik_minggu": 6,
         "total_jam_minggu": 6,
-        "jenis_mk": "Wajib",
-        "catatan": "Sistem Mikrokontroler /Microcontroller System"
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2024"
       },
       {
         "semester": 3,
@@ -3209,8 +3197,8 @@
         "jam_teori_minggu": 0,
         "jam_praktik_minggu": 6,
         "total_jam_minggu": 6,
-        "jenis_mk": "Wajib",
-        "catatan": "Sensor Aktuator/Actuator Sensor"
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2024"
       },
       {
         "semester": 3,
@@ -3223,8 +3211,8 @@
         "jam_teori_minggu": 2,
         "jam_praktik_minggu": 0,
         "total_jam_minggu": 2,
-        "jenis_mk": "Wajib",
-        "catatan": "Agama/Religion"
+        "jenis_mk": "Teori",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2024"
       },
       {
         "semester": 3,
@@ -3237,8 +3225,8 @@
         "jam_teori_minggu": 2,
         "jam_praktik_minggu": 0,
         "total_jam_minggu": 2,
-        "jenis_mk": "Wajib",
-        "catatan": "Fisika Terapan/ Applied Physics"
+        "jenis_mk": "Teori",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2024"
       },
       {
         "semester": 3,
@@ -3251,8 +3239,8 @@
         "jam_teori_minggu": 2,
         "jam_praktik_minggu": 0,
         "total_jam_minggu": 2,
-        "jenis_mk": "Wajib",
-        "catatan": "Pancasila/Pancasila"
+        "jenis_mk": "Teori",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2024"
       },
       {
         "semester": 4,
@@ -3265,8 +3253,8 @@
         "jam_teori_minggu": 2,
         "jam_praktik_minggu": 0,
         "total_jam_minggu": 2,
-        "jenis_mk": "Wajib",
-        "catatan": "Kewarganegaraan/Civics"
+        "jenis_mk": "Teori",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2024"
       },
       {
         "semester": 4,
@@ -3279,8 +3267,8 @@
         "jam_teori_minggu": 0,
         "jam_praktik_minggu": 4,
         "total_jam_minggu": 4,
-        "jenis_mk": "Wajib",
-        "catatan": "Mesin-mesin Listrik/Electric Machines"
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2024"
       },
       {
         "semester": 4,
@@ -3293,8 +3281,8 @@
         "jam_teori_minggu": 0,
         "jam_praktik_minggu": 6,
         "total_jam_minggu": 6,
-        "jenis_mk": "Wajib",
-        "catatan": "Teknologi Mikrokontroler/Microcontroller Technology"
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2024"
       },
       {
         "semester": 4,
@@ -3307,8 +3295,8 @@
         "jam_teori_minggu": 0,
         "jam_praktik_minggu": 6,
         "total_jam_minggu": 6,
-        "jenis_mk": "Wajib",
-        "catatan": "Instrumentasi Industri/Industrial Instrumentation"
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2024"
       },
       {
         "semester": 4,
@@ -3321,8 +3309,8 @@
         "jam_teori_minggu": 0,
         "jam_praktik_minggu": 6,
         "total_jam_minggu": 6,
-        "jenis_mk": "Wajib",
-        "catatan": "Sistem Kendali Cerdas / Intelligent Control Sistem"
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2024"
       },
       {
         "semester": 4,
@@ -3335,8 +3323,8 @@
         "jam_teori_minggu": 0,
         "jam_praktik_minggu": 6,
         "total_jam_minggu": 6,
-        "jenis_mk": "Wajib",
-        "catatan": "Programmable Logic Controller (PLC)/Programmable Logic Controller (PLC)"
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2024"
       },
       {
         "semester": 4,
@@ -3349,8 +3337,8 @@
         "jam_teori_minggu": 0,
         "jam_praktik_minggu": 6,
         "total_jam_minggu": 6,
-        "jenis_mk": "Wajib",
-        "catatan": "Sistem Kendali Kontinyu/Continous Control System"
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2024"
       },
       {
         "semester": 5,
@@ -3363,8 +3351,8 @@
         "jam_teori_minggu": 0,
         "jam_praktik_minggu": 6,
         "total_jam_minggu": 6,
-        "jenis_mk": "Wajib",
-        "catatan": "Sistem Kendali Diskrit/ Discrete Control System"
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2024"
       },
       {
         "semester": 5,
@@ -3377,8 +3365,8 @@
         "jam_teori_minggu": 0,
         "jam_praktik_minggu": 8,
         "total_jam_minggu": 8,
-        "jenis_mk": "Wajib",
-        "catatan": "Elektronika Industri/Industrial Electronics"
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2024"
       },
       {
         "semester": 5,
@@ -3391,8 +3379,8 @@
         "jam_teori_minggu": 0,
         "jam_praktik_minggu": 6,
         "total_jam_minggu": 6,
-        "jenis_mk": "Wajib",
-        "catatan": "Sistem Embedded/Embedded System"
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2024"
       },
       {
         "semester": 5,
@@ -3405,22 +3393,22 @@
         "jam_teori_minggu": 2,
         "jam_praktik_minggu": 0,
         "total_jam_minggu": 2,
-        "jenis_mk": "Wajib",
-        "catatan": "Technopreneurship/Technopreneurship"
+        "jenis_mk": "Teori",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2024"
       },
       {
         "semester": 5,
         "kode_mk": "RTE245005",
         "nama_mk": "Sistem DCS dan SCADA",
-        "course_name": "DCSand SCADA Systems",
+        "course_name": "DCS and SCADA Systems",
         "sks_teori": 0,
         "sks_praktek": 3,
         "total_sks": 3,
         "jam_teori_minggu": 0,
         "jam_praktik_minggu": 6,
         "total_jam_minggu": 6,
-        "jenis_mk": "Wajib",
-        "catatan": "Sistem DCS dan SCADA/DCSand SCADA Systems"
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2024"
       },
       {
         "semester": 5,
@@ -3430,11 +3418,11 @@
         "sks_teori": 0,
         "sks_praktek": 3,
         "total_sks": 3,
-        "jam_teori_minggu": NaN,
-        "jam_praktik_minggu": NaN,
-        "total_jam_minggu": NaN,
-        "jenis_mk": "Wajib",
-        "catatan": "Kendali Pneumatik dan Hidrolik/Pneumatic and Hydraulic Controls"
+        "jam_teori_minggu": 0,
+        "jam_praktik_minggu": 6,
+        "total_jam_minggu": 6,
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2024"
       },
       {
         "semester": 5,
@@ -3447,68 +3435,26 @@
         "jam_teori_minggu": 2,
         "jam_praktik_minggu": 0,
         "total_jam_minggu": 2,
-        "jenis_mk": "Wajib",
-        "catatan": "Bahasa Inggris Teknik / English for Engineer"
+        "jenis_mk": "Teori",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2024"
       },
       {
         "semester": 6,
         "kode_mk": "RTE246001",
-        "nama_mk": "Magang Industri",
-        "course_name": "Industrial Internship",
-        "sks_teori": 0,
-        "sks_praktek": 20,
-        "total_sks": 20,
-        "jam_teori_minggu": 0,
-        "jam_praktik_minggu": 40,
-        "total_jam_minggu": 40,
-        "jenis_mk": "Wajib",
-        "catatan": ""
-      },
-      {
-        "semester": 7,
-        "kode_mk": "RTE247001",
-        "nama_mk": "Karya Tulis Ilmiah",
-        "course_name": "Scientific Writing",
+        "nama_mk": "Bahasa Inggris 2",
+        "course_name": "English 2",
         "sks_teori": 2,
         "sks_praktek": 0,
         "total_sks": 2,
         "jam_teori_minggu": 2,
         "jam_praktik_minggu": 0,
         "total_jam_minggu": 2,
-        "jenis_mk": "Reguler",
-        "catatan": "Karya Tulis Ilmiah/ Scientific Writing"
+        "jenis_mk": "Teori",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2024"
       },
       {
-        "semester": 7,
-        "kode_mk": "RTE247002",
-        "nama_mk": "Perawatan Perbaikan",
-        "course_name": "Maintenance and Repair",
-        "sks_teori": 0,
-        "sks_praktek": 3,
-        "total_sks": 3,
-        "jam_teori_minggu": 0,
-        "jam_praktik_minggu": 6,
-        "total_jam_minggu": 6,
-        "jenis_mk": "Reguler",
-        "catatan": "Perawatan Perbaikan/ Maintenance and Repair"
-      },
-      {
-        "semester": 7,
-        "kode_mk": "RTE247003",
-        "nama_mk": "Bahasa Inggris untuk Komunikasi",
-        "course_name": "English for Communication",
-        "sks_teori": 2,
-        "sks_praktek": 0,
-        "total_sks": 2,
-        "jam_teori_minggu": 2,
-        "jam_praktik_minggu": 0,
-        "total_jam_minggu": 2,
-        "jenis_mk": "Reguler",
-        "catatan": "Bahasa Inggris untuk Komunikasi/ English for Communication"
-      },
-      {
-        "semester": 7,
-        "kode_mk": "RTE247004",
+        "semester": 6,
+        "kode_mk": "RTE246002",
         "nama_mk": "Quality Management System",
         "course_name": "Quality Management System",
         "sks_teori": 2,
@@ -3517,12 +3463,82 @@
         "jam_teori_minggu": 2,
         "jam_praktik_minggu": 0,
         "total_jam_minggu": 2,
-        "jenis_mk": "Reguler",
-        "catatan": "Quality Management System/Quality Management System"
+        "jenis_mk": "Teori",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2024"
       },
       {
-        "semester": 7,
-        "kode_mk": "RTE247005",
+        "semester": 6,
+        "kode_mk": "RTE246003",
+        "nama_mk": "Sistem Kendali 2",
+        "course_name": "Control System 2",
+        "sks_teori": 2,
+        "sks_praktek": 0,
+        "total_sks": 2,
+        "jam_teori_minggu": 2,
+        "jam_praktik_minggu": 0,
+        "total_jam_minggu": 2,
+        "jenis_mk": "Teori",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2024"
+      },
+      {
+        "semester": 6,
+        "kode_mk": "RTE246004",
+        "nama_mk": "Praktikum Sistem Kendali 2",
+        "course_name": "Control System Practicum 2",
+        "sks_teori": 0,
+        "sks_praktek": 2,
+        "total_sks": 2,
+        "jam_teori_minggu": 0,
+        "jam_praktik_minggu": 4,
+        "total_jam_minggu": 4,
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2024"
+      },
+      {
+        "semester": 6,
+        "kode_mk": "RTE246005",
+        "nama_mk": "Sistem Penggerak Elektrik",
+        "course_name": "Electric Drive System",
+        "sks_teori": 0,
+        "sks_praktek": 3,
+        "total_sks": 3,
+        "jam_teori_minggu": 0,
+        "jam_praktik_minggu": 6,
+        "total_jam_minggu": 6,
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2024"
+      },
+      {
+        "semester": 6,
+        "kode_mk": "RTE246006",
+        "nama_mk": "Sistem Kendali Cerdas",
+        "course_name": "Intelligent Control System",
+        "sks_teori": 0,
+        "sks_praktek": 3,
+        "total_sks": 3,
+        "jam_teori_minggu": 0,
+        "jam_praktik_minggu": 6,
+        "total_jam_minggu": 6,
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2024"
+      },
+      {
+        "semester": 6,
+        "kode_mk": "RTE246007",
+        "nama_mk": "Sistem Kendali Proses",
+        "course_name": "Process Control System",
+        "sks_teori": 0,
+        "sks_praktek": 3,
+        "total_sks": 3,
+        "jam_teori_minggu": 0,
+        "jam_praktik_minggu": 6,
+        "total_jam_minggu": 6,
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2024"
+      },
+      {
+        "semester": 6,
+        "kode_mk": "RTE246008",
         "nama_mk": "Desain Proyek",
         "course_name": "Project Design",
         "sks_teori": 0,
@@ -3531,106 +3547,78 @@
         "jam_teori_minggu": 0,
         "jam_praktik_minggu": 6,
         "total_jam_minggu": 6,
-        "jenis_mk": "Reguler",
-        "catatan": "Desain Proyek/Project Design"
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2024"
       },
       {
         "semester": 7,
-        "kode_mk": "RTE247006",
-        "nama_mk": "Sistem Kendali Proses",
-        "course_name": "Process Control System",
-        "sks_teori": 0,
-        "sks_praktek": 2,
-        "total_sks": 2,
-        "jam_teori_minggu": 0,
-        "jam_praktik_minggu": 4,
-        "total_jam_minggu": 4,
-        "jenis_mk": "Reguler",
-        "catatan": "Sistem Kendali Proses/Process Control System"
-      },
-      {
-        "semester": 7,
-        "kode_mk": "RTE247007",
-        "nama_mk": "Robotika",
-        "course_name": "Robotic",
-        "sks_teori": 0,
-        "sks_praktek": 3,
-        "total_sks": 3,
-        "jam_teori_minggu": 0,
-        "jam_praktik_minggu": 6,
-        "total_jam_minggu": 6,
-        "jenis_mk": "Pilihan",
-        "catatan": "Robotika/Robotic"
-      },
-      {
-        "semester": 7,
-        "kode_mk": "RTE247008",
-        "nama_mk": "Machine Learning",
-        "course_name": "Machine learning",
-        "sks_teori": 0,
-        "sks_praktek": 3,
-        "total_sks": 3,
-        "jam_teori_minggu": 0,
-        "jam_praktik_minggu": 6,
-        "total_jam_minggu": 6,
-        "jenis_mk": "pilihan",
-        "catatan": "Machine Learning/Machine learning"
-      },
-      {
-        "semester": 7,
-        "kode_mk": "RTE247009",
-        "nama_mk": "Pengolahan Sinyal Multimedia",
-        "course_name": "Multimedia Signal Processing",
-        "sks_teori": 0,
-        "sks_praktek": 3,
-        "total_sks": 3,
-        "jam_teori_minggu": 0,
-        "jam_praktik_minggu": 6,
-        "total_jam_minggu": 6,
-        "jenis_mk": "pilihan",
-        "catatan": "Pengolahan Sinyal Multimedia/Multimedia Signal Processing"
-      },
-      {
-        "semester": 7,
-        "kode_mk": "RTE247010",
-        "nama_mk": "Proyek Industri",
-        "course_name": "Industrial Project",
+        "kode_mk": "RTE247001",
+        "nama_mk": "Kerja Praktek",
+        "course_name": "Industrial Internship",
         "sks_teori": 0,
         "sks_praktek": 20,
         "total_sks": 20,
         "jam_teori_minggu": 0,
         "jam_praktik_minggu": 40,
         "total_jam_minggu": 40,
-        "jenis_mk": "Pilihan paket",
-        "catatan": ""
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2024"
       },
       {
         "semester": 8,
-        "kode_mk": "RTE218001",
+        "kode_mk": "RTE248001",
         "nama_mk": "Proyek Akhir",
         "course_name": "Final Project",
         "sks_teori": 0,
-        "sks_praktek": 8,
-        "total_sks": 8,
+        "sks_praktek": 7,
+        "total_sks": 7,
         "jam_teori_minggu": 0,
-        "jam_praktik_minggu": 16,
-        "total_jam_minggu": 16,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jam_praktik_minggu": 14,
+        "total_jam_minggu": 14,
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2024"
       },
       {
         "semester": 8,
-        "kode_mk": "RTE218002",
-        "nama_mk": "seminar Hasil",
-        "course_name": "",
+        "kode_mk": "RTE248002",
+        "nama_mk": "Robotika",
+        "course_name": "Robotic",
         "sks_teori": 0,
         "sks_praktek": 2,
         "total_sks": 2,
         "jam_teori_minggu": 0,
         "jam_praktik_minggu": 4,
         "total_jam_minggu": 4,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2024"
+      },
+      {
+        "semester": 8,
+        "kode_mk": "RTE248003",
+        "nama_mk": "Sistem Kendali Cerdas Lanjut",
+        "course_name": "Advanced Intelligent Control System",
+        "sks_teori": 0,
+        "sks_praktek": 2,
+        "total_sks": 2,
+        "jam_teori_minggu": 0,
+        "jam_praktik_minggu": 4,
+        "total_jam_minggu": 4,
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2024"
+      },
+      {
+        "semester": 8,
+        "kode_mk": "RTE248004",
+        "nama_mk": "Rekayasa Sinyal Multimedia",
+        "course_name": "Multimedia Signal Engineering",
+        "sks_teori": 0,
+        "sks_praktek": 2,
+        "total_sks": 2,
+        "jam_teori_minggu": 0,
+        "jam_praktik_minggu": 4,
+        "total_jam_minggu": 4,
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2024"
       }
     ],
     "D4-2025": [
@@ -3645,22 +3633,22 @@
         "jam_teori_minggu": 3,
         "jam_praktik_minggu": 0,
         "total_jam_minggu": 3,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jenis_mk": "Teori",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2025"
       },
       {
         "semester": 1,
         "kode_mk": "RTE251002",
         "nama_mk": "Fisika",
         "course_name": "Physics",
-        "sks_teori": 2,
-        "sks_praktek": 0,
+        "sks_teori": 0,
+        "sks_praktek": 2,
         "total_sks": 2,
-        "jam_teori_minggu": 2,
-        "jam_praktik_minggu": 0,
-        "total_jam_minggu": 2,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jam_teori_minggu": 0,
+        "jam_praktik_minggu": 4,
+        "total_jam_minggu": 4,
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2025"
       },
       {
         "semester": 1,
@@ -3673,22 +3661,22 @@
         "jam_teori_minggu": 0,
         "jam_praktik_minggu": 4,
         "total_jam_minggu": 4,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2025"
       },
       {
         "semester": 1,
         "kode_mk": "RTE251004",
-        "nama_mk": "Keselamatan dan Kesehatan Kerja Lingkungan",
-        "course_name": "Occupational Safety and Healthy Environment",
+        "nama_mk": "Keselamatan Kesehatan Kerja dan Lingkungan",
+        "course_name": "Occupational Safety Healthy and Environment",
         "sks_teori": 2,
         "sks_praktek": 0,
         "total_sks": 2,
         "jam_teori_minggu": 2,
         "jam_praktik_minggu": 0,
         "total_jam_minggu": 2,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jenis_mk": "Teori",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2025"
       },
       {
         "semester": 1,
@@ -3701,8 +3689,8 @@
         "jam_teori_minggu": 0,
         "jam_praktik_minggu": 8,
         "total_jam_minggu": 8,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2025"
       },
       {
         "semester": 1,
@@ -3715,8 +3703,8 @@
         "jam_teori_minggu": 0,
         "jam_praktik_minggu": 6,
         "total_jam_minggu": 6,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2025"
       },
       {
         "semester": 1,
@@ -3729,8 +3717,8 @@
         "jam_teori_minggu": 0,
         "jam_praktik_minggu": 4,
         "total_jam_minggu": 4,
-        "jenis_mk": "Wajib",
-        "catatan": "gambar teknik, gambar instalasi, P&ID"
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2025"
       },
       {
         "semester": 1,
@@ -3743,8 +3731,8 @@
         "jam_teori_minggu": 0,
         "jam_praktik_minggu": 4,
         "total_jam_minggu": 4,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2025"
       },
       {
         "semester": 2,
@@ -3757,8 +3745,8 @@
         "jam_teori_minggu": 2,
         "jam_praktik_minggu": 0,
         "total_jam_minggu": 2,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jenis_mk": "Teori",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2025"
       },
       {
         "semester": 2,
@@ -3771,8 +3759,8 @@
         "jam_teori_minggu": 2,
         "jam_praktik_minggu": 0,
         "total_jam_minggu": 2,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jenis_mk": "Teori",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2025"
       },
       {
         "semester": 2,
@@ -3785,8 +3773,8 @@
         "jam_teori_minggu": 0,
         "jam_praktik_minggu": 8,
         "total_jam_minggu": 8,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2025"
       },
       {
         "semester": 2,
@@ -3799,8 +3787,8 @@
         "jam_teori_minggu": 0,
         "jam_praktik_minggu": 8,
         "total_jam_minggu": 8,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2025"
       },
       {
         "semester": 2,
@@ -3813,8 +3801,8 @@
         "jam_teori_minggu": 0,
         "jam_praktik_minggu": 6,
         "total_jam_minggu": 6,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2025"
       },
       {
         "semester": 2,
@@ -3827,8 +3815,8 @@
         "jam_teori_minggu": 0,
         "jam_praktik_minggu": 6,
         "total_jam_minggu": 6,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2025"
       },
       {
         "semester": 2,
@@ -3841,8 +3829,8 @@
         "jam_teori_minggu": 2,
         "jam_praktik_minggu": 0,
         "total_jam_minggu": 2,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jenis_mk": "Teori",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2025"
       },
       {
         "semester": 3,
@@ -3855,8 +3843,8 @@
         "jam_teori_minggu": 3,
         "jam_praktik_minggu": 0,
         "total_jam_minggu": 3,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jenis_mk": "Teori",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2025"
       },
       {
         "semester": 3,
@@ -3869,8 +3857,8 @@
         "jam_teori_minggu": 0,
         "jam_praktik_minggu": 8,
         "total_jam_minggu": 8,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2025"
       },
       {
         "semester": 3,
@@ -3883,8 +3871,8 @@
         "jam_teori_minggu": 0,
         "jam_praktik_minggu": 6,
         "total_jam_minggu": 6,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2025"
       },
       {
         "semester": 3,
@@ -3897,8 +3885,8 @@
         "jam_teori_minggu": 2,
         "jam_praktik_minggu": 0,
         "total_jam_minggu": 2,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jenis_mk": "Teori",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2025"
       },
       {
         "semester": 3,
@@ -3911,8 +3899,8 @@
         "jam_teori_minggu": 0,
         "jam_praktik_minggu": 6,
         "total_jam_minggu": 6,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2025"
       },
       {
         "semester": 3,
@@ -3925,8 +3913,8 @@
         "jam_teori_minggu": 0,
         "jam_praktik_minggu": 6,
         "total_jam_minggu": 6,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2025"
       },
       {
         "semester": 3,
@@ -3939,8 +3927,8 @@
         "jam_teori_minggu": 2,
         "jam_praktik_minggu": 0,
         "total_jam_minggu": 2,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jenis_mk": "Teori",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2025"
       },
       {
         "semester": 3,
@@ -3953,8 +3941,8 @@
         "jam_teori_minggu": 2,
         "jam_praktik_minggu": 0,
         "total_jam_minggu": 2,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jenis_mk": "Teori",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2025"
       },
       {
         "semester": 3,
@@ -3967,8 +3955,8 @@
         "jam_teori_minggu": 2,
         "jam_praktik_minggu": 0,
         "total_jam_minggu": 2,
-        "jenis_mk": "Wajib",
-        "catatan": "fisika mekanika dll === prof budhy"
+        "jenis_mk": "Teori",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2025"
       },
       {
         "semester": 4,
@@ -3981,8 +3969,8 @@
         "jam_teori_minggu": 2,
         "jam_praktik_minggu": 0,
         "total_jam_minggu": 2,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jenis_mk": "Teori",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2025"
       },
       {
         "semester": 4,
@@ -3995,8 +3983,8 @@
         "jam_teori_minggu": 0,
         "jam_praktik_minggu": 4,
         "total_jam_minggu": 4,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2025"
       },
       {
         "semester": 4,
@@ -4009,8 +3997,8 @@
         "jam_teori_minggu": 0,
         "jam_praktik_minggu": 6,
         "total_jam_minggu": 6,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2025"
       },
       {
         "semester": 4,
@@ -4023,8 +4011,8 @@
         "jam_teori_minggu": 0,
         "jam_praktik_minggu": 6,
         "total_jam_minggu": 6,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2025"
       },
       {
         "semester": 4,
@@ -4037,8 +4025,8 @@
         "jam_teori_minggu": 0,
         "jam_praktik_minggu": 6,
         "total_jam_minggu": 6,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2025"
       },
       {
         "semester": 4,
@@ -4051,8 +4039,8 @@
         "jam_teori_minggu": 0,
         "jam_praktik_minggu": 6,
         "total_jam_minggu": 6,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2025"
       },
       {
         "semester": 4,
@@ -4065,8 +4053,8 @@
         "jam_teori_minggu": 0,
         "jam_praktik_minggu": 6,
         "total_jam_minggu": 6,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2025"
       },
       {
         "semester": 5,
@@ -4079,8 +4067,8 @@
         "jam_teori_minggu": 0,
         "jam_praktik_minggu": 6,
         "total_jam_minggu": 6,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2025"
       },
       {
         "semester": 5,
@@ -4093,8 +4081,8 @@
         "jam_teori_minggu": 0,
         "jam_praktik_minggu": 8,
         "total_jam_minggu": 8,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2025"
       },
       {
         "semester": 5,
@@ -4107,8 +4095,8 @@
         "jam_teori_minggu": 0,
         "jam_praktik_minggu": 6,
         "total_jam_minggu": 6,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2025"
       },
       {
         "semester": 5,
@@ -4121,8 +4109,8 @@
         "jam_teori_minggu": 2,
         "jam_praktik_minggu": 0,
         "total_jam_minggu": 2,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jenis_mk": "Teori",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2025"
       },
       {
         "semester": 5,
@@ -4135,8 +4123,8 @@
         "jam_teori_minggu": 0,
         "jam_praktik_minggu": 6,
         "total_jam_minggu": 6,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2025"
       },
       {
         "semester": 5,
@@ -4146,11 +4134,11 @@
         "sks_teori": 0,
         "sks_praktek": 3,
         "total_sks": 3,
-        "jam_teori_minggu": NaN,
-        "jam_praktik_minggu": NaN,
-        "total_jam_minggu": NaN,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jam_teori_minggu": 0,
+        "jam_praktik_minggu": 6,
+        "total_jam_minggu": 6,
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2025"
       },
       {
         "semester": 5,
@@ -4163,8 +4151,8 @@
         "jam_teori_minggu": 2,
         "jam_praktik_minggu": 0,
         "total_jam_minggu": 2,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jenis_mk": "Teori",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2025"
       },
       {
         "semester": 6,
@@ -4177,8 +4165,8 @@
         "jam_teori_minggu": 0,
         "jam_praktik_minggu": 40,
         "total_jam_minggu": 40,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2025"
       },
       {
         "semester": 7,
@@ -4191,8 +4179,22 @@
         "jam_teori_minggu": 2,
         "jam_praktik_minggu": 0,
         "total_jam_minggu": 2,
-        "jenis_mk": "Reguler",
-        "catatan": ""
+        "jenis_mk": "Teori",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2025"
+      },
+      {
+        "semester": 7,
+        "kode_mk": "RTE2570010",
+        "nama_mk": "Proyek Kampus Merdeka",
+        "course_name": "Merdeka Belajar Campus Project",
+        "sks_teori": 0,
+        "sks_praktek": 20,
+        "total_sks": 20,
+        "jam_teori_minggu": 0,
+        "jam_praktik_minggu": 40,
+        "total_jam_minggu": 40,
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2025"
       },
       {
         "semester": 7,
@@ -4205,8 +4207,8 @@
         "jam_teori_minggu": 0,
         "jam_praktik_minggu": 6,
         "total_jam_minggu": 6,
-        "jenis_mk": "Reguler",
-        "catatan": ""
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2025"
       },
       {
         "semester": 7,
@@ -4219,8 +4221,8 @@
         "jam_teori_minggu": 2,
         "jam_praktik_minggu": 0,
         "total_jam_minggu": 2,
-        "jenis_mk": "Reguler",
-        "catatan": ""
+        "jenis_mk": "Teori",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2025"
       },
       {
         "semester": 7,
@@ -4233,8 +4235,8 @@
         "jam_teori_minggu": 2,
         "jam_praktik_minggu": 0,
         "total_jam_minggu": 2,
-        "jenis_mk": "Reguler",
-        "catatan": ""
+        "jenis_mk": "Teori",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2025"
       },
       {
         "semester": 7,
@@ -4247,8 +4249,8 @@
         "jam_teori_minggu": 0,
         "jam_praktik_minggu": 6,
         "total_jam_minggu": 6,
-        "jenis_mk": "Reguler",
-        "catatan": ""
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2025"
       },
       {
         "semester": 7,
@@ -4261,8 +4263,8 @@
         "jam_teori_minggu": 0,
         "jam_praktik_minggu": 4,
         "total_jam_minggu": 4,
-        "jenis_mk": "Reguler",
-        "catatan": ""
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2025"
       },
       {
         "semester": 7,
@@ -4275,8 +4277,8 @@
         "jam_teori_minggu": 0,
         "jam_praktik_minggu": 6,
         "total_jam_minggu": 6,
-        "jenis_mk": "Pilihan",
-        "catatan": ""
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2025"
       },
       {
         "semester": 7,
@@ -4289,8 +4291,8 @@
         "jam_teori_minggu": 0,
         "jam_praktik_minggu": 6,
         "total_jam_minggu": 6,
-        "jenis_mk": "pilihan",
-        "catatan": ""
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2025"
       },
       {
         "semester": 7,
@@ -4303,22 +4305,8 @@
         "jam_teori_minggu": 0,
         "jam_praktik_minggu": 6,
         "total_jam_minggu": 6,
-        "jenis_mk": "pilihan",
-        "catatan": ""
-      },
-      {
-        "semester": 7,
-        "kode_mk": "RTE257010",
-        "nama_mk": "Proyek Industri",
-        "course_name": "Industrial Project",
-        "sks_teori": 0,
-        "sks_praktek": 20,
-        "total_sks": 20,
-        "jam_teori_minggu": 0,
-        "jam_praktik_minggu": 40,
-        "total_jam_minggu": 40,
-        "jenis_mk": "Pilihan paket",
-        "catatan": ""
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2025"
       },
       {
         "semester": 8,
@@ -4331,22 +4319,22 @@
         "jam_teori_minggu": 0,
         "jam_praktik_minggu": 16,
         "total_jam_minggu": 16,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2025"
       },
       {
         "semester": 8,
         "kode_mk": "RTE258002",
         "nama_mk": "seminar Hasil",
-        "course_name": "",
+        "course_name": "Final Report",
         "sks_teori": 0,
         "sks_praktek": 2,
         "total_sks": 2,
         "jam_teori_minggu": 0,
         "jam_praktik_minggu": 4,
         "total_jam_minggu": 4,
-        "jenis_mk": "Wajib",
-        "catatan": ""
+        "jenis_mk": "Praktikum",
+        "catatan": "Sumber DATA DETAIL KD MK angkatan 2025"
       }
     ],
     "D4-2026": [
@@ -10609,5 +10597,1849 @@
     "IK10.1": 0.02061855670103093,
     "IK10.2": 0.01030927835051546,
     "IK10.3": 0.01030927835051546
+  },
+  "d4_cpmk_bobot": {
+    "D4-2023": {
+      "RTE231001": {
+        "kode_mk_acuan": "RTE261002",
+        "status_acuan": "Setara",
+        "bobot": {
+          "CPMK01.01": 52.78,
+          "CPMK04.02": 25.0,
+          "CPMK08.02": 22.22
+        }
+      },
+      "RTE231002": {
+        "kode_mk_acuan": "RTE261001",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK01.01": 50.0,
+          "CPMK01.02": 50.0
+        }
+      },
+      "RTE231003": {
+        "kode_mk_acuan": "RTE261005",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK01.01": 50.0,
+          "CPMK01.02": 50.0
+        }
+      },
+      "RTE231004": {
+        "kode_mk_acuan": "RTE261005",
+        "status_acuan": "Setara",
+        "bobot": {
+          "CPMK01.01": 50.0,
+          "CPMK01.02": 50.0
+        }
+      },
+      "RTE231005": {
+        "kode_mk_acuan": "RTE261006",
+        "status_acuan": "Setara",
+        "bobot": {
+          "CPMK05.01": 13.64,
+          "CPMK05.02": 63.63,
+          "CPMK06.02": 22.73
+        }
+      },
+      "RTE231006": {
+        "kode_mk_acuan": "RTE261003",
+        "status_acuan": "Setara",
+        "bobot": {
+          "CPMK01.03": 25.93,
+          "CPMK02.03": 22.22,
+          "CPMK05.02": 51.85
+        }
+      },
+      "RTE231007": {
+        "kode_mk_acuan": "RTE261008",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK01.02": 59.38,
+          "CPMK04.01": 12.5,
+          "CPMK04.02": 28.12
+        }
+      },
+      "RTE231008": {
+        "kode_mk_acuan": "RTE261004",
+        "status_acuan": "Setara",
+        "bobot": {
+          "CPMK03.02": 27.78,
+          "CPMK04.01": 22.22,
+          "CPMK06.02": 27.78,
+          "CPMK10.01": 22.22
+        }
+      },
+      "RTE231009": {
+        "kode_mk_acuan": "RTE261007",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK05.01": 27.27,
+          "CPMK08.02": 72.73
+        }
+      },
+      "RTE231010": {
+        "kode_mk_acuan": "RTE263004",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK08.01": 50.0,
+          "CPMK08.02": 50.0
+        }
+      },
+      "RTE231011": {
+        "kode_mk_acuan": "RTE263008",
+        "status_acuan": "Setara",
+        "bobot": {
+          "CPMK01.01": 50.0,
+          "CPMK01.02": 50.0
+        }
+      },
+      "RTE232001": {
+        "kode_mk_acuan": "RTE262001",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK01.01": 50.0,
+          "CPMK01.02": 50.0
+        }
+      },
+      "RTE232002": {
+        "kode_mk_acuan": "RTE262003",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK01.01": 50.0,
+          "CPMK01.02": 50.0
+        }
+      },
+      "RTE232003": {
+        "kode_mk_acuan": "RTE262003",
+        "status_acuan": "Setara",
+        "bobot": {
+          "CPMK01.01": 50.0,
+          "CPMK01.02": 50.0
+        }
+      },
+      "RTE232004": {
+        "kode_mk_acuan": "RTE262004",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK01.01": 50.0,
+          "CPMK01.02": 50.0
+        }
+      },
+      "RTE232005": {
+        "kode_mk_acuan": "RTE262004",
+        "status_acuan": "Setara",
+        "bobot": {
+          "CPMK01.01": 50.0,
+          "CPMK01.02": 50.0
+        }
+      },
+      "RTE232006": {
+        "kode_mk_acuan": "RTE262005",
+        "status_acuan": "Setara",
+        "bobot": {
+          "CPMK04.02": 34.62,
+          "CPMK05.01": 11.54,
+          "CPMK05.02": 53.84
+        }
+      },
+      "RTE232007": {
+        "kode_mk_acuan": "RTE262006",
+        "status_acuan": "Setara",
+        "bobot": {
+          "CPMK01.01": 50.0,
+          "CPMK01.02": 50.0
+        }
+      },
+      "RTE232008": {
+        "kode_mk_acuan": "RTE262006",
+        "status_acuan": "Setara",
+        "bobot": {
+          "CPMK01.01": 50.0,
+          "CPMK01.02": 50.0
+        }
+      },
+      "RTE232009": {
+        "kode_mk_acuan": "RTE263006",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK01.01": 38.0,
+          "CPMK01.02": 38.0,
+          "CPMK03.01": 24.0
+        }
+      },
+      "RTE232010": {
+        "kode_mk_acuan": "RTE263006",
+        "status_acuan": "Setara",
+        "bobot": {
+          "CPMK01.01": 38.0,
+          "CPMK01.02": 38.0,
+          "CPMK03.01": 24.0
+        }
+      },
+      "RTE232011": {
+        "kode_mk_acuan": "RTE263009",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK06.01": 28.57,
+          "CPMK07.01": 33.33,
+          "CPMK08.01": 38.1
+        }
+      },
+      "RTE232012": {
+        "kode_mk_acuan": "RTE265007",
+        "status_acuan": "Pendekatan",
+        "bobot": {
+          "CPMK08.01": 50.0,
+          "CPMK08.02": 50.0
+        }
+      },
+      "RTE233001": {
+        "kode_mk_acuan": "RTE262001",
+        "status_acuan": "Pendekatan",
+        "bobot": {
+          "CPMK01.01": 50.0,
+          "CPMK01.02": 50.0
+        }
+      },
+      "RTE233002": {
+        "kode_mk_acuan": "RTE262001",
+        "status_acuan": "Pendekatan",
+        "bobot": {
+          "CPMK01.01": 50.0,
+          "CPMK01.02": 50.0
+        }
+      },
+      "RTE233003": {
+        "kode_mk_acuan": "RTE267003",
+        "status_acuan": "Pendekatan",
+        "bobot": {
+          "CPMK08.01": 50.0,
+          "CPMK08.02": 50.0
+        }
+      },
+      "RTE233004": {
+        "kode_mk_acuan": "RTE263002",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK01.01": 50.0,
+          "CPMK01.02": 50.0
+        }
+      },
+      "RTE233005": {
+        "kode_mk_acuan": "RTE263002",
+        "status_acuan": "Setara",
+        "bobot": {
+          "CPMK01.01": 50.0,
+          "CPMK01.02": 50.0
+        }
+      },
+      "RTE233006": {
+        "kode_mk_acuan": "RTE263003",
+        "status_acuan": "Setara",
+        "bobot": {
+          "CPMK01.01": 50.0,
+          "CPMK01.02": 50.0
+        }
+      },
+      "RTE233007": {
+        "kode_mk_acuan": "RTE263005",
+        "status_acuan": "Setara",
+        "bobot": {
+          "CPMK01.03": 21.21,
+          "CPMK03.01": 36.36,
+          "CPMK05.02": 42.43
+        }
+      },
+      "RTE233008": {
+        "kode_mk_acuan": "RTE263005",
+        "status_acuan": "Setara",
+        "bobot": {
+          "CPMK01.03": 21.21,
+          "CPMK03.01": 36.36,
+          "CPMK05.02": 42.43
+        }
+      },
+      "RTE234001": {
+        "kode_mk_acuan": "RTE264002",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK02.01": 33.33,
+          "CPMK02.02": 66.67
+        }
+      },
+      "RTE234002": {
+        "kode_mk_acuan": "RTE264003",
+        "status_acuan": "Setara",
+        "bobot": {
+          "CPMK01.03": 21.21,
+          "CPMK03.01": 36.36,
+          "CPMK05.02": 42.43
+        }
+      },
+      "RTE234003": {
+        "kode_mk_acuan": "RTE264007",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK02.01": 16.67,
+          "CPMK02.02": 33.33,
+          "CPMK04.02": 50.0
+        }
+      },
+      "RTE234004": {
+        "kode_mk_acuan": "RTE264004",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK03.01": 57.14,
+          "CPMK04.02": 42.86
+        }
+      },
+      "RTE234005": {
+        "kode_mk_acuan": "RTE264005",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK02.01": 16.67,
+          "CPMK02.02": 33.33,
+          "CPMK04.02": 50.0
+        }
+      },
+      "RTE234006": {
+        "kode_mk_acuan": "RTE264006",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK03.01": 46.15,
+          "CPMK05.02": 53.85
+        }
+      },
+      "RTE234007": {
+        "kode_mk_acuan": "RTE264001",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK06.01": 28.57,
+          "CPMK07.01": 33.33,
+          "CPMK08.01": 38.1
+        }
+      },
+      "RTE235001": {
+        "kode_mk_acuan": "RTE263007",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK06.01": 35.29,
+          "CPMK07.01": 41.18,
+          "CPMK10.02": 23.53
+        }
+      },
+      "RTE235002": {
+        "kode_mk_acuan": "RTE265001",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK02.02": 28.57,
+          "CPMK02.03": 28.57,
+          "CPMK04.02": 42.86
+        }
+      },
+      "RTE235003": {
+        "kode_mk_acuan": "RTE265002",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK03.01": 34.29,
+          "CPMK04.02": 25.71,
+          "CPMK05.02": 40.0
+        }
+      },
+      "RTE235004": {
+        "kode_mk_acuan": "RTE265003",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK01.03": 21.21,
+          "CPMK03.01": 36.36,
+          "CPMK05.02": 42.43
+        }
+      },
+      "RTE235005": {
+        "kode_mk_acuan": "RTE265004",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK06.01": 54.55,
+          "CPMK07.02": 9.09,
+          "CPMK09.01": 36.36
+        }
+      },
+      "RTE235006": {
+        "kode_mk_acuan": "RTE265005",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK03.01": 46.15,
+          "CPMK05.02": 53.85
+        }
+      },
+      "RTE235007": {
+        "kode_mk_acuan": "RTE265006",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK02.02": 18.75,
+          "CPMK03.01": 37.5,
+          "CPMK05.02": 43.75
+        }
+      },
+      "RTE236001": {
+        "kode_mk_acuan": "RTE266001",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK02.03": 10.53,
+          "CPMK03.02": 8.77,
+          "CPMK06.01": 10.53,
+          "CPMK06.02": 8.77,
+          "CPMK07.01": 12.28,
+          "CPMK08.01": 14.02,
+          "CPMK08.02": 14.04,
+          "CPMK09.01": 7.02,
+          "CPMK10.01": 7.02,
+          "CPMK10.02": 7.02
+        }
+      },
+      "RTE237001": {
+        "kode_mk_acuan": "RTE267001",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK08.01": 50.0,
+          "CPMK08.02": 50.0
+        }
+      },
+      "RTE237002": {
+        "kode_mk_acuan": "RTE267002",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK04.01": 36.36,
+          "CPMK07.01": 63.64
+        }
+      },
+      "RTE237003": {
+        "kode_mk_acuan": "RTE267004",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK06.02": 50.0,
+          "CPMK09.01": 40.0,
+          "CPMK09.02": 10.0
+        }
+      },
+      "RTE237004": {
+        "kode_mk_acuan": "RTE267005",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK02.03": 54.55,
+          "CPMK03.02": 45.45
+        }
+      },
+      "RTE237005": {
+        "kode_mk_acuan": "RTE267006",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK02.02": 40.0,
+          "CPMK04.02": 60.0
+        }
+      },
+      "RTE237006": {
+        "kode_mk_acuan": "RTE267107",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK03.01": 46.15,
+          "CPMK05.02": 53.85
+        }
+      },
+      "RTE237007": {
+        "kode_mk_acuan": "RTE267108",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK01.03": 33.33,
+          "CPMK05.02": 66.67
+        }
+      },
+      "RTE237008": {
+        "kode_mk_acuan": "RTE267109",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK01.03": 33.33,
+          "CPMK05.02": 66.67
+        }
+      },
+      "RTE237009": {
+        "kode_mk_acuan": "RTE267007",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK02.03": 10.53,
+          "CPMK03.02": 8.77,
+          "CPMK06.01": 10.53,
+          "CPMK06.02": 8.77,
+          "CPMK07.01": 12.28,
+          "CPMK08.01": 14.02,
+          "CPMK08.02": 14.04,
+          "CPMK09.01": 7.02,
+          "CPMK10.01": 7.02,
+          "CPMK10.02": 7.02
+        }
+      },
+      "RTE238001": {
+        "kode_mk_acuan": "RTE268001",
+        "status_acuan": "Setara",
+        "bobot": {
+          "CPMK02.03": 20.0,
+          "CPMK03.02": 16.67,
+          "CPMK04.01": 13.33,
+          "CPMK07.01": 23.34,
+          "CPMK10.01": 13.33,
+          "CPMK10.02": 13.33
+        }
+      }
+    },
+    "D4-2024": {
+      "RTE241001": {
+        "kode_mk_acuan": "RTE261001",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK01.01": 51.72,
+          "CPMK01.02": 48.28
+        }
+      },
+      "RTE241002": {
+        "kode_mk_acuan": "RTE261002",
+        "status_acuan": "Setara",
+        "bobot": {
+          "CPMK01.01": 46.88,
+          "CPMK04.02": 37.5,
+          "CPMK08.02": 15.62
+        }
+      },
+      "RTE241003": {
+        "kode_mk_acuan": "RTE261003",
+        "status_acuan": "Pendekatan",
+        "bobot": {
+          "CPMK01.03": 22.22,
+          "CPMK02.03": 29.63,
+          "CPMK05.02": 48.15
+        }
+      },
+      "RTE241004": {
+        "kode_mk_acuan": "RTE261003",
+        "status_acuan": "Pendekatan",
+        "bobot": {
+          "CPMK01.03": 22.22,
+          "CPMK02.03": 29.63,
+          "CPMK05.02": 48.15
+        }
+      },
+      "RTE241005": {
+        "kode_mk_acuan": "RTE261004",
+        "status_acuan": "Setara",
+        "bobot": {
+          "CPMK03.02": 30.77,
+          "CPMK04.01": 15.38,
+          "CPMK06.02": 30.77,
+          "CPMK10.01": 23.08
+        }
+      },
+      "RTE241006": {
+        "kode_mk_acuan": "RTE261005",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK01.01": 51.72,
+          "CPMK01.02": 48.28
+        }
+      },
+      "RTE241007": {
+        "kode_mk_acuan": "RTE261005",
+        "status_acuan": "Setara",
+        "bobot": {
+          "CPMK01.01": 51.72,
+          "CPMK01.02": 48.28
+        }
+      },
+      "RTE241008": {
+        "kode_mk_acuan": "RTE261006",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK05.01": 10.53,
+          "CPMK05.02": 68.42,
+          "CPMK06.02": 21.05
+        }
+      },
+      "RTE242001": {
+        "kode_mk_acuan": "RTE262001",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK01.01": 51.72,
+          "CPMK01.02": 48.28
+        }
+      },
+      "RTE242002": {
+        "kode_mk_acuan": "RTE263008",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK01.01": 51.72,
+          "CPMK01.02": 48.28
+        }
+      },
+      "RTE242003": {
+        "kode_mk_acuan": "RTE262003",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK01.01": 51.72,
+          "CPMK01.02": 48.28
+        }
+      },
+      "RTE242004": {
+        "kode_mk_acuan": "RTE262004",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK01.01": 51.72,
+          "CPMK01.02": 48.28
+        }
+      },
+      "RTE242005": {
+        "kode_mk_acuan": "RTE262005",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK04.02": 44.44,
+          "CPMK05.01": 7.41,
+          "CPMK05.02": 48.15
+        }
+      },
+      "RTE242006": {
+        "kode_mk_acuan": "RTE262006",
+        "status_acuan": "Setara",
+        "bobot": {
+          "CPMK01.01": 51.72,
+          "CPMK01.02": 48.28
+        }
+      },
+      "RTE242007": {
+        "kode_mk_acuan": "RTE262007",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK01.01": 51.72,
+          "CPMK01.02": 48.28
+        }
+      },
+      "RTE243001": {
+        "kode_mk_acuan": "RTE263001",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK01.01": 51.72,
+          "CPMK01.02": 48.28
+        }
+      },
+      "RTE243002": {
+        "kode_mk_acuan": "RTE263002",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK01.01": 51.72,
+          "CPMK01.02": 48.28
+        }
+      },
+      "RTE243003": {
+        "kode_mk_acuan": "RTE263003",
+        "status_acuan": "Setara",
+        "bobot": {
+          "CPMK01.01": 51.72,
+          "CPMK01.02": 48.28
+        }
+      },
+      "RTE243004": {
+        "kode_mk_acuan": "RTE263004",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK08.01": 54.55,
+          "CPMK08.02": 45.45
+        }
+      },
+      "RTE243005": {
+        "kode_mk_acuan": "RTE263005",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK01.03": 20.69,
+          "CPMK03.01": 34.48,
+          "CPMK05.02": 44.83
+        }
+      },
+      "RTE243006": {
+        "kode_mk_acuan": "RTE263006",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK01.01": 38.46,
+          "CPMK01.02": 35.9,
+          "CPMK03.01": 25.64
+        }
+      },
+      "RTE243007": {
+        "kode_mk_acuan": "RTE263007",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK06.01": 38.46,
+          "CPMK07.01": 38.46,
+          "CPMK10.02": 23.08
+        }
+      },
+      "RTE243008": {
+        "kode_mk_acuan": "RTE262002",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK01.01": 51.72,
+          "CPMK01.02": 48.28
+        }
+      },
+      "RTE243009": {
+        "kode_mk_acuan": "RTE263009",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK06.01": 31.25,
+          "CPMK07.01": 31.25,
+          "CPMK08.01": 37.5
+        }
+      },
+      "RTE244001": {
+        "kode_mk_acuan": "RTE264001",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK06.01": 31.25,
+          "CPMK07.01": 31.25,
+          "CPMK08.01": 37.5
+        }
+      },
+      "RTE244002": {
+        "kode_mk_acuan": "RTE264002",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK02.01": 35.29,
+          "CPMK02.02": 64.71
+        }
+      },
+      "RTE244003": {
+        "kode_mk_acuan": "RTE264003",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK01.03": 20.69,
+          "CPMK03.01": 34.48,
+          "CPMK05.02": 44.83
+        }
+      },
+      "RTE244004": {
+        "kode_mk_acuan": "RTE264004",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK03.01": 45.45,
+          "CPMK04.02": 54.55
+        }
+      },
+      "RTE244005": {
+        "kode_mk_acuan": "RTE264005",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK02.01": 20.69,
+          "CPMK02.02": 37.93,
+          "CPMK04.02": 41.38
+        }
+      },
+      "RTE244006": {
+        "kode_mk_acuan": "RTE264006",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK03.01": 43.48,
+          "CPMK05.02": 56.52
+        }
+      },
+      "RTE244007": {
+        "kode_mk_acuan": "RTE264007",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK02.01": 20.69,
+          "CPMK02.02": 37.93,
+          "CPMK04.02": 41.38
+        }
+      },
+      "RTE245001": {
+        "kode_mk_acuan": "RTE265001",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK02.02": 35.48,
+          "CPMK02.03": 25.81,
+          "CPMK04.02": 38.71
+        }
+      },
+      "RTE245002": {
+        "kode_mk_acuan": "RTE265002",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK03.01": 28.57,
+          "CPMK04.02": 34.29,
+          "CPMK05.02": 37.14
+        }
+      },
+      "RTE245003": {
+        "kode_mk_acuan": "RTE265003",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK01.03": 20.69,
+          "CPMK03.01": 34.48,
+          "CPMK05.02": 44.83
+        }
+      },
+      "RTE245004": {
+        "kode_mk_acuan": "RTE265004",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK06.01": 55.56,
+          "CPMK07.02": 11.11,
+          "CPMK09.01": 33.33
+        }
+      },
+      "RTE245005": {
+        "kode_mk_acuan": "RTE265005",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK03.01": 43.48,
+          "CPMK05.02": 56.52
+        }
+      },
+      "RTE245006": {
+        "kode_mk_acuan": "RTE265006",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK02.02": 32.35,
+          "CPMK03.01": 29.41,
+          "CPMK05.02": 38.24
+        }
+      },
+      "RTE245007": {
+        "kode_mk_acuan": "RTE265007",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK08.01": 54.55,
+          "CPMK08.02": 45.45
+        }
+      },
+      "RTE246001": {
+        "kode_mk_acuan": "RTE267003",
+        "status_acuan": "Pendekatan",
+        "bobot": {
+          "CPMK08.01": 54.55,
+          "CPMK08.02": 45.45
+        }
+      },
+      "RTE246002": {
+        "kode_mk_acuan": "RTE267004",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK06.02": 50.0,
+          "CPMK09.01": 37.5,
+          "CPMK09.02": 12.5
+        }
+      },
+      "RTE246003": {
+        "kode_mk_acuan": "RTE265001",
+        "status_acuan": "Pendekatan",
+        "bobot": {
+          "CPMK02.02": 35.48,
+          "CPMK02.03": 25.81,
+          "CPMK04.02": 38.71
+        }
+      },
+      "RTE246004": {
+        "kode_mk_acuan": "RTE265001",
+        "status_acuan": "Pendekatan",
+        "bobot": {
+          "CPMK02.02": 35.48,
+          "CPMK02.03": 25.81,
+          "CPMK04.02": 38.71
+        }
+      },
+      "RTE246005": {
+        "kode_mk_acuan": "RTE264002",
+        "status_acuan": "Pendekatan",
+        "bobot": {
+          "CPMK02.01": 35.29,
+          "CPMK02.02": 64.71
+        }
+      },
+      "RTE246006": {
+        "kode_mk_acuan": "RTE264005",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK02.01": 20.69,
+          "CPMK02.02": 37.93,
+          "CPMK04.02": 41.38
+        }
+      },
+      "RTE246007": {
+        "kode_mk_acuan": "RTE267006",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK02.02": 47.83,
+          "CPMK04.02": 52.17
+        }
+      },
+      "RTE246008": {
+        "kode_mk_acuan": "RTE267005",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK02.03": 66.67,
+          "CPMK03.02": 33.33
+        }
+      },
+      "RTE247001": {
+        "kode_mk_acuan": "RTE266001",
+        "status_acuan": "Setara",
+        "bobot": {
+          "CPMK02.03": 17.39,
+          "CPMK03.02": 8.7,
+          "CPMK06.01": 10.87,
+          "CPMK06.02": 8.7,
+          "CPMK07.01": 10.87,
+          "CPMK08.01": 13.04,
+          "CPMK08.02": 10.87,
+          "CPMK09.01": 6.52,
+          "CPMK10.01": 6.52,
+          "CPMK10.02": 6.52
+        }
+      },
+      "RTE248001": {
+        "kode_mk_acuan": "RTE268001",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK02.03": 32.0,
+          "CPMK03.02": 16.0,
+          "CPMK04.01": 8.0,
+          "CPMK07.01": 20.0,
+          "CPMK10.01": 12.0,
+          "CPMK10.02": 12.0
+        }
+      },
+      "RTE248002": {
+        "kode_mk_acuan": "RTE267107",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK03.01": 43.48,
+          "CPMK05.02": 56.52
+        }
+      },
+      "RTE248003": {
+        "kode_mk_acuan": "RTE264005",
+        "status_acuan": "Pendekatan",
+        "bobot": {
+          "CPMK02.01": 20.69,
+          "CPMK02.02": 37.93,
+          "CPMK04.02": 41.38
+        }
+      },
+      "RTE248004": {
+        "kode_mk_acuan": "RTE267109",
+        "status_acuan": "Setara",
+        "bobot": {
+          "CPMK01.03": 31.58,
+          "CPMK05.02": 68.42
+        }
+      }
+    },
+    "D4-2025": {
+      "RTE251001": {
+        "kode_mk_acuan": "RTE261001",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK01.01": 50.0,
+          "CPMK01.02": 50.0
+        }
+      },
+      "RTE251002": {
+        "kode_mk_acuan": "RTE261002",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK01.01": 43.76,
+          "CPMK04.02": 28.12,
+          "CPMK08.02": 28.12
+        }
+      },
+      "RTE251003": {
+        "kode_mk_acuan": "RTE261003",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK01.03": 24.0,
+          "CPMK02.03": 24.0,
+          "CPMK05.02": 52.0
+        }
+      },
+      "RTE251004": {
+        "kode_mk_acuan": "RTE261004",
+        "status_acuan": "Setara",
+        "bobot": {
+          "CPMK03.02": 27.78,
+          "CPMK04.01": 22.22,
+          "CPMK06.02": 27.78,
+          "CPMK10.01": 22.22
+        }
+      },
+      "RTE251005": {
+        "kode_mk_acuan": "RTE261005",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK01.01": 50.0,
+          "CPMK01.02": 50.0
+        }
+      },
+      "RTE251006": {
+        "kode_mk_acuan": "RTE261006",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK05.01": 14.29,
+          "CPMK05.02": 61.9,
+          "CPMK06.02": 23.81
+        }
+      },
+      "RTE251007": {
+        "kode_mk_acuan": "RTE261007",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK05.01": 25.0,
+          "CPMK08.02": 75.0
+        }
+      },
+      "RTE251008": {
+        "kode_mk_acuan": "RTE261008",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK01.02": 51.86,
+          "CPMK04.01": 14.81,
+          "CPMK04.02": 33.33
+        }
+      },
+      "RTE252001": {
+        "kode_mk_acuan": "RTE262001",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK01.01": 50.0,
+          "CPMK01.02": 50.0
+        }
+      },
+      "RTE252002": {
+        "kode_mk_acuan": "RTE262002",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK01.01": 50.0,
+          "CPMK01.02": 50.0
+        }
+      },
+      "RTE252003": {
+        "kode_mk_acuan": "RTE262003",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK01.01": 50.0,
+          "CPMK01.02": 50.0
+        }
+      },
+      "RTE252004": {
+        "kode_mk_acuan": "RTE262004",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK01.01": 50.0,
+          "CPMK01.02": 50.0
+        }
+      },
+      "RTE252005": {
+        "kode_mk_acuan": "RTE262005",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK04.02": 36.0,
+          "CPMK05.01": 12.0,
+          "CPMK05.02": 52.0
+        }
+      },
+      "RTE252006": {
+        "kode_mk_acuan": "RTE262006",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK01.01": 50.0,
+          "CPMK01.02": 50.0
+        }
+      },
+      "RTE252007": {
+        "kode_mk_acuan": "RTE262007",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK01.01": 50.0,
+          "CPMK01.02": 50.0
+        }
+      },
+      "RTE253001": {
+        "kode_mk_acuan": "RTE263001",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK01.01": 50.0,
+          "CPMK01.02": 50.0
+        }
+      },
+      "RTE253002": {
+        "kode_mk_acuan": "RTE263002",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK01.01": 50.0,
+          "CPMK01.02": 50.0
+        }
+      },
+      "RTE253003": {
+        "kode_mk_acuan": "RTE263003",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK01.01": 50.0,
+          "CPMK01.02": 50.0
+        }
+      },
+      "RTE253004": {
+        "kode_mk_acuan": "RTE263004",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK08.01": 50.0,
+          "CPMK08.02": 50.0
+        }
+      },
+      "RTE253005": {
+        "kode_mk_acuan": "RTE263005",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK01.03": 20.69,
+          "CPMK03.01": 34.48,
+          "CPMK05.02": 44.83
+        }
+      },
+      "RTE253006": {
+        "kode_mk_acuan": "RTE263006",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK01.01": 36.84,
+          "CPMK01.02": 36.84,
+          "CPMK03.01": 26.32
+        }
+      },
+      "RTE253007": {
+        "kode_mk_acuan": "RTE263007",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK06.01": 35.29,
+          "CPMK07.01": 41.18,
+          "CPMK10.02": 23.53
+        }
+      },
+      "RTE253008": {
+        "kode_mk_acuan": "RTE263008",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK01.01": 50.0,
+          "CPMK01.02": 50.0
+        }
+      },
+      "RTE253009": {
+        "kode_mk_acuan": "RTE263009",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK06.01": 27.27,
+          "CPMK07.01": 31.82,
+          "CPMK08.01": 40.91
+        }
+      },
+      "RTE254001": {
+        "kode_mk_acuan": "RTE264001",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK06.01": 27.27,
+          "CPMK07.01": 31.82,
+          "CPMK08.01": 40.91
+        }
+      },
+      "RTE254002": {
+        "kode_mk_acuan": "RTE264002",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK02.01": 33.33,
+          "CPMK02.02": 66.67
+        }
+      },
+      "RTE254003": {
+        "kode_mk_acuan": "RTE264003",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK01.03": 20.69,
+          "CPMK03.01": 34.48,
+          "CPMK05.02": 44.83
+        }
+      },
+      "RTE254004": {
+        "kode_mk_acuan": "RTE264004",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK03.01": 52.63,
+          "CPMK04.02": 47.37
+        }
+      },
+      "RTE254005": {
+        "kode_mk_acuan": "RTE264005",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK02.01": 16.67,
+          "CPMK02.02": 33.33,
+          "CPMK04.02": 50.0
+        }
+      },
+      "RTE254006": {
+        "kode_mk_acuan": "RTE264006",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK03.01": 43.48,
+          "CPMK05.02": 56.52
+        }
+      },
+      "RTE254007": {
+        "kode_mk_acuan": "RTE264007",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK02.01": 16.67,
+          "CPMK02.02": 33.33,
+          "CPMK04.02": 50.0
+        }
+      },
+      "RTE255001": {
+        "kode_mk_acuan": "RTE265001",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK02.02": 28.57,
+          "CPMK02.03": 28.57,
+          "CPMK04.02": 42.86
+        }
+      },
+      "RTE255002": {
+        "kode_mk_acuan": "RTE265002",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK03.01": 31.25,
+          "CPMK04.02": 28.12,
+          "CPMK05.02": 40.63
+        }
+      },
+      "RTE255003": {
+        "kode_mk_acuan": "RTE265003",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK01.03": 20.69,
+          "CPMK03.01": 34.48,
+          "CPMK05.02": 44.83
+        }
+      },
+      "RTE255004": {
+        "kode_mk_acuan": "RTE265004",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK06.01": 54.55,
+          "CPMK07.02": 9.09,
+          "CPMK09.01": 36.36
+        }
+      },
+      "RTE255005": {
+        "kode_mk_acuan": "RTE265005",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK03.01": 43.48,
+          "CPMK05.02": 56.52
+        }
+      },
+      "RTE255006": {
+        "kode_mk_acuan": "RTE265006",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK02.02": 20.69,
+          "CPMK03.01": 34.48,
+          "CPMK05.02": 44.83
+        }
+      },
+      "RTE255007": {
+        "kode_mk_acuan": "RTE265007",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK08.01": 50.0,
+          "CPMK08.02": 50.0
+        }
+      },
+      "RTE256001": {
+        "kode_mk_acuan": "RTE266001",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK02.03": 10.17,
+          "CPMK03.02": 8.47,
+          "CPMK06.01": 10.17,
+          "CPMK06.02": 8.47,
+          "CPMK07.01": 11.86,
+          "CPMK08.01": 15.27,
+          "CPMK08.02": 15.25,
+          "CPMK09.01": 6.78,
+          "CPMK10.01": 6.78,
+          "CPMK10.02": 6.78
+        }
+      },
+      "RTE257001": {
+        "kode_mk_acuan": "RTE267001",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK08.01": 50.0,
+          "CPMK08.02": 50.0
+        }
+      },
+      "RTE2570010": {
+        "kode_mk_acuan": "RTE267007",
+        "status_acuan": "Setara",
+        "bobot": {
+          "CPMK02.03": 10.17,
+          "CPMK03.02": 8.47,
+          "CPMK06.01": 10.17,
+          "CPMK06.02": 8.47,
+          "CPMK07.01": 11.86,
+          "CPMK08.01": 15.27,
+          "CPMK08.02": 15.25,
+          "CPMK09.01": 6.78,
+          "CPMK10.01": 6.78,
+          "CPMK10.02": 6.78
+        }
+      },
+      "RTE257002": {
+        "kode_mk_acuan": "RTE267002",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK04.01": 36.36,
+          "CPMK07.01": 63.64
+        }
+      },
+      "RTE257003": {
+        "kode_mk_acuan": "RTE267003",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK08.01": 50.0,
+          "CPMK08.02": 50.0
+        }
+      },
+      "RTE257004": {
+        "kode_mk_acuan": "RTE267004",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK06.02": 50.0,
+          "CPMK09.01": 40.0,
+          "CPMK09.02": 10.0
+        }
+      },
+      "RTE257005": {
+        "kode_mk_acuan": "RTE267005",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK02.03": 54.55,
+          "CPMK03.02": 45.45
+        }
+      },
+      "RTE257006": {
+        "kode_mk_acuan": "RTE267006",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK02.02": 40.0,
+          "CPMK04.02": 60.0
+        }
+      },
+      "RTE257007": {
+        "kode_mk_acuan": "RTE267107",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK03.01": 43.48,
+          "CPMK05.02": 56.52
+        }
+      },
+      "RTE257008": {
+        "kode_mk_acuan": "RTE267108",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK01.03": 31.58,
+          "CPMK05.02": 68.42
+        }
+      },
+      "RTE257009": {
+        "kode_mk_acuan": "RTE267109",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK01.03": 31.58,
+          "CPMK05.02": 68.42
+        }
+      },
+      "RTE258001": {
+        "kode_mk_acuan": "RTE268001",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK02.03": 20.0,
+          "CPMK03.02": 16.67,
+          "CPMK04.01": 13.33,
+          "CPMK07.01": 23.34,
+          "CPMK10.01": 13.33,
+          "CPMK10.02": 13.33
+        }
+      },
+      "RTE258002": {
+        "kode_mk_acuan": "RTE268002",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK08.01": 50.0,
+          "CPMK08.02": 50.0
+        }
+      }
+    },
+    "D4-2026": {
+      "RTE261001": {
+        "kode_mk_acuan": "RTE261001",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK01.01": 50.0,
+          "CPMK01.02": 50.0
+        }
+      },
+      "RTE261002": {
+        "kode_mk_acuan": "RTE261002",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK01.01": 43.76,
+          "CPMK04.02": 28.12,
+          "CPMK08.02": 28.12
+        }
+      },
+      "RTE261003": {
+        "kode_mk_acuan": "RTE261003",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK01.03": 24.0,
+          "CPMK02.03": 24.0,
+          "CPMK05.02": 52.0
+        }
+      },
+      "RTE261004": {
+        "kode_mk_acuan": "RTE261004",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK03.02": 27.78,
+          "CPMK04.01": 22.22,
+          "CPMK06.02": 27.78,
+          "CPMK10.01": 22.22
+        }
+      },
+      "RTE261005": {
+        "kode_mk_acuan": "RTE261005",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK01.01": 50.0,
+          "CPMK01.02": 50.0
+        }
+      },
+      "RTE261006": {
+        "kode_mk_acuan": "RTE261006",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK05.01": 14.29,
+          "CPMK05.02": 61.9,
+          "CPMK06.02": 23.81
+        }
+      },
+      "RTE261007": {
+        "kode_mk_acuan": "RTE261007",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK05.01": 25.0,
+          "CPMK08.02": 75.0
+        }
+      },
+      "RTE261008": {
+        "kode_mk_acuan": "RTE261008",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK01.02": 51.86,
+          "CPMK04.01": 14.81,
+          "CPMK04.02": 33.33
+        }
+      },
+      "RTE262001": {
+        "kode_mk_acuan": "RTE262001",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK01.01": 50.0,
+          "CPMK01.02": 50.0
+        }
+      },
+      "RTE262002": {
+        "kode_mk_acuan": "RTE262002",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK01.01": 50.0,
+          "CPMK01.02": 50.0
+        }
+      },
+      "RTE262003": {
+        "kode_mk_acuan": "RTE262003",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK01.01": 50.0,
+          "CPMK01.02": 50.0
+        }
+      },
+      "RTE262004": {
+        "kode_mk_acuan": "RTE262004",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK01.01": 50.0,
+          "CPMK01.02": 50.0
+        }
+      },
+      "RTE262005": {
+        "kode_mk_acuan": "RTE262005",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK04.02": 36.0,
+          "CPMK05.01": 12.0,
+          "CPMK05.02": 52.0
+        }
+      },
+      "RTE262006": {
+        "kode_mk_acuan": "RTE262006",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK01.01": 50.0,
+          "CPMK01.02": 50.0
+        }
+      },
+      "RTE262007": {
+        "kode_mk_acuan": "RTE262007",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK01.01": 50.0,
+          "CPMK01.02": 50.0
+        }
+      },
+      "RTE263001": {
+        "kode_mk_acuan": "RTE263001",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK01.01": 50.0,
+          "CPMK01.02": 50.0
+        }
+      },
+      "RTE263002": {
+        "kode_mk_acuan": "RTE263002",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK01.01": 50.0,
+          "CPMK01.02": 50.0
+        }
+      },
+      "RTE263003": {
+        "kode_mk_acuan": "RTE263003",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK01.01": 50.0,
+          "CPMK01.02": 50.0
+        }
+      },
+      "RTE263004": {
+        "kode_mk_acuan": "RTE263004",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK08.01": 50.0,
+          "CPMK08.02": 50.0
+        }
+      },
+      "RTE263005": {
+        "kode_mk_acuan": "RTE263005",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK01.03": 20.69,
+          "CPMK03.01": 34.48,
+          "CPMK05.02": 44.83
+        }
+      },
+      "RTE263006": {
+        "kode_mk_acuan": "RTE263006",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK01.01": 36.84,
+          "CPMK01.02": 36.84,
+          "CPMK03.01": 26.32
+        }
+      },
+      "RTE263007": {
+        "kode_mk_acuan": "RTE263007",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK06.01": 35.29,
+          "CPMK07.01": 41.18,
+          "CPMK10.02": 23.53
+        }
+      },
+      "RTE263008": {
+        "kode_mk_acuan": "RTE263008",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK01.01": 50.0,
+          "CPMK01.02": 50.0
+        }
+      },
+      "RTE263009": {
+        "kode_mk_acuan": "RTE263009",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK06.01": 27.27,
+          "CPMK07.01": 31.82,
+          "CPMK08.01": 40.91
+        }
+      },
+      "RTE264001": {
+        "kode_mk_acuan": "RTE264001",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK06.01": 27.27,
+          "CPMK07.01": 31.82,
+          "CPMK08.01": 40.91
+        }
+      },
+      "RTE264002": {
+        "kode_mk_acuan": "RTE264002",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK02.01": 33.33,
+          "CPMK02.02": 66.67
+        }
+      },
+      "RTE264003": {
+        "kode_mk_acuan": "RTE264003",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK01.03": 20.69,
+          "CPMK03.01": 34.48,
+          "CPMK05.02": 44.83
+        }
+      },
+      "RTE264004": {
+        "kode_mk_acuan": "RTE264004",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK03.01": 52.63,
+          "CPMK04.02": 47.37
+        }
+      },
+      "RTE264005": {
+        "kode_mk_acuan": "RTE264005",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK02.01": 16.67,
+          "CPMK02.02": 33.33,
+          "CPMK04.02": 50.0
+        }
+      },
+      "RTE264006": {
+        "kode_mk_acuan": "RTE264006",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK03.01": 43.48,
+          "CPMK05.02": 56.52
+        }
+      },
+      "RTE264007": {
+        "kode_mk_acuan": "RTE264007",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK02.01": 16.67,
+          "CPMK02.02": 33.33,
+          "CPMK04.02": 50.0
+        }
+      },
+      "RTE265001": {
+        "kode_mk_acuan": "RTE265001",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK02.02": 28.57,
+          "CPMK02.03": 28.57,
+          "CPMK04.02": 42.86
+        }
+      },
+      "RTE265002": {
+        "kode_mk_acuan": "RTE265002",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK03.01": 31.25,
+          "CPMK04.02": 28.12,
+          "CPMK05.02": 40.63
+        }
+      },
+      "RTE265003": {
+        "kode_mk_acuan": "RTE265003",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK01.03": 20.69,
+          "CPMK03.01": 34.48,
+          "CPMK05.02": 44.83
+        }
+      },
+      "RTE265004": {
+        "kode_mk_acuan": "RTE265004",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK06.01": 54.55,
+          "CPMK07.02": 9.09,
+          "CPMK09.01": 36.36
+        }
+      },
+      "RTE265005": {
+        "kode_mk_acuan": "RTE265005",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK03.01": 43.48,
+          "CPMK05.02": 56.52
+        }
+      },
+      "RTE265006": {
+        "kode_mk_acuan": "RTE265006",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK02.02": 20.69,
+          "CPMK03.01": 34.48,
+          "CPMK05.02": 44.83
+        }
+      },
+      "RTE265007": {
+        "kode_mk_acuan": "RTE265007",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK08.01": 50.0,
+          "CPMK08.02": 50.0
+        }
+      },
+      "RTE266001": {
+        "kode_mk_acuan": "RTE266001",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK02.03": 10.17,
+          "CPMK03.02": 8.47,
+          "CPMK06.01": 10.17,
+          "CPMK06.02": 8.47,
+          "CPMK07.01": 11.86,
+          "CPMK08.01": 15.27,
+          "CPMK08.02": 15.25,
+          "CPMK09.01": 6.78,
+          "CPMK10.01": 6.78,
+          "CPMK10.02": 6.78
+        }
+      },
+      "RTE267001": {
+        "kode_mk_acuan": "RTE267001",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK08.01": 50.0,
+          "CPMK08.02": 50.0
+        }
+      },
+      "RTE267002": {
+        "kode_mk_acuan": "RTE267002",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK04.01": 36.36,
+          "CPMK07.01": 63.64
+        }
+      },
+      "RTE267003": {
+        "kode_mk_acuan": "RTE267003",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK08.01": 50.0,
+          "CPMK08.02": 50.0
+        }
+      },
+      "RTE267004": {
+        "kode_mk_acuan": "RTE267004",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK06.02": 50.0,
+          "CPMK09.01": 40.0,
+          "CPMK09.02": 10.0
+        }
+      },
+      "RTE267005": {
+        "kode_mk_acuan": "RTE267005",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK02.03": 54.55,
+          "CPMK03.02": 45.45
+        }
+      },
+      "RTE267006": {
+        "kode_mk_acuan": "RTE267006",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK02.02": 40.0,
+          "CPMK04.02": 60.0
+        }
+      },
+      "RTE267107": {
+        "kode_mk_acuan": "RTE267107",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK03.01": 43.48,
+          "CPMK05.02": 56.52
+        }
+      },
+      "RTE267108": {
+        "kode_mk_acuan": "RTE267108",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK01.03": 31.58,
+          "CPMK05.02": 68.42
+        }
+      },
+      "RTE267109": {
+        "kode_mk_acuan": "RTE267109",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK01.03": 31.58,
+          "CPMK05.02": 68.42
+        }
+      },
+      "RTE267007": {
+        "kode_mk_acuan": "RTE267007",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK02.03": 10.17,
+          "CPMK03.02": 8.47,
+          "CPMK06.01": 10.17,
+          "CPMK06.02": 8.47,
+          "CPMK07.01": 11.86,
+          "CPMK08.01": 15.27,
+          "CPMK08.02": 15.25,
+          "CPMK09.01": 6.78,
+          "CPMK10.01": 6.78,
+          "CPMK10.02": 6.78
+        }
+      },
+      "RTE268001": {
+        "kode_mk_acuan": "RTE268001",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK02.03": 20.0,
+          "CPMK03.02": 16.67,
+          "CPMK04.01": 13.33,
+          "CPMK07.01": 23.34,
+          "CPMK10.01": 13.33,
+          "CPMK10.02": 13.33
+        }
+      },
+      "RTE268002": {
+        "kode_mk_acuan": "RTE268002",
+        "status_acuan": "Sama",
+        "bobot": {
+          "CPMK08.01": 50.0,
+          "CPMK08.02": 50.0
+        }
+      }
+    }
   }
 }

@@ -86,6 +86,13 @@ ALIASES = {
     "bahasa inggris teknik": "bahasa inggris 1",
     "bahasa inggris untuk komunikasi": "bahasa inggris 2",
     "sistem embedded": "sistem mikrokontroler 2",
+    "kerja praktik": "praktik kerja industri prakerin",
+    "proyek kampus merdeka": "desain proyek",
+    "rekayasa sinyal multimedia": "pengolahan sinyal digital",
+    "sistem kendali cerdas lanjut": "kendali cerdas",
+    "praktik sistem kendali 2": "praktik sistem kendali digital",
+    "keselamatan kesehatan kerja dan lingkungan": "keselamatan dan kesehatan kerja k3",
+    "keselamatan dan kesehatan kerja k3": "keselamatan dan kesehatan kerja k3",
 }
 
 BASE_ALIASES = {
@@ -253,6 +260,20 @@ def _weighted_week_plan(weights: dict[str, float], weeks: int) -> dict[int, dict
     return plan
 
 
+def _d4_week_plan(
+    weights: dict[str, float], master_plan: dict[int, dict[str, Any]], weeks: int
+) -> dict[int, dict[str, Any]]:
+    """Bobot CPMK D4 per angkatan disebar ke minggu 2..akhir.
+
+    Teknik asesmen per minggu tetap diambil dari master bila ada; kalau kosong,
+    _weekly_rows memakai teknik bawaan (UTS, UAS, tugas, kuis).
+    """
+    plan = _weighted_week_plan(weights, weeks)
+    for week, item in plan.items():
+        item["teknik_asesmen"] = master_plan.get(week, {}).get("teknik_asesmen", "") if master_plan else ""
+    return plan
+
+
 def _master_week_plan(
     base: dict[str, pd.DataFrame], source: dict[str, Any], cpmk: pd.DataFrame, weeks: int
 ) -> dict[int, dict[str, Any]]:
@@ -350,10 +371,17 @@ def build_cohort_workbook(
     master_rows = []
     official_d3 = _official_d3_cpmk(catalog, cohort) if key in {"D3-2025", "D3-2026"} else pd.DataFrame()
 
+    d4_table = catalog.get("d4_cpmk_bobot", {}).get(key, {}) if program.startswith("D4") else {}
+
     for target in targets:
         master_rows.append(target)
-        source_name = _best_name(target["nama_mk"], base_names)
-        source_mk = base_mk[base_mk["nama_mk"].astype(str) == source_name].iloc[0].to_dict()
+        d4_entry = d4_table.get(target["kode_mk"], {})
+        acuan = base_mk[base_mk["kode_mk"].astype(str) == d4_entry.get("kode_mk_acuan", "")]
+        if not acuan.empty:
+            source_mk = acuan.iloc[0].to_dict()
+        else:
+            source_name = _best_name(target["nama_mk"], base_names)
+            source_mk = base_mk[base_mk["nama_mk"].astype(str) == source_name].iloc[0].to_dict()
 
         if not official_d3.empty:
             cpmk = official_d3[official_d3["kode_mk"] == target["kode_mk"]].copy()
@@ -366,9 +394,14 @@ def build_cohort_workbook(
                 "kode_ik": "", "kode_cpl": "",
             }])
         d3_weights = _d3_cpmk_weights(catalog, cpmk) if key in D3_WEIGHTED_COHORTS else {}
-        if d3_weights:
+        d4_weights = {}
+        if d4_entry:
+            codes = cpmk["kode_cpmk"].astype(str).tolist()
+            if sorted(codes) == sorted(d4_entry["bobot"]):
+                d4_weights = {code: float(d4_entry["bobot"][code]) for code in codes}
+        if d3_weights or d4_weights:
             cpmk = cpmk.copy()
-            cpmk["bobot_cpmk_mk_persen"] = cpmk["kode_cpmk"].astype(str).map(d3_weights)
+            cpmk["bobot_cpmk_mk_persen"] = cpmk["kode_cpmk"].astype(str).map(d3_weights or d4_weights)
         output["Master_CPMK"].append(cpmk)
         mapping = cpmk[["kode_mk", "id_penawaran", "kode_cpl"]].drop_duplicates()
         mapping = mapping[mapping["kode_cpl"].astype(str) != ""]
@@ -381,6 +414,8 @@ def build_cohort_workbook(
             description = syllabus["deskripsi_mk"]
             references = syllabus["referensi"]
             plan = _master_week_plan(base, source_mk, cpmk, 16)
+            if d4_weights:
+                plan = _d4_week_plan(d4_weights, plan, 16) or plan
             output["RPS_Pertemuan"].append(_weekly_rows(target, materials, cpmk, 16, plan))
         else:
             source_syllabus = _course_rows(base["Short_Silabus"], source_mk)

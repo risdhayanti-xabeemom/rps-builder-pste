@@ -46,7 +46,7 @@ class CurriculumLockTests(unittest.TestCase):
     def test_cpmk_weight_summary_totals_100(self):
         summary = app.cpmk_weight_summary(self.payload["weekly"])
         self.assertEqual(dict(zip(summary["Kode CPMK"], summary["Bobot (%)"])),
-                         {"CPMK01.01": 26.0, "CPMK04.02": 49.0, "CPMK08.02": 25.0})
+                         {"CPMK01.01": 43.76, "CPMK04.02": 28.12, "CPMK08.02": 28.12})
 
 
 class ProgramHeaderTests(unittest.TestCase):
