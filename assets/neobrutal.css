@@ -1,0 +1,394 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+/* ==========================================================================
+   Tema neo-brutalism untuk app Streamlit (RPS Builder + Dashboard CPL)
+   Ubah warna/ketebalan cukup di blok :root di bawah.
+   ========================================================================== */
+
+:root {
+    --nb-ink: #14120f;
+    --nb-paper: #fbf6ea;
+    --nb-card: #fffdf6;
+    --nb-stripe-a: #fbf0d0;
+    --nb-stripe-b: #fff8e6;
+    --nb-yellow: #f6c453;
+    --nb-indigo: #3a4fd7;
+    --nb-indigo-dark: #2a3bb0;
+    --nb-mint: #a6e8c4;
+    --nb-coral: #f4806b;
+    --nb-lilac: #cdbef7;
+    --nb-muted: #5c564b;
+    --nb-border: 2px solid var(--nb-ink);
+    --nb-radius: 10px;
+    --nb-shadow: 4px 4px 0 var(--nb-ink);
+    --nb-shadow-sm: 3px 3px 0 var(--nb-ink);
+    --nb-font: 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+    /* variabel lama dashboard, dipetakan ke warna baru */
+    --primary: var(--nb-indigo);
+    --primary-dark: var(--nb-ink);
+    --surface: var(--nb-card);
+    --muted: var(--nb-muted);
+    --line: var(--nb-ink);
+    --green: #1f9d55;
+    --orange: #d89b00;
+    --red: #d64545;
+}
+
+/* ---------- dasar ---------- */
+.stApp,
+[data-testid="stAppViewContainer"] {
+    background: var(--nb-paper);
+    color: var(--nb-ink);
+    font-family: var(--nb-font);
+}
+[data-testid="stHeader"] {
+    background: transparent;
+}
+.block-container {
+    padding-top: 1.25rem;
+    padding-bottom: 3rem;
+    max-width: 1280px;
+}
+h1, h2, h3, h4,
+[data-testid="stMarkdownContainer"] h1,
+[data-testid="stMarkdownContainer"] h2,
+[data-testid="stMarkdownContainer"] h3 {
+    font-family: var(--nb-font);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--nb-ink);
+}
+p, li, label, span, input, textarea, button {
+    font-family: var(--nb-font);
+}
+[data-testid="stCaptionContainer"],
+.stCaption {
+    color: var(--nb-muted);
+}
+a {
+    color: var(--nb-indigo);
+    font-weight: 600;
+}
+
+/* ---------- sidebar ---------- */
+[data-testid="stSidebar"] {
+    background: var(--nb-stripe-b);
+    border-right: var(--nb-border);
+}
+[data-testid="stSidebar"] h2,
+[data-testid="stSidebar"] h3 {
+    color: var(--nb-ink);
+}
+[data-testid="stSidebar"] [data-testid="stMarkdownContainer"] p {
+    margin-bottom: .35rem;
+}
+
+/* ---------- tombol ---------- */
+.stButton > button,
+.stDownloadButton > button,
+[data-testid="stBaseButton-secondary"],
+[data-testid="stBaseButton-primary"],
+[data-testid="stFormSubmitButton"] > button {
+    font-weight: 700;
+    color: var(--nb-ink);
+    background: #ffffff;
+    border: var(--nb-border);
+    border-radius: 8px;
+    box-shadow: var(--nb-shadow-sm);
+    transition: transform .08s ease, box-shadow .08s ease;
+}
+.stButton > button:hover,
+.stDownloadButton > button:hover,
+[data-testid="stFormSubmitButton"] > button:hover {
+    color: var(--nb-ink);
+    border-color: var(--nb-ink);
+    transform: translate(-1px, -1px);
+    box-shadow: 5px 5px 0 var(--nb-ink);
+}
+.stButton > button:active,
+.stDownloadButton > button:active,
+[data-testid="stFormSubmitButton"] > button:active {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0 var(--nb-ink);
+}
+.stButton > button[kind="primary"],
+.stDownloadButton > button[kind="primary"],
+[data-testid="stBaseButton-primary"] {
+    background: var(--nb-indigo);
+    color: #ffffff;
+}
+.stButton > button[kind="primary"]:hover,
+.stDownloadButton > button[kind="primary"]:hover,
+[data-testid="stBaseButton-primary"]:hover {
+    background: var(--nb-indigo-dark);
+    color: #ffffff;
+}
+.stButton > button:disabled,
+.stDownloadButton > button:disabled {
+    background: #ebe4d2;
+    color: #8a8372;
+    box-shadow: none;
+    border-color: #8a8372;
+}
+
+/* ---------- tab ---------- */
+[data-baseweb="tab-list"] {
+    gap: .5rem;
+    flex-wrap: wrap;
+    border-bottom: var(--nb-border);
+    padding-bottom: .6rem;
+}
+[data-baseweb="tab-highlight"],
+[data-baseweb="tab-border"] {
+    display: none;
+}
+button[role="tab"] {
+    height: auto;
+    padding: .4rem .85rem;
+    background: #ffffff;
+    border: var(--nb-border);
+    border-radius: 8px;
+    box-shadow: 2px 2px 0 var(--nb-ink);
+}
+button[role="tab"] p {
+    font-weight: 700;
+    color: var(--nb-ink);
+}
+button[role="tab"][aria-selected="true"] {
+    background: var(--nb-yellow);
+    box-shadow: var(--nb-shadow-sm);
+}
+
+/* ---------- input ---------- */
+[data-baseweb="input"],
+[data-baseweb="textarea"],
+[data-baseweb="select"] > div {
+    background: #ffffff;
+    border: var(--nb-border);
+    border-radius: 8px;
+}
+[data-baseweb="input"] > div,
+[data-baseweb="textarea"] > div {
+    background: transparent;
+}
+[data-testid="stWidgetLabel"] p {
+    font-weight: 700;
+    color: var(--nb-ink);
+}
+
+/* ---------- notifikasi ---------- */
+[data-testid="stAlert"] {
+    border: var(--nb-border);
+    border-radius: var(--nb-radius);
+    box-shadow: var(--nb-shadow-sm);
+    background: var(--nb-lilac);
+    color: var(--nb-ink);
+}
+[data-testid="stAlert"]:has([data-testid="stAlertContentSuccess"]) {
+    background: var(--nb-mint);
+}
+[data-testid="stAlert"]:has([data-testid="stAlertContentWarning"]) {
+    background: var(--nb-yellow);
+}
+[data-testid="stAlert"]:has([data-testid="stAlertContentError"]) {
+    background: var(--nb-coral);
+}
+
+/* ---------- tabel, metrik, expander ---------- */
+[data-testid="stDataFrame"],
+[data-testid="stTable"] {
+    border: var(--nb-border);
+    border-radius: var(--nb-radius);
+    box-shadow: var(--nb-shadow-sm);
+    overflow: hidden;
+    background: #ffffff;
+}
+[data-testid="stMetric"] {
+    background: var(--nb-card);
+    border: var(--nb-border);
+    border-radius: var(--nb-radius);
+    box-shadow: var(--nb-shadow-sm);
+    padding: .8rem 1rem;
+}
+[data-testid="stMetricValue"] {
+    font-weight: 800;
+}
+[data-testid="stExpander"] {
+    background: var(--nb-card);
+    border: var(--nb-border);
+    border-radius: var(--nb-radius);
+    box-shadow: var(--nb-shadow-sm);
+}
+[data-testid="stExpander"] summary p {
+    font-weight: 700;
+}
+[data-testid="stFileUploader"] section {
+    background: #ffffff;
+    border: 2px dashed var(--nb-ink);
+    border-radius: var(--nb-radius);
+}
+
+/* ---------- komponen kustom: header halaman ---------- */
+.app-header,
+.nb-hero {
+    position: relative;
+    padding: 1.4rem 1.6rem;
+    border: var(--nb-border);
+    border-radius: 14px;
+    box-shadow: 6px 6px 0 var(--nb-ink);
+    background: repeating-linear-gradient(
+        135deg,
+        var(--nb-stripe-a) 0 10px,
+        var(--nb-stripe-b) 10px 20px
+    );
+    margin-bottom: 1.25rem;
+}
+.app-header h1,
+.nb-hero h1 {
+    margin: 0;
+    font-size: 2.1rem;
+    line-height: 1.15;
+    font-weight: 800;
+    color: var(--nb-ink);
+    letter-spacing: -0.025em;
+}
+.app-header .subtitle,
+.nb-hero .subtitle {
+    margin-top: .5rem;
+    max-width: 62ch;
+    color: #3d382f;
+    font-size: 1.02rem;
+    line-height: 1.55;
+}
+.nb-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+    margin-top: .9rem;
+}
+
+/* ---------- komponen kustom: badge dan stiker ---------- */
+.nb-badge {
+    display: inline-block;
+    padding: .15rem .6rem;
+    font-size: .78rem;
+    font-weight: 700;
+    line-height: 1.5;
+    color: var(--nb-ink);
+    background: #ffffff;
+    border: var(--nb-border);
+    border-radius: 6px;
+}
+.nb-badge.is-yellow { background: var(--nb-yellow); }
+.nb-badge.is-mint   { background: var(--nb-mint); }
+.nb-badge.is-coral  { background: var(--nb-coral); }
+.nb-badge.is-lilac  { background: var(--nb-lilac); }
+.nb-badge.is-indigo { background: var(--nb-indigo); color: #ffffff; }
+.nb-sticker {
+    position: absolute;
+    top: -.8rem;
+    right: 1.2rem;
+    transform: rotate(3deg);
+    box-shadow: 2px 2px 0 var(--nb-ink);
+}
+
+/* ---------- komponen kustom dashboard (nama kelas lama dipertahankan) ---------- */
+.section-caption {
+    margin: .75rem 0 .35rem;
+    color: var(--nb-ink);
+    font-weight: 800;
+    font-size: .95rem;
+}
+.sidebar-logo-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: .65rem;
+    margin-bottom: .75rem;
+}
+.logo-placeholder {
+    min-height: 76px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--nb-muted);
+    background: #ffffff;
+    border: 2px dashed var(--nb-ink);
+    border-radius: 8px;
+    font-size: .84rem;
+    font-weight: 700;
+}
+.kpi-card {
+    position: relative;
+    min-height: 118px;
+    padding: 1rem 1rem .95rem 1.35rem;
+    background: var(--nb-card);
+    border: var(--nb-border);
+    border-radius: var(--nb-radius);
+    box-shadow: var(--nb-shadow);
+    overflow: hidden;
+}
+.kpi-card::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 12px;
+    background: var(--accent, var(--nb-yellow));
+    border-right: var(--nb-border);
+}
+.kpi-label {
+    margin-bottom: .4rem;
+    color: var(--nb-muted);
+    font-size: .88rem;
+    font-weight: 700;
+}
+.kpi-value {
+    color: var(--nb-ink);
+    font-size: 2.1rem;
+    line-height: 1;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+}
+.kpi-note {
+    margin-top: .45rem;
+    color: var(--nb-muted);
+    font-size: .82rem;
+}
+.narrative-box {
+    margin: 1rem 0;
+    padding: .95rem 1.1rem;
+    color: var(--nb-ink);
+    background: var(--nb-lilac);
+    border: var(--nb-border);
+    border-radius: var(--nb-radius);
+    box-shadow: var(--nb-shadow-sm);
+    line-height: 1.55;
+}
+
+/* ---------- aksesibilitas ---------- */
+:focus-visible {
+    outline: 3px solid var(--nb-indigo);
+    outline-offset: 2px;
+}
+@media (prefers-reduced-motion: reduce) {
+    .stButton > button,
+    .stDownloadButton > button {
+        transition: none;
+    }
+}
+
+/* ---------- layar sempit ---------- */
+@media (max-width: 640px) {
+    .app-header h1,
+    .nb-hero h1 {
+        font-size: 1.6rem;
+    }
+    .app-header,
+    .nb-hero {
+        padding: 1.1rem 1.1rem;
+        box-shadow: 4px 4px 0 var(--nb-ink);
+    }
+}

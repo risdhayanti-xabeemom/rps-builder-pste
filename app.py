@@ -13,6 +13,8 @@ from typing import Any
 import pandas as pd
 import streamlit as st
 
+from neobrutal import apply_theme, page_header
+
 from curriculum import CURRICULUM_OPTIONS, build_cohort_workbook, workbook_to_excel_bytes
 
 
@@ -2093,8 +2095,16 @@ def enforce_locked_weekly(
 
 def main() -> None:
     st.set_page_config(page_title="RPS Builder OBE", layout="wide")
-    st.title("RPS Builder OBE")
-    st.caption("Mengisi template Word RPS prodi dari master kurikulum Excel.")
+    apply_theme()
+    page_header(
+        "RPS Builder OBE",
+        ["Mengisi template Word RPS prodi dari master kurikulum Excel."],
+        chips=[
+            ("Format resmi prodi terjaga", "mint"),
+            ("Master kurikulum terkunci", "yellow"),
+            ("Validasi OBE", "lilac"),
+        ],
+    )
 
     OUTPUT_DIR.mkdir(exist_ok=True)
     with st.sidebar:
