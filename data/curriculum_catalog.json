@@ -5,7 +5,8 @@
     "D4": "2026-akademik - mapping.xlsx",
     "D4_silabus": "Short Silabus Kurikulum D4 PSTE.pdf",
     "D4_CPL": "MK-CPL D4 TE (1).pdf",
-    "D4_CPMK": "!CPL-CPMK-Matkul 2022.xlsx"
+    "D4_CPMK": "!CPL-CPMK-Matkul 2022.xlsx",
+    "D3_bobot": "Sheet BOBOT (kolom bobot IK) di 11_Nilai_Lengkap_Angkatan_2024_dan_Bobot.xlsx dan 12_Nilai_Lengkap_Angkatan_2025_dan_Bobot.xlsx; isinya sama. Dipakai untuk D3 angkatan 2024, 2025, dan 2026."
   },
   "curricula": {
     "D3-2023": [
@@ -10576,5 +10577,37 @@
       "rumusan_cpmk": "Mampu menyusun komunikasi teknis secara tertulis maupun presentasi dengan menggunakan format, istilah teknis, data, tabel, gambar, dan standar dokumentasi yang sesuai.",
       "catatan": "Sumber CPMK REC25; kode disesuaikan REC26"
     }
-  ]
+  ],
+  "d3_ik_bobot": {
+    "IK1.1": 0.06185567010309279,
+    "IK1.2": 0.05670103092783505,
+    "IK1.3": 0.02061855670103093,
+    "IK2.1": 0.01030927835051546,
+    "IK2.2": 0.07216494845360824,
+    "IK2.3": 0.03092783505154639,
+    "IK3.1": 0.07216494845360825,
+    "IK3.2": 0.06701030927835051,
+    "IK3.3": 0.0154639175257732,
+    "IK4.1": 0.02061855670103092,
+    "IK4.2": 0.06185567010309278,
+    "IK4.3": 0.07731958762886598,
+    "IK5.1": 0.04639175257731959,
+    "IK5.2": 0.0154639175257732,
+    "IK5.3": 0.04639175257731959,
+    "IK6.1": 0.02061855670103093,
+    "IK6.2": 0.02061855670103093,
+    "IK6.3": 0.04639175257731958,
+    "IK7.1": 0.03092783505154639,
+    "IK7.2": 0.005154639175257732,
+    "IK7.3": 0.005154639175257732,
+    "IK8.1": 0.03608247422680412,
+    "IK8.2": 0.03092783505154639,
+    "IK8.3": 0.04123711340206185,
+    "IK9.1": 0.0154639175257732,
+    "IK9.2": 0.0154639175257732,
+    "IK9.3": 0.0154639175257732,
+    "IK10.1": 0.02061855670103093,
+    "IK10.2": 0.01030927835051546,
+    "IK10.3": 0.01030927835051546
+  }
 }
