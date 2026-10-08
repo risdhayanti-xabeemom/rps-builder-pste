@@ -95,6 +95,32 @@ class D3CpmkWeightTests(unittest.TestCase):
         fisika = [w for w in weights("2025") if w[0] == "1001"]
         self.assertEqual(fisika, [("1001", "CPMK1.1", 52.17), ("1001", "CPMK1.2", 47.83)])
 
+    def test_komponen_pengukuran_without_cpl08_from_2025(self):
+        komponen = {
+            "CPMK1.1": 14.81, "CPMK1.2": 13.58, "CPMK3.1": 17.28, "CPMK3.2": 16.05,
+            "CPMK4.1": 4.94, "CPMK4.2": 14.81, "CPMK4.3": 18.53,
+        }
+        magang = {
+            "CPMK10.1": 7.41, "CPMK10.3": 3.7, "CPMK6.1": 7.41, "CPMK6.3": 16.67, "CPMK7.1": 11.11,
+            "CPMK7.2": 1.85, "CPMK8.1": 25.92, "CPMK8.3": 14.81, "CPMK9.1": 5.56, "CPMK9.2": 5.56,
+        }
+        for cohort in ("2025", "2026"):
+            workbook = app.load_program_workbook("D3 Teknik Elektro", cohort)
+            frame = workbook["Master_CPMK"]
+            kp, mg = f"REC{cohort[-2:]}1002", f"REC{cohort[-2:]}5001"
+            got = lambda code: dict(zip(frame[frame["kode_mk"] == code]["kode_cpmk"], frame[frame["kode_mk"] == code]["bobot_cpmk_mk_persen"]))
+            self.assertEqual(got(kp), komponen)
+            self.assertEqual(got(mg), magang)
+            mapping = workbook["Mapping_MK_CPL"]
+            self.assertEqual(sorted(mapping[mapping["kode_mk"] == kp]["kode_cpl"]), ["CPL1", "CPL3", "CPL4"])
+            weeks = workbook["RPS_Pertemuan"]
+            self.assertNotIn("CPMK8.1", set(weeks[weeks["kode_mk"] == kp]["kode_cpmk"]))
+
+    def test_komponen_pengukuran_2024_unchanged(self):
+        frame = app.load_program_workbook("D3 Teknik Elektro", "2024")["Master_CPMK"]
+        kp = frame[frame["kode_mk"] == "REC241002"]
+        self.assertEqual(kp["bobot_cpmk_mk_persen"].tolist(), [20.0, 26.67, 53.33])
+
 
 if __name__ == "__main__":
     unittest.main()
