@@ -190,9 +190,18 @@ def _target_courses(courses: list[dict[str, Any]], program: str) -> list[dict[st
     return rows
 
 
+def _d3_moves(catalog: dict[str, Any], key: str) -> list[dict[str, str]]:
+    """CPMK yang dipindah antar MK D3 untuk angkatan tertentu (lihat d3_cpmk_pindah)."""
+    return catalog.get("d3_cpmk_pindah", {}).get(key, [])
+
+
 def _official_d3_cpmk(catalog: dict[str, Any], cohort: str) -> pd.DataFrame:
+    removed = {(move["dari_mk"], move["kode_cpmk"]) for move in _d3_moves(catalog, f"D3-{cohort}")}
     rows = []
     for source in catalog["d3_2026_cpmk"]:
+        kode_mk = source["kode_mk"].replace("REC26", f"REC{cohort[-2:]}")
+        if (kode_mk, source["kode_cpmk"]) in removed:
+            continue
         row = {
             "kode_mk": source["kode_mk"].replace("REC26", f"REC{cohort[-2:]}"),
             "id_penawaran": source["kode_mk"].replace("REC26", f"REC{cohort[-2:]}"),
@@ -209,11 +218,15 @@ D3_WEIGHTED_COHORTS = {"D3-2024", "D3-2025", "D3-2026"}
 D3_ASSESSMENT_WEEKS = {2, 4, 6, 9, 10, 12, 14, 17}
 
 
-def _d3_cpmk_weights(catalog: dict[str, Any], cpmk: pd.DataFrame) -> dict[str, float]:
+def _d3_cpmk_weights(
+    catalog: dict[str, Any], cpmk: pd.DataFrame, extra: list[str] | None = None
+) -> dict[str, float]:
     """Bobot CPMK (%) per MK D3 dari tabel BOBOT file nilai angkatan 2024/2025.
 
     Bobot IK tiap CPMK dibagi jumlah bobot IK seluruh CPMK di MK yang sama,
     sehingga total per MK 100. Kosong bila ada CPMK tanpa IK di tabel.
+    `extra` berisi kode CPMK yang menerima bobot pindahan dari MK lain, sehingga
+    bobot IK-nya dihitung sekali lagi.
     """
     table = catalog.get("d3_ik_bobot", {})
     raw: dict[str, float] = {}
@@ -223,6 +236,8 @@ def _d3_cpmk_weights(catalog: dict[str, Any], cpmk: pd.DataFrame) -> dict[str, f
         if value <= 0:
             return {}
         code = str(row["kode_cpmk"])
+        if extra and code in extra:
+            value *= 1 + extra.count(code)
         raw[code] = raw.get(code, 0.0) + value
     total = sum(raw.values())
     if not total:
@@ -393,7 +408,8 @@ def build_cohort_workbook(
                 "kode_cpmk": "CPMK1", "deskripsi_cpmk": f"Mampu menerapkan kompetensi {target['nama_mk']}.",
                 "kode_ik": "", "kode_cpl": "",
             }])
-        d3_weights = _d3_cpmk_weights(catalog, cpmk) if key in D3_WEIGHTED_COHORTS else {}
+        received = [move["kode_cpmk"] for move in _d3_moves(catalog, key) if move["ke_mk"] == target["kode_mk"]]
+        d3_weights = _d3_cpmk_weights(catalog, cpmk, received) if key in D3_WEIGHTED_COHORTS else {}
         d4_weights = {}
         if d4_entry:
             codes = cpmk["kode_cpmk"].astype(str).tolist()

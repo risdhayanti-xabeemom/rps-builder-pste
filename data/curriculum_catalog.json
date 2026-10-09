@@ -8,7 +8,8 @@
     "D4_CPMK": "!CPL-CPMK-Matkul 2022.xlsx",
     "D3_bobot": "Sheet BOBOT (kolom bobot IK) di 11_Nilai_Lengkap_Angkatan_2024_dan_Bobot.xlsx dan 12_Nilai_Lengkap_Angkatan_2025_dan_Bobot.xlsx; isinya sama. Dipakai untuk D3 angkatan 2024, 2025, dan 2026.",
     "D4_bobot_cpmk": "Rencana Evaluasi D4 TE Angkatan 2023-2026 (Daftar MK): bobot CPMK per MK dari jumlah MK per CPMK tiap angkatan, cara sama dengan BOBOT D3 TE",
-    "D4_2023_2025_mk": "DATA DETAIL KD MK angkatan 2023, 2024, 2025"
+    "D4_2023_2025_mk": "DATA DETAIL KD MK angkatan 2023, 2024, 2025",
+    "D3_cpmk_pindah": "Permintaan 8 Okt 2026: Komponen dan Pengukuran D3 TE angkatan 2025 dan 2026 tanpa CPL08 (CPMK8.1 dihapus); bobot IK 8.1-nya ditambahkan ke CPMK8.1 Magang Industri."
   },
   "curricula": {
     "D3-2023": [
@@ -12441,5 +12442,21 @@
         }
       }
     }
+  },
+  "d3_cpmk_pindah": {
+    "D3-2025": [
+      {
+        "kode_cpmk": "CPMK8.1",
+        "dari_mk": "REC251002",
+        "ke_mk": "REC255001"
+      }
+    ],
+    "D3-2026": [
+      {
+        "kode_cpmk": "CPMK8.1",
+        "dari_mk": "REC261002",
+        "ke_mk": "REC265001"
+      }
+    ]
   }
 }
