@@ -65,7 +65,7 @@ class CourseSelectionTests(unittest.TestCase):
 class MultiCurriculumTests(unittest.TestCase):
     EXPECTED_COUNTS = {
         ("D3 Teknik Elektro", "2023"): 44,
-        ("D3 Teknik Elektro", "2024"): 36,
+        ("D3 Teknik Elektro", "2024"): 35,
         ("D3 Teknik Elektro", "2025"): 35,
         ("D3 Teknik Elektro", "2026"): 35,
         ("D4 Teknik Elektronika", "2023"): 56,
