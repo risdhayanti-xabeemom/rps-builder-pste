@@ -384,7 +384,7 @@ def build_cohort_workbook(
         name: [] for name in ["Master_CPMK", "Mapping_MK_CPL", "Short_Silabus", "Referensi", "RPS_Pertemuan"]
     }
     master_rows = []
-    official_d3 = _official_d3_cpmk(catalog, cohort) if key in {"D3-2025", "D3-2026"} else pd.DataFrame()
+    official_d3 = _official_d3_cpmk(catalog, cohort) if key in D3_WEIGHTED_COHORTS else pd.DataFrame()
 
     d4_table = catalog.get("d4_cpmk_bobot", {}).get(key, {}) if program.startswith("D4") else {}
 

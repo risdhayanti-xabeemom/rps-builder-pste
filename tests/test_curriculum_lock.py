@@ -116,10 +116,16 @@ class D3CpmkWeightTests(unittest.TestCase):
             weeks = workbook["RPS_Pertemuan"]
             self.assertNotIn("CPMK8.1", set(weeks[weeks["kode_mk"] == kp]["kode_cpmk"]))
 
-    def test_komponen_pengukuran_2024_unchanged(self):
+    def test_d3_2024_follows_obaobe_rencana_evaluasi(self):
         frame = app.load_program_workbook("D3 Teknik Elektro", "2024")["Master_CPMK"]
-        kp = frame[frame["kode_mk"] == "REC241002"]
-        self.assertEqual(kp["bobot_cpmk_mk_persen"].tolist(), [20.0, 26.67, 53.33])
+        got = lambda code: dict(zip(frame[frame["kode_mk"] == code]["kode_cpmk"], frame[frame["kode_mk"] == code]["bobot_cpmk_mk_persen"]))
+        self.assertEqual(got("REC241001"), {"CPMK1.1": 52.17, "CPMK1.2": 47.83})
+        # Angkatan 2024 tidak ikut pemindahan CPL08: Komponen dan Pengukuran tetap memuat CPMK8.1.
+        self.assertEqual(got("REC241002"), {
+            "CPMK1.1": 13.64, "CPMK1.2": 12.5, "CPMK3.1": 15.91, "CPMK3.2": 14.77,
+            "CPMK4.1": 4.55, "CPMK4.2": 13.64, "CPMK4.3": 17.04, "CPMK8.1": 7.95,
+        })
+        self.assertEqual(got("REC246003"), {"CPMK10.2": 8.7, "CPMK8.1": 30.43, "CPMK8.2": 26.09, "CPMK8.3": 34.78})
 
 
 if __name__ == "__main__":
