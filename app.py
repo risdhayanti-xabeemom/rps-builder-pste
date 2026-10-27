@@ -13,6 +13,7 @@ from typing import Any
 import pandas as pd
 import streamlit as st
 
+import rangkuman
 from neobrutal import apply_theme, page_header
 
 from curriculum import CURRICULUM_OPTIONS, build_cohort_workbook, workbook_to_excel_bytes
@@ -2093,6 +2094,45 @@ def enforce_locked_weekly(
     return frame[RPS_WEEKLY_COLUMNS]
 
 
+def render_rangkuman(workbook: dict[str, pd.DataFrame], program: str, cohort: str) -> None:
+    """Menu rangkuman CPL, IK, dan CPMK dari master kurikulum program dan angkatan terpilih."""
+    sheets = rangkuman.build_summary(workbook)
+    level = program.split()[0]
+    st.subheader(f"Rangkuman CPL dan CPMK {level} angkatan {cohort}")
+    cpl, mk, cpmk = sheets["Ringkasan CPL"], sheets["Ringkasan MK"], sheets["CPMK dan Bobot"]
+    col1, col2, col3, col4 = st.columns(4)
+    col1.metric("CPL", len(cpl))
+    col2.metric("IK", len(sheets["IK per CPL"]))
+    col3.metric("Mata kuliah", len(mk))
+    col4.metric("CPMK", len(cpmk))
+    bad = mk[mk["total_bobot_persen"].round(2) != 100]
+    if bad.empty:
+        st.success("Total bobot CPMK setiap mata kuliah 100%.")
+    else:
+        st.warning("Total bobot CPMK belum 100% pada: " + ", ".join(bad["kode_mk"].astype(str)))
+    tabs = st.tabs(["CPL", "IK per CPL", "CPL per MK", "MK", "CPMK dan bobot"])
+    with tabs[0]:
+        st.dataframe(cpl, use_container_width=True, hide_index=True)
+    with tabs[1]:
+        st.dataframe(sheets["IK per CPL"], use_container_width=True, hide_index=True)
+    with tabs[2]:
+        st.caption("Angka = jumlah CPMK mata kuliah itu yang membebani CPL.")
+        st.dataframe(sheets["CPL per MK"], use_container_width=True, hide_index=True)
+    with tabs[3]:
+        st.dataframe(mk, use_container_width=True, hide_index=True)
+    with tabs[4]:
+        options = ["Semua"] + mk["kode_mk"].astype(str).tolist()
+        chosen = st.selectbox("Filter mata kuliah", options)
+        view = cpmk if chosen == "Semua" else cpmk[cpmk["kode_mk"].astype(str) == chosen]
+        st.dataframe(view, use_container_width=True, hide_index=True)
+    st.download_button(
+        f"Unduh rangkuman {level} angkatan {cohort} (Excel)",
+        data=rangkuman.summary_to_excel_bytes(sheets),
+        file_name=f"rangkuman_cpl_cpmk_{level.lower()}_{cohort}.xlsx",
+        mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    )
+
+
 def main() -> None:
     st.set_page_config(page_title="RPS Builder OBE", layout="wide")
     apply_theme()
@@ -2108,6 +2148,7 @@ def main() -> None:
 
     OUTPUT_DIR.mkdir(exist_ok=True)
     with st.sidebar:
+        menu = st.radio("Menu", ["Penyusun RPS", "Rangkuman CPL dan CPMK"])
         st.header("Input")
         program = st.selectbox(
             "Jenjang / master kurikulum",
@@ -2157,6 +2198,10 @@ def main() -> None:
         for error in integrity_errors:
             st.write(f"- {error}")
         st.stop()
+
+    if menu == "Rangkuman CPL dan CPMK":
+        render_rangkuman(workbook, program, cohort)
+        return
 
     master_mk = workbook["Master_MK"].copy()
     master_mk["kode_mk"] = master_mk["kode_mk"].map(normalize_kode_mk)
