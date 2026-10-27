@@ -1,3 +1,4 @@
+import io
 import sys
 import types
 import unittest
@@ -12,6 +13,7 @@ if "streamlit" not in sys.modules:
     )
 
 import app
+import rangkuman
 
 
 APP_SOURCE = (Path(__file__).resolve().parents[1] / "app.py").read_text(encoding="utf-8")
@@ -126,6 +128,48 @@ class D3CpmkWeightTests(unittest.TestCase):
             "CPMK4.1": 4.55, "CPMK4.2": 13.64, "CPMK4.3": 17.04, "CPMK8.1": 7.95,
         })
         self.assertEqual(got("REC246003"), {"CPMK10.2": 8.7, "CPMK8.1": 30.43, "CPMK8.2": 26.09, "CPMK8.3": 34.78})
+
+    def test_elektronika_analog_2_without_cpl5_from_2025(self):
+        expected = {"CPMK1.1": 17.0, "CPMK2.2": 20.0, "CPMK2.3": 5.0, "CPMK3.1": 19.0, "CPMK4.2": 17.0, "CPMK4.3": 22.0}
+        for cohort in ("2025", "2026"):
+            workbook = app.load_program_workbook("D3 Teknik Elektro", cohort)
+            code = f"REC{cohort[-2:]}3001"
+            frame = workbook["Master_CPMK"]
+            frame = frame[frame["kode_mk"] == code]
+            self.assertEqual(dict(zip(frame["kode_cpmk"], frame["bobot_cpmk_mk_persen"])), expected)
+            mapping = workbook["Mapping_MK_CPL"]
+            self.assertNotIn("CPL5", set(mapping[mapping["kode_mk"] == code]["kode_cpl"]))
+            weekly = workbook["RPS_Pertemuan"]
+            weekly = weekly[weekly["kode_mk"] == code]
+            self.assertAlmostEqual(weekly["bobot"].map(app.as_float).sum(), 100, places=2)
+            self.assertFalse({"CPMK5.1", "CPMK5.3"} & set(weekly["kode_cpmk"]))
+        # Angkatan 2024 tidak ikut perubahan.
+        old = app.load_program_workbook("D3 Teknik Elektro", "2024")["Master_CPMK"]
+        self.assertIn("CPMK5.1", set(old[old["kode_mk"] == "REC243001"]["kode_cpmk"]))
+
+
+class RangkumanTests(unittest.TestCase):
+    def test_summary_covers_every_program_and_cohort(self):
+        for program in ("D3 Teknik Elektro", "D4 Teknik Elektronika"):
+            for cohort in ("2023", "2024", "2025", "2026"):
+                workbook = app.load_program_workbook(program, cohort)
+                sheets = rangkuman.build_summary(workbook)
+                courses = sheets["Ringkasan MK"]
+                self.assertEqual(len(courses), len(workbook["Master_MK"]))
+                self.assertTrue((courses["total_bobot_persen"].round(2) == 100).all(), (program, cohort))
+                self.assertEqual(len(sheets["CPMK dan Bobot"]), len(workbook["Master_CPMK"]))
+                self.assertEqual(len(sheets["Ringkasan CPL"]), 10)
+                if (program, cohort) != ("D3 Teknik Elektro", "2023"):  # master REC23 tidak punya CPMK CPL7
+                    self.assertTrue((sheets["Ringkasan CPL"]["jumlah_cpmk"] > 0).all(), (program, cohort))
+
+    def test_excel_export_has_all_sheets(self):
+        workbook = app.load_program_workbook("D4 Teknik Elektronika", "2026")
+        sheets = rangkuman.build_summary(workbook)
+        loaded = pd.read_excel(io.BytesIO(rangkuman.summary_to_excel_bytes(sheets)), sheet_name=None)
+        self.assertEqual(list(loaded), list(sheets))
+
+    def test_menu_is_wired_in_app(self):
+        self.assertIn("Rangkuman CPL dan CPMK", APP_SOURCE)
 
 
 if __name__ == "__main__":

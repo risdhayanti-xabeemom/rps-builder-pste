@@ -197,6 +197,10 @@ def _d3_moves(catalog: dict[str, Any], key: str) -> list[dict[str, str]]:
 
 def _official_d3_cpmk(catalog: dict[str, Any], cohort: str) -> pd.DataFrame:
     removed = {(move["dari_mk"], move["kode_cpmk"]) for move in _d3_moves(catalog, f"D3-{cohort}")}
+    removed |= {
+        (item["kode_mk"], item["kode_cpmk"])
+        for item in catalog.get("d3_cpmk_hapus", {}).get(f"D3-{cohort}", [])
+    }
     rows = []
     for source in catalog["d3_2026_cpmk"]:
         kode_mk = source["kode_mk"].replace("REC26", f"REC{cohort[-2:]}")
@@ -410,6 +414,9 @@ def build_cohort_workbook(
             }])
         received = [move["kode_cpmk"] for move in _d3_moves(catalog, key) if move["ke_mk"] == target["kode_mk"]]
         d3_weights = _d3_cpmk_weights(catalog, cpmk, received) if key in D3_WEIGHTED_COHORTS else {}
+        fixed = catalog.get("d3_bobot_tetap", {}).get(key, {}).get(target["kode_mk"])
+        if fixed and sorted(fixed) == sorted(cpmk["kode_cpmk"].astype(str)):
+            d3_weights = {code: float(value) for code, value in fixed.items()}
         d4_weights = {}
         if d4_entry:
             codes = cpmk["kode_cpmk"].astype(str).tolist()

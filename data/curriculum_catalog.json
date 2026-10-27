@@ -10,7 +10,8 @@
     "D4_bobot_cpmk": "Rencana Evaluasi D4 TE Angkatan 2023-2026 (Daftar MK): bobot CPMK per MK dari jumlah MK per CPMK tiap angkatan, cara sama dengan BOBOT D3 TE",
     "D4_2023_2025_mk": "DATA DETAIL KD MK angkatan 2023, 2024, 2025",
     "D3_cpmk_pindah": "Permintaan 8 Okt 2026: Komponen dan Pengukuran D3 TE angkatan 2025 dan 2026 tanpa CPL08 (CPMK8.1 dihapus); bobot IK 8.1-nya ditambahkan ke CPMK8.1 Magang Industri.",
-    "D3_2024": "Daftar MK D3 TE angkatan 2024 disamakan dengan 2025 (kode REC24), sesuai folder Drive OBAOBE D3TE (16 Okt 2026): 4. Rencana Evaluasi D3 TE tahun 2024 (rev).xlsx dan Angkatan 2024 - Per MK."
+    "D3_2024": "Daftar MK D3 TE angkatan 2024 disamakan dengan 2025 (kode REC24), sesuai folder Drive OBAOBE D3TE (16 Okt 2026): 4. Rencana Evaluasi D3 TE tahun 2024 (rev).xlsx dan Angkatan 2024 - Per MK.",
+    "D3_REC253001": "Permintaan 27 Okt 2026: Elektronika Analog 2 D3 TE angkatan 2025 (REC253001), angkatan 2026 disamakan (REC263001) tanpa CPL5 (CPMK5.1 dan 5.3 dihapus); bobot mapping CPMK memakai file OBA \"RencanaEvaluasi-REC253001 (tanpa CPL5 + UAS)\": 17, 20, 5, 19, 17, 22. Magang Industri tidak diubah."
   },
   "curricula": {
     "D3-2023": [
@@ -12445,5 +12446,49 @@
         "ke_mk": "REC265001"
       }
     ]
+  },
+  "d3_cpmk_hapus": {
+    "D3-2025": [
+      {
+        "kode_mk": "REC253001",
+        "kode_cpmk": "CPMK5.1"
+      },
+      {
+        "kode_mk": "REC253001",
+        "kode_cpmk": "CPMK5.3"
+      }
+    ],
+    "D3-2026": [
+      {
+        "kode_mk": "REC263001",
+        "kode_cpmk": "CPMK5.1"
+      },
+      {
+        "kode_mk": "REC263001",
+        "kode_cpmk": "CPMK5.3"
+      }
+    ]
+  },
+  "d3_bobot_tetap": {
+    "D3-2025": {
+      "REC253001": {
+        "CPMK1.1": 17.0,
+        "CPMK2.2": 20.0,
+        "CPMK2.3": 5.0,
+        "CPMK3.1": 19.0,
+        "CPMK4.2": 17.0,
+        "CPMK4.3": 22.0
+      }
+    },
+    "D3-2026": {
+      "REC263001": {
+        "CPMK1.1": 17.0,
+        "CPMK2.2": 20.0,
+        "CPMK2.3": 5.0,
+        "CPMK3.1": 19.0,
+        "CPMK4.2": 17.0,
+        "CPMK4.3": 22.0
+      }
+    }
   }
 }
