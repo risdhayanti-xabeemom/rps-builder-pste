@@ -92,7 +92,8 @@ class D3CpmkWeightTests(unittest.TestCase):
     def test_d3_2026_matches_2025(self):
         def weights(cohort):
             frame = app.load_program_workbook("D3 Teknik Elektro", cohort)["Master_CPMK"]
-            return [(row["kode_mk"][5:], row["kode_cpmk"], row["bobot_cpmk_mk_persen"]) for row in frame.to_dict("records")]
+            # Rangkaian Listrik 1 (x1008) hanya berubah di angkatan 2026.
+            return [(row["kode_mk"][5:], row["kode_cpmk"], row["bobot_cpmk_mk_persen"]) for row in frame.to_dict("records") if row["kode_mk"][5:] != "1008"]
         self.assertEqual(weights("2025"), weights("2026"))
         fisika = [w for w in weights("2025") if w[0] == "1001"]
         self.assertEqual(fisika, [("1001", "CPMK1.1", 52.17), ("1001", "CPMK1.2", 47.83)])
@@ -146,6 +147,16 @@ class D3CpmkWeightTests(unittest.TestCase):
         # Angkatan 2024 tidak ikut perubahan.
         old = app.load_program_workbook("D3 Teknik Elektro", "2024")["Master_CPMK"]
         self.assertIn("CPMK5.1", set(old[old["kode_mk"] == "REC243001"]["kode_cpmk"]))
+
+    def test_rangkaian_listrik_1_cpl1_only_in_2026(self):
+        workbook = app.load_program_workbook("D3 Teknik Elektro", "2026")
+        frame = workbook["Master_CPMK"]
+        frame = frame[frame["kode_mk"] == "REC261008"]
+        self.assertEqual(dict(zip(frame["kode_cpmk"], frame["bobot_cpmk_mk_persen"])), {"CPMK1.1": 52.17, "CPMK1.2": 47.83})
+        mapping = workbook["Mapping_MK_CPL"]
+        self.assertEqual(list(mapping[mapping["kode_mk"] == "REC261008"]["kode_cpl"]), ["CPL1"])
+        old = app.load_program_workbook("D3 Teknik Elektro", "2025")["Master_CPMK"]
+        self.assertEqual(len(old[old["kode_mk"] == "REC251008"]), 7)
 
 
 class RangkumanTests(unittest.TestCase):

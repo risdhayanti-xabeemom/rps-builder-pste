@@ -11,7 +11,8 @@
     "D4_2023_2025_mk": "DATA DETAIL KD MK angkatan 2023, 2024, 2025",
     "D3_cpmk_pindah": "Permintaan 8 Okt 2026: Komponen dan Pengukuran D3 TE angkatan 2025 dan 2026 tanpa CPL08 (CPMK8.1 dihapus); bobot IK 8.1-nya ditambahkan ke CPMK8.1 Magang Industri.",
     "D3_2024": "Daftar MK D3 TE angkatan 2024 disamakan dengan 2025 (kode REC24), sesuai folder Drive OBAOBE D3TE (16 Okt 2026): 4. Rencana Evaluasi D3 TE tahun 2024 (rev).xlsx dan Angkatan 2024 - Per MK.",
-    "D3_REC253001": "Permintaan 27 Okt 2026: Elektronika Analog 2 D3 TE angkatan 2025 (REC253001), angkatan 2026 disamakan (REC263001) tanpa CPL5 (CPMK5.1 dan 5.3 dihapus); bobot mapping CPMK memakai file OBA \"RencanaEvaluasi-REC253001 (tanpa CPL5 + UAS)\": 17, 20, 5, 19, 17, 22. Magang Industri tidak diubah."
+    "D3_REC253001": "Permintaan 27 Okt 2026: Elektronika Analog 2 D3 TE angkatan 2025 (REC253001), angkatan 2026 disamakan (REC263001) tanpa CPL5 (CPMK5.1 dan 5.3 dihapus); bobot mapping CPMK memakai file OBA \"RencanaEvaluasi-REC253001 (tanpa CPL5 + UAS)\": 17, 20, 5, 19, 17, 22. Magang Industri tidak diubah.",
+    "D3_REC261008": "Permintaan 28 Okt 2026: Rangkaian Listrik 1 D3 TE angkatan 2026 (REC261008 di app) hanya CPL1 (CPMK1.1 dan 1.2); bobot CPL lain dibagi rata ke Magang Industri (proporsional, sehingga bobot Magang tidak berubah). Angkatan 2024 dan 2025 tidak diubah."
   },
   "curricula": {
     "D3-2023": [
@@ -12466,6 +12467,26 @@
       {
         "kode_mk": "REC263001",
         "kode_cpmk": "CPMK5.3"
+      },
+      {
+        "kode_mk": "REC261008",
+        "kode_cpmk": "CPMK2.2"
+      },
+      {
+        "kode_mk": "REC261008",
+        "kode_cpmk": "CPMK4.1"
+      },
+      {
+        "kode_mk": "REC261008",
+        "kode_cpmk": "CPMK4.2"
+      },
+      {
+        "kode_mk": "REC261008",
+        "kode_cpmk": "CPMK4.3"
+      },
+      {
+        "kode_mk": "REC261008",
+        "kode_cpmk": "CPMK6.3"
       }
     ]
   },
