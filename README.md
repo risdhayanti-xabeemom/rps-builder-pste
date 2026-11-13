@@ -52,6 +52,8 @@ Aplikasi Streamlit untuk menyusun RPS berbasis OBE dari master kurikulum Excel d
 
 File pada `sample_data` menjadi basis CPL/IK/CPMK. `curriculum_catalog.json` menyimpan struktur dan kode resmi per angkatan serta short silabus D4 yang sudah diekstrak dari dokumen sumber. Master angkatan dibentuk ketika dipilih dan dapat langsung diunduh dari sidebar. Kode yang sama untuk dua penawaran tetap dipertahankan dan dipisahkan dengan `id_penawaran`.
 
+D3 TE angkatan 2025 dan 2026 memakai kunci katalog `d3_cpmk_kurikulum`: kode CPMK mengikuti kode MK seperti kurikulum 2023 (`REC25xxxx-CPMK1`), kalimat CPMK per MK, IK per CPMK, dan bobot CPMK per MK. Bobot dihitung dari jumlah MK pembawa tiap IK (lihat file Excel "Peta CPL-IK-CPMK D3 TE 2025/2026"). Bila peta berubah, perbarui kunci ini dari file tersebut lalu jalankan tes.
+
 ## Instalasi
 
 ```bash

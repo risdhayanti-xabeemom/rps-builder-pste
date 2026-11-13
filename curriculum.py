@@ -195,7 +195,27 @@ def _d3_moves(catalog: dict[str, Any], key: str) -> list[dict[str, str]]:
     return catalog.get("d3_cpmk_pindah", {}).get(key, [])
 
 
+def _d3_curriculum_rows(catalog: dict[str, Any], key: str) -> list[dict[str, Any]]:
+    """CPMK D3 berkode MK (gaya 2023) beserta bobotnya, bila angkatan ini sudah memakainya."""
+    return catalog.get("d3_cpmk_kurikulum", {}).get(key, [])
+
+
+def _cpl_from_ik(kode_ik: str) -> list[str]:
+    codes = re.findall(r"IK\s*0*(\d+)\.0*\d+", str(kode_ik))
+    return [f"CPL{int(code):02d}" for code in dict.fromkeys(codes)]
+
+
 def _official_d3_cpmk(catalog: dict[str, Any], cohort: str) -> pd.DataFrame:
+    curriculum_rows = _d3_curriculum_rows(catalog, f"D3-{cohort}")
+    if curriculum_rows:
+        return pd.DataFrame([{
+            "kode_mk": row["kode_mk"],
+            "id_penawaran": row["kode_mk"],
+            "kode_cpmk": row["kode_cpmk"],
+            "deskripsi_cpmk": row["rumusan_cpmk"],
+            "kode_ik": row["kode_ik"],
+            "kode_cpl": row["kode_cpl"],
+        } for row in curriculum_rows])
     removed = {(move["dari_mk"], move["kode_cpmk"]) for move in _d3_moves(catalog, f"D3-{cohort}")}
     removed |= {
         (item["kode_mk"], item["kode_cpmk"])
@@ -417,6 +437,13 @@ def build_cohort_workbook(
         fixed = catalog.get("d3_bobot_tetap", {}).get(key, {}).get(target["kode_mk"])
         if fixed and sorted(fixed) == sorted(cpmk["kode_cpmk"].astype(str)):
             d3_weights = {code: float(value) for code, value in fixed.items()}
+        listed = {
+            row["kode_cpmk"]: float(row["bobot"])
+            for row in _d3_curriculum_rows(catalog, key)
+            if row["kode_mk"] == target["kode_mk"]
+        }
+        if listed:
+            d3_weights = listed
         d4_weights = {}
         if d4_entry:
             codes = cpmk["kode_cpmk"].astype(str).tolist()
@@ -426,7 +453,13 @@ def build_cohort_workbook(
             cpmk = cpmk.copy()
             cpmk["bobot_cpmk_mk_persen"] = cpmk["kode_cpmk"].astype(str).map(d3_weights or d4_weights)
         output["Master_CPMK"].append(cpmk)
-        mapping = cpmk[["kode_mk", "id_penawaran", "kode_cpl"]].drop_duplicates()
+        mapping_rows = []
+        for row in cpmk.to_dict("records"):
+            cpls = [row["kode_cpl"]] if str(row.get("kode_cpl", "")).strip() else _cpl_from_ik(row.get("kode_ik", ""))
+            mapping_rows += [
+                {"kode_mk": row["kode_mk"], "id_penawaran": row["id_penawaran"], "kode_cpl": cpl} for cpl in cpls
+            ]
+        mapping = pd.DataFrame(mapping_rows, columns=["kode_mk", "id_penawaran", "kode_cpl"]).drop_duplicates()
         mapping = mapping[mapping["kode_cpl"].astype(str) != ""]
         output["Mapping_MK_CPL"].append(mapping)
 
