@@ -12,7 +12,7 @@
     "D3_cpmk_pindah": "Permintaan 8 Okt 2026: Komponen dan Pengukuran D3 TE angkatan 2025 dan 2026 tanpa CPL08 (CPMK8.1 dihapus); bobot IK 8.1-nya ditambahkan ke CPMK8.1 Magang Industri.",
     "D3_2024": "Daftar MK D3 TE angkatan 2024 disamakan dengan 2025 (kode REC24), sesuai folder Drive OBAOBE D3TE (16 Okt 2026): 4. Rencana Evaluasi D3 TE tahun 2024 (rev).xlsx dan Angkatan 2024 - Per MK.",
     "D3_REC253001": "Permintaan 27 Okt 2026: Elektronika Analog 2 D3 TE angkatan 2025 (REC253001), angkatan 2026 disamakan (REC263001) tanpa CPL5 (CPMK5.1 dan 5.3 dihapus); bobot mapping CPMK memakai file OBA \"RencanaEvaluasi-REC253001 (tanpa CPL5 + UAS)\": 17, 20, 5, 19, 17, 22. Magang Industri tidak diubah.",
-    "D3_cpmk_2025": "Permintaan 13 Nov 2026 (D3 TE angkatan 2025 dan 2026): kode CPMK = <kode MK>-CPMKn seperti kurikulum 2023, kalimat CPMK per MK; Sistem Kendali Diskrit ditambah CPMK IK7.2; Magang Industri dan Proyek Akhir = 5 CPMK 2023 (multi-IK); IK MK lain mengikuti app (K&P tanpa CPL08, Elektronika Analog 2 tanpa CPL05, Rangkaian Listrik 1 angkatan 2026 hanya CPL01). Bobot = jumlah bobot IK CPMK / jumlah di MK, bobot IK = jumlah MK pembawa IK / total pasangan MK-IK angkatan itu (Peta CPL-IK-CPMK D3 TE 2025/2026.xlsx). Menggantikan d3_cpmk_pindah, d3_cpmk_hapus, d3_bobot_tetap untuk 2025/2026."
+    "D3_cpmk_2025": "Permintaan 13 Nov 2026 (D3 TE angkatan 2025 dan 2026): kode CPMK = <kode MK>-CPMKn seperti kurikulum 2023, kalimat CPMK per MK; Sistem Kendali Diskrit ditambah CPMK IK7.2; Magang Industri dan Proyek Akhir = 5 CPMK 2023 (multi-IK); IK MK lain mengikuti app (K&P tanpa CPL08, Elektronika Analog 2 tanpa CPL05, Rangkaian Listrik 1 angkatan 2026 hanya CPL01). Bobot = jumlah bobot IK CPMK / jumlah di MK dengan bobot IK dari d3_ik_bobot (file nilai, total 194), sehingga bobot MK lain tidak berubah; revisi 13 Nov 2026: hanya Sistem Kendali Diskrit dan Magang Industri berubah, bobot IK7.2 dibagi dua untuk keduanya; Magang tetap + IK8.1 pindahan K&P; Elektronika Analog 2 tetap 17/20/5/19/17/22 (Peta CPL-IK-CPMK D3 TE 2025/2026.xlsx). Menggantikan d3_cpmk_pindah, d3_cpmk_hapus, d3_bobot_tetap untuk 2025/2026."
   },
   "curricula": {
     "D3-2023": [
@@ -12443,7 +12443,7 @@
         "rumusan_cpmk": "Menjelaskan konsep dasar besaran, satuan, gaya, energi, listrik, dan magnet yang relevan dengan rekayasa elektro.",
         "kode_ik": "IK01.01",
         "kode_cpl": "CPL01",
-        "bobot": 52.38,
+        "bobot": 52.17,
         "bobot_bulat": 52
       },
       {
@@ -12452,7 +12452,7 @@
         "rumusan_cpmk": "Menerapkan hukum-hukum fisika dasar untuk menyelesaikan permasalahan teknis sederhana pada sistem elektro.",
         "kode_ik": "IK01.02",
         "kode_cpl": "CPL01",
-        "bobot": 47.62,
+        "bobot": 47.83,
         "bobot_bulat": 48
       },
       {
@@ -12461,7 +12461,7 @@
         "rumusan_cpmk": "Mengidentifikasi jenis, karakteristik, dan fungsi komponen elektronika dasar berdasarkan datasheet.",
         "kode_ik": "IK01.01",
         "kode_cpl": "CPL01",
-        "bobot": 15.28,
+        "bobot": 14.81,
         "bobot_bulat": 15
       },
       {
@@ -12470,7 +12470,7 @@
         "rumusan_cpmk": "Menerapkan prinsip kerja komponen elektronika dalam analisis rangkaian sederhana.",
         "kode_ik": "IK01.02",
         "kode_cpl": "CPL01",
-        "bobot": 13.89,
+        "bobot": 13.58,
         "bobot_bulat": 14
       },
       {
@@ -12479,7 +12479,7 @@
         "rumusan_cpmk": "Memilih komponen elektronika dan alat ukur yang sesuai dengan kebutuhan rangkaian dan pengukuran sederhana.",
         "kode_ik": "IK03.01",
         "kode_cpl": "CPL03",
-        "bobot": 16.65,
+        "bobot": 17.28,
         "bobot_bulat": 17
       },
       {
@@ -12488,8 +12488,8 @@
         "rumusan_cpmk": "Mengoperasikan alat ukur listrik sesuai prosedur dan standar keselamatan.",
         "kode_ik": "IK03.02",
         "kode_cpl": "CPL03",
-        "bobot": 16.67,
-        "bobot_bulat": 17
+        "bobot": 16.05,
+        "bobot_bulat": 16
       },
       {
         "kode_mk": "REC251002",
@@ -12497,7 +12497,7 @@
         "rumusan_cpmk": "Menjelaskan prinsip kerja alat ukur listrik dan mengikuti prosedur pengukuran dasar.",
         "kode_ik": "IK04.01",
         "kode_cpl": "CPL04",
-        "bobot": 5.56,
+        "bobot": 4.94,
         "bobot_bulat": 5
       },
       {
@@ -12506,8 +12506,8 @@
         "rumusan_cpmk": "Melaksanakan pengukuran besaran listrik dan karakteristik komponen menggunakan instrumen yang sesuai.",
         "kode_ik": "IK04.02",
         "kode_cpl": "CPL04",
-        "bobot": 16.67,
-        "bobot_bulat": 17
+        "bobot": 14.81,
+        "bobot_bulat": 15
       },
       {
         "kode_mk": "REC251002",
@@ -12515,8 +12515,8 @@
         "rumusan_cpmk": "Menganalisis hasil pengukuran dasar untuk menilai kesesuaian karakteristik komponen dengan spesifikasinya.",
         "kode_ik": "IK04.03",
         "kode_cpl": "CPL04",
-        "bobot": 15.28,
-        "bobot_bulat": 15
+        "bobot": 18.53,
+        "bobot_bulat": 18
       },
       {
         "kode_mk": "REC251003",
@@ -12524,7 +12524,7 @@
         "rumusan_cpmk": "Mengidentifikasi konsep aljabar, fungsi, trigonometri, dan bilangan kompleks yang relevan dengan rekayasa elektro.",
         "kode_ik": "IK01.01",
         "kode_cpl": "CPL01",
-        "bobot": 52.38,
+        "bobot": 52.17,
         "bobot_bulat": 52
       },
       {
@@ -12533,7 +12533,7 @@
         "rumusan_cpmk": "Menerapkan konsep matematika dasar dalam perhitungan besaran listrik dan penyelesaian masalah teknis sederhana.",
         "kode_ik": "IK01.02",
         "kode_cpl": "CPL01",
-        "bobot": 47.62,
+        "bobot": 47.83,
         "bobot_bulat": 48
       },
       {
@@ -12542,8 +12542,8 @@
         "rumusan_cpmk": "Menunjukkan tanggung jawab terhadap keselamatan diri, tim, pengguna, dan lingkungan kerja.",
         "kode_ik": "IK06.02",
         "kode_cpl": "CPL06",
-        "bobot": 22.22,
-        "bobot_bulat": 22
+        "bobot": 21.05,
+        "bobot_bulat": 21
       },
       {
         "kode_mk": "REC251007",
@@ -12551,8 +12551,8 @@
         "rumusan_cpmk": "Menerapkan prinsip K3LH, identifikasi bahaya, dan pengendalian risiko pada pekerjaan laboratorium, bengkel, dan industri.",
         "kode_ik": "IK06.03",
         "kode_cpl": "CPL06",
-        "bobot": 44.45,
-        "bobot_bulat": 45
+        "bobot": 47.37,
+        "bobot_bulat": 47
       },
       {
         "kode_mk": "REC251007",
@@ -12560,8 +12560,8 @@
         "rumusan_cpmk": "Menyelesaikan tugas K3 secara mandiri, disiplin, dan bertanggung jawab sesuai target yang ditetapkan.",
         "kode_ik": "IK07.01",
         "kode_cpl": "CPL07",
-        "bobot": 33.33,
-        "bobot_bulat": 33
+        "bobot": 31.58,
+        "bobot_bulat": 32
       },
       {
         "kode_mk": "REC251008",
@@ -12569,8 +12569,8 @@
         "rumusan_cpmk": "Menjelaskan konsep dasar rangkaian listrik DC, komponen pasif, hukum Ohm, dan hukum Kirchhoff.",
         "kode_ik": "IK01.01",
         "kode_cpl": "CPL01",
-        "bobot": 16.42,
-        "bobot_bulat": 17
+        "bobot": 15.58,
+        "bobot_bulat": 16
       },
       {
         "kode_mk": "REC251008",
@@ -12578,8 +12578,8 @@
         "rumusan_cpmk": "Menerapkan prinsip rangkaian listrik untuk menghitung tegangan, arus, daya, dan parameter rangkaian sederhana.",
         "kode_ik": "IK01.02",
         "kode_cpl": "CPL01",
-        "bobot": 14.93,
-        "bobot_bulat": 15
+        "bobot": 14.29,
+        "bobot_bulat": 14
       },
       {
         "kode_mk": "REC251008",
@@ -12587,8 +12587,8 @@
         "rumusan_cpmk": "Menganalisis kondisi kerja rangkaian listrik sederhana berdasarkan metode standar.",
         "kode_ik": "IK02.02",
         "kode_cpl": "CPL02",
-        "bobot": 16.42,
-        "bobot_bulat": 16
+        "bobot": 18.18,
+        "bobot_bulat": 18
       },
       {
         "kode_mk": "REC251008",
@@ -12596,8 +12596,8 @@
         "rumusan_cpmk": "Mengikuti prosedur praktikum rangkaian listrik sesuai instruksi kerja.",
         "kode_ik": "IK04.01",
         "kode_cpl": "CPL04",
-        "bobot": 5.97,
-        "bobot_bulat": 6
+        "bobot": 5.19,
+        "bobot_bulat": 5
       },
       {
         "kode_mk": "REC251008",
@@ -12605,8 +12605,8 @@
         "rumusan_cpmk": "Melaksanakan pengukuran tegangan, arus, dan resistansi menggunakan instrumen yang sesuai.",
         "kode_ik": "IK04.02",
         "kode_cpl": "CPL04",
-        "bobot": 17.9,
-        "bobot_bulat": 18
+        "bobot": 15.58,
+        "bobot_bulat": 16
       },
       {
         "kode_mk": "REC251008",
@@ -12614,8 +12614,8 @@
         "rumusan_cpmk": "Menganalisis hasil pengukuran rangkaian listrik untuk memverifikasi kesesuaian dengan teori dasar.",
         "kode_ik": "IK04.03",
         "kode_cpl": "CPL04",
-        "bobot": 16.42,
-        "bobot_bulat": 16
+        "bobot": 19.49,
+        "bobot_bulat": 19
       },
       {
         "kode_mk": "REC251008",
@@ -12623,7 +12623,7 @@
         "rumusan_cpmk": "Menerapkan prinsip keselamatan kerja listrik selama praktikum rangkaian listrik.",
         "kode_ik": "IK06.03",
         "kode_cpl": "CPL06",
-        "bobot": 11.94,
+        "bobot": 11.69,
         "bobot_bulat": 12
       },
       {
@@ -12632,8 +12632,8 @@
         "rumusan_cpmk": "Memilih simbol, komponen, dan perangkat lunak gambar yang sesuai dengan kebutuhan gambar teknik.",
         "kode_ik": "IK03.01",
         "kode_cpl": "CPL03",
-        "bobot": 32.43,
-        "bobot_bulat": 32
+        "bobot": 36.85,
+        "bobot_bulat": 37
       },
       {
         "kode_mk": "REC251009",
@@ -12641,8 +12641,8 @@
         "rumusan_cpmk": "Menggunakan gambar teknik untuk mendukung realisasi dan pemeriksaan pekerjaan teknis.",
         "kode_ik": "IK05.01",
         "kode_cpl": "CPL05",
-        "bobot": 27.03,
-        "bobot_bulat": 27
+        "bobot": 23.68,
+        "bobot_bulat": 24
       },
       {
         "kode_mk": "REC251009",
@@ -12650,8 +12650,8 @@
         "rumusan_cpmk": "Menyusun gambar kerja dan wiring diagram sederhana secara sistematis sesuai spesifikasi yang diberikan.",
         "kode_ik": "IK08.01",
         "kode_cpl": "CPL08",
-        "bobot": 18.92,
-        "bobot_bulat": 19
+        "bobot": 18.42,
+        "bobot_bulat": 18
       },
       {
         "kode_mk": "REC251009",
@@ -12659,8 +12659,8 @@
         "rumusan_cpmk": "Menerapkan standar, simbol, dan notasi gambar teknik dalam dokumentasi teknis.",
         "kode_ik": "IK08.03",
         "kode_cpl": "CPL08",
-        "bobot": 21.62,
-        "bobot_bulat": 22
+        "bobot": 21.05,
+        "bobot_bulat": 21
       },
       {
         "kode_mk": "REC251010",
@@ -12668,8 +12668,8 @@
         "rumusan_cpmk": "Mengidentifikasi fungsi alat kerja mekanik, material, dan prosedur dasar kerja bengkel.",
         "kode_ik": "IK03.01",
         "kode_cpl": "CPL03",
-        "bobot": 27.27,
-        "bobot_bulat": 27
+        "bobot": 29.17,
+        "bobot_bulat": 29
       },
       {
         "kode_mk": "REC251010",
@@ -12677,7 +12677,7 @@
         "rumusan_cpmk": "Menggunakan peralatan bengkel mekanik sesuai SOP.",
         "kode_ik": "IK03.02",
         "kode_cpl": "CPL03",
-        "bobot": 27.27,
+        "bobot": 27.08,
         "bobot_bulat": 27
       },
       {
@@ -12686,8 +12686,8 @@
         "rumusan_cpmk": "Merealisasikan pekerjaan mekanik sederhana berdasarkan gambar kerja dan spesifikasi yang diberikan.",
         "kode_ik": "IK05.01",
         "kode_cpl": "CPL05",
-        "bobot": 22.73,
-        "bobot_bulat": 23
+        "bobot": 18.75,
+        "bobot_bulat": 19
       },
       {
         "kode_mk": "REC251010",
@@ -12695,8 +12695,8 @@
         "rumusan_cpmk": "Menerapkan prinsip K3LH selama pekerjaan bengkel mekanik.",
         "kode_ik": "IK06.03",
         "kode_cpl": "CPL06",
-        "bobot": 18.18,
-        "bobot_bulat": 18
+        "bobot": 18.75,
+        "bobot_bulat": 19
       },
       {
         "kode_mk": "REC251010",
@@ -12704,8 +12704,8 @@
         "rumusan_cpmk": "Melaksanakan pekerjaan bengkel mekanik sesuai batasan waktu, mutu, dan penggunaan bahan yang ditetapkan.",
         "kode_ik": "IK09.02",
         "kode_cpl": "CPL09",
-        "bobot": 4.55,
-        "bobot_bulat": 5
+        "bobot": 6.25,
+        "bobot_bulat": 6
       },
       {
         "kode_mk": "REC251011",
@@ -12713,8 +12713,8 @@
         "rumusan_cpmk": "Menjelaskan konsep algoritma, flowchart, variabel, struktur kendali, dan logika pemrograman.",
         "kode_ik": "IK01.03",
         "kode_cpl": "CPL01",
-        "bobot": 23.53,
-        "bobot_bulat": 24
+        "bobot": 21.05,
+        "bobot_bulat": 21
       },
       {
         "kode_mk": "REC251011",
@@ -12722,8 +12722,8 @@
         "rumusan_cpmk": "Membuat program sederhana untuk menyelesaikan masalah teknis yang terdefinisi dengan jelas.",
         "kode_ik": "IK02.03",
         "kode_cpl": "CPL02",
-        "bobot": 29.41,
-        "bobot_bulat": 29
+        "bobot": 31.58,
+        "bobot_bulat": 32
       },
       {
         "kode_mk": "REC251011",
@@ -12731,7 +12731,7 @@
         "rumusan_cpmk": "Menguji dan memperbaiki program sederhana berdasarkan keluaran yang diharapkan.",
         "kode_ik": "IK05.03",
         "kode_cpl": "CPL05",
-        "bobot": 47.06,
+        "bobot": 47.37,
         "bobot_bulat": 47
       },
       {
@@ -12740,8 +12740,8 @@
         "rumusan_cpmk": "Menjelaskan konsep rangkaian AC, fasor, impedansi, daya AC, dan respons frekuensi dasar.",
         "kode_ik": "IK01.01",
         "kode_cpl": "CPL01",
-        "bobot": 16.42,
-        "bobot_bulat": 17
+        "bobot": 15.58,
+        "bobot_bulat": 16
       },
       {
         "kode_mk": "REC252001",
@@ -12749,8 +12749,8 @@
         "rumusan_cpmk": "Menerapkan metode standar untuk menghitung besaran pada rangkaian listrik AC.",
         "kode_ik": "IK01.02",
         "kode_cpl": "CPL01",
-        "bobot": 14.93,
-        "bobot_bulat": 15
+        "bobot": 14.29,
+        "bobot_bulat": 14
       },
       {
         "kode_mk": "REC252001",
@@ -12758,8 +12758,8 @@
         "rumusan_cpmk": "Menganalisis kondisi kerja rangkaian listrik AC menggunakan metode standar.",
         "kode_ik": "IK02.02",
         "kode_cpl": "CPL02",
-        "bobot": 16.42,
-        "bobot_bulat": 16
+        "bobot": 18.18,
+        "bobot_bulat": 18
       },
       {
         "kode_mk": "REC252001",
@@ -12767,8 +12767,8 @@
         "rumusan_cpmk": "Mengikuti prosedur pengukuran rangkaian listrik AC sesuai panduan praktikum.",
         "kode_ik": "IK04.01",
         "kode_cpl": "CPL04",
-        "bobot": 5.97,
-        "bobot_bulat": 6
+        "bobot": 5.19,
+        "bobot_bulat": 5
       },
       {
         "kode_mk": "REC252001",
@@ -12776,8 +12776,8 @@
         "rumusan_cpmk": "Menguji karakteristik rangkaian AC menggunakan instrumen yang sesuai.",
         "kode_ik": "IK04.02",
         "kode_cpl": "CPL04",
-        "bobot": 17.9,
-        "bobot_bulat": 18
+        "bobot": 15.58,
+        "bobot_bulat": 16
       },
       {
         "kode_mk": "REC252001",
@@ -12785,8 +12785,8 @@
         "rumusan_cpmk": "Menganalisis hasil praktikum rangkaian AC untuk mengevaluasi kesesuaian dengan teori.",
         "kode_ik": "IK04.03",
         "kode_cpl": "CPL04",
-        "bobot": 16.42,
-        "bobot_bulat": 16
+        "bobot": 19.49,
+        "bobot_bulat": 19
       },
       {
         "kode_mk": "REC252001",
@@ -12794,7 +12794,7 @@
         "rumusan_cpmk": "Menerapkan prinsip keselamatan kerja listrik selama praktikum rangkaian AC.",
         "kode_ik": "IK06.03",
         "kode_cpl": "CPL06",
-        "bobot": 11.94,
+        "bobot": 11.69,
         "bobot_bulat": 12
       },
       {
@@ -12803,7 +12803,7 @@
         "rumusan_cpmk": "Menjelaskan prinsip kerja diode, transistor, op-amp, dan rangkaian elektronika analog dasar.",
         "kode_ik": "IK01.01",
         "kode_cpl": "CPL01",
-        "bobot": 12.94,
+        "bobot": 12.5,
         "bobot_bulat": 13
       },
       {
@@ -12812,8 +12812,8 @@
         "rumusan_cpmk": "Menerapkan konsep elektronika analog untuk menghitung parameter rangkaian penguat dan penyearah sederhana.",
         "kode_ik": "IK01.02",
         "kode_cpl": "CPL01",
-        "bobot": 11.76,
-        "bobot_bulat": 12
+        "bobot": 11.46,
+        "bobot_bulat": 11
       },
       {
         "kode_mk": "REC252002",
@@ -12821,8 +12821,8 @@
         "rumusan_cpmk": "Menganalisis kerja rangkaian penguat dan penyearah sederhana berdasarkan metode standar.",
         "kode_ik": "IK02.02",
         "kode_cpl": "CPL02",
-        "bobot": 12.94,
-        "bobot_bulat": 13
+        "bobot": 14.58,
+        "bobot_bulat": 15
       },
       {
         "kode_mk": "REC252002",
@@ -12830,8 +12830,8 @@
         "rumusan_cpmk": "Memilih komponen elektronika analog sesuai kebutuhan rangkaian sederhana.",
         "kode_ik": "IK03.01",
         "kode_cpl": "CPL03",
-        "bobot": 14.13,
-        "bobot_bulat": 14
+        "bobot": 14.58,
+        "bobot_bulat": 15
       },
       {
         "kode_mk": "REC252002",
@@ -12839,8 +12839,8 @@
         "rumusan_cpmk": "Melakukan pengukuran dan pengujian rangkaian elektronika analog menggunakan alat ukur yang sesuai.",
         "kode_ik": "IK04.02",
         "kode_cpl": "CPL04",
-        "bobot": 14.12,
-        "bobot_bulat": 14
+        "bobot": 12.5,
+        "bobot_bulat": 12
       },
       {
         "kode_mk": "REC252002",
@@ -12848,8 +12848,8 @@
         "rumusan_cpmk": "Menganalisis hasil pengujian rangkaian elektronika analog untuk menilai kinerjanya.",
         "kode_ik": "IK04.03",
         "kode_cpl": "CPL04",
-        "bobot": 12.94,
-        "bobot_bulat": 13
+        "bobot": 15.62,
+        "bobot_bulat": 16
       },
       {
         "kode_mk": "REC252002",
@@ -12857,8 +12857,8 @@
         "rumusan_cpmk": "Merakit rangkaian elektronika analog sederhana berdasarkan skema dan prosedur praktikum.",
         "kode_ik": "IK05.01",
         "kode_cpl": "CPL05",
-        "bobot": 11.76,
-        "bobot_bulat": 12
+        "bobot": 9.38,
+        "bobot_bulat": 9
       },
       {
         "kode_mk": "REC252002",
@@ -12866,7 +12866,7 @@
         "rumusan_cpmk": "Melakukan troubleshooting sederhana untuk menemukan kesalahan pada rangkaian elektronika analog.",
         "kode_ik": "IK05.03",
         "kode_cpl": "CPL05",
-        "bobot": 9.41,
+        "bobot": 9.38,
         "bobot_bulat": 9
       },
       {
@@ -12875,8 +12875,8 @@
         "rumusan_cpmk": "Mengidentifikasi peralatan, material, dan prosedur kerja bengkel elektronika.",
         "kode_ik": "IK03.01",
         "kode_cpl": "CPL03",
-        "bobot": 24.0,
-        "bobot_bulat": 24
+        "bobot": 26.42,
+        "bobot_bulat": 26
       },
       {
         "kode_mk": "REC252003",
@@ -12884,8 +12884,8 @@
         "rumusan_cpmk": "Melakukan pengukuran awal pada hasil perakitan elektronika menggunakan alat ukur yang sesuai.",
         "kode_ik": "IK04.02",
         "kode_cpl": "CPL04",
-        "bobot": 24.0,
-        "bobot_bulat": 24
+        "bobot": 22.64,
+        "bobot_bulat": 23
       },
       {
         "kode_mk": "REC252003",
@@ -12893,8 +12893,8 @@
         "rumusan_cpmk": "Melaksanakan perakitan, penyolderan, dan pemeriksaan rangkaian elektronika sesuai SOP.",
         "kode_ik": "IK05.01",
         "kode_cpl": "CPL05",
-        "bobot": 20.0,
-        "bobot_bulat": 20
+        "bobot": 16.98,
+        "bobot_bulat": 17
       },
       {
         "kode_mk": "REC252003",
@@ -12902,8 +12902,8 @@
         "rumusan_cpmk": "Melakukan pengujian dan troubleshooting sederhana pada hasil perakitan elektronika.",
         "kode_ik": "IK05.03",
         "kode_cpl": "CPL05",
-        "bobot": 16.0,
-        "bobot_bulat": 16
+        "bobot": 16.98,
+        "bobot_bulat": 17
       },
       {
         "kode_mk": "REC252003",
@@ -12911,8 +12911,8 @@
         "rumusan_cpmk": "Menerapkan prinsip K3LH selama pekerjaan bengkel elektronika.",
         "kode_ik": "IK06.03",
         "kode_cpl": "CPL06",
-        "bobot": 16.0,
-        "bobot_bulat": 16
+        "bobot": 16.98,
+        "bobot_bulat": 17
       },
       {
         "kode_mk": "REC252004",
@@ -12920,8 +12920,8 @@
         "rumusan_cpmk": "Menjelaskan prinsip kerja sensor dan aktuator yang digunakan pada instrumentasi industri.",
         "kode_ik": "IK01.01",
         "kode_cpl": "CPL01",
-        "bobot": 23.4,
-        "bobot_bulat": 23
+        "bobot": 23.53,
+        "bobot_bulat": 24
       },
       {
         "kode_mk": "REC252004",
@@ -12929,8 +12929,8 @@
         "rumusan_cpmk": "Memilih sensor dan aktuator sesuai kebutuhan pengukuran dan karakteristik sistem.",
         "kode_ik": "IK03.01",
         "kode_cpl": "CPL03",
-        "bobot": 25.54,
-        "bobot_bulat": 26
+        "bobot": 27.45,
+        "bobot_bulat": 27
       },
       {
         "kode_mk": "REC252004",
@@ -12938,8 +12938,8 @@
         "rumusan_cpmk": "Mengoperasikan sensor dan aktuator sesuai prosedur dan spesifikasi teknis.",
         "kode_ik": "IK03.02",
         "kode_cpl": "CPL03",
-        "bobot": 25.53,
-        "bobot_bulat": 26
+        "bobot": 25.49,
+        "bobot_bulat": 25
       },
       {
         "kode_mk": "REC252004",
@@ -12947,8 +12947,8 @@
         "rumusan_cpmk": "Menguji sensor dan aktuator untuk memperoleh data karakteristik sederhana.",
         "kode_ik": "IK04.02",
         "kode_cpl": "CPL04",
-        "bobot": 25.53,
-        "bobot_bulat": 25
+        "bobot": 23.53,
+        "bobot_bulat": 24
       },
       {
         "kode_mk": "REC252005",
@@ -12956,8 +12956,8 @@
         "rumusan_cpmk": "Menjelaskan sistem bilangan, gerbang logika, aljabar Boolean, dan rangkaian logika kombinasi.",
         "kode_ik": "IK01.01",
         "kode_cpl": "CPL01",
-        "bobot": 13.58,
-        "bobot_bulat": 14
+        "bobot": 13.33,
+        "bobot_bulat": 13
       },
       {
         "kode_mk": "REC252005",
@@ -12965,7 +12965,7 @@
         "rumusan_cpmk": "Menerapkan prinsip logika digital untuk menyelesaikan masalah rangkaian digital sederhana.",
         "kode_ik": "IK01.02",
         "kode_cpl": "CPL01",
-        "bobot": 12.35,
+        "bobot": 12.22,
         "bobot_bulat": 12
       },
       {
@@ -12974,7 +12974,7 @@
         "rumusan_cpmk": "Menggunakan perangkat lunak simulasi untuk merancang dan memverifikasi rangkaian logika digital.",
         "kode_ik": "IK01.03",
         "kode_cpl": "CPL01",
-        "bobot": 4.94,
+        "bobot": 4.44,
         "bobot_bulat": 5
       },
       {
@@ -12983,8 +12983,8 @@
         "rumusan_cpmk": "Menganalisis fungsi rangkaian digital berdasarkan tabel kebenaran dan persamaan logika.",
         "kode_ik": "IK02.02",
         "kode_cpl": "CPL02",
-        "bobot": 13.58,
-        "bobot_bulat": 14
+        "bobot": 15.56,
+        "bobot_bulat": 16
       },
       {
         "kode_mk": "REC252005",
@@ -12992,8 +12992,8 @@
         "rumusan_cpmk": "Mengoperasikan trainer dan peralatan praktikum logika digital sesuai prosedur.",
         "kode_ik": "IK03.02",
         "kode_cpl": "CPL03",
-        "bobot": 14.81,
-        "bobot_bulat": 15
+        "bobot": 14.44,
+        "bobot_bulat": 14
       },
       {
         "kode_mk": "REC252005",
@@ -13001,8 +13001,8 @@
         "rumusan_cpmk": "Menguji rangkaian logika kombinasi sesuai prosedur praktikum.",
         "kode_ik": "IK04.02",
         "kode_cpl": "CPL04",
-        "bobot": 14.81,
-        "bobot_bulat": 15
+        "bobot": 13.33,
+        "bobot_bulat": 13
       },
       {
         "kode_mk": "REC252005",
@@ -13010,8 +13010,8 @@
         "rumusan_cpmk": "Menganalisis hasil pengujian rangkaian digital untuk menentukan kesesuaian fungsi.",
         "kode_ik": "IK04.03",
         "kode_cpl": "CPL04",
-        "bobot": 13.58,
-        "bobot_bulat": 13
+        "bobot": 16.68,
+        "bobot_bulat": 17
       },
       {
         "kode_mk": "REC252005",
@@ -13019,8 +13019,8 @@
         "rumusan_cpmk": "Merangkai rangkaian logika digital berdasarkan skema dan spesifikasi yang diberikan.",
         "kode_ik": "IK05.01",
         "kode_cpl": "CPL05",
-        "bobot": 12.35,
-        "bobot_bulat": 12
+        "bobot": 10.0,
+        "bobot_bulat": 10
       },
       {
         "kode_mk": "REC252006",
@@ -13028,7 +13028,7 @@
         "rumusan_cpmk": "Mengidentifikasi konsep kalkulus dan persamaan diferensial sederhana yang relevan dengan rekayasa elektro.",
         "kode_ik": "IK01.01",
         "kode_cpl": "CPL01",
-        "bobot": 52.38,
+        "bobot": 52.17,
         "bobot_bulat": 52
       },
       {
@@ -13037,7 +13037,7 @@
         "rumusan_cpmk": "Menerapkan matematika terapan dalam analisis sinyal dan respon sistem teknik sederhana.",
         "kode_ik": "IK01.02",
         "kode_cpl": "CPL01",
-        "bobot": 47.62,
+        "bobot": 47.83,
         "bobot_bulat": 48
       },
       {
@@ -13046,7 +13046,7 @@
         "rumusan_cpmk": "Menjelaskan nilai Pancasila sebagai dasar etika dalam kehidupan bermasyarakat, bernegara, dan bekerja.",
         "kode_ik": "IK06.01",
         "kode_cpl": "CPL06",
-        "bobot": 13.79,
+        "bobot": 14.29,
         "bobot_bulat": 14
       },
       {
@@ -13055,7 +13055,7 @@
         "rumusan_cpmk": "Menunjukkan kepedulian sosial dan tanggung jawab terhadap masyarakat dan lingkungan berdasarkan nilai Pancasila.",
         "kode_ik": "IK06.02",
         "kode_cpl": "CPL06",
-        "bobot": 13.79,
+        "bobot": 14.29,
         "bobot_bulat": 14
       },
       {
@@ -13064,8 +13064,8 @@
         "rumusan_cpmk": "Menunjukkan sikap tanggung jawab dan disiplin dalam aktivitas akademik dan tugas individu.",
         "kode_ik": "IK07.01",
         "kode_cpl": "CPL07",
-        "bobot": 20.69,
-        "bobot_bulat": 21
+        "bobot": 21.43,
+        "bobot_bulat": 22
       },
       {
         "kode_mk": "REC252007",
@@ -13073,8 +13073,8 @@
         "rumusan_cpmk": "Menyampaikan gagasan kebangsaan dan etika sosial secara lisan dengan jelas.",
         "kode_ik": "IK08.02",
         "kode_cpl": "CPL08",
-        "bobot": 24.14,
-        "bobot_bulat": 24
+        "bobot": 21.43,
+        "bobot_bulat": 21
       },
       {
         "kode_mk": "REC252007",
@@ -13082,8 +13082,8 @@
         "rumusan_cpmk": "Menuliskan gagasan kebangsaan dan etika sosial dengan format dan bahasa yang sesuai.",
         "kode_ik": "IK08.03",
         "kode_cpl": "CPL08",
-        "bobot": 27.59,
-        "bobot_bulat": 27
+        "bobot": 28.56,
+        "bobot_bulat": 29
       },
       {
         "kode_mk": "REC253001",
@@ -13091,8 +13091,8 @@
         "rumusan_cpmk": "Menjelaskan prinsip kerja rangkaian elektronika analog lanjutan dan aplikasinya pada sistem instrumentasi.",
         "kode_ik": "IK01.01",
         "kode_cpl": "CPL01",
-        "bobot": 17.74,
-        "bobot_bulat": 18
+        "bobot": 17.0,
+        "bobot_bulat": 17
       },
       {
         "kode_mk": "REC253001",
@@ -13100,8 +13100,8 @@
         "rumusan_cpmk": "Menganalisis kinerja dan gangguan rangkaian analog lanjutan berdasarkan parameter teknis dan hasil inspeksi.",
         "kode_ik": "IK02.02",
         "kode_cpl": "CPL02",
-        "bobot": 17.74,
-        "bobot_bulat": 18
+        "bobot": 20.0,
+        "bobot_bulat": 20
       },
       {
         "kode_mk": "REC253001",
@@ -13109,8 +13109,8 @@
         "rumusan_cpmk": "Menentukan konfigurasi rangkaian analog yang sesuai untuk kebutuhan teknis sederhana.",
         "kode_ik": "IK02.03",
         "kode_cpl": "CPL02",
-        "bobot": 8.06,
-        "bobot_bulat": 8
+        "bobot": 5.0,
+        "bobot_bulat": 5
       },
       {
         "kode_mk": "REC253001",
@@ -13118,7 +13118,7 @@
         "rumusan_cpmk": "Memilih komponen dan konfigurasi rangkaian analog lanjutan sesuai spesifikasi.",
         "kode_ik": "IK03.01",
         "kode_cpl": "CPL03",
-        "bobot": 19.37,
+        "bobot": 19.0,
         "bobot_bulat": 19
       },
       {
@@ -13127,8 +13127,8 @@
         "rumusan_cpmk": "Merakit dan menguji rangkaian elektronika analog lanjutan sesuai spesifikasi praktikum.",
         "kode_ik": "IK04.02",
         "kode_cpl": "CPL04",
-        "bobot": 19.35,
-        "bobot_bulat": 19
+        "bobot": 17.0,
+        "bobot_bulat": 17
       },
       {
         "kode_mk": "REC253001",
@@ -13136,8 +13136,8 @@
         "rumusan_cpmk": "Menganalisis hasil pengukuran rangkaian analog lanjutan untuk mengevaluasi kinerja rangkaian.",
         "kode_ik": "IK04.03",
         "kode_cpl": "CPL04",
-        "bobot": 17.74,
-        "bobot_bulat": 18
+        "bobot": 22.0,
+        "bobot_bulat": 22
       },
       {
         "kode_mk": "REC253002",
@@ -13145,7 +13145,7 @@
         "rumusan_cpmk": "Menggunakan perangkat lunak pengembangan untuk memprogram sistem mikrokontroler.",
         "kode_ik": "IK01.03",
         "kode_cpl": "CPL01",
-        "bobot": 13.33,
+        "bobot": 13.79,
         "bobot_bulat": 14
       },
       {
@@ -13154,8 +13154,8 @@
         "rumusan_cpmk": "Mengoperasikan perangkat keras mikrokontroler dan periferalnya untuk pekerjaan teknis sederhana.",
         "kode_ik": "IK03.02",
         "kode_cpl": "CPL03",
-        "bobot": 40.01,
-        "bobot_bulat": 40
+        "bobot": 44.84,
+        "bobot_bulat": 45
       },
       {
         "kode_mk": "REC253002",
@@ -13163,8 +13163,8 @@
         "rumusan_cpmk": "Mengonfigurasi dan mengintegrasikan input-output mikrokontroler sesuai datasheet dan wiring diagram.",
         "kode_ik": "IK03.03",
         "kode_cpl": "CPL03",
-        "bobot": 13.33,
-        "bobot_bulat": 13
+        "bobot": 10.34,
+        "bobot_bulat": 10
       },
       {
         "kode_mk": "REC253002",
@@ -13172,8 +13172,8 @@
         "rumusan_cpmk": "Merealisasikan sistem berbasis mikrokontroler sesuai spesifikasi yang diberikan.",
         "kode_ik": "IK05.01",
         "kode_cpl": "CPL05",
-        "bobot": 33.33,
-        "bobot_bulat": 33
+        "bobot": 31.03,
+        "bobot_bulat": 31
       },
       {
         "kode_mk": "REC253003",
@@ -13181,7 +13181,7 @@
         "rumusan_cpmk": "Memilih instrumen industri yang sesuai untuk kebutuhan pengukuran dan pengendalian proses.",
         "kode_ik": "IK03.01",
         "kode_cpl": "CPL03",
-        "bobot": 19.37,
+        "bobot": 20.0,
         "bobot_bulat": 20
       },
       {
@@ -13190,7 +13190,7 @@
         "rumusan_cpmk": "Mengoperasikan instrumen industri sesuai prosedur dan spesifikasi teknis.",
         "kode_ik": "IK03.02",
         "kode_cpl": "CPL03",
-        "bobot": 19.35,
+        "bobot": 18.57,
         "bobot_bulat": 19
       },
       {
@@ -13199,8 +13199,8 @@
         "rumusan_cpmk": "Melakukan pengukuran dan pengujian variabel proses menggunakan instrumen industri.",
         "kode_ik": "IK04.02",
         "kode_cpl": "CPL04",
-        "bobot": 19.35,
-        "bobot_bulat": 19
+        "bobot": 17.14,
+        "bobot_bulat": 17
       },
       {
         "kode_mk": "REC253003",
@@ -13208,8 +13208,8 @@
         "rumusan_cpmk": "Menganalisis hasil pengukuran instrumen industri untuk menilai kinerja proses.",
         "kode_ik": "IK04.03",
         "kode_cpl": "CPL04",
-        "bobot": 17.74,
-        "bobot_bulat": 18
+        "bobot": 21.43,
+        "bobot_bulat": 21
       },
       {
         "kode_mk": "REC253003",
@@ -13217,7 +13217,7 @@
         "rumusan_cpmk": "Menerapkan prinsip K3LH saat instalasi dan pengoperasian perangkat instrumentasi industri.",
         "kode_ik": "IK06.03",
         "kode_cpl": "CPL06",
-        "bobot": 12.9,
+        "bobot": 12.86,
         "bobot_bulat": 13
       },
       {
@@ -13226,8 +13226,8 @@
         "rumusan_cpmk": "Menyusun laporan praktikum instrumentasi industri secara sistematis.",
         "kode_ik": "IK08.01",
         "kode_cpl": "CPL08",
-        "bobot": 11.29,
-        "bobot_bulat": 11
+        "bobot": 10.0,
+        "bobot_bulat": 10
       },
       {
         "kode_mk": "REC253004",
@@ -13235,8 +13235,8 @@
         "rumusan_cpmk": "Mengoperasikan PLC dan perangkat lunak pemrogramannya dalam sistem otomasi industri.",
         "kode_ik": "IK03.02",
         "kode_cpl": "CPL03",
-        "bobot": 42.85,
-        "bobot_bulat": 43
+        "bobot": 46.44,
+        "bobot_bulat": 46
       },
       {
         "kode_mk": "REC253004",
@@ -13244,8 +13244,8 @@
         "rumusan_cpmk": "Membuat program dan mengonfigurasi PLC untuk mengendalikan proses sederhana sesuai spesifikasi kerja.",
         "kode_ik": "IK03.03",
         "kode_cpl": "CPL03",
-        "bobot": 14.29,
-        "bobot_bulat": 14
+        "bobot": 10.71,
+        "bobot_bulat": 11
       },
       {
         "kode_mk": "REC253004",
@@ -13253,8 +13253,8 @@
         "rumusan_cpmk": "Mengintegrasikan PLC dengan sensor dan aktuator sesuai wiring diagram dan SOP.",
         "kode_ik": "IK05.02",
         "kode_cpl": "CPL05",
-        "bobot": 14.29,
-        "bobot_bulat": 14
+        "bobot": 10.71,
+        "bobot_bulat": 11
       },
       {
         "kode_mk": "REC253004",
@@ -13262,8 +13262,8 @@
         "rumusan_cpmk": "Melakukan pengujian dan troubleshooting sistem PLC sederhana.",
         "kode_ik": "IK05.03",
         "kode_cpl": "CPL05",
-        "bobot": 28.57,
-        "bobot_bulat": 29
+        "bobot": 32.14,
+        "bobot_bulat": 32
       },
       {
         "kode_mk": "REC253005",
@@ -13271,8 +13271,8 @@
         "rumusan_cpmk": "Mengidentifikasi karakteristik sistem kendali dan permasalahan pada sistem loop terbuka/tertutup.",
         "kode_ik": "IK02.01",
         "kode_cpl": "CPL02",
-        "bobot": 5.66,
-        "bobot_bulat": 6
+        "bobot": 3.33,
+        "bobot_bulat": 3
       },
       {
         "kode_mk": "REC253005",
@@ -13280,8 +13280,8 @@
         "rumusan_cpmk": "Menganalisis respon sistem kendali kontinyu menggunakan metode standar.",
         "kode_ik": "IK02.02",
         "kode_cpl": "CPL02",
-        "bobot": 20.75,
-        "bobot_bulat": 21
+        "bobot": 23.33,
+        "bobot_bulat": 23
       },
       {
         "kode_mk": "REC253005",
@@ -13289,8 +13289,8 @@
         "rumusan_cpmk": "Mengoperasikan perangkat praktikum atau perangkat lunak simulasi sistem kendali.",
         "kode_ik": "IK03.02",
         "kode_cpl": "CPL03",
-        "bobot": 22.65,
-        "bobot_bulat": 23
+        "bobot": 21.67,
+        "bobot_bulat": 22
       },
       {
         "kode_mk": "REC253005",
@@ -13298,7 +13298,7 @@
         "rumusan_cpmk": "Menyusun langkah pengujian sistem kendali berdasarkan prosedur yang diberikan.",
         "kode_ik": "IK04.01",
         "kode_cpl": "CPL04",
-        "bobot": 7.55,
+        "bobot": 6.67,
         "bobot_bulat": 7
       },
       {
@@ -13307,8 +13307,8 @@
         "rumusan_cpmk": "Melaksanakan pengujian respon sistem kendali menggunakan perangkat praktikum/simulasi.",
         "kode_ik": "IK04.02",
         "kode_cpl": "CPL04",
-        "bobot": 22.64,
-        "bobot_bulat": 22
+        "bobot": 20.0,
+        "bobot_bulat": 20
       },
       {
         "kode_mk": "REC253005",
@@ -13316,8 +13316,8 @@
         "rumusan_cpmk": "Menginterpretasikan hasil pengujian untuk menentukan kinerja dan perbaikan parameter sistem kendali.",
         "kode_ik": "IK04.03",
         "kode_cpl": "CPL04",
-        "bobot": 20.75,
-        "bobot_bulat": 21
+        "bobot": 25.0,
+        "bobot_bulat": 25
       },
       {
         "kode_mk": "REC253006",
@@ -13325,8 +13325,8 @@
         "rumusan_cpmk": "Menjelaskan prinsip rangkaian digital sekuensial, flip-flop, counter, register, dan memori sederhana.",
         "kode_ik": "IK01.01",
         "kode_cpl": "CPL01",
-        "bobot": 34.37,
-        "bobot_bulat": 35
+        "bobot": 32.43,
+        "bobot_bulat": 32
       },
       {
         "kode_mk": "REC253006",
@@ -13334,8 +13334,8 @@
         "rumusan_cpmk": "Menerapkan konsep digital sekuensial untuk menyelesaikan fungsi logika sederhana.",
         "kode_ik": "IK01.02",
         "kode_cpl": "CPL01",
-        "bobot": 31.25,
-        "bobot_bulat": 31
+        "bobot": 29.73,
+        "bobot_bulat": 30
       },
       {
         "kode_mk": "REC253006",
@@ -13343,8 +13343,8 @@
         "rumusan_cpmk": "Menganalisis fungsi rangkaian digital sekuensial berdasarkan kondisi input-output.",
         "kode_ik": "IK02.02",
         "kode_cpl": "CPL02",
-        "bobot": 34.38,
-        "bobot_bulat": 34
+        "bobot": 37.84,
+        "bobot_bulat": 38
       },
       {
         "kode_mk": "REC254001",
@@ -13352,7 +13352,7 @@
         "rumusan_cpmk": "Menggunakan perangkat lunak pengembangan sistem embedded untuk pemrograman dan simulasi.",
         "kode_ik": "IK01.03",
         "kode_cpl": "CPL01",
-        "bobot": 8.0,
+        "bobot": 7.69,
         "bobot_bulat": 8
       },
       {
@@ -13361,8 +13361,8 @@
         "rumusan_cpmk": "Memilih perangkat embedded dan modul pendukung sesuai kebutuhan aplikasi instrumentasi industri.",
         "kode_ik": "IK03.01",
         "kode_cpl": "CPL03",
-        "bobot": 24.0,
-        "bobot_bulat": 24
+        "bobot": 26.92,
+        "bobot_bulat": 27
       },
       {
         "kode_mk": "REC254001",
@@ -13370,8 +13370,8 @@
         "rumusan_cpmk": "Mengoperasikan perangkat embedded dan perangkat lunak pendukung sesuai prosedur.",
         "kode_ik": "IK03.02",
         "kode_cpl": "CPL03",
-        "bobot": 24.0,
-        "bobot_bulat": 24
+        "bobot": 25.0,
+        "bobot_bulat": 25
       },
       {
         "kode_mk": "REC254001",
@@ -13379,8 +13379,8 @@
         "rumusan_cpmk": "Mengonfigurasi dan mengintegrasikan perangkat embedded sesuai datasheet dan kebutuhan sistem.",
         "kode_ik": "IK03.03",
         "kode_cpl": "CPL03",
-        "bobot": 8.0,
-        "bobot_bulat": 8
+        "bobot": 5.77,
+        "bobot_bulat": 6
       },
       {
         "kode_mk": "REC254001",
@@ -13388,8 +13388,8 @@
         "rumusan_cpmk": "Merealisasikan sistem embedded sederhana sesuai spesifikasi yang diberikan.",
         "kode_ik": "IK05.01",
         "kode_cpl": "CPL05",
-        "bobot": 20.0,
-        "bobot_bulat": 20
+        "bobot": 17.31,
+        "bobot_bulat": 17
       },
       {
         "kode_mk": "REC254001",
@@ -13397,8 +13397,8 @@
         "rumusan_cpmk": "Menguji dan melakukan troubleshooting sistem embedded sederhana.",
         "kode_ik": "IK05.03",
         "kode_cpl": "CPL05",
-        "bobot": 16.0,
-        "bobot_bulat": 16
+        "bobot": 17.31,
+        "bobot_bulat": 17
       },
       {
         "kode_mk": "REC254002",
@@ -13406,8 +13406,8 @@
         "rumusan_cpmk": "Memilih perangkat elektronika industri sesuai kebutuhan sistem produksi/otomasi.",
         "kode_ik": "IK03.01",
         "kode_cpl": "CPL03",
-        "bobot": 23.53,
-        "bobot_bulat": 24
+        "bobot": 25.92,
+        "bobot_bulat": 26
       },
       {
         "kode_mk": "REC254002",
@@ -13415,8 +13415,8 @@
         "rumusan_cpmk": "Mengoperasikan perangkat elektronika industri sesuai prosedur dan spesifikasi teknis.",
         "kode_ik": "IK03.02",
         "kode_cpl": "CPL03",
-        "bobot": 23.53,
-        "bobot_bulat": 23
+        "bobot": 24.07,
+        "bobot_bulat": 24
       },
       {
         "kode_mk": "REC254002",
@@ -13424,8 +13424,8 @@
         "rumusan_cpmk": "Melakukan pengukuran dan pengujian perangkat elektronika industri dengan instrumen yang sesuai.",
         "kode_ik": "IK04.02",
         "kode_cpl": "CPL04",
-        "bobot": 23.53,
-        "bobot_bulat": 23
+        "bobot": 22.22,
+        "bobot_bulat": 22
       },
       {
         "kode_mk": "REC254002",
@@ -13433,8 +13433,8 @@
         "rumusan_cpmk": "Mengintegrasikan perangkat elektronika industri dalam suatu sistem sesuai spesifikasi teknis dan prinsip K3LH.",
         "kode_ik": "IK05.02",
         "kode_cpl": "CPL05",
-        "bobot": 7.84,
-        "bobot_bulat": 8
+        "bobot": 5.56,
+        "bobot_bulat": 6
       },
       {
         "kode_mk": "REC254002",
@@ -13442,8 +13442,8 @@
         "rumusan_cpmk": "Melakukan troubleshooting perangkat elektronika industri berdasarkan prosedur standar.",
         "kode_ik": "IK05.03",
         "kode_cpl": "CPL05",
-        "bobot": 15.69,
-        "bobot_bulat": 16
+        "bobot": 16.67,
+        "bobot_bulat": 17
       },
       {
         "kode_mk": "REC254002",
@@ -13451,8 +13451,8 @@
         "rumusan_cpmk": "Mengevaluasi hasil kerja sistem elektronika industri berdasarkan mutu, waktu, dan sumber daya.",
         "kode_ik": "IK09.03",
         "kode_cpl": "CPL09",
-        "bobot": 5.88,
-        "bobot_bulat": 6
+        "bobot": 5.56,
+        "bobot_bulat": 5
       },
       {
         "kode_mk": "REC254003",
@@ -13460,8 +13460,8 @@
         "rumusan_cpmk": "Menganalisis gangguan rangkaian pneumatik/hidrolik berdasarkan gejala dan data kerja.",
         "kode_ik": "IK02.02",
         "kode_cpl": "CPL02",
-        "bobot": 19.3,
-        "bobot_bulat": 19
+        "bobot": 22.57,
+        "bobot_bulat": 23
       },
       {
         "kode_mk": "REC254003",
@@ -13469,8 +13469,8 @@
         "rumusan_cpmk": "Menjelaskan dan memilih komponen pneumatik dan hidrolik pada sistem otomasi industri.",
         "kode_ik": "IK03.01",
         "kode_cpl": "CPL03",
-        "bobot": 21.05,
-        "bobot_bulat": 21
+        "bobot": 22.58,
+        "bobot_bulat": 23
       },
       {
         "kode_mk": "REC254003",
@@ -13478,7 +13478,7 @@
         "rumusan_cpmk": "Mengoperasikan rangkaian pneumatik/hidrolik sesuai SOP.",
         "kode_ik": "IK03.02",
         "kode_cpl": "CPL03",
-        "bobot": 21.05,
+        "bobot": 20.97,
         "bobot_bulat": 21
       },
       {
@@ -13487,8 +13487,8 @@
         "rumusan_cpmk": "Merakit rangkaian pneumatik/hidrolik sesuai gambar kerja.",
         "kode_ik": "IK05.01",
         "kode_cpl": "CPL05",
-        "bobot": 17.54,
-        "bobot_bulat": 18
+        "bobot": 14.52,
+        "bobot_bulat": 14
       },
       {
         "kode_mk": "REC254003",
@@ -13496,8 +13496,8 @@
         "rumusan_cpmk": "Mengintegrasikan sistem pneumatik/hidrolik dengan perangkat kendali sederhana.",
         "kode_ik": "IK05.02",
         "kode_cpl": "CPL05",
-        "bobot": 7.02,
-        "bobot_bulat": 7
+        "bobot": 4.84,
+        "bobot_bulat": 5
       },
       {
         "kode_mk": "REC254003",
@@ -13505,7 +13505,7 @@
         "rumusan_cpmk": "Melakukan pengujian dan troubleshooting rangkaian pneumatik/hidrolik.",
         "kode_ik": "IK05.03",
         "kode_cpl": "CPL05",
-        "bobot": 14.04,
+        "bobot": 14.52,
         "bobot_bulat": 14
       },
       {
@@ -13514,8 +13514,8 @@
         "rumusan_cpmk": "Menganalisis karakteristik sistem kendali diskrit sesuai metode standar.",
         "kode_ik": "IK02.02",
         "kode_cpl": "CPL02",
-        "bobot": 34.37,
-        "bobot_bulat": 35
+        "bobot": 36.36,
+        "bobot_bulat": 36
       },
       {
         "kode_mk": "REC254004",
@@ -13523,7 +13523,7 @@
         "rumusan_cpmk": "Memilih strategi penyelesaian masalah kendali diskrit yang terdefinisi dengan jelas sesuai prosedur baku.",
         "kode_ik": "IK02.03",
         "kode_cpl": "CPL02",
-        "bobot": 15.62,
+        "bobot": 15.58,
         "bobot_bulat": 16
       },
       {
@@ -13532,8 +13532,8 @@
         "rumusan_cpmk": "Menginterpretasikan hasil simulasi atau pengujian sistem kendali diskrit untuk menilai kinerjanya.",
         "kode_ik": "IK04.03",
         "kode_cpl": "CPL04",
-        "bobot": 34.38,
-        "bobot_bulat": 34
+        "bobot": 38.97,
+        "bobot_bulat": 39
       },
       {
         "kode_mk": "REC254004",
@@ -13541,8 +13541,8 @@
         "rumusan_cpmk": "Mengevaluasi hasil pekerjaan sistem kendali diskrit berdasarkan indikator mutu dan kesesuaian spesifikasi.",
         "kode_ik": "IK09.03",
         "kode_cpl": "CPL09",
-        "bobot": 9.38,
-        "bobot_bulat": 9
+        "bobot": 7.79,
+        "bobot_bulat": 8
       },
       {
         "kode_mk": "REC254004",
@@ -13550,8 +13550,8 @@
         "rumusan_cpmk": "Bekerja sama dalam tim sesuai peran untuk menyelesaikan proyek atau praktikum sistem kendali diskrit.",
         "kode_ik": "IK07.02",
         "kode_cpl": "CPL07",
-        "bobot": 6.25,
-        "bobot_bulat": 6
+        "bobot": 1.3,
+        "bobot_bulat": 1
       },
       {
         "kode_mk": "REC254005",
@@ -13559,8 +13559,8 @@
         "rumusan_cpmk": "Menerapkan prinsip kerja mesin-mesin listrik untuk menghitung parameter operasinya.",
         "kode_ik": "IK01.02",
         "kode_cpl": "CPL01",
-        "bobot": 19.23,
-        "bobot_bulat": 19
+        "bobot": 17.74,
+        "bobot_bulat": 18
       },
       {
         "kode_mk": "REC254005",
@@ -13568,8 +13568,8 @@
         "rumusan_cpmk": "Mengidentifikasi gangguan sederhana pada mesin listrik berdasarkan data dan gejala kerja.",
         "kode_ik": "IK02.01",
         "kode_cpl": "CPL02",
-        "bobot": 5.77,
-        "bobot_bulat": 6
+        "bobot": 3.23,
+        "bobot_bulat": 3
       },
       {
         "kode_mk": "REC254005",
@@ -13577,8 +13577,8 @@
         "rumusan_cpmk": "Menganalisis kondisi operasi mesin listrik berdasarkan data teknis dan parameter pengukuran.",
         "kode_ik": "IK02.02",
         "kode_cpl": "CPL02",
-        "bobot": 21.15,
-        "bobot_bulat": 21
+        "bobot": 22.58,
+        "bobot_bulat": 22
       },
       {
         "kode_mk": "REC254005",
@@ -13586,7 +13586,7 @@
         "rumusan_cpmk": "Memilih tindakan teknis awal untuk mengatasi gangguan mesin listrik sesuai prosedur.",
         "kode_ik": "IK02.03",
         "kode_cpl": "CPL02",
-        "bobot": 9.62,
+        "bobot": 9.68,
         "bobot_bulat": 10
       },
       {
@@ -13595,7 +13595,7 @@
         "rumusan_cpmk": "Memilih mesin listrik dan perlengkapannya sesuai kebutuhan aplikasi industri.",
         "kode_ik": "IK03.01",
         "kode_cpl": "CPL03",
-        "bobot": 23.08,
+        "bobot": 22.58,
         "bobot_bulat": 23
       },
       {
@@ -13604,8 +13604,8 @@
         "rumusan_cpmk": "Menginterpretasikan hasil pengujian mesin listrik untuk menilai kinerjanya.",
         "kode_ik": "IK04.03",
         "kode_cpl": "CPL04",
-        "bobot": 21.15,
-        "bobot_bulat": 21
+        "bobot": 24.19,
+        "bobot_bulat": 24
       },
       {
         "kode_mk": "REC254006",
@@ -13649,8 +13649,8 @@
         "rumusan_cpmk": "Menggunakan kosakata dan struktur bahasa Inggris teknik untuk komunikasi lisan sederhana.",
         "kode_ik": "IK08.02",
         "kode_cpl": "CPL08",
-        "bobot": 41.18,
-        "bobot_bulat": 41
+        "bobot": 37.5,
+        "bobot_bulat": 38
       },
       {
         "kode_mk": "REC254007",
@@ -13658,8 +13658,8 @@
         "rumusan_cpmk": "Menyusun informasi teknis sederhana secara tertulis dalam bahasa Inggris.",
         "kode_ik": "IK08.03",
         "kode_cpl": "CPL08",
-        "bobot": 47.06,
-        "bobot_bulat": 47
+        "bobot": 50.0,
+        "bobot_bulat": 50
       },
       {
         "kode_mk": "REC254007",
@@ -13667,7 +13667,7 @@
         "rumusan_cpmk": "Membaca dan memahami datasheet, manual, dan teks teknis berbahasa Inggris.",
         "kode_ik": "IK10.02",
         "kode_cpl": "CPL10",
-        "bobot": 11.76,
+        "bobot": 12.5,
         "bobot_bulat": 12
       },
       {
@@ -13676,8 +13676,8 @@
         "rumusan_cpmk": "Menentukan solusi produk berbasis teknologi dengan mempertimbangkan biaya, sumber daya, dan pasar.",
         "kode_ik": "IK02.03",
         "kode_cpl": "CPL02",
-        "bobot": 25.0,
-        "bobot_bulat": 25
+        "bobot": 30.0,
+        "bobot_bulat": 30
       },
       {
         "kode_mk": "REC254008",
@@ -13694,8 +13694,8 @@
         "rumusan_cpmk": "Mempresentasikan ide technopreneurship secara jelas dan komunikatif.",
         "kode_ik": "IK08.02",
         "kode_cpl": "CPL08",
-        "bobot": 35.0,
-        "bobot_bulat": 35
+        "bobot": 30.0,
+        "bobot_bulat": 30
       },
       {
         "kode_mk": "REC254008",
@@ -13721,7 +13721,7 @@
         "rumusan_cpmk": "Menerapkan sikap patuh terhadap aturan dan etika dalam aktivitas akademik/kerja.",
         "kode_ik": "IK06.01",
         "kode_cpl": "CPL06",
-        "bobot": 13.79,
+        "bobot": 14.29,
         "bobot_bulat": 14
       },
       {
@@ -13730,7 +13730,7 @@
         "rumusan_cpmk": "Menjelaskan hak, kewajiban, dan tanggung jawab warga negara dalam konteks profesi teknik.",
         "kode_ik": "IK06.02",
         "kode_cpl": "CPL06",
-        "bobot": 13.79,
+        "bobot": 14.29,
         "bobot_bulat": 14
       },
       {
@@ -13739,8 +13739,8 @@
         "rumusan_cpmk": "Menunjukkan sikap disiplin dan tanggung jawab dalam menyelesaikan tugas.",
         "kode_ik": "IK07.01",
         "kode_cpl": "CPL07",
-        "bobot": 20.69,
-        "bobot_bulat": 21
+        "bobot": 21.43,
+        "bobot_bulat": 22
       },
       {
         "kode_mk": "REC254009",
@@ -13748,8 +13748,8 @@
         "rumusan_cpmk": "Menyampaikan gagasan kewarganegaraan dan tanggung jawab sosial secara lisan dengan efektif.",
         "kode_ik": "IK08.02",
         "kode_cpl": "CPL08",
-        "bobot": 24.14,
-        "bobot_bulat": 24
+        "bobot": 21.43,
+        "bobot_bulat": 21
       },
       {
         "kode_mk": "REC254009",
@@ -13757,8 +13757,8 @@
         "rumusan_cpmk": "Menuliskan gagasan kewarganegaraan dengan format dan bahasa yang sesuai.",
         "kode_ik": "IK08.03",
         "kode_cpl": "CPL08",
-        "bobot": 27.59,
-        "bobot_bulat": 27
+        "bobot": 28.56,
+        "bobot_bulat": 29
       },
       {
         "kode_mk": "REC255001",
@@ -13766,8 +13766,8 @@
         "rumusan_cpmk": "Melaksanakan pekerjaan teknis di industri sesuai prosedur, SOP, standar keselamatan, dan instruksi pembimbing lapangan.",
         "kode_ik": "IK05.01, IK06.03",
         "kode_cpl": "",
-        "bobot": 22.78,
-        "bobot_bulat": 23
+        "bobot": 20.81,
+        "bobot_bulat": 21
       },
       {
         "kode_mk": "REC255001",
@@ -13775,7 +13775,7 @@
         "rumusan_cpmk": "Mengidentifikasi dan menganalisis permasalahan teknis yang terdefinisi dengan jelas selama magang.",
         "kode_ik": "IK02.01, IK02.02",
         "kode_cpl": "CPL02",
-        "bobot": 17.72,
+        "bobot": 18.5,
         "bobot_bulat": 18
       },
       {
@@ -13784,8 +13784,8 @@
         "rumusan_cpmk": "Menggunakan perangkat, instrumen, atau sistem kerja industri sesuai spesifikasi dan prosedur.",
         "kode_ik": "IK03.02, IK03.03",
         "kode_cpl": "CPL03",
-        "bobot": 20.25,
-        "bobot_bulat": 20
+        "bobot": 18.5,
+        "bobot_bulat": 19
       },
       {
         "kode_mk": "REC255001",
@@ -13793,8 +13793,8 @@
         "rumusan_cpmk": "Bekerja secara profesional dalam tim dan lingkungan kerja industri.",
         "kode_ik": "IK06.01, IK07.01, IK07.02",
         "kode_cpl": "",
-        "bobot": 15.19,
-        "bobot_bulat": 15
+        "bobot": 12.14,
+        "bobot_bulat": 12
       },
       {
         "kode_mk": "REC255001",
@@ -13802,8 +13802,8 @@
         "rumusan_cpmk": "Menyusun laporan magang yang sistematis dan menunjukkan refleksi pembelajaran mandiri.",
         "kode_ik": "IK08.01, IK08.03, IK10.01",
         "kode_cpl": "",
-        "bobot": 24.06,
-        "bobot_bulat": 24
+        "bobot": 30.05,
+        "bobot_bulat": 30
       },
       {
         "kode_mk": "REC256001",
@@ -13811,8 +13811,8 @@
         "rumusan_cpmk": "Menyusun dokumen akademik dan teknis dengan kaidah bahasa Indonesia yang baik dan sistematis.",
         "kode_ik": "IK08.01",
         "kode_cpl": "CPL08",
-        "bobot": 31.82,
-        "bobot_bulat": 32
+        "bobot": 33.33,
+        "bobot_bulat": 33
       },
       {
         "kode_mk": "REC256001",
@@ -13820,8 +13820,8 @@
         "rumusan_cpmk": "Menyampaikan gagasan dan hasil pekerjaan secara lisan dengan jelas.",
         "kode_ik": "IK08.02",
         "kode_cpl": "CPL08",
-        "bobot": 31.82,
-        "bobot_bulat": 32
+        "bobot": 28.57,
+        "bobot_bulat": 29
       },
       {
         "kode_mk": "REC256001",
@@ -13829,8 +13829,8 @@
         "rumusan_cpmk": "Menggunakan paragraf, kutipan, daftar pustaka, dan struktur laporan sesuai format penulisan.",
         "kode_ik": "IK08.03",
         "kode_cpl": "CPL08",
-        "bobot": 36.36,
-        "bobot_bulat": 36
+        "bobot": 38.1,
+        "bobot_bulat": 38
       },
       {
         "kode_mk": "REC256002",
@@ -13838,8 +13838,8 @@
         "rumusan_cpmk": "Menerapkan prinsip keselamatan dan lingkungan dalam sistem manajemen mutu.",
         "kode_ik": "IK06.03",
         "kode_cpl": "CPL06",
-        "bobot": 34.79,
-        "bobot_bulat": 35
+        "bobot": 36.0,
+        "bobot_bulat": 36
       },
       {
         "kode_mk": "REC256002",
@@ -13847,8 +13847,8 @@
         "rumusan_cpmk": "Menyusun dokumen mutu, SOP, dan catatan kerja secara sistematis.",
         "kode_ik": "IK08.01",
         "kode_cpl": "CPL08",
-        "bobot": 30.43,
-        "bobot_bulat": 30
+        "bobot": 28.0,
+        "bobot_bulat": 28
       },
       {
         "kode_mk": "REC256002",
@@ -13856,8 +13856,8 @@
         "rumusan_cpmk": "Menjelaskan prinsip sistem manajemen mutu dan merencanakan pekerjaan sesuai standar kerja.",
         "kode_ik": "IK09.01",
         "kode_cpl": "CPL09",
-        "bobot": 13.04,
-        "bobot_bulat": 13
+        "bobot": 12.0,
+        "bobot_bulat": 12
       },
       {
         "kode_mk": "REC256002",
@@ -13865,8 +13865,8 @@
         "rumusan_cpmk": "Menerapkan konsep mutu dan perbaikan berkelanjutan dalam pengendalian pekerjaan teknis.",
         "kode_ik": "IK09.02",
         "kode_cpl": "CPL09",
-        "bobot": 8.7,
-        "bobot_bulat": 9
+        "bobot": 12.0,
+        "bobot_bulat": 12
       },
       {
         "kode_mk": "REC256002",
@@ -13874,8 +13874,8 @@
         "rumusan_cpmk": "Mengevaluasi pekerjaan teknis berdasarkan standar mutu, efisiensi sumber daya, dan kesesuaian spesifikasi.",
         "kode_ik": "IK09.03",
         "kode_cpl": "CPL09",
-        "bobot": 13.04,
-        "bobot_bulat": 13
+        "bobot": 12.0,
+        "bobot_bulat": 12
       },
       {
         "kode_mk": "REC256003",
@@ -13883,8 +13883,8 @@
         "rumusan_cpmk": "Menyusun ringkasan/dokumen teknis sederhana dalam bahasa Inggris secara sistematis.",
         "kode_ik": "IK08.01",
         "kode_cpl": "CPL08",
-        "bobot": 29.17,
-        "bobot_bulat": 29
+        "bobot": 30.43,
+        "bobot_bulat": 30
       },
       {
         "kode_mk": "REC256003",
@@ -13892,8 +13892,8 @@
         "rumusan_cpmk": "Mempresentasikan informasi teknis sederhana dalam bahasa Inggris secara jelas.",
         "kode_ik": "IK08.02",
         "kode_cpl": "CPL08",
-        "bobot": 29.17,
-        "bobot_bulat": 29
+        "bobot": 26.09,
+        "bobot_bulat": 26
       },
       {
         "kode_mk": "REC256003",
@@ -13901,8 +13901,8 @@
         "rumusan_cpmk": "Menggunakan format dan istilah teknis bahasa Inggris yang sesuai dalam komunikasi tertulis.",
         "kode_ik": "IK08.03",
         "kode_cpl": "CPL08",
-        "bobot": 33.33,
-        "bobot_bulat": 33
+        "bobot": 34.78,
+        "bobot_bulat": 35
       },
       {
         "kode_mk": "REC256003",
@@ -13910,7 +13910,7 @@
         "rumusan_cpmk": "Memahami teks, manual, atau referensi teknis berbahasa Inggris yang relevan dengan bidang instrumentasi industri.",
         "kode_ik": "IK10.02",
         "kode_cpl": "CPL10",
-        "bobot": 8.33,
+        "bobot": 8.7,
         "bobot_bulat": 9
       },
       {
@@ -13919,7 +13919,7 @@
         "rumusan_cpmk": "Merencanakan penyelesaian proyek akhir berdasarkan kebutuhan, spesifikasi, jadwal, sumber daya, dan standar kerja.",
         "kode_ik": "IK09.01",
         "kode_cpl": "CPL09",
-        "bobot": 3.7,
+        "bobot": 3.57,
         "bobot_bulat": 4
       },
       {
@@ -13928,8 +13928,8 @@
         "rumusan_cpmk": "Merealisasikan dan mengintegrasikan solusi teknis pada sistem elektronika/instrumentasi industri sesuai spesifikasi.",
         "kode_ik": "IK05.01, IK05.02",
         "kode_cpl": "CPL05",
-        "bobot": 17.28,
-        "bobot_bulat": 17
+        "bobot": 14.29,
+        "bobot_bulat": 14
       },
       {
         "kode_mk": "REC256004",
@@ -13937,8 +13937,8 @@
         "rumusan_cpmk": "Melakukan pengukuran, pengujian, evaluasi, dan troubleshooting sistem proyek akhir.",
         "kode_ik": "IK04.02, IK04.03, IK05.03",
         "kode_cpl": "",
-        "bobot": 38.28,
-        "bobot_bulat": 38
+        "bobot": 42.85,
+        "bobot_bulat": 43
       },
       {
         "kode_mk": "REC256004",
@@ -13946,8 +13946,8 @@
         "rumusan_cpmk": "Menyusun laporan teknis dan mempresentasikan hasil proyek akhir secara efektif.",
         "kode_ik": "IK08.01, IK08.02, IK08.03",
         "kode_cpl": "CPL08",
-        "bobot": 27.16,
-        "bobot_bulat": 27
+        "bobot": 25.0,
+        "bobot_bulat": 25
       },
       {
         "kode_mk": "REC256004",
@@ -13955,7 +13955,7 @@
         "rumusan_cpmk": "Menunjukkan kemandirian, tanggung jawab, dan pembelajaran berkelanjutan selama penyelesaian proyek.",
         "kode_ik": "IK07.01, IK10.01, IK10.03",
         "kode_cpl": "",
-        "bobot": 13.58,
+        "bobot": 14.29,
         "bobot_bulat": 14
       }
     ],
@@ -13966,7 +13966,7 @@
         "rumusan_cpmk": "Menjelaskan konsep dasar besaran, satuan, gaya, energi, listrik, dan magnet yang relevan dengan rekayasa elektro.",
         "kode_ik": "IK01.01",
         "kode_cpl": "CPL01",
-        "bobot": 52.38,
+        "bobot": 52.17,
         "bobot_bulat": 52
       },
       {
@@ -13975,7 +13975,7 @@
         "rumusan_cpmk": "Menerapkan hukum-hukum fisika dasar untuk menyelesaikan permasalahan teknis sederhana pada sistem elektro.",
         "kode_ik": "IK01.02",
         "kode_cpl": "CPL01",
-        "bobot": 47.62,
+        "bobot": 47.83,
         "bobot_bulat": 48
       },
       {
@@ -13984,8 +13984,8 @@
         "rumusan_cpmk": "Mengidentifikasi jenis, karakteristik, dan fungsi komponen elektronika dasar berdasarkan datasheet.",
         "kode_ik": "IK01.01",
         "kode_cpl": "CPL01",
-        "bobot": 15.94,
-        "bobot_bulat": 16
+        "bobot": 14.81,
+        "bobot_bulat": 15
       },
       {
         "kode_mk": "REC261002",
@@ -13993,8 +13993,8 @@
         "rumusan_cpmk": "Menerapkan prinsip kerja komponen elektronika dalam analisis rangkaian sederhana.",
         "kode_ik": "IK01.02",
         "kode_cpl": "CPL01",
-        "bobot": 14.49,
-        "bobot_bulat": 15
+        "bobot": 13.58,
+        "bobot_bulat": 14
       },
       {
         "kode_mk": "REC261002",
@@ -14002,7 +14002,7 @@
         "rumusan_cpmk": "Memilih komponen elektronika dan alat ukur yang sesuai dengan kebutuhan rangkaian dan pengukuran sederhana.",
         "kode_ik": "IK03.01",
         "kode_cpl": "CPL03",
-        "bobot": 17.4,
+        "bobot": 17.28,
         "bobot_bulat": 17
       },
       {
@@ -14011,8 +14011,8 @@
         "rumusan_cpmk": "Mengoperasikan alat ukur listrik sesuai prosedur dan standar keselamatan.",
         "kode_ik": "IK03.02",
         "kode_cpl": "CPL03",
-        "bobot": 17.39,
-        "bobot_bulat": 17
+        "bobot": 16.05,
+        "bobot_bulat": 16
       },
       {
         "kode_mk": "REC261002",
@@ -14020,8 +14020,8 @@
         "rumusan_cpmk": "Menjelaskan prinsip kerja alat ukur listrik dan mengikuti prosedur pengukuran dasar.",
         "kode_ik": "IK04.01",
         "kode_cpl": "CPL04",
-        "bobot": 4.35,
-        "bobot_bulat": 4
+        "bobot": 4.94,
+        "bobot_bulat": 5
       },
       {
         "kode_mk": "REC261002",
@@ -14029,8 +14029,8 @@
         "rumusan_cpmk": "Melaksanakan pengukuran besaran listrik dan karakteristik komponen menggunakan instrumen yang sesuai.",
         "kode_ik": "IK04.02",
         "kode_cpl": "CPL04",
-        "bobot": 15.94,
-        "bobot_bulat": 16
+        "bobot": 14.81,
+        "bobot_bulat": 15
       },
       {
         "kode_mk": "REC261002",
@@ -14038,8 +14038,8 @@
         "rumusan_cpmk": "Menganalisis hasil pengukuran dasar untuk menilai kesesuaian karakteristik komponen dengan spesifikasinya.",
         "kode_ik": "IK04.03",
         "kode_cpl": "CPL04",
-        "bobot": 14.49,
-        "bobot_bulat": 15
+        "bobot": 18.53,
+        "bobot_bulat": 18
       },
       {
         "kode_mk": "REC261003",
@@ -14047,7 +14047,7 @@
         "rumusan_cpmk": "Mengidentifikasi konsep aljabar, fungsi, trigonometri, dan bilangan kompleks yang relevan dengan rekayasa elektro.",
         "kode_ik": "IK01.01",
         "kode_cpl": "CPL01",
-        "bobot": 52.38,
+        "bobot": 52.17,
         "bobot_bulat": 52
       },
       {
@@ -14056,7 +14056,7 @@
         "rumusan_cpmk": "Menerapkan konsep matematika dasar dalam perhitungan besaran listrik dan penyelesaian masalah teknis sederhana.",
         "kode_ik": "IK01.02",
         "kode_cpl": "CPL01",
-        "bobot": 47.62,
+        "bobot": 47.83,
         "bobot_bulat": 48
       },
       {
@@ -14065,8 +14065,8 @@
         "rumusan_cpmk": "Menunjukkan tanggung jawab terhadap keselamatan diri, tim, pengguna, dan lingkungan kerja.",
         "kode_ik": "IK06.02",
         "kode_cpl": "CPL06",
-        "bobot": 23.53,
-        "bobot_bulat": 24
+        "bobot": 21.05,
+        "bobot_bulat": 21
       },
       {
         "kode_mk": "REC261007",
@@ -14074,8 +14074,8 @@
         "rumusan_cpmk": "Menerapkan prinsip K3LH, identifikasi bahaya, dan pengendalian risiko pada pekerjaan laboratorium, bengkel, dan industri.",
         "kode_ik": "IK06.03",
         "kode_cpl": "CPL06",
-        "bobot": 41.18,
-        "bobot_bulat": 41
+        "bobot": 47.37,
+        "bobot_bulat": 47
       },
       {
         "kode_mk": "REC261007",
@@ -14083,8 +14083,8 @@
         "rumusan_cpmk": "Menyelesaikan tugas K3 secara mandiri, disiplin, dan bertanggung jawab sesuai target yang ditetapkan.",
         "kode_ik": "IK07.01",
         "kode_cpl": "CPL07",
-        "bobot": 35.29,
-        "bobot_bulat": 35
+        "bobot": 31.58,
+        "bobot_bulat": 32
       },
       {
         "kode_mk": "REC261008",
@@ -14092,7 +14092,7 @@
         "rumusan_cpmk": "Menjelaskan konsep dasar rangkaian listrik DC, komponen pasif, hukum Ohm, dan hukum Kirchhoff.",
         "kode_ik": "IK01.01",
         "kode_cpl": "CPL01",
-        "bobot": 52.38,
+        "bobot": 52.17,
         "bobot_bulat": 52
       },
       {
@@ -14101,7 +14101,7 @@
         "rumusan_cpmk": "Menerapkan prinsip rangkaian listrik untuk menghitung tegangan, arus, daya, dan parameter rangkaian sederhana.",
         "kode_ik": "IK01.02",
         "kode_cpl": "CPL01",
-        "bobot": 47.62,
+        "bobot": 47.83,
         "bobot_bulat": 48
       },
       {
@@ -14110,8 +14110,8 @@
         "rumusan_cpmk": "Memilih simbol, komponen, dan perangkat lunak gambar yang sesuai dengan kebutuhan gambar teknik.",
         "kode_ik": "IK03.01",
         "kode_cpl": "CPL03",
-        "bobot": 32.43,
-        "bobot_bulat": 32
+        "bobot": 36.85,
+        "bobot_bulat": 37
       },
       {
         "kode_mk": "REC261009",
@@ -14119,8 +14119,8 @@
         "rumusan_cpmk": "Menggunakan gambar teknik untuk mendukung realisasi dan pemeriksaan pekerjaan teknis.",
         "kode_ik": "IK05.01",
         "kode_cpl": "CPL05",
-        "bobot": 27.03,
-        "bobot_bulat": 27
+        "bobot": 23.68,
+        "bobot_bulat": 24
       },
       {
         "kode_mk": "REC261009",
@@ -14128,8 +14128,8 @@
         "rumusan_cpmk": "Menyusun gambar kerja dan wiring diagram sederhana secara sistematis sesuai spesifikasi yang diberikan.",
         "kode_ik": "IK08.01",
         "kode_cpl": "CPL08",
-        "bobot": 18.92,
-        "bobot_bulat": 19
+        "bobot": 18.42,
+        "bobot_bulat": 18
       },
       {
         "kode_mk": "REC261009",
@@ -14137,8 +14137,8 @@
         "rumusan_cpmk": "Menerapkan standar, simbol, dan notasi gambar teknik dalam dokumentasi teknis.",
         "kode_ik": "IK08.03",
         "kode_cpl": "CPL08",
-        "bobot": 21.62,
-        "bobot_bulat": 22
+        "bobot": 21.05,
+        "bobot_bulat": 21
       },
       {
         "kode_mk": "REC261010",
@@ -14146,8 +14146,8 @@
         "rumusan_cpmk": "Mengidentifikasi fungsi alat kerja mekanik, material, dan prosedur dasar kerja bengkel.",
         "kode_ik": "IK03.01",
         "kode_cpl": "CPL03",
-        "bobot": 27.9,
-        "bobot_bulat": 28
+        "bobot": 29.17,
+        "bobot_bulat": 29
       },
       {
         "kode_mk": "REC261010",
@@ -14155,8 +14155,8 @@
         "rumusan_cpmk": "Menggunakan peralatan bengkel mekanik sesuai SOP.",
         "kode_ik": "IK03.02",
         "kode_cpl": "CPL03",
-        "bobot": 27.91,
-        "bobot_bulat": 28
+        "bobot": 27.08,
+        "bobot_bulat": 27
       },
       {
         "kode_mk": "REC261010",
@@ -14164,8 +14164,8 @@
         "rumusan_cpmk": "Merealisasikan pekerjaan mekanik sederhana berdasarkan gambar kerja dan spesifikasi yang diberikan.",
         "kode_ik": "IK05.01",
         "kode_cpl": "CPL05",
-        "bobot": 23.26,
-        "bobot_bulat": 23
+        "bobot": 18.75,
+        "bobot_bulat": 19
       },
       {
         "kode_mk": "REC261010",
@@ -14173,8 +14173,8 @@
         "rumusan_cpmk": "Menerapkan prinsip K3LH selama pekerjaan bengkel mekanik.",
         "kode_ik": "IK06.03",
         "kode_cpl": "CPL06",
-        "bobot": 16.28,
-        "bobot_bulat": 16
+        "bobot": 18.75,
+        "bobot_bulat": 19
       },
       {
         "kode_mk": "REC261010",
@@ -14182,8 +14182,8 @@
         "rumusan_cpmk": "Melaksanakan pekerjaan bengkel mekanik sesuai batasan waktu, mutu, dan penggunaan bahan yang ditetapkan.",
         "kode_ik": "IK09.02",
         "kode_cpl": "CPL09",
-        "bobot": 4.65,
-        "bobot_bulat": 5
+        "bobot": 6.25,
+        "bobot_bulat": 6
       },
       {
         "kode_mk": "REC261011",
@@ -14191,8 +14191,8 @@
         "rumusan_cpmk": "Menjelaskan konsep algoritma, flowchart, variabel, struktur kendali, dan logika pemrograman.",
         "kode_ik": "IK01.03",
         "kode_cpl": "CPL01",
-        "bobot": 23.53,
-        "bobot_bulat": 24
+        "bobot": 21.05,
+        "bobot_bulat": 21
       },
       {
         "kode_mk": "REC261011",
@@ -14200,8 +14200,8 @@
         "rumusan_cpmk": "Membuat program sederhana untuk menyelesaikan masalah teknis yang terdefinisi dengan jelas.",
         "kode_ik": "IK02.03",
         "kode_cpl": "CPL02",
-        "bobot": 29.41,
-        "bobot_bulat": 29
+        "bobot": 31.58,
+        "bobot_bulat": 32
       },
       {
         "kode_mk": "REC261011",
@@ -14209,7 +14209,7 @@
         "rumusan_cpmk": "Menguji dan memperbaiki program sederhana berdasarkan keluaran yang diharapkan.",
         "kode_ik": "IK05.03",
         "kode_cpl": "CPL05",
-        "bobot": 47.06,
+        "bobot": 47.37,
         "bobot_bulat": 47
       },
       {
@@ -14218,8 +14218,8 @@
         "rumusan_cpmk": "Menjelaskan konsep rangkaian AC, fasor, impedansi, daya AC, dan respons frekuensi dasar.",
         "kode_ik": "IK01.01",
         "kode_cpl": "CPL01",
-        "bobot": 17.74,
-        "bobot_bulat": 18
+        "bobot": 15.58,
+        "bobot_bulat": 16
       },
       {
         "kode_mk": "REC262001",
@@ -14227,8 +14227,8 @@
         "rumusan_cpmk": "Menerapkan metode standar untuk menghitung besaran pada rangkaian listrik AC.",
         "kode_ik": "IK01.02",
         "kode_cpl": "CPL01",
-        "bobot": 16.13,
-        "bobot_bulat": 16
+        "bobot": 14.29,
+        "bobot_bulat": 14
       },
       {
         "kode_mk": "REC262001",
@@ -14236,8 +14236,8 @@
         "rumusan_cpmk": "Menganalisis kondisi kerja rangkaian listrik AC menggunakan metode standar.",
         "kode_ik": "IK02.02",
         "kode_cpl": "CPL02",
-        "bobot": 16.13,
-        "bobot_bulat": 16
+        "bobot": 18.18,
+        "bobot_bulat": 18
       },
       {
         "kode_mk": "REC262001",
@@ -14245,7 +14245,7 @@
         "rumusan_cpmk": "Mengikuti prosedur pengukuran rangkaian listrik AC sesuai panduan praktikum.",
         "kode_ik": "IK04.01",
         "kode_cpl": "CPL04",
-        "bobot": 4.84,
+        "bobot": 5.19,
         "bobot_bulat": 5
       },
       {
@@ -14254,8 +14254,8 @@
         "rumusan_cpmk": "Menguji karakteristik rangkaian AC menggunakan instrumen yang sesuai.",
         "kode_ik": "IK04.02",
         "kode_cpl": "CPL04",
-        "bobot": 17.74,
-        "bobot_bulat": 18
+        "bobot": 15.58,
+        "bobot_bulat": 16
       },
       {
         "kode_mk": "REC262001",
@@ -14263,8 +14263,8 @@
         "rumusan_cpmk": "Menganalisis hasil praktikum rangkaian AC untuk mengevaluasi kesesuaian dengan teori.",
         "kode_ik": "IK04.03",
         "kode_cpl": "CPL04",
-        "bobot": 16.13,
-        "bobot_bulat": 16
+        "bobot": 19.49,
+        "bobot_bulat": 19
       },
       {
         "kode_mk": "REC262001",
@@ -14272,8 +14272,8 @@
         "rumusan_cpmk": "Menerapkan prinsip keselamatan kerja listrik selama praktikum rangkaian AC.",
         "kode_ik": "IK06.03",
         "kode_cpl": "CPL06",
-        "bobot": 11.29,
-        "bobot_bulat": 11
+        "bobot": 11.69,
+        "bobot_bulat": 12
       },
       {
         "kode_mk": "REC262002",
@@ -14281,8 +14281,8 @@
         "rumusan_cpmk": "Menjelaskan prinsip kerja diode, transistor, op-amp, dan rangkaian elektronika analog dasar.",
         "kode_ik": "IK01.01",
         "kode_cpl": "CPL01",
-        "bobot": 13.41,
-        "bobot_bulat": 14
+        "bobot": 12.5,
+        "bobot_bulat": 13
       },
       {
         "kode_mk": "REC262002",
@@ -14290,8 +14290,8 @@
         "rumusan_cpmk": "Menerapkan konsep elektronika analog untuk menghitung parameter rangkaian penguat dan penyearah sederhana.",
         "kode_ik": "IK01.02",
         "kode_cpl": "CPL01",
-        "bobot": 12.2,
-        "bobot_bulat": 12
+        "bobot": 11.46,
+        "bobot_bulat": 11
       },
       {
         "kode_mk": "REC262002",
@@ -14299,8 +14299,8 @@
         "rumusan_cpmk": "Menganalisis kerja rangkaian penguat dan penyearah sederhana berdasarkan metode standar.",
         "kode_ik": "IK02.02",
         "kode_cpl": "CPL02",
-        "bobot": 12.2,
-        "bobot_bulat": 12
+        "bobot": 14.58,
+        "bobot_bulat": 15
       },
       {
         "kode_mk": "REC262002",
@@ -14308,7 +14308,7 @@
         "rumusan_cpmk": "Memilih komponen elektronika analog sesuai kebutuhan rangkaian sederhana.",
         "kode_ik": "IK03.01",
         "kode_cpl": "CPL03",
-        "bobot": 14.62,
+        "bobot": 14.58,
         "bobot_bulat": 15
       },
       {
@@ -14317,8 +14317,8 @@
         "rumusan_cpmk": "Melakukan pengukuran dan pengujian rangkaian elektronika analog menggunakan alat ukur yang sesuai.",
         "kode_ik": "IK04.02",
         "kode_cpl": "CPL04",
-        "bobot": 13.41,
-        "bobot_bulat": 13
+        "bobot": 12.5,
+        "bobot_bulat": 12
       },
       {
         "kode_mk": "REC262002",
@@ -14326,8 +14326,8 @@
         "rumusan_cpmk": "Menganalisis hasil pengujian rangkaian elektronika analog untuk menilai kinerjanya.",
         "kode_ik": "IK04.03",
         "kode_cpl": "CPL04",
-        "bobot": 12.2,
-        "bobot_bulat": 12
+        "bobot": 15.62,
+        "bobot_bulat": 16
       },
       {
         "kode_mk": "REC262002",
@@ -14335,8 +14335,8 @@
         "rumusan_cpmk": "Merakit rangkaian elektronika analog sederhana berdasarkan skema dan prosedur praktikum.",
         "kode_ik": "IK05.01",
         "kode_cpl": "CPL05",
-        "bobot": 12.2,
-        "bobot_bulat": 12
+        "bobot": 9.38,
+        "bobot_bulat": 9
       },
       {
         "kode_mk": "REC262002",
@@ -14344,8 +14344,8 @@
         "rumusan_cpmk": "Melakukan troubleshooting sederhana untuk menemukan kesalahan pada rangkaian elektronika analog.",
         "kode_ik": "IK05.03",
         "kode_cpl": "CPL05",
-        "bobot": 9.76,
-        "bobot_bulat": 10
+        "bobot": 9.38,
+        "bobot_bulat": 9
       },
       {
         "kode_mk": "REC262003",
@@ -14353,8 +14353,8 @@
         "rumusan_cpmk": "Mengidentifikasi peralatan, material, dan prosedur kerja bengkel elektronika.",
         "kode_ik": "IK03.01",
         "kode_cpl": "CPL03",
-        "bobot": 25.0,
-        "bobot_bulat": 25
+        "bobot": 26.42,
+        "bobot_bulat": 26
       },
       {
         "kode_mk": "REC262003",
@@ -14362,7 +14362,7 @@
         "rumusan_cpmk": "Melakukan pengukuran awal pada hasil perakitan elektronika menggunakan alat ukur yang sesuai.",
         "kode_ik": "IK04.02",
         "kode_cpl": "CPL04",
-        "bobot": 22.92,
+        "bobot": 22.64,
         "bobot_bulat": 23
       },
       {
@@ -14371,8 +14371,8 @@
         "rumusan_cpmk": "Melaksanakan perakitan, penyolderan, dan pemeriksaan rangkaian elektronika sesuai SOP.",
         "kode_ik": "IK05.01",
         "kode_cpl": "CPL05",
-        "bobot": 20.83,
-        "bobot_bulat": 21
+        "bobot": 16.98,
+        "bobot_bulat": 17
       },
       {
         "kode_mk": "REC262003",
@@ -14380,7 +14380,7 @@
         "rumusan_cpmk": "Melakukan pengujian dan troubleshooting sederhana pada hasil perakitan elektronika.",
         "kode_ik": "IK05.03",
         "kode_cpl": "CPL05",
-        "bobot": 16.67,
+        "bobot": 16.98,
         "bobot_bulat": 17
       },
       {
@@ -14389,8 +14389,8 @@
         "rumusan_cpmk": "Menerapkan prinsip K3LH selama pekerjaan bengkel elektronika.",
         "kode_ik": "IK06.03",
         "kode_cpl": "CPL06",
-        "bobot": 14.58,
-        "bobot_bulat": 14
+        "bobot": 16.98,
+        "bobot_bulat": 17
       },
       {
         "kode_mk": "REC262004",
@@ -14398,7 +14398,7 @@
         "rumusan_cpmk": "Menjelaskan prinsip kerja sensor dan aktuator yang digunakan pada instrumentasi industri.",
         "kode_ik": "IK01.01",
         "kode_cpl": "CPL01",
-        "bobot": 23.91,
+        "bobot": 23.53,
         "bobot_bulat": 24
       },
       {
@@ -14407,8 +14407,8 @@
         "rumusan_cpmk": "Memilih sensor dan aktuator sesuai kebutuhan pengukuran dan karakteristik sistem.",
         "kode_ik": "IK03.01",
         "kode_cpl": "CPL03",
-        "bobot": 26.09,
-        "bobot_bulat": 26
+        "bobot": 27.45,
+        "bobot_bulat": 27
       },
       {
         "kode_mk": "REC262004",
@@ -14416,8 +14416,8 @@
         "rumusan_cpmk": "Mengoperasikan sensor dan aktuator sesuai prosedur dan spesifikasi teknis.",
         "kode_ik": "IK03.02",
         "kode_cpl": "CPL03",
-        "bobot": 26.09,
-        "bobot_bulat": 26
+        "bobot": 25.49,
+        "bobot_bulat": 25
       },
       {
         "kode_mk": "REC262004",
@@ -14425,7 +14425,7 @@
         "rumusan_cpmk": "Menguji sensor dan aktuator untuk memperoleh data karakteristik sederhana.",
         "kode_ik": "IK04.02",
         "kode_cpl": "CPL04",
-        "bobot": 23.91,
+        "bobot": 23.53,
         "bobot_bulat": 24
       },
       {
@@ -14434,8 +14434,8 @@
         "rumusan_cpmk": "Menjelaskan sistem bilangan, gerbang logika, aljabar Boolean, dan rangkaian logika kombinasi.",
         "kode_ik": "IK01.01",
         "kode_cpl": "CPL01",
-        "bobot": 14.1,
-        "bobot_bulat": 14
+        "bobot": 13.33,
+        "bobot_bulat": 13
       },
       {
         "kode_mk": "REC262005",
@@ -14443,8 +14443,8 @@
         "rumusan_cpmk": "Menerapkan prinsip logika digital untuk menyelesaikan masalah rangkaian digital sederhana.",
         "kode_ik": "IK01.02",
         "kode_cpl": "CPL01",
-        "bobot": 12.82,
-        "bobot_bulat": 13
+        "bobot": 12.22,
+        "bobot_bulat": 12
       },
       {
         "kode_mk": "REC262005",
@@ -14452,7 +14452,7 @@
         "rumusan_cpmk": "Menggunakan perangkat lunak simulasi untuk merancang dan memverifikasi rangkaian logika digital.",
         "kode_ik": "IK01.03",
         "kode_cpl": "CPL01",
-        "bobot": 5.13,
+        "bobot": 4.44,
         "bobot_bulat": 5
       },
       {
@@ -14461,8 +14461,8 @@
         "rumusan_cpmk": "Menganalisis fungsi rangkaian digital berdasarkan tabel kebenaran dan persamaan logika.",
         "kode_ik": "IK02.02",
         "kode_cpl": "CPL02",
-        "bobot": 12.82,
-        "bobot_bulat": 13
+        "bobot": 15.56,
+        "bobot_bulat": 16
       },
       {
         "kode_mk": "REC262005",
@@ -14470,8 +14470,8 @@
         "rumusan_cpmk": "Mengoperasikan trainer dan peralatan praktikum logika digital sesuai prosedur.",
         "kode_ik": "IK03.02",
         "kode_cpl": "CPL03",
-        "bobot": 15.39,
-        "bobot_bulat": 15
+        "bobot": 14.44,
+        "bobot_bulat": 14
       },
       {
         "kode_mk": "REC262005",
@@ -14479,8 +14479,8 @@
         "rumusan_cpmk": "Menguji rangkaian logika kombinasi sesuai prosedur praktikum.",
         "kode_ik": "IK04.02",
         "kode_cpl": "CPL04",
-        "bobot": 14.1,
-        "bobot_bulat": 14
+        "bobot": 13.33,
+        "bobot_bulat": 13
       },
       {
         "kode_mk": "REC262005",
@@ -14488,8 +14488,8 @@
         "rumusan_cpmk": "Menganalisis hasil pengujian rangkaian digital untuk menentukan kesesuaian fungsi.",
         "kode_ik": "IK04.03",
         "kode_cpl": "CPL04",
-        "bobot": 12.82,
-        "bobot_bulat": 13
+        "bobot": 16.68,
+        "bobot_bulat": 17
       },
       {
         "kode_mk": "REC262005",
@@ -14497,8 +14497,8 @@
         "rumusan_cpmk": "Merangkai rangkaian logika digital berdasarkan skema dan spesifikasi yang diberikan.",
         "kode_ik": "IK05.01",
         "kode_cpl": "CPL05",
-        "bobot": 12.82,
-        "bobot_bulat": 13
+        "bobot": 10.0,
+        "bobot_bulat": 10
       },
       {
         "kode_mk": "REC262006",
@@ -14506,7 +14506,7 @@
         "rumusan_cpmk": "Mengidentifikasi konsep kalkulus dan persamaan diferensial sederhana yang relevan dengan rekayasa elektro.",
         "kode_ik": "IK01.01",
         "kode_cpl": "CPL01",
-        "bobot": 52.38,
+        "bobot": 52.17,
         "bobot_bulat": 52
       },
       {
@@ -14515,7 +14515,7 @@
         "rumusan_cpmk": "Menerapkan matematika terapan dalam analisis sinyal dan respon sistem teknik sederhana.",
         "kode_ik": "IK01.02",
         "kode_cpl": "CPL01",
-        "bobot": 47.62,
+        "bobot": 47.83,
         "bobot_bulat": 48
       },
       {
@@ -14524,7 +14524,7 @@
         "rumusan_cpmk": "Menjelaskan nilai Pancasila sebagai dasar etika dalam kehidupan bermasyarakat, bernegara, dan bekerja.",
         "kode_ik": "IK06.01",
         "kode_cpl": "CPL06",
-        "bobot": 13.79,
+        "bobot": 14.29,
         "bobot_bulat": 14
       },
       {
@@ -14533,7 +14533,7 @@
         "rumusan_cpmk": "Menunjukkan kepedulian sosial dan tanggung jawab terhadap masyarakat dan lingkungan berdasarkan nilai Pancasila.",
         "kode_ik": "IK06.02",
         "kode_cpl": "CPL06",
-        "bobot": 13.79,
+        "bobot": 14.29,
         "bobot_bulat": 14
       },
       {
@@ -14542,8 +14542,8 @@
         "rumusan_cpmk": "Menunjukkan sikap tanggung jawab dan disiplin dalam aktivitas akademik dan tugas individu.",
         "kode_ik": "IK07.01",
         "kode_cpl": "CPL07",
-        "bobot": 20.69,
-        "bobot_bulat": 21
+        "bobot": 21.43,
+        "bobot_bulat": 22
       },
       {
         "kode_mk": "REC262007",
@@ -14551,8 +14551,8 @@
         "rumusan_cpmk": "Menyampaikan gagasan kebangsaan dan etika sosial secara lisan dengan jelas.",
         "kode_ik": "IK08.02",
         "kode_cpl": "CPL08",
-        "bobot": 24.14,
-        "bobot_bulat": 24
+        "bobot": 21.43,
+        "bobot_bulat": 21
       },
       {
         "kode_mk": "REC262007",
@@ -14560,8 +14560,8 @@
         "rumusan_cpmk": "Menuliskan gagasan kebangsaan dan etika sosial dengan format dan bahasa yang sesuai.",
         "kode_ik": "IK08.03",
         "kode_cpl": "CPL08",
-        "bobot": 27.59,
-        "bobot_bulat": 27
+        "bobot": 28.56,
+        "bobot_bulat": 29
       },
       {
         "kode_mk": "REC263001",
@@ -14569,8 +14569,8 @@
         "rumusan_cpmk": "Menjelaskan prinsip kerja rangkaian elektronika analog lanjutan dan aplikasinya pada sistem instrumentasi.",
         "kode_ik": "IK01.01",
         "kode_cpl": "CPL01",
-        "bobot": 18.64,
-        "bobot_bulat": 19
+        "bobot": 17.0,
+        "bobot_bulat": 17
       },
       {
         "kode_mk": "REC263001",
@@ -14578,8 +14578,8 @@
         "rumusan_cpmk": "Menganalisis kinerja dan gangguan rangkaian analog lanjutan berdasarkan parameter teknis dan hasil inspeksi.",
         "kode_ik": "IK02.02",
         "kode_cpl": "CPL02",
-        "bobot": 16.95,
-        "bobot_bulat": 17
+        "bobot": 20.0,
+        "bobot_bulat": 20
       },
       {
         "kode_mk": "REC263001",
@@ -14587,8 +14587,8 @@
         "rumusan_cpmk": "Menentukan konfigurasi rangkaian analog yang sesuai untuk kebutuhan teknis sederhana.",
         "kode_ik": "IK02.03",
         "kode_cpl": "CPL02",
-        "bobot": 8.47,
-        "bobot_bulat": 8
+        "bobot": 5.0,
+        "bobot_bulat": 5
       },
       {
         "kode_mk": "REC263001",
@@ -14596,8 +14596,8 @@
         "rumusan_cpmk": "Memilih komponen dan konfigurasi rangkaian analog lanjutan sesuai spesifikasi.",
         "kode_ik": "IK03.01",
         "kode_cpl": "CPL03",
-        "bobot": 20.35,
-        "bobot_bulat": 20
+        "bobot": 19.0,
+        "bobot_bulat": 19
       },
       {
         "kode_mk": "REC263001",
@@ -14605,8 +14605,8 @@
         "rumusan_cpmk": "Merakit dan menguji rangkaian elektronika analog lanjutan sesuai spesifikasi praktikum.",
         "kode_ik": "IK04.02",
         "kode_cpl": "CPL04",
-        "bobot": 18.64,
-        "bobot_bulat": 19
+        "bobot": 17.0,
+        "bobot_bulat": 17
       },
       {
         "kode_mk": "REC263001",
@@ -14614,8 +14614,8 @@
         "rumusan_cpmk": "Menganalisis hasil pengukuran rangkaian analog lanjutan untuk mengevaluasi kinerja rangkaian.",
         "kode_ik": "IK04.03",
         "kode_cpl": "CPL04",
-        "bobot": 16.95,
-        "bobot_bulat": 17
+        "bobot": 22.0,
+        "bobot_bulat": 22
       },
       {
         "kode_mk": "REC263002",
@@ -14623,7 +14623,7 @@
         "rumusan_cpmk": "Menggunakan perangkat lunak pengembangan untuk memprogram sistem mikrokontroler.",
         "kode_ik": "IK01.03",
         "kode_cpl": "CPL01",
-        "bobot": 13.33,
+        "bobot": 13.79,
         "bobot_bulat": 14
       },
       {
@@ -14632,8 +14632,8 @@
         "rumusan_cpmk": "Mengoperasikan perangkat keras mikrokontroler dan periferalnya untuk pekerjaan teknis sederhana.",
         "kode_ik": "IK03.02",
         "kode_cpl": "CPL03",
-        "bobot": 40.01,
-        "bobot_bulat": 40
+        "bobot": 44.84,
+        "bobot_bulat": 45
       },
       {
         "kode_mk": "REC263002",
@@ -14641,8 +14641,8 @@
         "rumusan_cpmk": "Mengonfigurasi dan mengintegrasikan input-output mikrokontroler sesuai datasheet dan wiring diagram.",
         "kode_ik": "IK03.03",
         "kode_cpl": "CPL03",
-        "bobot": 13.33,
-        "bobot_bulat": 13
+        "bobot": 10.34,
+        "bobot_bulat": 10
       },
       {
         "kode_mk": "REC263002",
@@ -14650,8 +14650,8 @@
         "rumusan_cpmk": "Merealisasikan sistem berbasis mikrokontroler sesuai spesifikasi yang diberikan.",
         "kode_ik": "IK05.01",
         "kode_cpl": "CPL05",
-        "bobot": 33.33,
-        "bobot_bulat": 33
+        "bobot": 31.03,
+        "bobot_bulat": 31
       },
       {
         "kode_mk": "REC263003",
@@ -14659,7 +14659,7 @@
         "rumusan_cpmk": "Memilih instrumen industri yang sesuai untuk kebutuhan pengukuran dan pengendalian proses.",
         "kode_ik": "IK03.01",
         "kode_cpl": "CPL03",
-        "bobot": 20.35,
+        "bobot": 20.0,
         "bobot_bulat": 20
       },
       {
@@ -14668,8 +14668,8 @@
         "rumusan_cpmk": "Mengoperasikan instrumen industri sesuai prosedur dan spesifikasi teknis.",
         "kode_ik": "IK03.02",
         "kode_cpl": "CPL03",
-        "bobot": 20.34,
-        "bobot_bulat": 20
+        "bobot": 18.57,
+        "bobot_bulat": 19
       },
       {
         "kode_mk": "REC263003",
@@ -14677,8 +14677,8 @@
         "rumusan_cpmk": "Melakukan pengukuran dan pengujian variabel proses menggunakan instrumen industri.",
         "kode_ik": "IK04.02",
         "kode_cpl": "CPL04",
-        "bobot": 18.64,
-        "bobot_bulat": 19
+        "bobot": 17.14,
+        "bobot_bulat": 17
       },
       {
         "kode_mk": "REC263003",
@@ -14686,8 +14686,8 @@
         "rumusan_cpmk": "Menganalisis hasil pengukuran instrumen industri untuk menilai kinerja proses.",
         "kode_ik": "IK04.03",
         "kode_cpl": "CPL04",
-        "bobot": 16.95,
-        "bobot_bulat": 17
+        "bobot": 21.43,
+        "bobot_bulat": 21
       },
       {
         "kode_mk": "REC263003",
@@ -14695,8 +14695,8 @@
         "rumusan_cpmk": "Menerapkan prinsip K3LH saat instalasi dan pengoperasian perangkat instrumentasi industri.",
         "kode_ik": "IK06.03",
         "kode_cpl": "CPL06",
-        "bobot": 11.86,
-        "bobot_bulat": 12
+        "bobot": 12.86,
+        "bobot_bulat": 13
       },
       {
         "kode_mk": "REC263003",
@@ -14704,8 +14704,8 @@
         "rumusan_cpmk": "Menyusun laporan praktikum instrumentasi industri secara sistematis.",
         "kode_ik": "IK08.01",
         "kode_cpl": "CPL08",
-        "bobot": 11.86,
-        "bobot_bulat": 12
+        "bobot": 10.0,
+        "bobot_bulat": 10
       },
       {
         "kode_mk": "REC263004",
@@ -14713,8 +14713,8 @@
         "rumusan_cpmk": "Mengoperasikan PLC dan perangkat lunak pemrogramannya dalam sistem otomasi industri.",
         "kode_ik": "IK03.02",
         "kode_cpl": "CPL03",
-        "bobot": 42.85,
-        "bobot_bulat": 43
+        "bobot": 46.44,
+        "bobot_bulat": 46
       },
       {
         "kode_mk": "REC263004",
@@ -14722,8 +14722,8 @@
         "rumusan_cpmk": "Membuat program dan mengonfigurasi PLC untuk mengendalikan proses sederhana sesuai spesifikasi kerja.",
         "kode_ik": "IK03.03",
         "kode_cpl": "CPL03",
-        "bobot": 14.29,
-        "bobot_bulat": 14
+        "bobot": 10.71,
+        "bobot_bulat": 11
       },
       {
         "kode_mk": "REC263004",
@@ -14731,8 +14731,8 @@
         "rumusan_cpmk": "Mengintegrasikan PLC dengan sensor dan aktuator sesuai wiring diagram dan SOP.",
         "kode_ik": "IK05.02",
         "kode_cpl": "CPL05",
-        "bobot": 14.29,
-        "bobot_bulat": 14
+        "bobot": 10.71,
+        "bobot_bulat": 11
       },
       {
         "kode_mk": "REC263004",
@@ -14740,8 +14740,8 @@
         "rumusan_cpmk": "Melakukan pengujian dan troubleshooting sistem PLC sederhana.",
         "kode_ik": "IK05.03",
         "kode_cpl": "CPL05",
-        "bobot": 28.57,
-        "bobot_bulat": 29
+        "bobot": 32.14,
+        "bobot_bulat": 32
       },
       {
         "kode_mk": "REC263005",
@@ -14749,8 +14749,8 @@
         "rumusan_cpmk": "Mengidentifikasi karakteristik sistem kendali dan permasalahan pada sistem loop terbuka/tertutup.",
         "kode_ik": "IK02.01",
         "kode_cpl": "CPL02",
-        "bobot": 6.12,
-        "bobot_bulat": 6
+        "bobot": 3.33,
+        "bobot_bulat": 3
       },
       {
         "kode_mk": "REC263005",
@@ -14758,8 +14758,8 @@
         "rumusan_cpmk": "Menganalisis respon sistem kendali kontinyu menggunakan metode standar.",
         "kode_ik": "IK02.02",
         "kode_cpl": "CPL02",
-        "bobot": 20.41,
-        "bobot_bulat": 20
+        "bobot": 23.33,
+        "bobot_bulat": 23
       },
       {
         "kode_mk": "REC263005",
@@ -14767,8 +14767,8 @@
         "rumusan_cpmk": "Mengoperasikan perangkat praktikum atau perangkat lunak simulasi sistem kendali.",
         "kode_ik": "IK03.02",
         "kode_cpl": "CPL03",
-        "bobot": 24.49,
-        "bobot_bulat": 25
+        "bobot": 21.67,
+        "bobot_bulat": 22
       },
       {
         "kode_mk": "REC263005",
@@ -14776,8 +14776,8 @@
         "rumusan_cpmk": "Menyusun langkah pengujian sistem kendali berdasarkan prosedur yang diberikan.",
         "kode_ik": "IK04.01",
         "kode_cpl": "CPL04",
-        "bobot": 6.12,
-        "bobot_bulat": 6
+        "bobot": 6.67,
+        "bobot_bulat": 7
       },
       {
         "kode_mk": "REC263005",
@@ -14785,8 +14785,8 @@
         "rumusan_cpmk": "Melaksanakan pengujian respon sistem kendali menggunakan perangkat praktikum/simulasi.",
         "kode_ik": "IK04.02",
         "kode_cpl": "CPL04",
-        "bobot": 22.45,
-        "bobot_bulat": 23
+        "bobot": 20.0,
+        "bobot_bulat": 20
       },
       {
         "kode_mk": "REC263005",
@@ -14794,8 +14794,8 @@
         "rumusan_cpmk": "Menginterpretasikan hasil pengujian untuk menentukan kinerja dan perbaikan parameter sistem kendali.",
         "kode_ik": "IK04.03",
         "kode_cpl": "CPL04",
-        "bobot": 20.41,
-        "bobot_bulat": 20
+        "bobot": 25.0,
+        "bobot_bulat": 25
       },
       {
         "kode_mk": "REC263006",
@@ -14803,8 +14803,8 @@
         "rumusan_cpmk": "Menjelaskan prinsip rangkaian digital sekuensial, flip-flop, counter, register, dan memori sederhana.",
         "kode_ik": "IK01.01",
         "kode_cpl": "CPL01",
-        "bobot": 35.48,
-        "bobot_bulat": 36
+        "bobot": 32.43,
+        "bobot_bulat": 32
       },
       {
         "kode_mk": "REC263006",
@@ -14812,8 +14812,8 @@
         "rumusan_cpmk": "Menerapkan konsep digital sekuensial untuk menyelesaikan fungsi logika sederhana.",
         "kode_ik": "IK01.02",
         "kode_cpl": "CPL01",
-        "bobot": 32.26,
-        "bobot_bulat": 32
+        "bobot": 29.73,
+        "bobot_bulat": 30
       },
       {
         "kode_mk": "REC263006",
@@ -14821,8 +14821,8 @@
         "rumusan_cpmk": "Menganalisis fungsi rangkaian digital sekuensial berdasarkan kondisi input-output.",
         "kode_ik": "IK02.02",
         "kode_cpl": "CPL02",
-        "bobot": 32.26,
-        "bobot_bulat": 32
+        "bobot": 37.84,
+        "bobot_bulat": 38
       },
       {
         "kode_mk": "REC264001",
@@ -14830,7 +14830,7 @@
         "rumusan_cpmk": "Menggunakan perangkat lunak pengembangan sistem embedded untuk pemrograman dan simulasi.",
         "kode_ik": "IK01.03",
         "kode_cpl": "CPL01",
-        "bobot": 8.0,
+        "bobot": 7.69,
         "bobot_bulat": 8
       },
       {
@@ -14839,8 +14839,8 @@
         "rumusan_cpmk": "Memilih perangkat embedded dan modul pendukung sesuai kebutuhan aplikasi instrumentasi industri.",
         "kode_ik": "IK03.01",
         "kode_cpl": "CPL03",
-        "bobot": 24.0,
-        "bobot_bulat": 24
+        "bobot": 26.92,
+        "bobot_bulat": 27
       },
       {
         "kode_mk": "REC264001",
@@ -14848,8 +14848,8 @@
         "rumusan_cpmk": "Mengoperasikan perangkat embedded dan perangkat lunak pendukung sesuai prosedur.",
         "kode_ik": "IK03.02",
         "kode_cpl": "CPL03",
-        "bobot": 24.0,
-        "bobot_bulat": 24
+        "bobot": 25.0,
+        "bobot_bulat": 25
       },
       {
         "kode_mk": "REC264001",
@@ -14857,8 +14857,8 @@
         "rumusan_cpmk": "Mengonfigurasi dan mengintegrasikan perangkat embedded sesuai datasheet dan kebutuhan sistem.",
         "kode_ik": "IK03.03",
         "kode_cpl": "CPL03",
-        "bobot": 8.0,
-        "bobot_bulat": 8
+        "bobot": 5.77,
+        "bobot_bulat": 6
       },
       {
         "kode_mk": "REC264001",
@@ -14866,8 +14866,8 @@
         "rumusan_cpmk": "Merealisasikan sistem embedded sederhana sesuai spesifikasi yang diberikan.",
         "kode_ik": "IK05.01",
         "kode_cpl": "CPL05",
-        "bobot": 20.0,
-        "bobot_bulat": 20
+        "bobot": 17.31,
+        "bobot_bulat": 17
       },
       {
         "kode_mk": "REC264001",
@@ -14875,8 +14875,8 @@
         "rumusan_cpmk": "Menguji dan melakukan troubleshooting sistem embedded sederhana.",
         "kode_ik": "IK05.03",
         "kode_cpl": "CPL05",
-        "bobot": 16.0,
-        "bobot_bulat": 16
+        "bobot": 17.31,
+        "bobot_bulat": 17
       },
       {
         "kode_mk": "REC264002",
@@ -14884,8 +14884,8 @@
         "rumusan_cpmk": "Memilih perangkat elektronika industri sesuai kebutuhan sistem produksi/otomasi.",
         "kode_ik": "IK03.01",
         "kode_cpl": "CPL03",
-        "bobot": 24.0,
-        "bobot_bulat": 24
+        "bobot": 25.92,
+        "bobot_bulat": 26
       },
       {
         "kode_mk": "REC264002",
@@ -14893,7 +14893,7 @@
         "rumusan_cpmk": "Mengoperasikan perangkat elektronika industri sesuai prosedur dan spesifikasi teknis.",
         "kode_ik": "IK03.02",
         "kode_cpl": "CPL03",
-        "bobot": 24.0,
+        "bobot": 24.07,
         "bobot_bulat": 24
       },
       {
@@ -14902,7 +14902,7 @@
         "rumusan_cpmk": "Melakukan pengukuran dan pengujian perangkat elektronika industri dengan instrumen yang sesuai.",
         "kode_ik": "IK04.02",
         "kode_cpl": "CPL04",
-        "bobot": 22.0,
+        "bobot": 22.22,
         "bobot_bulat": 22
       },
       {
@@ -14911,8 +14911,8 @@
         "rumusan_cpmk": "Mengintegrasikan perangkat elektronika industri dalam suatu sistem sesuai spesifikasi teknis dan prinsip K3LH.",
         "kode_ik": "IK05.02",
         "kode_cpl": "CPL05",
-        "bobot": 8.0,
-        "bobot_bulat": 8
+        "bobot": 5.56,
+        "bobot_bulat": 6
       },
       {
         "kode_mk": "REC264002",
@@ -14920,8 +14920,8 @@
         "rumusan_cpmk": "Melakukan troubleshooting perangkat elektronika industri berdasarkan prosedur standar.",
         "kode_ik": "IK05.03",
         "kode_cpl": "CPL05",
-        "bobot": 16.0,
-        "bobot_bulat": 16
+        "bobot": 16.67,
+        "bobot_bulat": 17
       },
       {
         "kode_mk": "REC264002",
@@ -14929,8 +14929,8 @@
         "rumusan_cpmk": "Mengevaluasi hasil kerja sistem elektronika industri berdasarkan mutu, waktu, dan sumber daya.",
         "kode_ik": "IK09.03",
         "kode_cpl": "CPL09",
-        "bobot": 6.0,
-        "bobot_bulat": 6
+        "bobot": 5.56,
+        "bobot_bulat": 5
       },
       {
         "kode_mk": "REC264003",
@@ -14938,8 +14938,8 @@
         "rumusan_cpmk": "Menganalisis gangguan rangkaian pneumatik/hidrolik berdasarkan gejala dan data kerja.",
         "kode_ik": "IK02.02",
         "kode_cpl": "CPL02",
-        "bobot": 17.86,
-        "bobot_bulat": 18
+        "bobot": 22.57,
+        "bobot_bulat": 23
       },
       {
         "kode_mk": "REC264003",
@@ -14947,8 +14947,8 @@
         "rumusan_cpmk": "Menjelaskan dan memilih komponen pneumatik dan hidrolik pada sistem otomasi industri.",
         "kode_ik": "IK03.01",
         "kode_cpl": "CPL03",
-        "bobot": 21.42,
-        "bobot_bulat": 22
+        "bobot": 22.58,
+        "bobot_bulat": 23
       },
       {
         "kode_mk": "REC264003",
@@ -14956,7 +14956,7 @@
         "rumusan_cpmk": "Mengoperasikan rangkaian pneumatik/hidrolik sesuai SOP.",
         "kode_ik": "IK03.02",
         "kode_cpl": "CPL03",
-        "bobot": 21.43,
+        "bobot": 20.97,
         "bobot_bulat": 21
       },
       {
@@ -14965,8 +14965,8 @@
         "rumusan_cpmk": "Merakit rangkaian pneumatik/hidrolik sesuai gambar kerja.",
         "kode_ik": "IK05.01",
         "kode_cpl": "CPL05",
-        "bobot": 17.86,
-        "bobot_bulat": 18
+        "bobot": 14.52,
+        "bobot_bulat": 14
       },
       {
         "kode_mk": "REC264003",
@@ -14974,8 +14974,8 @@
         "rumusan_cpmk": "Mengintegrasikan sistem pneumatik/hidrolik dengan perangkat kendali sederhana.",
         "kode_ik": "IK05.02",
         "kode_cpl": "CPL05",
-        "bobot": 7.14,
-        "bobot_bulat": 7
+        "bobot": 4.84,
+        "bobot_bulat": 5
       },
       {
         "kode_mk": "REC264003",
@@ -14983,7 +14983,7 @@
         "rumusan_cpmk": "Melakukan pengujian dan troubleshooting rangkaian pneumatik/hidrolik.",
         "kode_ik": "IK05.03",
         "kode_cpl": "CPL05",
-        "bobot": 14.29,
+        "bobot": 14.52,
         "bobot_bulat": 14
       },
       {
@@ -14992,8 +14992,8 @@
         "rumusan_cpmk": "Menganalisis karakteristik sistem kendali diskrit sesuai metode standar.",
         "kode_ik": "IK02.02",
         "kode_cpl": "CPL02",
-        "bobot": 33.33,
-        "bobot_bulat": 33
+        "bobot": 36.36,
+        "bobot_bulat": 36
       },
       {
         "kode_mk": "REC264004",
@@ -15001,8 +15001,8 @@
         "rumusan_cpmk": "Memilih strategi penyelesaian masalah kendali diskrit yang terdefinisi dengan jelas sesuai prosedur baku.",
         "kode_ik": "IK02.03",
         "kode_cpl": "CPL02",
-        "bobot": 16.67,
-        "bobot_bulat": 17
+        "bobot": 15.58,
+        "bobot_bulat": 16
       },
       {
         "kode_mk": "REC264004",
@@ -15010,8 +15010,8 @@
         "rumusan_cpmk": "Menginterpretasikan hasil simulasi atau pengujian sistem kendali diskrit untuk menilai kinerjanya.",
         "kode_ik": "IK04.03",
         "kode_cpl": "CPL04",
-        "bobot": 33.33,
-        "bobot_bulat": 33
+        "bobot": 38.97,
+        "bobot_bulat": 39
       },
       {
         "kode_mk": "REC264004",
@@ -15019,8 +15019,8 @@
         "rumusan_cpmk": "Mengevaluasi hasil pekerjaan sistem kendali diskrit berdasarkan indikator mutu dan kesesuaian spesifikasi.",
         "kode_ik": "IK09.03",
         "kode_cpl": "CPL09",
-        "bobot": 10.0,
-        "bobot_bulat": 10
+        "bobot": 7.79,
+        "bobot_bulat": 8
       },
       {
         "kode_mk": "REC264004",
@@ -15028,8 +15028,8 @@
         "rumusan_cpmk": "Bekerja sama dalam tim sesuai peran untuk menyelesaikan proyek atau praktikum sistem kendali diskrit.",
         "kode_ik": "IK07.02",
         "kode_cpl": "CPL07",
-        "bobot": 6.67,
-        "bobot_bulat": 7
+        "bobot": 1.3,
+        "bobot_bulat": 1
       },
       {
         "kode_mk": "REC264005",
@@ -15037,8 +15037,8 @@
         "rumusan_cpmk": "Menerapkan prinsip kerja mesin-mesin listrik untuk menghitung parameter operasinya.",
         "kode_ik": "IK01.02",
         "kode_cpl": "CPL01",
-        "bobot": 20.0,
-        "bobot_bulat": 20
+        "bobot": 17.74,
+        "bobot_bulat": 18
       },
       {
         "kode_mk": "REC264005",
@@ -15046,8 +15046,8 @@
         "rumusan_cpmk": "Mengidentifikasi gangguan sederhana pada mesin listrik berdasarkan data dan gejala kerja.",
         "kode_ik": "IK02.01",
         "kode_cpl": "CPL02",
-        "bobot": 6.0,
-        "bobot_bulat": 6
+        "bobot": 3.23,
+        "bobot_bulat": 3
       },
       {
         "kode_mk": "REC264005",
@@ -15055,8 +15055,8 @@
         "rumusan_cpmk": "Menganalisis kondisi operasi mesin listrik berdasarkan data teknis dan parameter pengukuran.",
         "kode_ik": "IK02.02",
         "kode_cpl": "CPL02",
-        "bobot": 20.0,
-        "bobot_bulat": 20
+        "bobot": 22.58,
+        "bobot_bulat": 22
       },
       {
         "kode_mk": "REC264005",
@@ -15064,7 +15064,7 @@
         "rumusan_cpmk": "Memilih tindakan teknis awal untuk mengatasi gangguan mesin listrik sesuai prosedur.",
         "kode_ik": "IK02.03",
         "kode_cpl": "CPL02",
-        "bobot": 10.0,
+        "bobot": 9.68,
         "bobot_bulat": 10
       },
       {
@@ -15073,8 +15073,8 @@
         "rumusan_cpmk": "Memilih mesin listrik dan perlengkapannya sesuai kebutuhan aplikasi industri.",
         "kode_ik": "IK03.01",
         "kode_cpl": "CPL03",
-        "bobot": 24.0,
-        "bobot_bulat": 24
+        "bobot": 22.58,
+        "bobot_bulat": 23
       },
       {
         "kode_mk": "REC264005",
@@ -15082,8 +15082,8 @@
         "rumusan_cpmk": "Menginterpretasikan hasil pengujian mesin listrik untuk menilai kinerjanya.",
         "kode_ik": "IK04.03",
         "kode_cpl": "CPL04",
-        "bobot": 20.0,
-        "bobot_bulat": 20
+        "bobot": 24.19,
+        "bobot_bulat": 24
       },
       {
         "kode_mk": "REC264006",
@@ -15127,8 +15127,8 @@
         "rumusan_cpmk": "Menggunakan kosakata dan struktur bahasa Inggris teknik untuk komunikasi lisan sederhana.",
         "kode_ik": "IK08.02",
         "kode_cpl": "CPL08",
-        "bobot": 41.18,
-        "bobot_bulat": 41
+        "bobot": 37.5,
+        "bobot_bulat": 38
       },
       {
         "kode_mk": "REC264007",
@@ -15136,8 +15136,8 @@
         "rumusan_cpmk": "Menyusun informasi teknis sederhana secara tertulis dalam bahasa Inggris.",
         "kode_ik": "IK08.03",
         "kode_cpl": "CPL08",
-        "bobot": 47.06,
-        "bobot_bulat": 47
+        "bobot": 50.0,
+        "bobot_bulat": 50
       },
       {
         "kode_mk": "REC264007",
@@ -15145,7 +15145,7 @@
         "rumusan_cpmk": "Membaca dan memahami datasheet, manual, dan teks teknis berbahasa Inggris.",
         "kode_ik": "IK10.02",
         "kode_cpl": "CPL10",
-        "bobot": 11.76,
+        "bobot": 12.5,
         "bobot_bulat": 12
       },
       {
@@ -15154,8 +15154,8 @@
         "rumusan_cpmk": "Menentukan solusi produk berbasis teknologi dengan mempertimbangkan biaya, sumber daya, dan pasar.",
         "kode_ik": "IK02.03",
         "kode_cpl": "CPL02",
-        "bobot": 25.0,
-        "bobot_bulat": 25
+        "bobot": 30.0,
+        "bobot_bulat": 30
       },
       {
         "kode_mk": "REC264008",
@@ -15172,8 +15172,8 @@
         "rumusan_cpmk": "Mempresentasikan ide technopreneurship secara jelas dan komunikatif.",
         "kode_ik": "IK08.02",
         "kode_cpl": "CPL08",
-        "bobot": 35.0,
-        "bobot_bulat": 35
+        "bobot": 30.0,
+        "bobot_bulat": 30
       },
       {
         "kode_mk": "REC264008",
@@ -15199,7 +15199,7 @@
         "rumusan_cpmk": "Menerapkan sikap patuh terhadap aturan dan etika dalam aktivitas akademik/kerja.",
         "kode_ik": "IK06.01",
         "kode_cpl": "CPL06",
-        "bobot": 13.79,
+        "bobot": 14.29,
         "bobot_bulat": 14
       },
       {
@@ -15208,7 +15208,7 @@
         "rumusan_cpmk": "Menjelaskan hak, kewajiban, dan tanggung jawab warga negara dalam konteks profesi teknik.",
         "kode_ik": "IK06.02",
         "kode_cpl": "CPL06",
-        "bobot": 13.79,
+        "bobot": 14.29,
         "bobot_bulat": 14
       },
       {
@@ -15217,8 +15217,8 @@
         "rumusan_cpmk": "Menunjukkan sikap disiplin dan tanggung jawab dalam menyelesaikan tugas.",
         "kode_ik": "IK07.01",
         "kode_cpl": "CPL07",
-        "bobot": 20.69,
-        "bobot_bulat": 21
+        "bobot": 21.43,
+        "bobot_bulat": 22
       },
       {
         "kode_mk": "REC264009",
@@ -15226,8 +15226,8 @@
         "rumusan_cpmk": "Menyampaikan gagasan kewarganegaraan dan tanggung jawab sosial secara lisan dengan efektif.",
         "kode_ik": "IK08.02",
         "kode_cpl": "CPL08",
-        "bobot": 24.14,
-        "bobot_bulat": 24
+        "bobot": 21.43,
+        "bobot_bulat": 21
       },
       {
         "kode_mk": "REC264009",
@@ -15235,8 +15235,8 @@
         "rumusan_cpmk": "Menuliskan gagasan kewarganegaraan dengan format dan bahasa yang sesuai.",
         "kode_ik": "IK08.03",
         "kode_cpl": "CPL08",
-        "bobot": 27.59,
-        "bobot_bulat": 27
+        "bobot": 28.56,
+        "bobot_bulat": 29
       },
       {
         "kode_mk": "REC265001",
@@ -15244,8 +15244,8 @@
         "rumusan_cpmk": "Melaksanakan pekerjaan teknis di industri sesuai prosedur, SOP, standar keselamatan, dan instruksi pembimbing lapangan.",
         "kode_ik": "IK05.01, IK06.03",
         "kode_cpl": "",
-        "bobot": 22.08,
-        "bobot_bulat": 22
+        "bobot": 20.81,
+        "bobot_bulat": 21
       },
       {
         "kode_mk": "REC265001",
@@ -15253,8 +15253,8 @@
         "rumusan_cpmk": "Mengidentifikasi dan menganalisis permasalahan teknis yang terdefinisi dengan jelas selama magang.",
         "kode_ik": "IK02.01, IK02.02",
         "kode_cpl": "CPL02",
-        "bobot": 16.88,
-        "bobot_bulat": 17
+        "bobot": 18.5,
+        "bobot_bulat": 18
       },
       {
         "kode_mk": "REC265001",
@@ -15262,8 +15262,8 @@
         "rumusan_cpmk": "Menggunakan perangkat, instrumen, atau sistem kerja industri sesuai spesifikasi dan prosedur.",
         "kode_ik": "IK03.02, IK03.03",
         "kode_cpl": "CPL03",
-        "bobot": 20.78,
-        "bobot_bulat": 21
+        "bobot": 18.5,
+        "bobot_bulat": 19
       },
       {
         "kode_mk": "REC265001",
@@ -15271,8 +15271,8 @@
         "rumusan_cpmk": "Bekerja secara profesional dalam tim dan lingkungan kerja industri.",
         "kode_ik": "IK06.01, IK07.01, IK07.02",
         "kode_cpl": "",
-        "bobot": 15.58,
-        "bobot_bulat": 15
+        "bobot": 12.14,
+        "bobot_bulat": 12
       },
       {
         "kode_mk": "REC265001",
@@ -15280,8 +15280,8 @@
         "rumusan_cpmk": "Menyusun laporan magang yang sistematis dan menunjukkan refleksi pembelajaran mandiri.",
         "kode_ik": "IK08.01, IK08.03, IK10.01",
         "kode_cpl": "",
-        "bobot": 24.68,
-        "bobot_bulat": 25
+        "bobot": 30.05,
+        "bobot_bulat": 30
       },
       {
         "kode_mk": "REC266001",
@@ -15289,8 +15289,8 @@
         "rumusan_cpmk": "Menyusun dokumen akademik dan teknis dengan kaidah bahasa Indonesia yang baik dan sistematis.",
         "kode_ik": "IK08.01",
         "kode_cpl": "CPL08",
-        "bobot": 31.82,
-        "bobot_bulat": 32
+        "bobot": 33.33,
+        "bobot_bulat": 33
       },
       {
         "kode_mk": "REC266001",
@@ -15298,8 +15298,8 @@
         "rumusan_cpmk": "Menyampaikan gagasan dan hasil pekerjaan secara lisan dengan jelas.",
         "kode_ik": "IK08.02",
         "kode_cpl": "CPL08",
-        "bobot": 31.82,
-        "bobot_bulat": 32
+        "bobot": 28.57,
+        "bobot_bulat": 29
       },
       {
         "kode_mk": "REC266001",
@@ -15307,8 +15307,8 @@
         "rumusan_cpmk": "Menggunakan paragraf, kutipan, daftar pustaka, dan struktur laporan sesuai format penulisan.",
         "kode_ik": "IK08.03",
         "kode_cpl": "CPL08",
-        "bobot": 36.36,
-        "bobot_bulat": 36
+        "bobot": 38.1,
+        "bobot_bulat": 38
       },
       {
         "kode_mk": "REC266002",
@@ -15316,8 +15316,8 @@
         "rumusan_cpmk": "Menerapkan prinsip keselamatan dan lingkungan dalam sistem manajemen mutu.",
         "kode_ik": "IK06.03",
         "kode_cpl": "CPL06",
-        "bobot": 31.81,
-        "bobot_bulat": 32
+        "bobot": 36.0,
+        "bobot_bulat": 36
       },
       {
         "kode_mk": "REC266002",
@@ -15325,8 +15325,8 @@
         "rumusan_cpmk": "Menyusun dokumen mutu, SOP, dan catatan kerja secara sistematis.",
         "kode_ik": "IK08.01",
         "kode_cpl": "CPL08",
-        "bobot": 31.82,
-        "bobot_bulat": 32
+        "bobot": 28.0,
+        "bobot_bulat": 28
       },
       {
         "kode_mk": "REC266002",
@@ -15334,8 +15334,8 @@
         "rumusan_cpmk": "Menjelaskan prinsip sistem manajemen mutu dan merencanakan pekerjaan sesuai standar kerja.",
         "kode_ik": "IK09.01",
         "kode_cpl": "CPL09",
-        "bobot": 13.64,
-        "bobot_bulat": 14
+        "bobot": 12.0,
+        "bobot_bulat": 12
       },
       {
         "kode_mk": "REC266002",
@@ -15343,8 +15343,8 @@
         "rumusan_cpmk": "Menerapkan konsep mutu dan perbaikan berkelanjutan dalam pengendalian pekerjaan teknis.",
         "kode_ik": "IK09.02",
         "kode_cpl": "CPL09",
-        "bobot": 9.09,
-        "bobot_bulat": 9
+        "bobot": 12.0,
+        "bobot_bulat": 12
       },
       {
         "kode_mk": "REC266002",
@@ -15352,8 +15352,8 @@
         "rumusan_cpmk": "Mengevaluasi pekerjaan teknis berdasarkan standar mutu, efisiensi sumber daya, dan kesesuaian spesifikasi.",
         "kode_ik": "IK09.03",
         "kode_cpl": "CPL09",
-        "bobot": 13.64,
-        "bobot_bulat": 13
+        "bobot": 12.0,
+        "bobot_bulat": 12
       },
       {
         "kode_mk": "REC266003",
@@ -15361,8 +15361,8 @@
         "rumusan_cpmk": "Menyusun ringkasan/dokumen teknis sederhana dalam bahasa Inggris secara sistematis.",
         "kode_ik": "IK08.01",
         "kode_cpl": "CPL08",
-        "bobot": 29.17,
-        "bobot_bulat": 29
+        "bobot": 30.43,
+        "bobot_bulat": 30
       },
       {
         "kode_mk": "REC266003",
@@ -15370,8 +15370,8 @@
         "rumusan_cpmk": "Mempresentasikan informasi teknis sederhana dalam bahasa Inggris secara jelas.",
         "kode_ik": "IK08.02",
         "kode_cpl": "CPL08",
-        "bobot": 29.17,
-        "bobot_bulat": 29
+        "bobot": 26.09,
+        "bobot_bulat": 26
       },
       {
         "kode_mk": "REC266003",
@@ -15379,8 +15379,8 @@
         "rumusan_cpmk": "Menggunakan format dan istilah teknis bahasa Inggris yang sesuai dalam komunikasi tertulis.",
         "kode_ik": "IK08.03",
         "kode_cpl": "CPL08",
-        "bobot": 33.33,
-        "bobot_bulat": 33
+        "bobot": 34.78,
+        "bobot_bulat": 35
       },
       {
         "kode_mk": "REC266003",
@@ -15388,7 +15388,7 @@
         "rumusan_cpmk": "Memahami teks, manual, atau referensi teknis berbahasa Inggris yang relevan dengan bidang instrumentasi industri.",
         "kode_ik": "IK10.02",
         "kode_cpl": "CPL10",
-        "bobot": 8.33,
+        "bobot": 8.7,
         "bobot_bulat": 9
       },
       {
@@ -15397,7 +15397,7 @@
         "rumusan_cpmk": "Merencanakan penyelesaian proyek akhir berdasarkan kebutuhan, spesifikasi, jadwal, sumber daya, dan standar kerja.",
         "kode_ik": "IK09.01",
         "kode_cpl": "CPL09",
-        "bobot": 3.8,
+        "bobot": 3.57,
         "bobot_bulat": 4
       },
       {
@@ -15406,8 +15406,8 @@
         "rumusan_cpmk": "Merealisasikan dan mengintegrasikan solusi teknis pada sistem elektronika/instrumentasi industri sesuai spesifikasi.",
         "kode_ik": "IK05.01, IK05.02",
         "kode_cpl": "CPL05",
-        "bobot": 17.72,
-        "bobot_bulat": 18
+        "bobot": 14.29,
+        "bobot_bulat": 14
       },
       {
         "kode_mk": "REC266004",
@@ -15415,8 +15415,8 @@
         "rumusan_cpmk": "Melakukan pengukuran, pengujian, evaluasi, dan troubleshooting sistem proyek akhir.",
         "kode_ik": "IK04.02, IK04.03, IK05.03",
         "kode_cpl": "",
-        "bobot": 36.71,
-        "bobot_bulat": 36
+        "bobot": 42.85,
+        "bobot_bulat": 43
       },
       {
         "kode_mk": "REC266004",
@@ -15424,8 +15424,8 @@
         "rumusan_cpmk": "Menyusun laporan teknis dan mempresentasikan hasil proyek akhir secara efektif.",
         "kode_ik": "IK08.01, IK08.02, IK08.03",
         "kode_cpl": "CPL08",
-        "bobot": 27.85,
-        "bobot_bulat": 28
+        "bobot": 25.0,
+        "bobot_bulat": 25
       },
       {
         "kode_mk": "REC266004",
@@ -15433,7 +15433,7 @@
         "rumusan_cpmk": "Menunjukkan kemandirian, tanggung jawab, dan pembelajaran berkelanjutan selama penyelesaian proyek.",
         "kode_ik": "IK07.01, IK10.01, IK10.03",
         "kode_cpl": "",
-        "bobot": 13.92,
+        "bobot": 14.29,
         "bobot_bulat": 14
       }
     ]

@@ -113,7 +113,17 @@ class D3CpmkWeightTests(unittest.TestCase):
             self.assertIn("CPL7", set(mapping[mapping["kode_mk"] == code]["kode_cpl"]))
         frame = app.load_program_workbook("D3 Teknik Elektro", "2025")["Master_CPMK"]
         weights = frame[frame["kode_mk"] == "REC254004"]["bobot_cpmk_mk_persen"].tolist()
-        self.assertEqual(weights, [34.37, 15.62, 34.38, 9.38, 6.25])
+        self.assertEqual(weights, [36.36, 15.58, 38.97, 7.79, 1.3])
+
+    def test_other_courses_keep_previous_weights(self):
+        # Revisi 13 Nov 2026: hanya Sistem Kendali Diskrit dan Magang Industri yang bobotnya berubah.
+        for cohort in ("2025", "2026"):
+            frame = app.load_program_workbook("D3 Teknik Elektro", cohort)["Master_CPMK"]
+            got = lambda suffix: frame[frame["kode_mk"] == f"REC{cohort[-2:]}{suffix}"]["bobot_cpmk_mk_persen"].tolist()
+            self.assertEqual(got("1001"), [52.17, 47.83])
+            self.assertEqual(got("1002"), [14.81, 13.58, 17.28, 16.05, 4.94, 14.81, 18.53])
+            self.assertEqual(got("3001"), [17.0, 20.0, 5.0, 19.0, 17.0, 22.0])
+            self.assertEqual(got("5001"), [20.81, 18.5, 18.5, 12.14, 30.05])
 
     def test_magang_and_proyek_akhir_follow_2023(self):
         old = app.load_master_excel((Path(__file__).resolve().parents[1] / "sample_data" / "master_rps_d3_pste.xlsx").read_bytes())["Master_CPMK"]
