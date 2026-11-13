@@ -89,34 +89,61 @@ class D3CpmkWeightTests(unittest.TestCase):
             for total in weekly.groupby("kode_mk")["bobot"].sum():
                 self.assertAlmostEqual(total, 100, places=2)
 
-    def test_d3_2026_matches_2025(self):
-        def weights(cohort):
+    def test_d3_2025_2026_cpmk_codes_follow_course_code(self):
+        for cohort in ("2025", "2026"):
             frame = app.load_program_workbook("D3 Teknik Elektro", cohort)["Master_CPMK"]
-            return [(row["kode_mk"][5:], row["kode_cpmk"], row["bobot_cpmk_mk_persen"]) for row in frame.to_dict("records")]
-        self.assertEqual(weights("2025"), weights("2026"))
-        fisika = [w for w in weights("2025") if w[0] == "1001"]
-        self.assertEqual(fisika, [("1001", "CPMK1.1", 52.17), ("1001", "CPMK1.2", 47.83)])
+            for row in frame.to_dict("records"):
+                self.assertRegex(row["kode_cpmk"], rf"^{row['kode_mk']}-CPMK\d+$")
+            for code, group in frame.groupby("kode_mk"):
+                self.assertGreaterEqual(len(group), 2, code)
+                self.assertAlmostEqual(group["bobot_cpmk_mk_persen"].sum(), 100, places=2)
+            # Kalimat CPMK per MK, bukan kalimat IK yang sama di semua MK.
+            fisika = frame[frame["kode_mk"] == f"REC{cohort[-2:]}1001"]["deskripsi_cpmk"].tolist()
+            matematika = frame[frame["kode_mk"] == f"REC{cohort[-2:]}1003"]["deskripsi_cpmk"].tolist()
+            self.assertFalse(set(fisika) & set(matematika))
 
-    def test_komponen_pengukuran_without_cpl08_from_2025(self):
-        komponen = {
-            "CPMK1.1": 14.81, "CPMK1.2": 13.58, "CPMK3.1": 17.28, "CPMK3.2": 16.05,
-            "CPMK4.1": 4.94, "CPMK4.2": 14.81, "CPMK4.3": 18.53,
-        }
-        magang = {
-            "CPMK10.1": 7.41, "CPMK10.3": 3.7, "CPMK6.1": 7.41, "CPMK6.3": 16.67, "CPMK7.1": 11.11,
-            "CPMK7.2": 1.85, "CPMK8.1": 25.92, "CPMK8.3": 14.81, "CPMK9.1": 5.56, "CPMK9.2": 5.56,
-        }
+    def test_sistem_kendali_diskrit_gets_ik72(self):
         for cohort in ("2025", "2026"):
             workbook = app.load_program_workbook("D3 Teknik Elektro", cohort)
+            code = f"REC{cohort[-2:]}4004"
             frame = workbook["Master_CPMK"]
-            kp, mg = f"REC{cohort[-2:]}1002", f"REC{cohort[-2:]}5001"
-            got = lambda code: dict(zip(frame[frame["kode_mk"] == code]["kode_cpmk"], frame[frame["kode_mk"] == code]["bobot_cpmk_mk_persen"]))
-            self.assertEqual(got(kp), komponen)
-            self.assertEqual(got(mg), magang)
+            frame = frame[frame["kode_mk"] == code]
+            self.assertEqual(list(frame["kode_ik"]), ["IK2.2", "IK2.3", "IK4.3", "IK9.3", "IK7.2"])
             mapping = workbook["Mapping_MK_CPL"]
-            self.assertEqual(sorted(mapping[mapping["kode_mk"] == kp]["kode_cpl"]), ["CPL1", "CPL3", "CPL4"])
-            weeks = workbook["RPS_Pertemuan"]
-            self.assertNotIn("CPMK8.1", set(weeks[weeks["kode_mk"] == kp]["kode_cpmk"]))
+            self.assertIn("CPL7", set(mapping[mapping["kode_mk"] == code]["kode_cpl"]))
+        frame = app.load_program_workbook("D3 Teknik Elektro", "2025")["Master_CPMK"]
+        weights = frame[frame["kode_mk"] == "REC254004"]["bobot_cpmk_mk_persen"].tolist()
+        self.assertEqual(weights, [34.37, 15.62, 34.38, 9.38, 6.25])
+
+    def test_magang_and_proyek_akhir_follow_2023(self):
+        old = app.load_master_excel((Path(__file__).resolve().parents[1] / "sample_data" / "master_rps_d3_pste.xlsx").read_bytes())["Master_CPMK"]
+        for cohort in ("2025", "2026"):
+            frame = app.load_program_workbook("D3 Teknik Elektro", cohort)["Master_CPMK"]
+            for suffix, source in (("5001", "REC235001"), ("6004", "REC236001")):
+                new = frame[frame["kode_mk"] == f"REC{cohort[-2:]}{suffix}"]
+                ref = old[old["kode_mk"] == source]
+                self.assertEqual(len(new), 5)
+                self.assertEqual(list(new["deskripsi_cpmk"]), list(ref["deskripsi_cpmk"]))
+                self.assertEqual(list(new["kode_ik"]), list(ref["kode_ik"]))
+                self.assertAlmostEqual(new["bobot_cpmk_mk_persen"].sum(), 100, places=2)
+
+    def test_cpl_adjustments_kept_from_app(self):
+        for cohort in ("2025", "2026"):
+            workbook = app.load_program_workbook("D3 Teknik Elektro", cohort)
+            mapping = workbook["Mapping_MK_CPL"]
+            cpl = lambda suffix: sorted(mapping[mapping["kode_mk"] == f"REC{cohort[-2:]}{suffix}"]["kode_cpl"])
+            self.assertEqual(cpl("1002"), ["CPL1", "CPL3", "CPL4"])  # K&P tanpa CPL08
+            self.assertNotIn("CPL5", cpl("3001"))  # Elektronika Analog 2 tanpa CPL05
+        self.assertEqual(cpl("1008"), ["CPL1"])  # 2026: Rangkaian Listrik 1 hanya CPL01
+        frame = app.load_program_workbook("D3 Teknik Elektro", "2025")["Master_CPMK"]
+        self.assertEqual(len(frame[frame["kode_mk"] == "REC251008"]), 7)
+
+    def test_every_cpl_has_two_ik_in_2025_2026(self):
+        for cohort in ("2025", "2026"):
+            frame = app.load_program_workbook("D3 Teknik Elektro", cohort)["Master_CPMK"]
+            used = {code.strip() for text in frame["kode_ik"] for code in str(text).split(",")}
+            for cpl in range(1, 11):
+                self.assertGreaterEqual(len([code for code in used if code.startswith(f"IK{cpl}.")]), 2, (cohort, cpl))
 
     def test_d3_2024_follows_obaobe_rencana_evaluasi(self):
         frame = app.load_program_workbook("D3 Teknik Elektro", "2024")["Master_CPMK"]
@@ -128,25 +155,6 @@ class D3CpmkWeightTests(unittest.TestCase):
             "CPMK4.1": 4.55, "CPMK4.2": 13.64, "CPMK4.3": 17.04, "CPMK8.1": 7.95,
         })
         self.assertEqual(got("REC246003"), {"CPMK10.2": 8.7, "CPMK8.1": 30.43, "CPMK8.2": 26.09, "CPMK8.3": 34.78})
-
-    def test_elektronika_analog_2_without_cpl5_from_2025(self):
-        expected = {"CPMK1.1": 17.0, "CPMK2.2": 20.0, "CPMK2.3": 5.0, "CPMK3.1": 19.0, "CPMK4.2": 17.0, "CPMK4.3": 22.0}
-        for cohort in ("2025", "2026"):
-            workbook = app.load_program_workbook("D3 Teknik Elektro", cohort)
-            code = f"REC{cohort[-2:]}3001"
-            frame = workbook["Master_CPMK"]
-            frame = frame[frame["kode_mk"] == code]
-            self.assertEqual(dict(zip(frame["kode_cpmk"], frame["bobot_cpmk_mk_persen"])), expected)
-            mapping = workbook["Mapping_MK_CPL"]
-            self.assertNotIn("CPL5", set(mapping[mapping["kode_mk"] == code]["kode_cpl"]))
-            weekly = workbook["RPS_Pertemuan"]
-            weekly = weekly[weekly["kode_mk"] == code]
-            self.assertAlmostEqual(weekly["bobot"].map(app.as_float).sum(), 100, places=2)
-            self.assertFalse({"CPMK5.1", "CPMK5.3"} & set(weekly["kode_cpmk"]))
-        # Angkatan 2024 tidak ikut perubahan.
-        old = app.load_program_workbook("D3 Teknik Elektro", "2024")["Master_CPMK"]
-        self.assertIn("CPMK5.1", set(old[old["kode_mk"] == "REC243001"]["kode_cpmk"]))
-
 
 class RangkumanTests(unittest.TestCase):
     def test_summary_covers_every_program_and_cohort(self):

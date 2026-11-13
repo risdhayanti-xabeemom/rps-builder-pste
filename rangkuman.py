@@ -16,6 +16,10 @@ def _joined(values) -> str:
     return ", ".join(dict.fromkeys(str(v) for v in values if str(v).strip()))
 
 
+def _split(text) -> list[str]:
+    return [item.strip() for item in str(text).split(",") if item.strip()]
+
+
 def _mk_labels(workbook: dict[str, pd.DataFrame]) -> pd.DataFrame:
     mk = workbook["Master_MK"].fillna("").copy()
     mk["kode_mk"] = mk["kode_mk"].astype(str)
@@ -32,7 +36,7 @@ def summarize_cpl(workbook: dict[str, pd.DataFrame]) -> pd.DataFrame:
     rows = []
     for item in cpl.to_dict("records"):
         code = item["kode_cpl"]
-        cpmk_cpl = cpmk[cpmk["kode_cpl"].astype(str) == str(code)]
+        cpmk_cpl = cpmk[cpmk["kode_cpl"].astype(str).map(lambda text: str(code) in _split(text))]
         rows.append({
             "kode_cpl": code,
             "deskripsi_cpl": item.get("deskripsi_cpl", ""),
@@ -86,9 +90,13 @@ def summarize_cpmk(workbook: dict[str, pd.DataFrame]) -> pd.DataFrame:
                 sums.get((row.kode_mk, row.kode_cpmk)) for row in merged.itertuples()
             ]
     blank = merged["kode_cpl"].astype(str).str.strip() == ""
-    if blank.any():  # master lama: CPL diambil dari IK
+    if blank.any():  # master lama atau CPMK multi-IK: CPL diambil dari semua IK-nya
         by_ik = dict(zip(workbook["Master_IK"]["kode_ik"].astype(str), workbook["Master_IK"]["kode_cpl"].astype(str)))
-        merged.loc[blank, "kode_cpl"] = merged.loc[blank, "kode_ik"].astype(str).map(by_ik).fillna("")
+        merged.loc[blank, "kode_cpl"] = merged.loc[blank, "kode_ik"].astype(str).map(
+            lambda text: _joined(sorted(
+                (by_ik.get(code.strip(), "") for code in text.split(",")), key=_cpl_sort_key
+            ))
+        )
     merged["semester"] = pd.to_numeric(merged["semester"], errors="coerce")
     merged = merged.sort_values(["semester", "kode_mk", "kode_cpmk"], ignore_index=True)
     return merged[[
@@ -99,7 +107,8 @@ def summarize_cpmk(workbook: dict[str, pd.DataFrame]) -> pd.DataFrame:
 def cpl_by_course(workbook: dict[str, pd.DataFrame]) -> pd.DataFrame:
     """Matriks MK x CPL: jumlah CPMK MK itu yang membebani CPL tersebut."""
     cpmk = summarize_cpmk(workbook)
-    cpmk = cpmk[cpmk["kode_cpl"].astype(str) != ""]
+    cpmk = cpmk.assign(kode_cpl=cpmk["kode_cpl"].map(_split)).explode("kode_cpl", ignore_index=True)
+    cpmk = cpmk[cpmk["kode_cpl"].notna() & (cpmk["kode_cpl"].astype(str) != "")]
     table = pd.crosstab([cpmk["semester"], cpmk["kode_mk"], cpmk["nama_mk"]], cpmk["kode_cpl"])
     table = table[sorted(table.columns, key=_cpl_sort_key)].reset_index()
     return table
